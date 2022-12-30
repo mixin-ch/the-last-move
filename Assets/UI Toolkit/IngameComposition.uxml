@@ -1,0 +1,16 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/Ingame.uss?fileID=7433441132597879392&amp;guid=d5291e3b23c55cd4793f2253dade78de&amp;type=3#Ingame" />
+    <ui:VisualElement name="Body" style="flex-basis: 100%;">
+        <ui:VisualElement name="Header" style="flex-basis: 100px; flex-direction: row;">
+            <ui:Button text="Pause" display-tooltip-when-elided="true" />
+            <ui:VisualElement name="HealthContainer" style="flex-direction: row;">
+                <ui:VisualElement name="HeartTemplate" class="heart" style="height: 50px; width: 50px;" />
+                <ui:VisualElement name="HeartTemplate" class="heart" style="height: 50px; width: 50px;" />
+                <ui:VisualElement name="HeartTemplate" class="heart" style="height: 50px; width: 50px;" />
+            </ui:VisualElement>
+            <ui:Label text="Score" display-tooltip-when-elided="true" name="Score" class="headerText" />
+            <ui:Label text="Kills" display-tooltip-when-elided="true" name="KillCounter" class="headerText" />
+            <ui:Label text="Currency" display-tooltip-when-elided="true" name="CurrencyCounter" class="headerText" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
