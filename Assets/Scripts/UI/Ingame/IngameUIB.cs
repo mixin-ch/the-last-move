@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace Mixin.TheLastMove
@@ -14,7 +11,7 @@ namespace Mixin.TheLastMove
         private VisualTreeAsset _heartTemplate;
 
         public Label ScoreText { get; set; }
-        public Label KillsText { get; set; }
+        public Label KillText { get; set; }
         public Label CurrencyText { get; set; }
 
         public static event Action OnPauseButtonClicked;
@@ -26,14 +23,14 @@ namespace Mixin.TheLastMove
             PauseButton = _root.Q<Button>("PauseButton");
             HealthContainer = _root.Q<VisualElement>("HealthContainer");
             ScoreText = _root.Q<Label>("ScoreText");
-            KillsText = _root.Q<Label>("KillsText");
+            KillText = _root.Q<Label>("KillText");
             CurrencyText = _root.Q<Label>("CurrencyText");
         }
 
         public void Init()
         {
             ScoreText.text = "0";
-            KillsText.text = "0";
+            KillText.text = "0";
             CurrencyText.text = "0";
 
             PauseButton.clicked += () => OnPauseButtonClicked?.Invoke();

@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3608964336775138526}
+  - component: {fileID: 6810598908775370483}
   - component: {fileID: 3608964336775138527}
   m_Layer: 0
   m_Name: Block
@@ -26,12 +27,24 @@ Transform:
   m_GameObject: {fileID: 3608964336775138525}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6810598908775370483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3608964336775138525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7052a26ac1e3a8c4a829b1a3eb97a1ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &3608964336775138527
 SpriteRenderer:
   m_ObjectHideFlags: 0
