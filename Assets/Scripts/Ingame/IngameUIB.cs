@@ -5,11 +5,9 @@ namespace Mixin.TheLastMove
 {
     public class IngameUIB : UIBuildCollector<IngameUIB>
     {
-        public Button PauseButton { get; set; }
-        public VisualElement HealthContainer { get; set; }
-
+        private Button PauseButton;
+        private VisualElement _healthContainer;
         private VisualTreeAsset _heartTemplate;
-
         public Label ScoreText { get; set; }
         public Label KillText { get; set; }
         public Label CurrencyText { get; set; }
@@ -21,30 +19,38 @@ namespace Mixin.TheLastMove
             base.Awake();
 
             PauseButton = _root.Q<Button>("PauseButton");
-            HealthContainer = _root.Q<VisualElement>("HealthContainer");
+            _healthContainer = _root.Q<VisualElement>("HealthContainer");
             ScoreText = _root.Q<Label>("ScoreText");
             KillText = _root.Q<Label>("KillText");
             CurrencyText = _root.Q<Label>("CurrencyText");
         }
 
-        public void Init()
+        private void Start()
         {
-            ScoreText.text = "0";
-            KillText.text = "0";
-            CurrencyText.text = "0";
+            ResetValues();
 
             PauseButton.clicked += () => OnPauseButtonClicked?.Invoke();
         }
 
+        private void ResetValues()
+        {
+            ScoreText.text = "0";
+            KillText.text = "0";
+            CurrencyText.text = "0";
+        }
+
+        [Obsolete]
+        public void Init() { }
+
         public void AddHeart()
         {
             TemplateContainer heart = _heartTemplate.CloneTree();
-            HealthContainer.Add(heart);
+            _healthContainer.Add(heart);
         }
 
         public void RemoveHeart()
         {
-            HealthContainer.RemoveAt(0);
+            _healthContainer.RemoveAt(0);
         }
     }
 }
