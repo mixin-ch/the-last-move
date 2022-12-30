@@ -8,5 +8,6 @@
             <ui:SliderInt picking-mode="Ignore" label="Quality" value="42" high-value="100" name="QualitySlider" />
             <ui:DropdownField label="Language" index="0" choices="DE, CH, EN" name="LanguageDropdown" />
         </ui:ScrollView>
+        <ui:Button text="Save" display-tooltip-when-elided="true" name="SaveButton" />
     </ui:VisualElement>
 </ui:UXML>

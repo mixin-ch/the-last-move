@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mixin.Utils;
+using System;
 
 namespace Mixin.TheLastMove
 {
@@ -9,7 +10,17 @@ namespace Mixin.TheLastMove
     {
         private void Start()
         {
-            
+
+        }
+
+        private void OnEnable()
+        {
+            SettingsUIB.OnExitButtonClicked += OnExitButtonClicked;
+        }
+
+        private void OnDisable()
+        {
+            SettingsUIB.OnExitButtonClicked -= OnExitButtonClicked;
         }
 
         public void LoadSettings()
@@ -20,6 +31,11 @@ namespace Mixin.TheLastMove
         private void SaveSettings()
         {
 
+        }
+
+        private void OnExitButtonClicked()
+        {
+            // Change Scene
         }
     }
 }
