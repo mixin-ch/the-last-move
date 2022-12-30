@@ -1,10 +1,7 @@
 using Mixin.Utils;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace Mixin.Board
+namespace Mixin.TheLastMove
 {
     public class UIBuildCollector<T> : Singleton<T> where T : Singleton<T>
     {

@@ -4,18 +4,7 @@ using UnityEngine;
 
 namespace Mixin.TheLastMove
 {
-    public class IngameUIB : MonoBehaviour
+    public class IngameUIB : UIBuildCollector<IngameUIB>
     {
-        // Start is called before the first frame update
-        void Start()
-        {
-        
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-        
-        }
     }
 }
