@@ -1,0 +1,12 @@
+.button {
+    background-color: rgba(14, 14, 14, 255);
+    font-size: 30px;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: rgba(255, 255, 255, 255);
+    -unity-font-style: bold;
+}
