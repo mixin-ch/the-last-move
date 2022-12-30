@@ -37,6 +37,7 @@ namespace Mixin.TheLastMove
         private void OnEnable()
         {
             IngameUIB.OnPauseButtonClicked += PauseClicked;
+            InputManager.OnJumpClicked += JumpClicked;
         }
 
         private void OnDisable()
@@ -102,8 +103,6 @@ namespace Mixin.TheLastMove
 
             if (_playerOperator.Position.y < -5)
                 _playerOperator.ResetState();
-
-            JumpClicked();
         }
 
         private void TickBlocks(float time)
