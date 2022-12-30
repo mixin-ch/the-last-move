@@ -2,14 +2,15 @@
     <Style src="project://database/Assets/UI%20Toolkit/Ingame.uss?fileID=7433441132597879392&amp;guid=d5291e3b23c55cd4793f2253dade78de&amp;type=3#Ingame" />
     <ui:VisualElement name="Body" style="flex-basis: 100%;">
         <ui:VisualElement name="Header" style="flex-basis: 100px; flex-direction: row;">
-            <ui:Button text="Pause" display-tooltip-when-elided="true" name="PauseButton" />
-            <ui:VisualElement name="HealthContainer" style="flex-direction: row;">
+            <ui:Button display-tooltip-when-elided="true" name="PauseButton" style="background-image: url(&apos;project://database/Assets/Graphics/Pause%20Button.png?fileID=2800000&amp;guid=a361af4e8096110438f71e561c981dbf&amp;type=3#Pause Button&apos;); -unity-background-scale-mode: scale-to-fit; background-color: rgba(188, 188, 188, 0); flex-basis: 70px;" />
+            <ui:VisualElement name="HealthContainer" style="flex-direction: row; align-items: center;">
                 <ui:VisualElement name="HeartTemplate" class="heart" style="height: 50px; width: 50px;" />
                 <ui:VisualElement name="HeartTemplate" class="heart" style="height: 50px; width: 50px;" />
                 <ui:VisualElement name="HeartTemplate" class="heart" style="height: 50px; width: 50px;" />
             </ui:VisualElement>
             <ui:Label text="Score" display-tooltip-when-elided="true" name="ScoreText" class="headerText" />
             <ui:Label text="Kills" display-tooltip-when-elided="true" name="KillText" class="headerText" />
+            <ui:VisualElement style="background-image: url(&apos;project://database/Assets/Graphics/Chess%20Pawn.png?fileID=2800000&amp;guid=fea3afec963eb2143a9f1e69f3a0b199&amp;type=3#Chess Pawn&apos;); flex-basis: 50px; -unity-background-scale-mode: scale-to-fit;" />
             <ui:Label text="Currency" display-tooltip-when-elided="true" name="CurrencyText" class="headerText" />
         </ui:VisualElement>
     </ui:VisualElement>
