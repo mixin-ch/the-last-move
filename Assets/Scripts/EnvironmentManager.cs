@@ -25,6 +25,16 @@ namespace Mixin.TheLastMove
         private float _distance;
         private float _distancePlanned;
 
+        private void OnEnable()
+        {
+            IngameUIB.OnPauseButtonClicked += PauseClicked;
+        }
+
+        private void OnDisable()
+        {
+            IngameUIB.OnPauseButtonClicked -= PauseClicked;
+        }
+
         public void StartGame()
         {
             Clear();
@@ -38,6 +48,11 @@ namespace Mixin.TheLastMove
             _velocity = _startVelocity;
             _distance = 0;
             _distancePlanned = _blockInsertDistance + _blockDeleteDistance;
+        }
+
+        private void PauseClicked()
+        {
+            _active = !_active;
         }
 
         private void FixedUpdate()

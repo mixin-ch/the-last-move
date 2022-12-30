@@ -7,6 +7,7 @@ namespace Mixin.TheLastMove
         private void Start()
         {
             EnvironmentManager.Instance.StartGame();
+            IngameUIB.Instance.Init();
         }
     }
 }
