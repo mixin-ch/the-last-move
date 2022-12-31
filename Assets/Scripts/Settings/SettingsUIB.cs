@@ -1,9 +1,10 @@
+using Mixin.Utils;
 using System;
 using UnityEngine.UIElements;
 
 namespace Mixin.TheLastMove
 {
-    public class SettingsUIB : UIBuildCollector<SettingsUIB>
+    public class SettingsUIB : UIBuildManager<SettingsUIB>
     {
         private Button ExitButton;
         public SliderInt MusicVolumeSlider { get; set; }

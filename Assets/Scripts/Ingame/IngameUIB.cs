@@ -1,10 +1,11 @@
+using Mixin.Utils;
 using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace Mixin.TheLastMove
 {
-    public class IngameUIB : UIBuildCollector<IngameUIB>
+    public class IngameUIB : UIBuildManager<IngameUIB>
     {
         private Button PauseButton;
 
