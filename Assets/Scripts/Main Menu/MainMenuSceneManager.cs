@@ -26,7 +26,7 @@ namespace Mixin.TheLastMove
         private void ChangeScene(SceneName sceneName)
         {
             $"Changing to Scene {sceneName}".LogProgress();
-            StartCoroutine(SceneManager.Instance.LoadNewSceneAsync(sceneName.ToString()));
+            SceneManager.Instance.LoadScene(sceneName.ToString());
         }
 
         private void OnEnable()

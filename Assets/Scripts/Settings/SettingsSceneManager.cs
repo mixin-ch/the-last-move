@@ -35,7 +35,7 @@ namespace Mixin.TheLastMove
 
         private void OnExitButtonClicked()
         {
-            StartCoroutine(SceneManager.Instance.LoadNewSceneAsync(SceneName.MainMenu.ToString()));
+            SceneManager.Instance.LoadScene(SceneName.MainMenu.ToString());
         }
     }
 }
