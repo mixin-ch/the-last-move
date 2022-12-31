@@ -1,3 +1,4 @@
+using Mixin.Utils;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -24,8 +25,8 @@ namespace Mixin.TheLastMove
 
         private void ChangeScene(SceneName sceneName)
         {
-            // TODO 
-            // Scenemanager.changescene()
+            $"Changing to Scene {sceneName}".LogProgress();
+            StartCoroutine(SceneManager.Instance.LoadNewSceneAsync(sceneName.ToString()));
         }
 
         private void OnEnable()
