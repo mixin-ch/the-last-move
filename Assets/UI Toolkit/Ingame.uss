@@ -18,3 +18,7 @@
 Label {
     -unity-text-align: middle-left;
 }
+
+.icon {
+    flex-basis: 50px;
+}
