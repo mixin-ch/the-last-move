@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace Mixin.TheLastMove
@@ -6,7 +7,9 @@ namespace Mixin.TheLastMove
     public class IngameUIB : UIBuildCollector<IngameUIB>
     {
         private Button PauseButton;
+
         private VisualElement _healthContainer;
+        [SerializeField]
         private VisualTreeAsset _heartTemplate;
         public Label ScoreText { get; set; }
         public Label KillText { get; set; }
