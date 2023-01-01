@@ -1,34 +1,32 @@
-using Mixin.Utils;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Mixin.TheLastMove
 {
     public class BlockMaker : MonoBehaviour
     {
-        private bool _placeBlock;
-        private int _placements;
+        private List<BlockRowMaker> _blockRowMakerList = new List<BlockRowMaker>();
 
-        public void ResetValues()
+        public void Initialize()
         {
-            _placeBlock = true;
-            _placements = 10;
+            _blockRowMakerList.Clear();
+
+            for (int i = 0; i < EnvironmentManager.BlockRows; i++)
+            {
+                BlockRowMaker blockRowMaker = new BlockRowMaker();
+                blockRowMaker.Initialize();
+                _blockRowMakerList.Add(blockRowMaker);
+            }
         }
 
-        public bool PickNext()
+        public List<bool> PickNext()
         {
-            if (_placements <= 0)
-            {
-                _placeBlock = !_placeBlock;
-                System.Random random = new System.Random();
+            List<bool> pickList = new List<bool>();
 
-                if (_placeBlock)
-                    _placements = random.Range(1, 5);
-                else
-                    _placements = random.Range(1, 3);
-            }
+            foreach (BlockRowMaker blockRowMaker in _blockRowMakerList)
+                pickList.Add(blockRowMaker.PickNext());
 
-            _placements--;
-            return _placeBlock;
+            return pickList;
         }
     }
 }
