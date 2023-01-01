@@ -19,20 +19,24 @@ namespace Mixin.TheLastMove
         private const float _blockSpace = 2f;
         private const float _blockInsertDistance = 15f;
         private const float _blockDeleteDistance = 15f;
-        private const float _startVelocity = 1f;
-        private const float _acceleration = 0.1f;
-        private const float _maxVelocity = 20f;
+        private const float _hecticStart = 0.25f;
+        private const float _hecticGain = 0.05f;
+        private const float _maxHectic = 5f;
+        private const float _velocityScale = 3f;
 
         private bool _started;
         private bool _paused;
         private List<BlockOperator> _blockOperatorList = new List<BlockOperator>();
         private PlayerOperator _playerOperator;
-        private float _velocity;
+        private float _hectic;
         private float _distance;
         private float _distancePlanned;
 
+        private float Velocity => _hectic * _velocityScale;
+
         public bool Started { get => _started; }
         public bool Paused { get => _paused; }
+        public float Hectic { get => _hectic; }
 
         private void OnEnable()
         {
@@ -65,7 +69,7 @@ namespace Mixin.TheLastMove
             _playerContainer.DestroyChildren();
             _blockOperatorList.Clear();
             _playerOperator = null;
-            _velocity = _startVelocity;
+            _hectic = _hecticStart;
             _distance = 0;
             _distancePlanned = _blockInsertDistance + _blockDeleteDistance;
         }
@@ -76,7 +80,7 @@ namespace Mixin.TheLastMove
                 return;
 
             _paused = !_paused;
-            _playerOperator.Pause(_paused);
+            _playerOperator.Pause();
         }
 
         private void JumpClicked()
@@ -107,8 +111,8 @@ namespace Mixin.TheLastMove
 
         private void TickBlocks(float time)
         {
-            _velocity = (_velocity + _acceleration * time).UpperBound(_maxVelocity);
-            float offset = _velocity * time;
+            _hectic = (_hectic + _hecticGain * time).UpperBound(_maxHectic);
+            float offset = Velocity * time;
             _distance += offset;
             _distancePlanned += offset;
 
