@@ -52,7 +52,7 @@ namespace Mixin.TheLastMove
             RefreshVelocity();
         }
 
-        public void Pause()
+        public void PauseRefresh()
         {
             RefreshVelocity();
         }

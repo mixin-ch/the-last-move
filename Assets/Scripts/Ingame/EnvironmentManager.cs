@@ -48,6 +48,7 @@ namespace Mixin.TheLastMove
         private void OnEnable()
         {
             IngameOverlayUIB.OnPauseButtonClicked += PauseClicked;
+            IngamePauseUIB.OnResumeButtonClicked += UnpauseClicked;
             InputManager.OnJumpClicked += JumpClicked;
         }
 
@@ -84,11 +85,22 @@ namespace Mixin.TheLastMove
 
         private void PauseClicked()
         {
+            _paused = true;
+
             if (!_started)
                 return;
 
-            _paused = !_paused;
-            _playerOperator.Pause();
+            _playerOperator.PauseRefresh();
+        }
+
+        private void UnpauseClicked()
+        {
+            _paused = false;
+
+            if (!_started)
+                return;
+
+            _playerOperator.PauseRefresh();
         }
 
         private void JumpClicked()
