@@ -10,8 +10,8 @@ namespace Mixin.TheLastMove
         [SerializeField]
         private Transform _imageTransform;
 
-        private const float _gravity = 10f;
-        private const float _jumpVelocity = 4f;
+        private const float _gravity = 8f;
+        private const float _jumpVelocity = 3f;
         private const int _jumps = 2;
         private const float _jumpTime = 0.5f;
 
@@ -84,7 +84,7 @@ namespace Mixin.TheLastMove
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-           if(collision.enabled)
+            if (collision.enabled && _velocity <= 0)
             {
                 _velocity = 0;
                 _jumpTimeRemaining = 0;

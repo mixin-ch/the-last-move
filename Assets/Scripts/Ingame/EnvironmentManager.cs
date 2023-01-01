@@ -15,14 +15,17 @@ namespace Mixin.TheLastMove
         [SerializeField]
         private GameObject _playerPrefab;
 
-        private const float _blockSize = 2f;
-        private const float _blockSpace = 2f;
+        private const float _blockSize = 1f;
+        private const int _blockRows = 3;
+        private const float _lowestRowY = -5f;
         private const float _blockInsertDistance = 15f;
         private const float _blockDeleteDistance = 15f;
-        private const float _hecticStart = 0.25f;
+        private const float _hecticStart = 1;
         private const float _hecticGain = 0.05f;
         private const float _maxHectic = 5f;
         private const float _velocityScale = 3f;
+
+        private BlockMaker _blockMaker = new BlockMaker();
 
         private bool _started;
         private bool _paused;
@@ -33,6 +36,9 @@ namespace Mixin.TheLastMove
         private float _distancePlanned;
 
         private float Velocity => _hectic * _velocityScale;
+
+        public static float BlockSize => _blockSize;
+        public static float BlockRows => _blockRows;
 
         public bool Started { get => _started; }
         public bool Paused { get => _paused; }
@@ -70,6 +76,7 @@ namespace Mixin.TheLastMove
             _playerContainer.DestroyChildren();
             _blockOperatorList.Clear();
             _playerOperator = null;
+            _blockMaker.Initialize();
             _hectic = _hecticStart;
             _distance = 0;
             _distancePlanned = _blockInsertDistance + _blockDeleteDistance;
@@ -122,11 +129,21 @@ namespace Mixin.TheLastMove
 
             while (_distancePlanned > 0)
             {
-                GameObject block = _blockPrefab.GeneratePrefab(_blockContainer);
-                BlockOperator blockOperator = block.GetComponent<BlockOperator>();
-                blockOperator.Setup(Vector2.right * (_blockInsertDistance - _distancePlanned), _blockSize);
-                _blockOperatorList.Add(blockOperator);
-                _distancePlanned -= _blockSize + _blockSpace;
+                List<bool> pickList = _blockMaker.PickNext();
+
+                for (int i = 0; i < _blockRows; i++)
+                {
+                    if (pickList[i])
+                    {
+                        float y = 0 + _lowestRowY * i / _blockRows;
+                        GameObject block = _blockPrefab.GeneratePrefab(_blockContainer);
+                        BlockOperator blockOperator = block.GetComponent<BlockOperator>();
+                        blockOperator.Setup(Vector2.up * y + Vector2.right * (_blockInsertDistance - _distancePlanned), _blockSize);
+                        _blockOperatorList.Add(blockOperator);
+                    }
+                }
+
+                _distancePlanned -= _blockSize;
             }
 
             for (int i = 0; i < _blockOperatorList.Count; i++)
