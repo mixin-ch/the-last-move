@@ -517,17 +517,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1428514903}
     m_Modifications:
-    - target: {fileID: 1096123728544668157, guid: 1e16adb2edc5bad4fa19982fabe6121e, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3608964336775138525, guid: 1e16adb2edc5bad4fa19982fabe6121e, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 3608964336775138525, guid: 1e16adb2edc5bad4fa19982fabe6121e, type: 3}
-      propertyPath: m_Layer
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3608964336775138526, guid: 1e16adb2edc5bad4fa19982fabe6121e, type: 3}
       propertyPath: m_RootOrder
@@ -770,8 +762,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1491921349
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6cc50f756ff913443bd48eb032280ce9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -833,10 +825,6 @@ PrefabInstance:
     - target: {fileID: 3608964336775138525, guid: f1c77ce4284898040a1a5e1a1469caae, type: 3}
       propertyPath: m_Name
       value: Block
-      objectReference: {fileID: 0}
-    - target: {fileID: 3608964336775138525, guid: f1c77ce4284898040a1a5e1a1469caae, type: 3}
-      propertyPath: m_Layer
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3608964336775138526, guid: f1c77ce4284898040a1a5e1a1469caae, type: 3}
       propertyPath: m_RootOrder
