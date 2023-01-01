@@ -7,6 +7,12 @@ namespace Mixin.TheLastMove
 {
     public class IngameUIManager : MonoBehaviour
     {
+        private void Update()
+        {
+            IngameOverlayUIB.Instance.ScoreText.text = 
+                ((int)EnvironmentManager.Instance.Distance).ToString();
+        }
+
         private void OnEnable()
         {
             IngameOverlayUIB.OnPauseButtonClicked += IngameOverlayUIB_OnPauseButtonClicked;
