@@ -1,3 +1,4 @@
+using Mixin.Utils;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,7 +6,7 @@ using UnityEngine;
 
 namespace Mixin.TheLastMove
 {
-    public class InputManager : MonoBehaviour
+    public class InputManager : Singleton<InputManager>
     {
         private KeyCode _jumpKey;
         private KeyCode _attackKey;
