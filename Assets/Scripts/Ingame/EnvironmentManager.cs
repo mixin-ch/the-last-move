@@ -33,6 +33,7 @@ namespace Mixin.TheLastMove
 
         public bool Started { get => _started; }
         public bool Paused { get => _paused; }
+        public float Distance { get => _distance; }
 
         private void OnEnable()
         {
