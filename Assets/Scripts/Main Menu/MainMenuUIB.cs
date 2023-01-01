@@ -1,3 +1,4 @@
+using Mixin.Utils;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using UnityEngine.UIElements;
 
 namespace Mixin.TheLastMove
 {
-    public class MainMenuUIB : UIBuildCollector<MainMenuUIB>
+    public class MainMenuUIB : UIBuildManager<MainMenuUIB>
     {
         public Button PlayButton { get; set; }
         public Button SettingsButton { get; set; }
@@ -18,6 +19,8 @@ namespace Mixin.TheLastMove
 
         protected override void Awake()
         {
+            base.Awake();
+
             PlayButton = _root.Q<Button>("PlayButton");
             SettingsButton = _root.Q<Button>("SettingsButton");
             AboutButton = _root.Q<Button>("AboutButton");

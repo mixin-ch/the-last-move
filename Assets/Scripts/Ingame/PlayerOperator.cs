@@ -11,13 +11,23 @@ namespace Mixin.TheLastMove
         private Transform _imageTransform;
 
         private const float _gravity = 10f;
-        private const float _jumpVelocity = 8f;
-        private const float _drag = 1f;
-        private const float _squishExtent = 1f;
+        private const float _jumpVelocity = 4f;
+        private const int _jumps = 2;
+        private const float _jumpTime = 0.5f;
+
+        private float Hectic => EnvironmentManager.Instance.Hectic;
+
+        private float Gravity => _gravity * Hectic;
+        private float JumpVelocity => _jumpVelocity * Mathf.Sqrt(Hectic);
+        private int Jumps => _jumps;
+        private float JumpTime => _jumpTime / Mathf.Sqrt(Hectic);
 
         private float _velocity;
-        private float _dragVelocity;
-        private bool _hasJump;
+        private int _remainingJumps;
+        private bool _isJumping;
+        private float _jumpTimeRemaining;
+
+        private bool HasJump => _remainingJumps > 0;
 
         public void Setup()
         {
@@ -26,35 +36,38 @@ namespace Mixin.TheLastMove
 
         public void Tick(float time)
         {
-            _velocity += -_gravity * time;
+            _isJumping = _isJumping && InputManager.Instance.IsPressingJumpButton;
+
+            if (!_isJumping)
+                _jumpTimeRemaining = 0;
+            else
+                _jumpTimeRemaining = (_jumpTimeRemaining - time).LowerBound(0);
+
+            if (_jumpTimeRemaining <= 0)
+            {
+                _isJumping = false;
+                _velocity += -Gravity * time;
+            }
+
             RefreshVelocity();
-
-            //float catchup = time * (1 - _drag / (1 + _drag));
-            //_dragVelocity = Mathf.Lerp(_dragVelocity, _velocity, catchup);
-
-            //float squish = 1 + Mathf.Abs(_dragVelocity - _velocity) * _squishExtent;
-            //float stretchX = squish;
-            //float stretchY = 1 / stretchX;
-            //_imageTransform.localScale = new Vector2(stretchX, stretchY);
         }
 
-        public void Pause(bool pause)
+        public void Pause()
         {
-            if (pause)
-                _rigidbody.velocity = Vector2.zero;
-            else
-                _rigidbody.velocity = Vector2.up * _velocity;
-
             RefreshVelocity();
         }
 
         public void TryJump()
         {
-            if (!_hasJump)
+            if (!HasJump)
+                return;
+            if (_isJumping)
                 return;
 
-            _hasJump = false;
-            _velocity = _jumpVelocity;
+            _isJumping = true;
+            _remainingJumps--;
+            _jumpTimeRemaining = JumpTime;
+            _velocity = JumpVelocity;
             RefreshVelocity();
         }
 
@@ -64,18 +77,29 @@ namespace Mixin.TheLastMove
             _rigidbody.velocity = Vector2.zero;
             _imageTransform.localScale = Vector2.one;
             _velocity = 0;
-            _dragVelocity = 0;
-            _hasJump = false;
+            _remainingJumps = 0;
+            _isJumping = false;
+            _jumpTimeRemaining = 0;
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            _hasJump = true;
+           if(collision.enabled)
+            {
+                _velocity = 0;
+                _jumpTimeRemaining = 0;
+                _remainingJumps = Jumps;
+                _isJumping = false;
+                RefreshVelocity();
+            }
         }
 
         private void RefreshVelocity()
         {
-            _rigidbody.velocity = Vector2.up * _velocity;
+            if (EnvironmentManager.Instance.Paused)
+                _rigidbody.velocity = Vector2.zero;
+            else
+                _rigidbody.velocity = Vector2.up * _velocity;
         }
 
         public void Destroy()

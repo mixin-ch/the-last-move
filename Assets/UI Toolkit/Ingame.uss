@@ -1,16 +1,24 @@
 .heart {
-    background-image: url('project://database/Assets/Graphics/Heart%20Blood.png?fileID=2800000&guid=215ed01d3276781468bdcdcd7acb5226&type=3#Heart Blood');
+    background-image: url('project://database/Assets/Graphics/Heart.png?fileID=2800000&guid=3bb2f0cf81b33fe418d38a2268f42a98&type=3#Heart');
     width: 106px;
     height: 109px;
     -unity-background-scale-mode: scale-to-fit;
 }
 
 .headerText {
-    color: rgba(255, 255, 255, 255);
+    color: rgb(255, 255, 255);
     font-size: 30px;
     -unity-font-style: bold;
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+Label {
+    -unity-text-align: middle-left;
+}
+
+.icon {
+    flex-basis: 50px;
 }
