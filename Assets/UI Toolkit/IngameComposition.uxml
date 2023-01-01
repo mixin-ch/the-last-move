@@ -1,9 +1,9 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="HeartTemplate" src="project://database/Assets/UI%20Toolkit/Templates/HeartTemplate.uxml?fileID=9197481963319205126&amp;guid=e8cb1e9884e80954cb2a286fae3e71e5&amp;type=3#HeartTemplate" />
     <Style src="project://database/Assets/UI%20Toolkit/Ingame.uss?fileID=7433441132597879392&amp;guid=d5291e3b23c55cd4793f2253dade78de&amp;type=3#Ingame" />
-    <ui:VisualElement name="Body" style="flex-basis: 100%;">
+    <ui:VisualElement name="OverlayBody" class="body">
         <ui:VisualElement name="Header" style="flex-basis: 100px; flex-direction: row;">
-            <ui:Button display-tooltip-when-elided="true" name="PauseButton" style="background-image: url(&apos;project://database/Assets/Graphics/Icons/Pause%20Button.png?fileID=2800000&amp;guid=a361af4e8096110438f71e561c981dbf&amp;type=3#Pause Button&apos;); -unity-background-scale-mode: scale-to-fit; background-color: rgba(188, 188, 188, 0); flex-basis: 70px;" />
+            <ui:Button display-tooltip-when-elided="true" name="PauseButton" focusable="false" style="background-image: url(&apos;project://database/Assets/Graphics/Icons/Pause%20Button.png?fileID=2800000&amp;guid=a361af4e8096110438f71e561c981dbf&amp;type=3#Pause Button&apos;); -unity-background-scale-mode: scale-to-fit; background-color: rgba(188, 188, 188, 0); flex-basis: 70px;" />
             <ui:VisualElement name="HealthContainer" style="flex-direction: row; align-items: center;">
                 <ui:Instance template="HeartTemplate" name="HeartTemplate" />
                 <ui:Instance template="HeartTemplate" name="HeartTemplate" />
@@ -16,5 +16,19 @@
             <ui:VisualElement name="CurrencyIcon" class="icon" style="background-image: url(&apos;project://database/Assets/Graphics/Icons/Chess%20Pawn.png?fileID=2800000&amp;guid=fea3afec963eb2143a9f1e69f3a0b199&amp;type=3#Chess Pawn&apos;); flex-basis: 50px; -unity-background-scale-mode: scale-to-fit;" />
             <ui:Label text="Currency" display-tooltip-when-elided="true" name="CurrencyText" class="headerText" />
         </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="PauseBody" class="body" style="justify-content: center; align-items: center; display: none;">
+        <ui:VisualElement name="Background" class="darkeningBackground" />
+        <ui:Button text="Resume" display-tooltip-when-elided="true" name="ResumeButton" class="button" />
+        <ui:Button text="Quit" display-tooltip-when-elided="true" name="QuitButton" class="button" />
+    </ui:VisualElement>
+    <ui:VisualElement name="DeathScreenBody" class="body" style="align-items: center; justify-content: center; display: none;">
+        <ui:VisualElement name="Background" class="darkeningBackground" />
+        <ui:Label text="100 Score" display-tooltip-when-elided="true" name="ScoreText" />
+        <ui:Label text="100 Kills" display-tooltip-when-elided="true" name="KillText" />
+        <ui:Label text="100 Chess Figures" display-tooltip-when-elided="true" name="CurrencyText" />
+        <ui:Button text="Respawn" display-tooltip-when-elided="true" name="RespawnButton" class="button" />
+        <ui:Button text="Restart" display-tooltip-when-elided="true" name="RestartButton" class="button" />
+        <ui:Button text="Home" display-tooltip-when-elided="true" name="QuitButton" class="button" />
     </ui:VisualElement>
 </ui:UXML>

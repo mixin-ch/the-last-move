@@ -41,13 +41,13 @@ namespace Mixin.TheLastMove
 
         private void OnEnable()
         {
-            IngameUIB.OnPauseButtonClicked += PauseClicked;
+            IngameOverlayUIB.OnPauseButtonClicked += PauseClicked;
             InputManager.OnJumpClicked += JumpClicked;
         }
 
         private void OnDisable()
         {
-            IngameUIB.OnPauseButtonClicked -= PauseClicked;
+            IngameOverlayUIB.OnPauseButtonClicked -= PauseClicked;
         }
 
         public void StartGame()
