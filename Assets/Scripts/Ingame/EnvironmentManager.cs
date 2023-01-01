@@ -24,6 +24,7 @@ namespace Mixin.TheLastMove
         private const float _hecticGain = 0.05f;
         private const float _maxHectic = 5f;
         private const float _velocityScale = 3f;
+        private const int _startHealth = 3;
 
         private BlockMaker _blockMaker = new BlockMaker();
 
@@ -34,6 +35,7 @@ namespace Mixin.TheLastMove
         private float _hectic;
         private float _distance;
         private float _distancePlanned;
+        private float _health;
 
         private float Velocity => _hectic * _velocityScale;
 
@@ -44,6 +46,7 @@ namespace Mixin.TheLastMove
         public bool Paused { get => _paused; }
         public float Hectic { get => _hectic; }
         public float Distance { get => _distance; }
+        public float Health { get => _health; }
 
         private void OnEnable()
         {
@@ -66,6 +69,8 @@ namespace Mixin.TheLastMove
             playerOperator.Setup();
             _playerOperator = playerOperator;
 
+            ObstacleManager.Instance.Setup();
+
             _started = true;
         }
 
@@ -81,6 +86,7 @@ namespace Mixin.TheLastMove
             _hectic = _hecticStart;
             _distance = 0;
             _distancePlanned = _blockInsertDistance + _blockDeleteDistance;
+            _health = _startHealth;
         }
 
         private void PauseClicked()
@@ -169,6 +175,8 @@ namespace Mixin.TheLastMove
                     i--;
                 }
             }
+
+            ObstacleManager.Instance.Tick(offset);
         }
     }
 }
