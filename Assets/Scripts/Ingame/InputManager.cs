@@ -1,14 +1,16 @@
+using Mixin.Utils;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Mixin.TheLastMove
 {
-    public class InputManager : MonoBehaviour
+    public class InputManager : Singleton<InputManager>
     {
-        private KeyCode _jumpKey;
-        private KeyCode _attackKey;
+        [SerializeField]
+        private InputControls _playerInput;
 
         private bool _isPressingJumpButton;
         private bool _isPressingAttackButton;
@@ -19,21 +21,41 @@ namespace Mixin.TheLastMove
         public static event Action OnJumpClicked;
         public static event Action OnAttackClicked;
 
-        private void Start()
+        protected override void Awake()
         {
-            _jumpKey = KeyCode.Space;
-            _attackKey = KeyCode.E;
+            base.Awake();
+
+            _playerInput = new InputControls();
         }
 
         private void Update()
         {
-            if (Input.GetKeyDown(_jumpKey))
-                OnJumpClicked?.Invoke();
-            if (Input.GetKeyDown(_attackKey))
-                OnJumpClicked?.Invoke();
+            _isPressingJumpButton = _playerInput.Ingame.Jump.IsPressed();
+            _isPressingAttackButton = _playerInput.Ingame.Attack.IsPressed();
+        }
 
-            _isPressingJumpButton = Input.GetKey(_jumpKey);
-            _isPressingAttackButton = Input.GetKey(_attackKey);
+        private void OnEnable()
+        {
+            _playerInput.Enable();
+            _playerInput.Ingame.Jump.started += Jump_started;
+            _playerInput.Ingame.Attack.started += Attack_started;
+        }
+
+        private void OnDisable()
+        {
+            _playerInput.Disable();
+            _playerInput.Ingame.Jump.started -= Jump_started;
+            _playerInput.Ingame.Attack.started -= Attack_started;
+        }
+
+        private void Jump_started(InputAction.CallbackContext obj)
+        {
+            OnJumpClicked?.Invoke();
+        }
+
+        private void Attack_started(InputAction.CallbackContext obj)
+        {
+            OnAttackClicked?.Invoke();
         }
     }
 }

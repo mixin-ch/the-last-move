@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "com.mixin.unity-language": "https://github.com/mixin-ch/unity-language.git",
     "com.mixin.unity-utils": "https://github.com/mixin-ch/unity-utils.git",
     "com.unity.collab-proxy": "1.17.2",
     "com.unity.feature.2d": "1.0.0",
