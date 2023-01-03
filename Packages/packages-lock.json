@@ -1,11 +1,11 @@
 {
   "dependencies": {
-    "com.mixin.unity-utils": {
+    "com.mixin.unity-mixin-utils": {
       "version": "https://github.com/mixin-ch/unity-utils.git",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "00d527bcdbdd774cdde6031a6c8c463790987ff9"
+      "hash": "7fc6dcf9e9be6f797525e650d47c69e3f8cd4e81"
     },
     "com.unity.2d.animation": {
       "version": "7.0.8",

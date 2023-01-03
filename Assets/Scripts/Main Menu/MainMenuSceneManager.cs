@@ -8,6 +8,12 @@ namespace Mixin.TheLastMove
 {
     public class MainMenuSceneManager : MonoBehaviour
     {
+        private void Start()
+        {
+            MainMenuUIB.Instance.GameVersionText.text =
+                $"Version {ApplicationManager.GetGameVersion()}";
+        }
+
         private void OnPlayButtonClicked()
         {
             ChangeScene(SceneName.Ingame);

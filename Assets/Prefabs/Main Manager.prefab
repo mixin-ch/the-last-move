@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &588600914
 Transform:
@@ -53,13 +53,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1832836480}
-  - component: {fileID: 1832836481}
+  - component: {fileID: 1988301218619254845}
   m_Layer: 0
   m_Name: Application Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1832836480
 Transform:
@@ -76,7 +76,7 @@ Transform:
   m_Father: {fileID: 3170842274828873047}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1832836481
+--- !u!114 &1988301218619254845
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,7 +85,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1832836479}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81bea67a53ff1424ca9c62ef6326580a, type: 3}
+  m_Script: {fileID: 11500000, guid: 5146d3235f8839b44a511f0301cd23f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2018596049
@@ -103,7 +103,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2018596050
 Transform:
@@ -146,7 +146,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3170842274828873047
 Transform:
