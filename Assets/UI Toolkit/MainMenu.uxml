@@ -1,6 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/MainMenu.uss?fileID=7433441132597879392&amp;guid=fa7cae675e2fae04ca86e6c15f7860bd&amp;type=3#MainMenu" />
-    <ui:VisualElement name="Background" style="position: absolute; width: 100%; height: 100%; background-image: url(&apos;project://database/Assets/Graphics/Backgrounds/Liv%20playing%20Chess%20in%20Bathtub.JPG?fileID=2800000&amp;guid=27557ec526bba77428a1204daec28795&amp;type=3#Liv playing Chess in Bathtub&apos;);" />
+    <ui:VisualElement name="Background" style="position: absolute; width: 100%; height: 100%; background-image: url(&apos;project://database/Assets/Graphics/Backgrounds/Liv%20playing%20Chess%20in%20Bathtub.JPG?fileID=2800000&amp;guid=27557ec526bba77428a1204daec28795&amp;type=3#Liv playing Chess in Bathtub&apos;); -unity-background-scale-mode: scale-to-fit;" />
     <ui:VisualElement name="Body" style="flex-basis: 100%; justify-content: center; align-items: center;">
         <ui:VisualElement name="Logo" style="background-image: url(&apos;project://database/Assets/Graphics/CICD/The%20Last%20Move%20Logo%20Text%204000px-w.png?fileID=2800000&amp;guid=e87b4e53ac0915c49be97cac1cc73b1c&amp;type=3#The Last Move Logo Text 4000px-w&apos;); width: 350px; height: 350px; -unity-background-scale-mode: scale-to-fit;" />
         <ui:VisualElement name="ButtonContainer" style="width: 400px;">
@@ -8,5 +8,6 @@
             <ui:Button text="Settings" display-tooltip-when-elided="true" name="SettingsButton" class="button" />
             <ui:Button text="About" display-tooltip-when-elided="true" name="AboutButton" class="button" />
         </ui:VisualElement>
+        <ui:Label text="Version 0.2" display-tooltip-when-elided="true" name="GameVersionText" style="font-size: 20px; color: rgb(255, 255, 255); -unity-font-style: bold; position: absolute; bottom: 16px; right: 23px;" />
     </ui:VisualElement>
 </ui:UXML>
