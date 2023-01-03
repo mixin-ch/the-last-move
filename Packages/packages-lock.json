@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.mixin.unity-mixin-utils": {
-      "version": "https://github.com/mixin-ch/unity-utils.git",
+      "version": "https://github.com/mixin-ch/unity-mixin-utils.git",
       "depth": 0,
       "source": "git",
       "dependencies": {},
