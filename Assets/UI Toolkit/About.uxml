@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/MenuPagesStyle.uss?fileID=7433441132597879392&amp;guid=5cc3defc6f9dc2f47bbd0ea879a9d8f2&amp;type=3#MenuPagesStyle" />
+    <ui:VisualElement name="Background" class="background" style="background-image: url(&apos;project://database/Assets/Graphics/Pages/About%20Background.jpg?fileID=2800000&amp;guid=7404f55948eef4241904160f9e7d4bbf&amp;type=3#About Background&apos;);" />
+    <ui:VisualElement name="Body" class="body">
+        <ui:Button name="ExitButton" class="page-back-button" />
+    </ui:VisualElement>
+</ui:UXML>
