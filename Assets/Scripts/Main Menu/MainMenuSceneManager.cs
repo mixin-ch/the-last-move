@@ -1,3 +1,4 @@
+using Mixin.Utils;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,6 +8,12 @@ namespace Mixin.TheLastMove
 {
     public class MainMenuSceneManager : MonoBehaviour
     {
+        private void Start()
+        {
+            MainMenuUIB.Instance.GameVersionText.text =
+                $"Version {ApplicationManager.GetGameVersion()}";
+        }
+
         private void OnPlayButtonClicked()
         {
             ChangeScene(SceneName.Ingame);
@@ -24,8 +31,8 @@ namespace Mixin.TheLastMove
 
         private void ChangeScene(SceneName sceneName)
         {
-            // TODO 
-            // Scenemanager.changescene()
+            $"Changing to Scene {sceneName}".LogProgress();
+            SceneManager.Instance.LoadScene(sceneName.ToString());
         }
 
         private void OnEnable()

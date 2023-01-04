@@ -1,16 +1,7 @@
 {
   "dependencies": {
-    "com.mixin.unity-language": {
-      "version": "https://github.com/mixin-ch/unity-language.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {
-        "com.mixin.unity-utils": "0.1.4"
-      },
-      "hash": "f858f1c61a3e7b50ed08b3bf554746e5d64944c5"
-    },
-    "com.mixin.unity-utils": {
-      "version": "https://github.com/mixin-ch/unity-utils.git",
+    "com.mixin.unity-mixin-utils": {
+      "version": "https://github.com/mixin-ch/unity-mixin-utils.git",
       "depth": 0,
       "source": "git",
       "dependencies": {},

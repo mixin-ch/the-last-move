@@ -1,12 +1,14 @@
+using Mixin.Utils;
 using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace Mixin.TheLastMove
 {
-    public class IngameUIB : UIBuildCollector<IngameUIB>
+    public class IngameOverlayUIB : UIBuildManager<IngameOverlayUIB>
     {
-        private Button PauseButton;
+        private VisualElement _body;
+        private Button _pauseButton;
 
         private VisualElement _healthContainer;
         [SerializeField]
@@ -21,29 +23,41 @@ namespace Mixin.TheLastMove
         {
             base.Awake();
 
-            PauseButton = _root.Q<Button>("PauseButton");
-            _healthContainer = _root.Q<VisualElement>("HealthContainer");
-            ScoreText = _root.Q<Label>("ScoreText");
-            KillText = _root.Q<Label>("KillText");
-            CurrencyText = _root.Q<Label>("CurrencyText");
+            _body = _root.Q<VisualElement>("OverlayBody");
+
+            _pauseButton = _body.Q<Button>("PauseButton");
+            _healthContainer = _body.Q<VisualElement>("HealthContainer");
+            ScoreText = _body.Q<Label>("ScoreText");
+            KillText = _body.Q<Label>("KillText");
+            CurrencyText = _body.Q<Label>("CurrencyText");
+        }
+
+        public void Show(bool show)
+        {
+            _body.style.display = show ? DisplayStyle.Flex : DisplayStyle.None;
         }
 
         private void Start()
         {
             ResetValues();
-
-            PauseButton.clicked += () => OnPauseButtonClicked?.Invoke();
         }
 
-        private void ResetValues()
+        private void OnEnable()
+        {
+            _pauseButton.clicked += () => OnPauseButtonClicked?.Invoke();
+        }
+
+        private void OnDisable()
+        {
+            _pauseButton.clicked -= () => OnPauseButtonClicked?.Invoke();
+        }
+
+        public void ResetValues()
         {
             ScoreText.text = "0";
             KillText.text = "0";
             CurrencyText.text = "0";
         }
-
-        [Obsolete]
-        public void Init() { }
 
         public void AddHeart()
         {

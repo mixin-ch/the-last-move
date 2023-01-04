@@ -1,4 +1,4 @@
-using Mixin.Audio;
+using Mixin.Utils.Audio;
 using Mixin.Utils;
 using System;
 using System.Collections.Generic;
@@ -16,28 +16,9 @@ namespace Mixin.TheLastMove
         private void Start()
         {
             EnvironmentManager.Instance.StartGame();
-            IngameUIB.Instance.Init();
 
-            _playlist = AudioManager.Instance.MakePlaylist(_musicPlaylist.ToAudioPlaylistSetup());
+            _playlist = AudioManager.Instance.MakePlaylistPlayer(_musicPlaylist.ToAudioPlaylistSetup());
             _playlist.Play();
-        }
-
-        private void OnPauseButtonClicked()
-        {
-            if (_playlist.Running)
-                _playlist.Stop();
-            else
-                _playlist.Play();
-        }
-
-        private void OnEnable()
-        {
-            IngameUIB.OnPauseButtonClicked += OnPauseButtonClicked;
-        }
-
-        private void OnDisable()
-        {
-            IngameUIB.OnPauseButtonClicked -= OnPauseButtonClicked;
         }
     }
 }

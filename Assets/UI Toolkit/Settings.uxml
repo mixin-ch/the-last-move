@@ -1,7 +1,8 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/UI%20Toolkit/Settings.uss?fileID=7433441132597879392&amp;guid=5cc3defc6f9dc2f47bbd0ea879a9d8f2&amp;type=3#Settings" />
+    <Style src="project://database/Assets/UI%20Toolkit/MenuPagesStyle.uss?fileID=7433441132597879392&amp;guid=5cc3defc6f9dc2f47bbd0ea879a9d8f2&amp;type=3#MenuPagesStyle" />
+    <ui:VisualElement name="Background" style="position: absolute; width: 100%; height: 100%; background-image: url(&apos;project://database/Assets/Graphics/Pages/Settings%20Background.jpg?fileID=2800000&amp;guid=5603a0c173e43914dac130bf61dafb59&amp;type=3#Settings Background&apos;);" />
     <ui:VisualElement name="Body" style="flex-basis: 100%; justify-content: center;">
-        <ui:Button text="X" display-tooltip-when-elided="true" name="ExitButton" style="position: absolute; top: 10px; right: 10px; font-size: 26px;" />
+        <ui:Button text="&#x9;" display-tooltip-when-elided="true" name="ExitButton" class="button page-back-button" />
         <ui:ScrollView name="SettingsContainer" style="padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px;">
             <ui:SliderInt picking-mode="Ignore" label="Music Volume" value="42" high-value="100" name="MusicVolumeSlider" />
             <ui:SliderInt picking-mode="Ignore" label="Sound Volume" value="42" high-value="100" name="SoundVolumeSlider" />

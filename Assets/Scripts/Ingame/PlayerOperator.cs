@@ -7,12 +7,27 @@ namespace Mixin.TheLastMove
     {
         [SerializeField]
         private Rigidbody2D _rigidbody;
+        [SerializeField]
+        private Transform _imageTransform;
 
-        private const float _gravity = 10f;
-        private const float _jumpVelocity = 8f;
+        private const float _gravity = 8f;
+        private const float _jumpVelocity = 3f;
+        private const int _jumps = 2;
+        private const float _jumpTime = 0.5f;
+
+        private float Hectic => EnvironmentManager.Instance.Hectic;
+
+        private float Gravity => _gravity * Hectic;
+        private float JumpVelocity => _jumpVelocity * Mathf.Sqrt(Hectic);
+        private int Jumps => _jumps;
+        private float JumpTime => _jumpTime / Mathf.Sqrt(Hectic);
 
         private float _velocity;
-        private bool _hasJump;
+        private int _remainingJumps;
+        private bool _isJumping;
+        private float _jumpTimeRemaining;
+
+        private bool HasJump => _remainingJumps > 0;
 
         public void Setup()
         {
@@ -21,41 +36,70 @@ namespace Mixin.TheLastMove
 
         public void Tick(float time)
         {
-            _rigidbody.velocity += Vector2.down * _gravity * time;
+            _isJumping = _isJumping && InputManager.Instance.IsPressingJumpButton;
+
+            if (!_isJumping)
+                _jumpTimeRemaining = 0;
+            else
+                _jumpTimeRemaining = (_jumpTimeRemaining - time).LowerBound(0);
+
+            if (_jumpTimeRemaining <= 0)
+            {
+                _isJumping = false;
+                _velocity += -Gravity * time;
+            }
+
+            RefreshVelocity();
         }
 
-        public void Pause(bool pause)
+        public void PauseRefresh()
         {
-            if (pause)
-            {
-                _velocity = _rigidbody.velocity.y;
-                _rigidbody.velocity = Vector2.zero;
-            }
-            else
-            {
-                _rigidbody.velocity = Vector2.up * _velocity;
-            }
+            RefreshVelocity();
         }
 
         public void TryJump()
         {
-            if (!_hasJump)
+            if (!HasJump)
+                return;
+            if (_isJumping)
                 return;
 
-            _hasJump = false;
-            _rigidbody.velocity = Vector2.up * _jumpVelocity;
+            _isJumping = true;
+            _remainingJumps--;
+            _jumpTimeRemaining = JumpTime;
+            _velocity = JumpVelocity;
+            RefreshVelocity();
         }
 
         public void ResetState()
         {
-            _hasJump = false;
             transform.position = Vector2.up * 3;
             _rigidbody.velocity = Vector2.zero;
+            _imageTransform.localScale = Vector2.one;
+            _velocity = 0;
+            _remainingJumps = 0;
+            _isJumping = false;
+            _jumpTimeRemaining = 0;
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            _hasJump = true;
+            if (collision.enabled && _velocity <= 0)
+            {
+                _velocity = 0;
+                _jumpTimeRemaining = 0;
+                _remainingJumps = Jumps;
+                _isJumping = false;
+                RefreshVelocity();
+            }
+        }
+
+        private void RefreshVelocity()
+        {
+            if (EnvironmentManager.Instance.Paused)
+                _rigidbody.velocity = Vector2.zero;
+            else
+                _rigidbody.velocity = Vector2.up * _velocity;
         }
 
         public void Destroy()
