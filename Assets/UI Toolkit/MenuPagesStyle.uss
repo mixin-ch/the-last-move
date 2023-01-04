@@ -1,0 +1,73 @@
+Label {
+    font-size: 24px;
+    -unity-font-style: bold;
+    color: rgb(255, 255, 255);
+}
+
+.button {
+    background-color: rgb(14, 14, 14);
+    font-size: 30px;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: rgb(255, 255, 255);
+    -unity-font-style: bold;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+}
+
+.unity-slider-int {
+}
+
+.unity-slider-int #unity-dragger {
+    width: 30px;
+    height: 30px;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+}
+
+.unity-slider-int #unity-tracker {
+    height: 24px;
+    background-color: rgba(255, 255, 255, 0.51);
+}
+
+.unity-slider-int #unity-drag-container {
+}
+
+.unity-slider-int Label {
+    width: 226px;
+}
+
+.body {
+    width: 100%;
+    height: 100%;
+}
+
+.background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.page-back-button {
+    position: absolute;
+    top: 10px;
+    font-size: 26px;
+    background-image: url('project://database/Assets/Graphics/Icons/Close.png?fileID=2800000&guid=2ba8c87e5d7f3464481784bb1128ca6f&type=3#Close');
+    background-color: rgba(188, 188, 188, 0);
+    -unity-background-scale-mode: scale-to-fit;
+    width: 70px;
+    height: 70px;
+    left: 10px;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+}

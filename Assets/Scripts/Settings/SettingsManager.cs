@@ -3,11 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Mixin.TheLastMove.Save;
 
 namespace Mixin.TheLastMove
 {
     public class SettingsManager : MonoBehaviour
     {
+        private UserSettingsData _data => SaveManager.Instance.UserSettingsData.Data;
+
         private void OnEnable()
         {
             SettingsUIB.OnSaveButtonClicked += OnSaveButtonClicked;
@@ -17,18 +20,13 @@ namespace Mixin.TheLastMove
             SettingsUIB.Instance.LanguageDropdown.RegisterValueChangedCallback(UpdateLanguage);
         }
 
-        private void OnDisable()
-        {
-            SettingsUIB.OnSaveButtonClicked -= OnSaveButtonClicked;
-            SettingsUIB.Instance.MusicVolumeSlider.UnregisterValueChangedCallback(UpdateMusicVolume);
-            SettingsUIB.Instance.SoundVolumeSlider.UnregisterValueChangedCallback(UpdateSoundVolume);
-            SettingsUIB.Instance.QualitySlider.UnregisterValueChangedCallback(UpdateQuality);
-            SettingsUIB.Instance.LanguageDropdown.UnregisterValueChangedCallback(UpdateLanguage);
-        }
-
         private void OnSaveButtonClicked()
         {
-            throw new NotImplementedException();
+            Debug.Log(SaveManager.Instance.UserSettingsData.Data);
+            Debug.Log(SaveManager.Instance.UserSettingsData);
+            _data.MusicVolume = 50;
+
+            SaveManager.Instance.UserSettingsData.Save();
         }
 
         private void UpdateMusicVolume(ChangeEvent<int> evt)
