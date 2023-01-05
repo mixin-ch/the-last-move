@@ -27,7 +27,7 @@ namespace Mixin.TheLastMove
             _uib.LanguageDropdown.RegisterValueChangedCallback(UpdateLanguage);
         }
 
-        private void OnDisable()
+        private void OnSaveButtonClicked()
         {
             QualitySettings.SetQualityLevel(_data.Quality);
             SaveManager.Instance.UserSettingsData.Save();
