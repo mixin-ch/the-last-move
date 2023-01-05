@@ -5,8 +5,8 @@
         <ui:ScrollView name="SettingsContainer" style="padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px;">
             <ui:SliderInt picking-mode="Ignore" label="Music Volume" value="42" high-value="100" name="MusicVolumeSlider" />
             <ui:SliderInt picking-mode="Ignore" label="Sound Volume" value="42" high-value="100" name="SoundVolumeSlider" />
-            <ui:SliderInt picking-mode="Ignore" label="Quality" value="42" high-value="100" name="QualitySlider" />
-            <ui:DropdownField label="Language" index="0" choices="DE, CH, EN" name="LanguageDropdown" />
+            <ui:DropdownField label="Quality" index="0" name="QualityDropdown" />
+            <ui:DropdownField label="Language" index="0" name="LanguageDropdown" />
         </ui:ScrollView>
         <ui:Button text="Save" display-tooltip-when-elided="true" name="SaveButton" />
     </ui:VisualElement>
