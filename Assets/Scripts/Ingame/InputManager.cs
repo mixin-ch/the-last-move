@@ -10,13 +10,14 @@ namespace Mixin.TheLastMove
     public class InputManager : Singleton<InputManager>
     {
         [SerializeField]
-        private InputControls _playerInput;
+        private InputControls _input;
 
         private bool _isPressingJumpButton;
         private bool _isPressingAttackButton;
 
         public bool IsPressingJumpButton { get => _isPressingJumpButton; }
         public bool IsPressingAttackButton { get => _isPressingAttackButton; }
+        public InputControls Input { get => _input; set => _input = value; }
 
         public static event Action OnJumpClicked;
         public static event Action OnAttackClicked;
@@ -25,27 +26,27 @@ namespace Mixin.TheLastMove
         {
             base.Awake();
 
-            _playerInput = new InputControls();
+            _input = new InputControls();
         }
 
         private void Update()
         {
-            _isPressingJumpButton = _playerInput.Ingame.Jump.IsPressed();
-            _isPressingAttackButton = _playerInput.Ingame.Attack.IsPressed();
+            _isPressingJumpButton = _input.Ingame.Jump.IsPressed();
+            _isPressingAttackButton = _input.Ingame.Attack.IsPressed();
         }
 
         private void OnEnable()
         {
-            _playerInput.Enable();
-            _playerInput.Ingame.Jump.started += Jump_started;
-            _playerInput.Ingame.Attack.started += Attack_started;
+            _input.Enable();
+            _input.Ingame.Jump.started += Jump_started;
+            _input.Ingame.Attack.started += Attack_started;
         }
 
         private void OnDisable()
         {
-            _playerInput.Disable();
-            _playerInput.Ingame.Jump.started -= Jump_started;
-            _playerInput.Ingame.Attack.started -= Attack_started;
+            _input.Disable();
+            _input.Ingame.Jump.started -= Jump_started;
+            _input.Ingame.Attack.started -= Attack_started;
         }
 
         private void Jump_started(InputAction.CallbackContext obj)
