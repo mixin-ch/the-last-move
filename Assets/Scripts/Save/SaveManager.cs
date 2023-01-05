@@ -1,7 +1,4 @@
 using Mixin.Utils;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Mixin.Save;
 
 namespace Mixin.TheLastMove.Save
@@ -21,15 +18,13 @@ namespace Mixin.TheLastMove.Save
         protected override void Awake()
         {
             _ingameData = new DataFileManager<IngameData>(
-                "data",
-                FileType.Binary,
-                GameVersion,
+                "data.mxn",
+                FileType.JSON,
                 _salt);
 
             _userSettingsData = new DataFileManager<UserSettingsData>(
-                "settings",
-                FileType.XML,
-                GameVersion);
+                "settings.json",
+                FileType.JSON);
 
             _ingameData.Data = new IngameData();
             _userSettingsData.Data = new UserSettingsData();

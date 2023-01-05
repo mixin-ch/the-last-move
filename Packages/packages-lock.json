@@ -21,9 +21,9 @@
       "depth": 0,
       "source": "git",
       "dependencies": {
-        "com.mixin.unity-mixin-utils": "0.4.0"
+        "com.mixin.unity-mixin-utils": "0.5.0"
       },
-      "hash": "7ea62f5376ac040ed0fe343032ccc8c208721a38"
+      "hash": "072879f6c7e825c708f067a992d9d6c4841c4014"
     },
     "com.unity.2d.animation": {
       "version": "7.0.8",
