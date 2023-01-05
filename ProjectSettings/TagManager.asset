@@ -38,6 +38,21 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background Farest
+    uniqueID: 1491921349
+    locked: 0
+  - name: Background Closest
+    uniqueID: 3996142137
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Terrain
+    uniqueID: 2052743477
+    locked: 0
+  - name: Obstacles
+    uniqueID: 2749992769
+    locked: 0
+  - name: Player
+    uniqueID: 1203532125
     locked: 0

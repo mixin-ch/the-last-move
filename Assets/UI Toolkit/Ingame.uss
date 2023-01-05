@@ -1,16 +1,49 @@
 .heart {
-    background-image: url('project://database/Assets/Graphics/Heart%20Blood.png?fileID=2800000&guid=215ed01d3276781468bdcdcd7acb5226&type=3#Heart Blood');
+    background-image: url('project://database/Assets/Graphics/Icons/Heart.png?fileID=2800000&guid=3bb2f0cf81b33fe418d38a2268f42a98&type=3#Heart');
     width: 106px;
     height: 109px;
     -unity-background-scale-mode: scale-to-fit;
 }
 
 .headerText {
-    color: rgba(255, 255, 255, 255);
+    color: rgb(255, 255, 255);
     font-size: 30px;
     -unity-font-style: bold;
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+Label {
+    -unity-text-align: middle-left;
+    font-size: 30px;
+    color: rgba(255, 255, 255, 255);
+    -unity-font-style: bold;
+}
+
+.icon {
+    flex-basis: 50px;
+}
+
+.body {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.button {
+    width: 30%;
+    height: 100px;
+    font-size: 30px;
+}
+
+.darkeningBackground {
+}
+
+.darkeningBackground {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.61);
 }

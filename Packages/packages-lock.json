@@ -1,20 +1,29 @@
 {
   "dependencies": {
-    "com.mixin.unity-language": {
-      "version": "https://github.com/mixin-ch/unity-language.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {
-        "com.mixin.unity-utils": "0.1.4"
-      },
-      "hash": "f858f1c61a3e7b50ed08b3bf554746e5d64944c5"
-    },
-    "com.mixin.unity-utils": {
-      "version": "https://github.com/mixin-ch/unity-utils.git",
+    "com.mixin.unity-mixin-utils": {
+      "version": "https://github.com/mixin-ch/unity-mixin-utils.git",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "25432e05da33ae68676dc457de8a0aceafd0ef42"
+      "hash": "dc46c10d9b5268d2580a09d89dab8ef7c79b5221"
+    },
+    "com.mixin.unity-multi-language": {
+      "version": "https://github.com/mixin-ch/unity-multi-language.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.mixin.unity-mixin-utils": "0.5.0"
+      },
+      "hash": "29571b3910b958333a043559013e70e2401ad3a0"
+    },
+    "com.mixin.unity-save-system": {
+      "version": "https://github.com/mixin-ch/unity-save-system.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.mixin.unity-mixin-utils": "0.5.0"
+      },
+      "hash": "072879f6c7e825c708f067a992d9d6c4841c4014"
     },
     "com.unity.2d.animation": {
       "version": "7.0.8",
@@ -110,18 +119,9 @@
       },
       "url": "https://packages.unity.com"
     },
-    "com.unity.collab-proxy": {
-      "version": "1.17.2",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.services.core": "1.0.1"
-      },
-      "url": "https://packages.unity.com"
-    },
     "com.unity.ext.nunit": {
       "version": "1.0.6",
-      "depth": 1,
+      "depth": 2,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -140,15 +140,6 @@
         "com.unity.2d.tilemap.extras": "2.2.3"
       }
     },
-    "com.unity.ide.rider": {
-      "version": "3.0.15",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.ext.nunit": "1.0.6"
-      },
-      "url": "https://packages.unity.com"
-    },
     "com.unity.ide.visualstudio": {
       "version": "2.0.16",
       "depth": 0,
@@ -156,13 +147,6 @@
       "dependencies": {
         "com.unity.test-framework": "1.1.9"
       },
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.ide.vscode": {
-      "version": "1.2.5",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.inputsystem": {
@@ -181,27 +165,9 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
-    "com.unity.nuget.newtonsoft-json": {
-      "version": "3.0.2",
-      "depth": 2,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.services.core": {
-      "version": "1.4.3",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.modules.unitywebrequest": "1.0.0",
-        "com.unity.nuget.newtonsoft-json": "3.0.2",
-        "com.unity.modules.androidjni": "1.0.0"
-      },
-      "url": "https://packages.unity.com"
-    },
     "com.unity.test-framework": {
       "version": "1.1.31",
-      "depth": 0,
+      "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.ext.nunit": "1.0.6",
@@ -239,16 +205,6 @@
         "com.unity.modules.ui": "1.0.0",
         "com.unity.modules.imgui": "1.0.0"
       }
-    },
-    "com.unity.visualscripting": {
-      "version": "1.7.8",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.ugui": "1.0.0",
-        "com.unity.modules.jsonserialize": "1.0.0"
-      },
-      "url": "https://packages.unity.com"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",
