@@ -1,10 +1,13 @@
 using Mixin.Utils;
+using System;
 using UnityEngine;
 
 namespace Mixin.TheLastMove
 {
     public class PlayerOperator : MonoBehaviour
     {
+        public event Action OnPlayerDeathEvent;
+
         [SerializeField]
         private Rigidbody2D _rigidbody;
         [SerializeField]
@@ -14,6 +17,7 @@ namespace Mixin.TheLastMove
         private const float _jumpVelocity = 3f;
         private const int _jumps = 2;
         private const float _jumpTime = 0.5f;
+        private const int _startHealth = 3;
 
         private float Hectic => EnvironmentManager.Instance.Hectic;
 
@@ -22,17 +26,13 @@ namespace Mixin.TheLastMove
         private int Jumps => _jumps;
         private float JumpTime => _jumpTime / Mathf.Sqrt(Hectic);
 
+        private float _health;
         private float _velocity;
         private int _remainingJumps;
         private bool _isJumping;
         private float _jumpTimeRemaining;
 
         private bool HasJump => _remainingJumps > 0;
-
-        public void Setup()
-        {
-            ResetState();
-        }
 
         public void Tick(float time)
         {
@@ -50,6 +50,12 @@ namespace Mixin.TheLastMove
             }
 
             RefreshVelocity();
+
+            if (Position.y < -5)
+            {
+                ResetState();
+                OnPlayerDeathEvent?.Invoke();
+            }
         }
 
         public void PauseRefresh()
@@ -76,6 +82,8 @@ namespace Mixin.TheLastMove
             transform.position = Vector2.up * 3;
             _rigidbody.velocity = Vector2.zero;
             _imageTransform.localScale = Vector2.one;
+
+            _health = _startHealth;
             _velocity = 0;
             _remainingJumps = 0;
             _isJumping = false;
@@ -100,11 +108,6 @@ namespace Mixin.TheLastMove
                 _rigidbody.velocity = Vector2.zero;
             else
                 _rigidbody.velocity = Vector2.up * _velocity;
-        }
-
-        public void Destroy()
-        {
-            Destroy(gameObject);
         }
 
         public Vector2 Position => transform.position;

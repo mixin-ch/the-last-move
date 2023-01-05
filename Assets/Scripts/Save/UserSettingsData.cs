@@ -11,6 +11,6 @@ namespace Mixin.TheLastMove.Save
         public int MusicVolume = 100;
         public int SoundVolume = 100;
         public int Quality = 6;
-        public SystemLanguage Lanuage = SystemLanguage.English;
+        public Language.Language Language = Mixin.Language.Language.English;
     }
 }

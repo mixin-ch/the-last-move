@@ -18,14 +18,11 @@ namespace Mixin.TheLastMove
             // Load User Settings
             SetFramerate(60);
 
-            int musicVolume = 100;
+            /*int musicVolume = 100;
             SetVolume(_audioMixer, musicVolume);
 
             int soundVolume = 100;
-            SetVolume(_audioMixer, soundVolume);
-
-            int quality = 6;
-            SetQuality(quality);
+            SetVolume(_audioMixer, soundVolume);*/
         }
     }
 }
