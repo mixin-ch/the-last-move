@@ -32,9 +32,6 @@ namespace Mixin.TheLastMove.Save
             _ingameData.Data.SetFileInformation(GameVersion, InTestMode);
             _userSettingsData.Data.SetFileInformation(GameVersion, InTestMode);
 
-            _ingameData.Save();
-            _userSettingsData.Save();
-
             LoadAllData();
         }
 

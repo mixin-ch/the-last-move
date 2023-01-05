@@ -1,5 +1,9 @@
+using Mixin.Language;
 using Mixin.Utils;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace Mixin.TheLastMove
@@ -9,10 +13,10 @@ namespace Mixin.TheLastMove
         private Button ExitButton;
         public SliderInt MusicVolumeSlider { get; set; }
         public SliderInt SoundVolumeSlider { get; set; }
-        public SliderInt QualitySlider { get; set; }
+        public DropdownField QualityDropdown { get; set; }
         public DropdownField LanguageDropdown { get; set; }
 
-        private Button SaveButton;
+        public Button SaveButton;
 
         public static event Action OnExitButtonClicked;
         public static event Action OnSaveButtonClicked;
@@ -24,9 +28,16 @@ namespace Mixin.TheLastMove
             ExitButton = _root.Q<Button>("ExitButton");
             MusicVolumeSlider = _root.Q<SliderInt>("MusicVolumeSlider");
             SoundVolumeSlider = _root.Q<SliderInt>("SoundVolumeSlider");
-            QualitySlider = _root.Q<SliderInt>("QualitySlider");
+            QualityDropdown = _root.Q<DropdownField>("QualityDropdown");
             LanguageDropdown = _root.Q<DropdownField>("LanguageDropdown");
             SaveButton = _root.Q<Button>("SaveButton");
+
+            QualityDropdown.choices = QualitySettings.names.ToList();
+
+            LanguageDropdown.choices = Enum.GetValues(typeof(Language.Language))
+                .Cast<Language.Language>()
+                .Select(v => v.ToString())
+                .ToList();
         }
 
         private void OnEnable()
