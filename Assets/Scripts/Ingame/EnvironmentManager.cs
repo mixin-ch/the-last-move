@@ -9,38 +9,38 @@ namespace Mixin.TheLastMove
         [SerializeField]
         private GameObject _blockContainer;
         [SerializeField]
+        private GameObject _obstacleContainer;
+        [SerializeField]
         private GameObject _playerContainer;
         [SerializeField]
         private GameObject _blockPrefab;
         [SerializeField]
+        private GameObject _obstaclePrefab;
+        [SerializeField]
         private GameObject _playerPrefab;
 
         private const float _blockSize = 1f;
-        private const int _blockRows = 3;
-        private const float _lowestRowY = -5f;
-        private const float _blockInsertDistance = 15f;
-        private const float _blockDeleteDistance = 15f;
+        private const float _deleteDistance = 15f;
         private const float _hecticStart = 1;
         private const float _hecticGain = 0.05f;
         private const float _maxHectic = 5f;
         private const float _velocityScale = 3f;
         private const int _startHealth = 3;
 
-        private BlockMaker _blockMaker = new BlockMaker();
+        private MapGenerator _mapGenerator = new MapGenerator();
 
         private bool _started;
         private bool _paused;
         private List<BlockOperator> _blockOperatorList = new List<BlockOperator>();
+        private List<ObstacleOperator> _obstacleOperatorList = new List<ObstacleOperator>();
         private PlayerOperator _playerOperator;
         private float _hectic;
         private float _distance;
-        private float _distancePlanned;
         private float _health;
 
-        private float Velocity => _hectic * _velocityScale;
+        public float Velocity => _hectic * _velocityScale;
 
         public static float BlockSize => _blockSize;
-        public static float BlockRows => _blockRows;
 
         public bool Started { get => _started; }
         public bool Paused { get => _paused; }
@@ -69,8 +69,6 @@ namespace Mixin.TheLastMove
             playerOperator.Setup();
             _playerOperator = playerOperator;
 
-            ObstacleManager.Instance.Setup();
-
             _started = true;
         }
 
@@ -78,14 +76,20 @@ namespace Mixin.TheLastMove
         {
             _started = false;
             _paused = false;
+
             _blockContainer.DestroyChildren();
-            _playerContainer.DestroyChildren();
             _blockOperatorList.Clear();
+
+            _obstacleContainer.DestroyChildren();
+            _obstacleOperatorList.Clear();
+
+            _playerContainer.DestroyChildren();
             _playerOperator = null;
-            _blockMaker.Initialize();
+
+            _mapGenerator.Initialize();
+
             _hectic = _hecticStart;
             _distance = 0;
-            _distancePlanned = _blockInsertDistance + _blockDeleteDistance;
             _health = _startHealth;
         }
 
@@ -123,7 +127,14 @@ namespace Mixin.TheLastMove
                 return;
 
             float time = Time.fixedDeltaTime;
-            TickBlocks(time);
+            _hectic = (_hectic + _hecticGain * time).UpperBound(_maxHectic);
+            float offset = Velocity * time;
+            _distance += offset;
+
+            TickBlocks(offset);
+            TickObstacles(offset);
+            TickMapGeneration(offset);
+
             TickPlayer(time);
         }
 
@@ -135,48 +146,61 @@ namespace Mixin.TheLastMove
                 _playerOperator.ResetState();
         }
 
-        private void TickBlocks(float time)
+        private void TickBlocks(float offset)
         {
-            _hectic = (_hectic + _hecticGain * time).UpperBound(_maxHectic);
-            float offset = Velocity * time;
-            _distance += offset;
-            _distancePlanned += offset;
-
-            foreach (BlockOperator blockOperator in _blockOperatorList)
-                blockOperator.Move(Vector2.left * offset);
-
-            while (_distancePlanned > 0)
-            {
-                List<bool> pickList = _blockMaker.PickNext();
-
-                for (int i = 0; i < _blockRows; i++)
-                {
-                    if (pickList[i])
-                    {
-                        float y = 0 + _lowestRowY * i / _blockRows;
-                        GameObject block = _blockPrefab.GeneratePrefab(_blockContainer);
-                        BlockOperator blockOperator = block.GetComponent<BlockOperator>();
-                        blockOperator.Setup(Vector2.up * y + Vector2.right * (_blockInsertDistance - _distancePlanned), _blockSize);
-                        _blockOperatorList.Add(blockOperator);
-                    }
-                }
-
-                _distancePlanned -= _blockSize;
-            }
+            foreach (BlockOperator @operator in _blockOperatorList)
+                @operator.Move(Vector2.left * offset);
 
             for (int i = 0; i < _blockOperatorList.Count; i++)
             {
-                BlockOperator blockOperator = _blockOperatorList[i];
+                BlockOperator @operator = _blockOperatorList[i];
 
-                if (-blockOperator.Position.x > _blockDeleteDistance)
+                if (-@operator.Position.x > _deleteDistance)
                 {
-                    _blockOperatorList.Remove(blockOperator);
-                    blockOperator.Destroy();
+                    _blockOperatorList.Remove(@operator);
+                    @operator.Destroy();
                     i--;
                 }
             }
+        }
 
-            ObstacleManager.Instance.Tick(offset);
+        private void TickObstacles(float offset)
+        {
+            foreach (ObstacleOperator @operator in _obstacleOperatorList)
+                @operator.Move(Vector2.left * offset);
+
+            for (int i = 0; i < _obstacleOperatorList.Count; i++)
+            {
+                ObstacleOperator @operator = _obstacleOperatorList[i];
+
+                if (-@operator.Position.x > _deleteDistance)
+                {
+                    _obstacleOperatorList.Remove(@operator);
+                    @operator.Destroy();
+                    i--;
+                }
+            }
+        }
+
+        private void TickMapGeneration(float offset)
+        {
+            MapPlan mapPlan = _mapGenerator.Tick(offset);
+
+            foreach (BlockPlan plan in mapPlan.BlockPlanList)
+            {
+                GameObject gameObject = _blockPrefab.GeneratePrefab(_blockContainer);
+                BlockOperator @operator = gameObject.GetComponent<BlockOperator>();
+                @operator.Setup(plan.Position, _blockSize);
+                _blockOperatorList.Add(@operator);
+            }
+
+            foreach (ObstaclePlan plan in mapPlan.ObstaclePlanList)
+            {
+                GameObject gameObject = _obstaclePrefab.GeneratePrefab(_obstacleContainer);
+                ObstacleOperator @operator = gameObject.GetComponent<ObstacleOperator>();
+                @operator.Setup(plan.Position, 1);
+                _obstacleOperatorList.Add(@operator);
+            }
         }
     }
 }

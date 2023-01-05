@@ -211,6 +211,7 @@ GameObject:
   m_Component:
   - component: {fileID: 629764252}
   - component: {fileID: 629764253}
+  - component: {fileID: 629764254}
   m_Layer: 0
   m_Name: Environment Manager
   m_TagString: Untagged
@@ -247,9 +248,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _blockContainer: {fileID: 874045375}
+  _obstacleContainer: {fileID: 642478925}
   _playerContainer: {fileID: 1428514902}
   _blockPrefab: {fileID: 3608964336775138525, guid: f1c77ce4284898040a1a5e1a1469caae, type: 3}
+  _obstaclePrefab: {fileID: 3608964336775138525, guid: 083f8ea48cdda1147aa420ff4751a720, type: 3}
   _playerPrefab: {fileID: 3608964336775138525, guid: 1e16adb2edc5bad4fa19982fabe6121e, type: 3}
+--- !u!114 &629764254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629764251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7d446cc9d2fa53429809b3a895220ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &642478925
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,6 +400,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _obstacleContainer: {fileID: 642478925}
   _obstaclePrefab: {fileID: 3608964336775138525, guid: 083f8ea48cdda1147aa420ff4751a720, type: 3}
+  _obstacleOperatorList: []
+  _distancePlanned: 0
 --- !u!1001 &858116362
 PrefabInstance:
   m_ObjectHideFlags: 0
