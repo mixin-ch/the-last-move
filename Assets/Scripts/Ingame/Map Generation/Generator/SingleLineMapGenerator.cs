@@ -40,13 +40,18 @@ namespace Mixin.TheLastMove
                 _steps = random.Range(min, max);
             }
 
-            _steps--;
-
             List<BlockPlan> blockPlanList = new List<BlockPlan>();
             List<ObstaclePlan> obstaclePlanList = new List<ObstaclePlan>();
 
             if (_filled)
+            {
                 blockPlanList.Add(new BlockPlan(_height));
+
+                if (random.RandomTrue(0.1))
+                    obstaclePlanList.Add(new ObstaclePlan(_height));
+            }
+
+            _steps--;
 
             return new MapPlan(blockPlanList, obstaclePlanList);
         }

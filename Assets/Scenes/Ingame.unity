@@ -993,7 +993,7 @@ MonoBehaviour:
   _imageTransform: {fileID: 1913020222031104092}
   _startPosition: {x: -4, y: 2}
   _jumps: 2
-  _startHealth: 1
+  _startHealth: 10
 --- !u!58 &1866763284140004641
 CircleCollider2D:
   m_ObjectHideFlags: 0
