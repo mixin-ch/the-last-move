@@ -354,6 +354,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 337a9d4114a07194b8f895d81836460f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _projectWebsiteURL: https://film.redgreenbird.com/the-last-move
+  _redgreenbirdFilmsURL: https://film.redgreenbird.com/
+  _mixinGamesURL: https://mixin.ch/
+  _privacyURL: https://mixin.ch/privacy-policy/
 --- !u!4 &1888424259
 Transform:
   m_ObjectHideFlags: 0
