@@ -397,10 +397,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5caabbcd915a3540be132b1137d4276, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _obstacleContainer: {fileID: 642478925}
-  _obstaclePrefab: {fileID: 3608964336775138525, guid: 083f8ea48cdda1147aa420ff4751a720, type: 3}
-  _obstacleOperatorList: []
-  _distancePlanned: 0
 --- !u!1001 &858116362
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -695,7 +691,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: New action map
+  m_DefaultActionMap: Ingame
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!1 &1428514902
@@ -973,7 +969,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1913020222031104092}
   - component: {fileID: 3244794083955830634}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1146,7 +1142,7 @@ GameObject:
   - component: {fileID: 1822961194634340435}
   - component: {fileID: 801635303027335823}
   - component: {fileID: 1866763284140004641}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}

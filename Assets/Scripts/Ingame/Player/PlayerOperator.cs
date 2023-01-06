@@ -7,6 +7,7 @@ namespace Mixin.TheLastMove
     public class PlayerOperator : MonoBehaviour
     {
         public event Action OnPlayerDeathEvent;
+        public event Action OnPlayerTakeDamageEvent;
 
         [SerializeField]
         private Rigidbody2D _rigidbody;
@@ -17,7 +18,7 @@ namespace Mixin.TheLastMove
         private const float _jumpVelocity = 3f;
         private const int _jumps = 2;
         private const float _jumpTime = 0.5f;
-        private const int _startHealth = 3;
+        private const int _startHealth = 1;
 
         private float Hectic => EnvironmentManager.Instance.Hectic;
 
@@ -33,6 +34,8 @@ namespace Mixin.TheLastMove
         private float _jumpTimeRemaining;
 
         private bool HasJump => _remainingJumps > 0;
+
+        public Vector2 Position => transform.position;
 
         public void Tick(float time)
         {
@@ -52,10 +55,7 @@ namespace Mixin.TheLastMove
             RefreshVelocity();
 
             if (Position.y < -5)
-            {
-                ResetState();
-                OnPlayerDeathEvent?.Invoke();
-            }
+                Die();
         }
 
         public void PauseRefresh()
@@ -77,6 +77,21 @@ namespace Mixin.TheLastMove
             RefreshVelocity();
         }
 
+        private void TakeDamage()
+        {
+            _health--;
+            OnPlayerTakeDamageEvent?.Invoke();
+
+            if (_health <= 0)
+                Die();
+        }
+
+        private void Die()
+        {
+            ResetState();
+            OnPlayerDeathEvent?.Invoke();
+        }
+
         public void ResetState()
         {
             transform.position = Vector2.up * 3;
@@ -88,6 +103,14 @@ namespace Mixin.TheLastMove
             _remainingJumps = 0;
             _isJumping = false;
             _jumpTimeRemaining = 0;
+        }
+
+        private void RefreshVelocity()
+        {
+            if (EnvironmentManager.Instance.Paused)
+                _rigidbody.velocity = Vector2.zero;
+            else
+                _rigidbody.velocity = Vector2.up * _velocity;
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
@@ -102,14 +125,10 @@ namespace Mixin.TheLastMove
             }
         }
 
-        private void RefreshVelocity()
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (EnvironmentManager.Instance.Paused)
-                _rigidbody.velocity = Vector2.zero;
-            else
-                _rigidbody.velocity = Vector2.up * _velocity;
+            if (collision.gameObject.CompareTag("Harmful"))
+                TakeDamage();
         }
-
-        public Vector2 Position => transform.position;
     }
 }
