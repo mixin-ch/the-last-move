@@ -40,6 +40,8 @@ namespace Mixin.TheLastMove
         private bool HasJump => _remainingJumps > 0;
 
         public Vector2 Position => transform.position;
+        public float Health { get => _health; }
+
 
         public void Tick(float time)
         {
