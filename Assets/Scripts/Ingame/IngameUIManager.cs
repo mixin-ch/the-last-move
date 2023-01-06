@@ -7,9 +7,20 @@ namespace Mixin.TheLastMove
 {
     public class IngameUIManager : MonoBehaviour
     {
+        [SerializeField]
+        private PlayerOperator _playerOperator;
+
+        private void Start()
+        {
+            for (int i = 0; i < _playerOperator.Health; i++)
+            {
+                IngameOverlayUIB.Instance.AddHeart();
+            };
+        }
+
         private void Update()
         {
-            IngameOverlayUIB.Instance.ScoreText.text = 
+            IngameOverlayUIB.Instance.ScoreText.text =
                 ((int)EnvironmentManager.Instance.Distance).ToString();
         }
 
@@ -21,6 +32,8 @@ namespace Mixin.TheLastMove
             IngameDeathScreenUIB.OnQuitButtonClicked += GoToMainMenu;
             IngamePauseUIB.OnQuitButtonClicked += GoToMainMenu;
             IngamePauseUIB.OnResumeButtonClicked += IngamePauseUIB_OnResumeButtonClicked;
+            _playerOperator.OnPlayerTakeDamageEvent += _playerOperator_OnPlayerTakeDamageEvent;
+            _playerOperator.OnPlayerDeathEvent += _playerOperator_OnPlayerDeathEvent;
         }
 
         private void OnDisable()
@@ -31,6 +44,8 @@ namespace Mixin.TheLastMove
             IngameDeathScreenUIB.OnQuitButtonClicked -= GoToMainMenu;
             IngamePauseUIB.OnQuitButtonClicked -= GoToMainMenu;
             IngamePauseUIB.OnResumeButtonClicked -= IngamePauseUIB_OnResumeButtonClicked;
+            _playerOperator.OnPlayerTakeDamageEvent -= _playerOperator_OnPlayerTakeDamageEvent;
+            _playerOperator.OnPlayerDeathEvent -= _playerOperator_OnPlayerDeathEvent;
         }
 
         private void GoToMainMenu()
@@ -45,7 +60,8 @@ namespace Mixin.TheLastMove
 
         private void IngameDeathScreenUIB_OnRestartButtonClicked()
         {
-            throw new System.NotImplementedException();
+            EnvironmentManager.Instance.StartGame();
+            IngameDeathScreenUIB.Instance.Show(false);
         }
 
         private void IngameDeathScreenUIB_OnRespawnButtonClicked()
@@ -56,6 +72,16 @@ namespace Mixin.TheLastMove
         private void IngameOverlayUIB_OnPauseButtonClicked()
         {
             IngamePauseUIB.Instance.Show(true);
+        }
+
+        private void _playerOperator_OnPlayerDeathEvent()
+        {
+            IngameDeathScreenUIB.Instance.Show(true);
+        }
+
+        private void _playerOperator_OnPlayerTakeDamageEvent()
+        {
+            IngameOverlayUIB.Instance.RemoveHeart();
         }
     }
 }

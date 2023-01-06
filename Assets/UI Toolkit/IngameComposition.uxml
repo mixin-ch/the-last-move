@@ -27,7 +27,7 @@
         <ui:Label text="100 Score" display-tooltip-when-elided="true" name="ScoreText" />
         <ui:Label text="100 Kills" display-tooltip-when-elided="true" name="KillText" />
         <ui:Label text="100 Chess Figures" display-tooltip-when-elided="true" name="CurrencyText" />
-        <ui:Button text="Respawn" display-tooltip-when-elided="true" name="RespawnButton" class="button" />
+        <ui:Button text="Continue" display-tooltip-when-elided="true" name="RespawnButton" class="button" />
         <ui:Button text="Restart" display-tooltip-when-elided="true" name="RestartButton" class="button" />
         <ui:Button text="Home" display-tooltip-when-elided="true" name="QuitButton" class="button" />
     </ui:VisualElement>

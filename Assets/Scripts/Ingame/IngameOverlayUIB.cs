@@ -30,6 +30,8 @@ namespace Mixin.TheLastMove
             ScoreText = _body.Q<Label>("ScoreText");
             KillText = _body.Q<Label>("KillText");
             CurrencyText = _body.Q<Label>("CurrencyText");
+
+            _healthContainer.Clear();
         }
 
         public void Show(bool show)
