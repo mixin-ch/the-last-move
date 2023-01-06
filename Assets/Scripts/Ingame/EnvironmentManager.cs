@@ -28,6 +28,7 @@ namespace Mixin.TheLastMove
 
         private bool _started;
         private bool _paused;
+        private bool _firstTick;
         private List<BlockOperator> _blockOperatorList = new List<BlockOperator>();
         private List<ObstacleOperator> _obstacleOperatorList = new List<ObstacleOperator>();
         private float _hectic;
@@ -65,6 +66,8 @@ namespace Mixin.TheLastMove
         {
             _started = false;
             _paused = false;
+
+            _firstTick = true;
 
             _playerOperator.ResetState();
 
@@ -120,9 +123,10 @@ namespace Mixin.TheLastMove
 
             TickBlocks(offset);
             TickObstacles(offset);
-            TickMapGeneration(offset);
+            TickMapGeneration(offset + (_firstTick ? 20 : 0));
 
             _playerOperator.Tick(time);
+            _firstTick = false;
         }
 
         private void TickBlocks(float offset)
