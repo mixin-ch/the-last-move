@@ -264,6 +264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d446cc9d2fa53429809b3a895220ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _distancePlanned: 0
 --- !u!1 &642478925
 GameObject:
   m_ObjectHideFlags: 0
@@ -990,6 +991,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 801635303027335823}
   _imageTransform: {fileID: 1913020222031104092}
+  _startPosition: {x: -4, y: 2}
+  _jumps: 2
+  _startHealth: 1
 --- !u!58 &1866763284140004641
 CircleCollider2D:
   m_ObjectHideFlags: 0

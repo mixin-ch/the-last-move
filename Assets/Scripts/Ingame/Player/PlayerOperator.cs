@@ -14,11 +14,15 @@ namespace Mixin.TheLastMove
         [SerializeField]
         private Transform _imageTransform;
 
-        private const float _gravity = 8f;
-        private const float _jumpVelocity = 3f;
-        private const int _jumps = 2;
-        private const float _jumpTime = 0.5f;
-        private const int _startHealth = 1;
+        [SerializeField]
+        private Vector2 _startPosition = Vector2.up * 3;
+        [SerializeField]
+        private int _jumps = 2;
+        [SerializeField]
+        private int _startHealth = 1;
+        private float _gravity = 8f;
+        private float _jumpVelocity = 3f;
+        private float _jumpTime = 0.5f;
 
         private float Hectic => EnvironmentManager.Instance.Hectic;
 
@@ -94,7 +98,7 @@ namespace Mixin.TheLastMove
 
         public void ResetState()
         {
-            transform.position = Vector2.up * 3;
+            transform.position = _startPosition;
             _rigidbody.velocity = Vector2.zero;
             _imageTransform.localScale = Vector2.one;
 

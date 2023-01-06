@@ -18,7 +18,10 @@ namespace Mixin.TheLastMove
         private PlayerOperator _playerOperator;
 
         private const float _blockSize = 1f;
+        private const float _insertDistance = 15f;
         private const float _deleteDistance = 15f;
+        private const float _maxInsertHeight = 0f;
+        private const float _minInsertHeight = -5f;
         private const float _hecticStart = 1;
         private const float _hecticGain = 0.05f;
         private const float _maxHectic = 5f;
@@ -28,11 +31,11 @@ namespace Mixin.TheLastMove
 
         private bool _started;
         private bool _paused;
-        private bool _firstTick;
         private List<BlockOperator> _blockOperatorList = new List<BlockOperator>();
         private List<ObstacleOperator> _obstacleOperatorList = new List<ObstacleOperator>();
         private float _hectic;
         private float _distance;
+        private float _distancePlanned;
 
         public float Velocity => _hectic * _velocityScale;
 
@@ -67,8 +70,6 @@ namespace Mixin.TheLastMove
             _started = false;
             _paused = false;
 
-            _firstTick = true;
-
             _playerOperator.ResetState();
 
             _blockContainer.DestroyChildren();
@@ -77,10 +78,11 @@ namespace Mixin.TheLastMove
             _obstacleContainer.DestroyChildren();
             _obstacleOperatorList.Clear();
 
-            _mapGenerator.Initialize();
+            _mapGenerator = new MapGenerator();
 
             _hectic = _hecticStart;
             _distance = 0;
+            _distancePlanned = 20;
         }
 
         private void PauseClicked()
@@ -123,10 +125,9 @@ namespace Mixin.TheLastMove
 
             TickBlocks(offset);
             TickObstacles(offset);
-            TickMapGeneration(offset + (_firstTick ? 20 : 0));
+            TickMapGeneration(offset);
 
             _playerOperator.Tick(time);
-            _firstTick = false;
         }
 
         private void TickBlocks(float offset)
@@ -167,13 +168,23 @@ namespace Mixin.TheLastMove
 
         private void TickMapGeneration(float offset)
         {
-            MapPlan mapPlan = _mapGenerator.Tick(offset);
+            _distancePlanned += offset;
 
+            while (_distancePlanned > 0)
+            {
+                PlaceMapPlan(_mapGenerator.Tick(Hectic / BlockSize), _insertDistance - _distancePlanned);
+                _distancePlanned -= BlockSize;
+            }
+        }
+
+        private void PlaceMapPlan(MapPlan mapPlan, float x)
+        {
             foreach (BlockPlan plan in mapPlan.BlockPlanList)
             {
                 GameObject gameObject = _blockPrefab.GeneratePrefab(_blockContainer);
                 BlockOperator @operator = gameObject.GetComponent<BlockOperator>();
-                @operator.Setup(plan.Position, _blockSize);
+                float y = Mathf.Lerp(_minInsertHeight, _maxInsertHeight, plan.Height);
+                @operator.Setup(new Vector2(x, y), _blockSize);
                 _blockOperatorList.Add(@operator);
             }
 
@@ -181,7 +192,8 @@ namespace Mixin.TheLastMove
             {
                 GameObject gameObject = _obstaclePrefab.GeneratePrefab(_obstacleContainer);
                 ObstacleOperator @operator = gameObject.GetComponent<ObstacleOperator>();
-                @operator.Setup(plan.Position, 1);
+                float y = _blockSize + Mathf.Lerp(_minInsertHeight, _maxInsertHeight, plan.Height);
+                @operator.Setup(new Vector2(x, y), _blockSize);
                 _obstacleOperatorList.Add(@operator);
             }
         }

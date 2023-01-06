@@ -5,7 +5,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "dc46c10d9b5268d2580a09d89dab8ef7c79b5221"
+      "hash": "e914b03e0760f5ae7102bdfc5fc0d3d1a1abe172"
     },
     "com.mixin.unity-multi-language": {
       "version": "https://github.com/mixin-ch/unity-multi-language.git",

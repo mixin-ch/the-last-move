@@ -5,13 +5,14 @@ namespace Mixin.TheLastMove
     [System.Serializable]
     public class ObstaclePlan
     {
-        private Vector2 _position;
+        [Range(0, 1)]
+        private float _height;
 
-        public Vector2 Position { get => _position; }
+        public float Height { get => _height; }
 
-        public ObstaclePlan(Vector2 position)
+        public ObstaclePlan(float position)
         {
-            _position = position;
+            _height = position;
         }
     }
 }
