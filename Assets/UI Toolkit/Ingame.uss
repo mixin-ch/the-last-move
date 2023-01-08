@@ -56,11 +56,11 @@ Label {
     -unity-background-image-tint-color: rgba(255, 0, 0, 0.63);
     display: flex;
     position: absolute;
-    transition-duration: 0.25s;
-    opacity: 0;
-    transition-timing-function: ease-out;
+    opacity: 1;
 }
 
-.damageOverlay.active {
-    opacity: 1;
+.damageOverlay.inactive {
+    opacity: 0;
+    transition-duration: 1s;
+    transition-timing-function: ease-out;
 }
