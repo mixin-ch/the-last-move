@@ -10,12 +10,9 @@ namespace Mixin.TheLastMove
         [SerializeField]
         private PlayerOperator _playerOperator;
 
-        private void Start()
+        private void EnvironmentManager_OnGameStarted()
         {
-            for (int i = 0; i < _playerOperator.Health; i++)
-            {
-                IngameOverlayUIB.Instance.AddHeart();
-            };
+            FillHearts();
         }
 
         private void Update()
@@ -26,6 +23,8 @@ namespace Mixin.TheLastMove
 
         private void OnEnable()
         {
+            EnvironmentManager.OnGameStarted += EnvironmentManager_OnGameStarted;
+
             IngameOverlayUIB.OnPauseButtonClicked += IngameOverlayUIB_OnPauseButtonClicked;
             IngameDeathScreenUIB.OnRespawnButtonClicked += IngameDeathScreenUIB_OnRespawnButtonClicked;
             IngameDeathScreenUIB.OnRestartButtonClicked += IngameDeathScreenUIB_OnRestartButtonClicked;
@@ -38,6 +37,8 @@ namespace Mixin.TheLastMove
 
         private void OnDisable()
         {
+            EnvironmentManager.OnGameStarted -= EnvironmentManager_OnGameStarted;
+
             IngameOverlayUIB.OnPauseButtonClicked -= IngameOverlayUIB_OnPauseButtonClicked;
             IngameDeathScreenUIB.OnRespawnButtonClicked -= IngameDeathScreenUIB_OnRespawnButtonClicked;
             IngameDeathScreenUIB.OnRestartButtonClicked -= IngameDeathScreenUIB_OnRestartButtonClicked;
@@ -82,6 +83,14 @@ namespace Mixin.TheLastMove
         private void _playerOperator_OnPlayerTakeDamageEvent()
         {
             IngameOverlayUIB.Instance.RemoveHeart();
+        }
+
+        private void FillHearts()
+        {
+            IngameOverlayUIB.Instance.HealthContainer.Clear();
+
+            for (int i = 0; i < _playerOperator.Health; i++)
+                IngameOverlayUIB.Instance.AddHeart();
         }
     }
 }

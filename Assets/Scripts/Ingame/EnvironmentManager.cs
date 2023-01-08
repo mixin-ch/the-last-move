@@ -1,4 +1,5 @@
 using Mixin.Utils;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -46,6 +47,8 @@ namespace Mixin.TheLastMove
         public float Hectic { get => _hectic; }
         public float Distance { get => _distance; }
 
+        public static event Action OnGameStarted;
+
         private void OnEnable()
         {
             IngameOverlayUIB.OnPauseButtonClicked += PauseClicked;
@@ -62,6 +65,8 @@ namespace Mixin.TheLastMove
         public void StartGame()
         {
             Clear();
+
+            OnGameStarted?.Invoke();
 
             _started = true;
         }
