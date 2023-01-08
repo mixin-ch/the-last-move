@@ -83,6 +83,14 @@ namespace Mixin.TheLastMove
         private void _playerOperator_OnPlayerTakeDamageEvent()
         {
             IngameOverlayUIB.Instance.RemoveHeart();
+            IngameOverlayUIB.Instance.DamageOverlay.AddToClassList("active");
+            StartCoroutine(RemoveClassAfterDelay(0.1f));
+        }
+
+        IEnumerator RemoveClassAfterDelay(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            IngameOverlayUIB.Instance.DamageOverlay.RemoveFromClassList("active");
         }
 
         private void FillHearts()
