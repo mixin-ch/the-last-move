@@ -61,6 +61,6 @@ Label {
 
 .damageOverlay.inactive {
     opacity: 0;
-    transition-duration: 1s;
+    transition-duration: 0.7s;
     transition-timing-function: ease-out;
 }
