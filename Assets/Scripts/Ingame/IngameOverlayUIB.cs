@@ -10,7 +10,8 @@ namespace Mixin.TheLastMove
         private VisualElement _body;
         private Button _pauseButton;
 
-        private VisualElement _healthContainer;
+        public VisualElement HealthContainer { get; set; }
+
         [SerializeField]
         private VisualTreeAsset _heartTemplate;
         public Label ScoreText { get; set; }
@@ -26,12 +27,10 @@ namespace Mixin.TheLastMove
             _body = _root.Q<VisualElement>("OverlayBody");
 
             _pauseButton = _body.Q<Button>("PauseButton");
-            _healthContainer = _body.Q<VisualElement>("HealthContainer");
+            HealthContainer = _body.Q<VisualElement>("HealthContainer");
             ScoreText = _body.Q<Label>("ScoreText");
             KillText = _body.Q<Label>("KillText");
             CurrencyText = _body.Q<Label>("CurrencyText");
-
-            _healthContainer.Clear();
         }
 
         public void Show(bool show)
@@ -64,12 +63,13 @@ namespace Mixin.TheLastMove
         public void AddHeart()
         {
             TemplateContainer heart = _heartTemplate.CloneTree();
-            _healthContainer.Add(heart);
+            HealthContainer.Add(heart);
         }
 
         public void RemoveHeart()
         {
-            _healthContainer.RemoveAt(0);
+            if (HealthContainer.childCount > 0)
+                HealthContainer.RemoveAt(0);
         }
     }
 }
