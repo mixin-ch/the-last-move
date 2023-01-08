@@ -10,6 +10,8 @@ namespace Mixin.TheLastMove
         private VisualElement _body;
         private Button _pauseButton;
 
+        public VisualElement DamageOverlay { get; set; }
+
         public VisualElement HealthContainer { get; set; }
 
         [SerializeField]
@@ -27,6 +29,7 @@ namespace Mixin.TheLastMove
             _body = _root.Q<VisualElement>("OverlayBody");
 
             _pauseButton = _body.Q<Button>("PauseButton");
+            DamageOverlay = _body.Q<VisualElement>("DamageOverlay");
             HealthContainer = _body.Q<VisualElement>("HealthContainer");
             ScoreText = _body.Q<Label>("ScoreText");
             KillText = _body.Q<Label>("KillText");
