@@ -27,7 +27,7 @@ namespace Mixin.TheLastMove
         private const float _maxHectic = 5f;
         private const float _velocityScale = 3f;
 
-        private MapGenerator _mapGenerator = new MapGenerator();
+        private MapGenerator _mapGenerator;
 
         private bool _started;
         private bool _paused;
@@ -79,11 +79,11 @@ namespace Mixin.TheLastMove
             _obstacleContainer.DestroyChildren();
             _obstacleOperatorList.Clear();
 
-            _mapGenerator = new MapGenerator();
-
             _hectic = _hecticStart;
             _distance = 0;
-            _distancePlanned = 20;
+            _distancePlanned = 25;
+
+            _mapGenerator = new MapGenerator(Hectic / BlockSize, 1);
         }
 
         private void PauseClicked()
@@ -173,7 +173,8 @@ namespace Mixin.TheLastMove
 
             while (_distancePlanned > 0)
             {
-                PlaceMapPlan(_mapGenerator.Tick(Hectic / BlockSize), _insertDistance - _distancePlanned);
+                _mapGenerator.BlockChunkSize = Hectic / BlockSize;
+                PlaceMapPlan(_mapGenerator.Tick(), _insertDistance - _distancePlanned);
                 _distancePlanned -= BlockSize;
             }
         }
