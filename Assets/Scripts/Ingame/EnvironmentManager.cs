@@ -18,7 +18,7 @@ namespace Mixin.TheLastMove
         [SerializeField]
         private PlayerOperator _playerOperator;
 
-        private const float _blockSize = 5.12f;
+        private const float _blockSize = 2f;
         private const float _insertDistance = 15f;
         private const float _deleteDistance = 15f;
         private const float _maxInsertHeight = 0f;
