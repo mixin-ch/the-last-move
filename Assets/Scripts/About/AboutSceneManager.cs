@@ -32,7 +32,7 @@ namespace Mixin.TheLastMove.About
 
         private void ExitButton_clicked()
         {
-            SceneManager.Instance.LoadScene(SceneName.MainMenu.ToString());
+            SceneManager.Instance.UnloadScene(SceneName.About.ToString());
         }
 
         private void OpenURL(string url)
