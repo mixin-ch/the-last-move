@@ -19,7 +19,7 @@
             <ui:Label text="Currency" display-tooltip-when-elided="true" name="CurrencyText" class="headerText" />
         </ui:VisualElement>
     </ui:VisualElement>
-    <ui:VisualElement name="PauseBody" class="body" style="justify-content: center; align-items: center; display: flex;">
+    <ui:VisualElement name="PauseBody" class="body" style="justify-content: center; align-items: center; display: none;">
         <ui:VisualElement name="Background" class="darkeningBackground" />
         <ui:Button text="Resume" display-tooltip-when-elided="true" name="ResumeButton" class="button" />
         <ui:Button text="Quit" display-tooltip-when-elided="true" name="QuitButton" class="button" />
