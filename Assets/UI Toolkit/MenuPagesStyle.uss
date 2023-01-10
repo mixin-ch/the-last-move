@@ -1,24 +1,45 @@
 Label {
     font-size: 24px;
-    -unity-font-style: bold;
+    -unity-font-style: normal;
     color: rgb(255, 255, 255);
+    -unity-font: url('project://database/Assets/Font/Rowdies/Rowdies-Regular.ttf?fileID=12800000&guid=c7f18bbb3b6e3ae44854da98ad3dae12&type=3#Rowdies-Regular');
+    -unity-font-definition: url('project://database/Assets/Font/Rowdies/Rowdies-Regular%20SDF.asset?fileID=11400000&guid=8aa7b1525a100f048bb6dea5db3dad85&type=2#Rowdies-Regular SDF');
 }
 
 .button {
-    background-color: rgb(14, 14, 14);
-    font-size: 30px;
+    background-color: rgba(14, 14, 14, 0);
+    font-size: 60px;
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;
     border-top-right-radius: 12px;
     border-bottom-right-radius: 12px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 8px;
+    margin-bottom: 8px;
     color: rgb(255, 255, 255);
-    -unity-font-style: bold;
+    -unity-font-style: normal;
     border-left-width: 0;
     border-right-width: 0;
     border-top-width: 0;
     border-bottom-width: 0;
+    background-image: url('project://database/Assets/Graphics/UI/Button.png?fileID=21300000&guid=980cff75d41515443b6e4cf2f15beede&type=3#Button');
+    padding-left: 62px;
+    padding-right: 66px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    -unity-background-scale-mode: stretch-to-fill;
+    -unity-text-align: middle-center;
+    -unity-font: url('project://database/Assets/Font/Rowdies/Rowdies-Bold.ttf?fileID=12800000&guid=ff24f66be5275c940a18a95dea4e3057&type=3#Rowdies-Bold');
+    -unity-font-definition: url('project://database/Assets/Font/Rowdies/Rowdies-Bold%20SDF.asset?fileID=11400000&guid=77898a91eade516488e1f8c6cfb70aa2&type=2#Rowdies-Bold SDF');
+}
+
+.button:hover {
+    -unity-background-image-tint-color: rgba(204, 204, 204, 255);
+    color: rgb(255, 189, 189);
+}
+
+.button:focus {
+    -unity-background-image-tint-color: rgba(173, 173, 173, 255);
+    color: rgba(255, 97, 97, 255);
 }
 
 .unity-slider-int {

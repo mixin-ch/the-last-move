@@ -1,6 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="HeartTemplate" src="project://database/Assets/UI%20Toolkit/Templates/HeartTemplate.uxml?fileID=9197481963319205126&amp;guid=e8cb1e9884e80954cb2a286fae3e71e5&amp;type=3#HeartTemplate" />
     <Style src="project://database/Assets/UI%20Toolkit/Ingame.uss?fileID=7433441132597879392&amp;guid=d5291e3b23c55cd4793f2253dade78de&amp;type=3#Ingame" />
+    <Style src="project://database/Assets/UI%20Toolkit/MenuPagesStyle.uss?fileID=7433441132597879392&amp;guid=5cc3defc6f9dc2f47bbd0ea879a9d8f2&amp;type=3#MenuPagesStyle" />
     <ui:VisualElement name="OverlayBody" class="body">
         <ui:VisualElement name="DamageOverlay" class="damageOverlay inactive" />
         <ui:VisualElement name="Header" style="flex-basis: 100px; flex-direction: row;">
@@ -18,7 +19,7 @@
             <ui:Label text="Currency" display-tooltip-when-elided="true" name="CurrencyText" class="headerText" />
         </ui:VisualElement>
     </ui:VisualElement>
-    <ui:VisualElement name="PauseBody" class="body" style="justify-content: center; align-items: center; display: none;">
+    <ui:VisualElement name="PauseBody" class="body" style="justify-content: center; align-items: center; display: flex;">
         <ui:VisualElement name="Background" class="darkeningBackground" />
         <ui:Button text="Resume" display-tooltip-when-elided="true" name="ResumeButton" class="button" />
         <ui:Button text="Quit" display-tooltip-when-elided="true" name="QuitButton" class="button" />
