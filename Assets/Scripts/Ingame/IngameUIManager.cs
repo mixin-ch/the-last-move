@@ -1,3 +1,4 @@
+using Mixin.TheLastMove.Save;
 using Mixin.Utils;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace Mixin.TheLastMove
         private void Update()
         {
             IngameOverlayUIB.Instance.ScoreText.text =
-                ((int)EnvironmentManager.Instance.Distance).ToString();
+                EnvironmentManager.Instance.Distance.RoundToInt().ToString();
         }
 
         private void OnEnable()
@@ -77,6 +78,22 @@ namespace Mixin.TheLastMove
 
         private void _playerOperator_OnPlayerDeathEvent()
         {
+            int score = EnvironmentManager.Instance.Distance.RoundToInt();
+            int highscore = SaveManager.Instance.IngameData.Data.Highscore;
+
+            // Set score text
+            IngameDeathScreenUIB.Instance.ScoreText.text = $"Score: {score}";
+
+            // Set new highscore
+            if (score > highscore) {
+                highscore = score;
+                SaveManager.Instance.IngameData.Data.Highscore = score;
+            }
+
+            IngameDeathScreenUIB.Instance.HighscoreText.text = $"Your Highscore: {highscore}";
+            IngameDeathScreenUIB.Instance.KillText.text = $"Kills: 0";
+            IngameDeathScreenUIB.Instance.CurrencyText.text = $"Figures Collected: 0";
+
             IngameDeathScreenUIB.Instance.Show(true);
         }
 

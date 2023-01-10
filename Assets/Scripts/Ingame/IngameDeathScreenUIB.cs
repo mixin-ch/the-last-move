@@ -14,6 +14,7 @@ namespace Mixin.TheLastMove
         private Button _restartButton;
         private Button _quitButton;
         public Label ScoreText { get; set; }
+        public Label HighscoreText { get; set; }
         public Label KillText { get; set; }
         public Label CurrencyText { get; set; }
 
@@ -31,6 +32,7 @@ namespace Mixin.TheLastMove
             _restartButton = _body.Q<Button>("RestartButton");
             _quitButton = _body.Q<Button>("QuitButton");
             ScoreText = _body.Q<Label>("ScoreText");
+            HighscoreText = _body.Q<Label>("HighscoreText");
             KillText = _body.Q<Label>("KillText");
             CurrencyText = _body.Q<Label>("CurrencyText");
         }

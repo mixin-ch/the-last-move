@@ -60,3 +60,7 @@
     transition-duration: 0.7s;
     transition-timing-function: ease-out;
 }
+
+.deathScreenText {
+    font-size: 50px;
+}

@@ -6,7 +6,7 @@
         <ui:VisualElement name="DamageOverlay" class="damageOverlay inactive" />
         <ui:VisualElement name="Header" style="flex-basis: 100px; flex-direction: row; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px;">
             <ui:Button display-tooltip-when-elided="true" name="PauseButton" focusable="false" style="background-image: url(&apos;project://database/Assets/Graphics/Icons/Pause%20Button.png?fileID=2800000&amp;guid=a361af4e8096110438f71e561c981dbf&amp;type=3#Pause Button&apos;); -unity-background-scale-mode: scale-to-fit; background-color: rgba(188, 188, 188, 0); flex-basis: 70px; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0;" />
-            <ui:VisualElement name="HealthContainer" style="flex-direction: row; align-items: stretch;">
+            <ui:VisualElement name="HealthContainer" style="flex-direction: row; align-items: stretch; flex-grow: 1;">
                 <ui:Instance template="HeartTemplate" name="HeartTemplate" />
                 <ui:Instance template="HeartTemplate" name="HeartTemplate" />
                 <ui:Instance template="HeartTemplate" name="HeartTemplate" />
@@ -27,9 +27,10 @@
     </ui:VisualElement>
     <ui:VisualElement name="DeathScreenBody" class="body" style="align-items: center; justify-content: center; display: none;">
         <ui:VisualElement name="Background" class="darkeningBackground" />
-        <ui:Label text="100 Score" display-tooltip-when-elided="true" name="ScoreText" />
-        <ui:Label text="100 Kills" display-tooltip-when-elided="true" name="KillText" />
-        <ui:Label text="100 Chess Figures" display-tooltip-when-elided="true" name="CurrencyText" />
+        <ui:Label text="100 Score" display-tooltip-when-elided="true" name="ScoreText" class="deathScreenText" />
+        <ui:Label text="100 Score" display-tooltip-when-elided="true" name="HighscoreText" class="deathScreenText" style="color: rgb(255, 234, 0); font-size: 30px;" />
+        <ui:Label text="100 Kills" display-tooltip-when-elided="true" name="KillText" class="deathScreenText" />
+        <ui:Label text="100 Chess Figures" display-tooltip-when-elided="true" name="CurrencyText" class="deathScreenText" />
         <ui:Button text="Continue" display-tooltip-when-elided="true" name="RespawnButton" class="button" />
         <ui:Button text="Restart" display-tooltip-when-elided="true" name="RestartButton" class="button" />
         <ui:Button text="Home" display-tooltip-when-elided="true" name="QuitButton" class="button" />
