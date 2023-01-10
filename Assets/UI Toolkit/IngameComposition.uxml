@@ -4,9 +4,10 @@
     <Style src="project://database/Assets/UI%20Toolkit/MenuPagesStyle.uss?fileID=7433441132597879392&amp;guid=5cc3defc6f9dc2f47bbd0ea879a9d8f2&amp;type=3#MenuPagesStyle" />
     <ui:VisualElement name="OverlayBody" class="body">
         <ui:VisualElement name="DamageOverlay" class="damageOverlay inactive" />
-        <ui:VisualElement name="Header" style="flex-basis: 100px; flex-direction: row;">
+        <ui:VisualElement name="Header" style="flex-basis: 100px; flex-direction: row; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px;">
             <ui:Button display-tooltip-when-elided="true" name="PauseButton" focusable="false" style="background-image: url(&apos;project://database/Assets/Graphics/Icons/Pause%20Button.png?fileID=2800000&amp;guid=a361af4e8096110438f71e561c981dbf&amp;type=3#Pause Button&apos;); -unity-background-scale-mode: scale-to-fit; background-color: rgba(188, 188, 188, 0); flex-basis: 70px; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0;" />
-            <ui:VisualElement name="HealthContainer" style="flex-direction: row; align-items: center;">
+            <ui:VisualElement name="HealthContainer" style="flex-direction: row; align-items: stretch;">
+                <ui:Instance template="HeartTemplate" name="HeartTemplate" />
                 <ui:Instance template="HeartTemplate" name="HeartTemplate" />
                 <ui:Instance template="HeartTemplate" name="HeartTemplate" />
                 <ui:Instance template="HeartTemplate" name="HeartTemplate" />

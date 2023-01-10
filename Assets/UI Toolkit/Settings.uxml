@@ -9,6 +9,8 @@
             <ui:DropdownField label="Quality" index="0" name="QualityDropdown" />
             <ui:DropdownField label="Language" index="0" name="LanguageDropdown" />
         </ui:ScrollView>
-        <ui:Button text="Save" display-tooltip-when-elided="true" name="SaveButton" />
+        <ui:VisualElement name="SaveButtonContainer" style="align-items: center;">
+            <ui:Button text="Save" display-tooltip-when-elided="true" name="SaveButton" class="button" style="background-image: url(&apos;project://database/Assets/Graphics/Icons/Button%20White.png?fileID=21300000&amp;guid=5c39269aa76ce9e49ac66ef9dd10d6f0&amp;type=3#Button White&apos;); -unity-background-image-tint-color: rgba(0, 210, 255, 255);" />
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
