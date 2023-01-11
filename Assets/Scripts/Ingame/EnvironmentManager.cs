@@ -54,6 +54,7 @@ namespace Mixin.TheLastMove
             IngameOverlayUIB.OnPauseButtonClicked += PauseClicked;
             IngamePauseUIB.OnResumeButtonClicked += UnpauseClicked;
             InputManager.OnJumpClicked += JumpClicked;
+            InputManager.OnAttackClicked += AttackClicked;
             _playerOperator.OnPlayerDeathEvent += PauseClicked;
         }
 
@@ -117,6 +118,14 @@ namespace Mixin.TheLastMove
                 return;
 
             _playerOperator.TryJump();
+        }
+
+        private void AttackClicked()
+        {
+            if (!_started || _paused)
+                return;
+
+            _playerOperator.TryAttack();
         }
 
         private void FixedUpdate()

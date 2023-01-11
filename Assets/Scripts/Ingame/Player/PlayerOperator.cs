@@ -9,6 +9,7 @@ namespace Mixin.TheLastMove
     {
         public event Action OnPlayerDeathEvent;
         public event Action OnPlayerTakeDamageEvent;
+        public event Action OnPlayerAttackEvent;
 
         [SerializeField]
         private Rigidbody2D _rigidbody;
@@ -24,13 +25,14 @@ namespace Mixin.TheLastMove
         private float _stretchExtent = 1f;
 
         [SerializeField]
-        private Vector2 _startPosition = Vector2.up * 3;
+        private int _startHealth;
+        [SerializeField]
+        private Vector2 _startPosition;
         [SerializeField]
         private List<float> _jumpList;
-        [SerializeField]
-        private int _startHealth = 1;
         private float _gravity = 1f;
         private float _jumpVelocityBreak = 5f;
+        private float _attackInterval = 1f;
 
         private float Hectic => EnvironmentManager.Instance.Hectic;
 
@@ -46,7 +48,10 @@ namespace Mixin.TheLastMove
         private List<float> _remainingJumpList = new List<float>();
         private bool _isJumping;
 
+        private float _attackCooldown;
+
         private bool HasJump => _remainingJumpList.Count > 0;
+        private bool CanAttack => _attackCooldown <= 0;
 
         public Vector2 Position => transform.position;
         public float Health { get => _health; }
@@ -59,6 +64,8 @@ namespace Mixin.TheLastMove
                 _rigidbody.velocity = Vector2.up * Mathf.Lerp(_rigidbody.velocity.y, 0, _jumpVelocityBreak * time);
 
             _rigidbody.gravityScale = Gravity;
+
+            _attackCooldown = (_attackCooldown - time).LowerBound(0);
 
             ProcessStretch(time);
 
@@ -93,6 +100,15 @@ namespace Mixin.TheLastMove
             _remainingJumpList.RemoveAt(0);
         }
 
+        public void TryAttack()
+        {
+            if (!CanAttack)
+                return;
+
+            _attackCooldown = _attackInterval;
+            OnPlayerAttackEvent?.Invoke();
+        }
+
         private void TakeDamage()
         {
             _health--;
@@ -120,6 +136,7 @@ namespace Mixin.TheLastMove
             _remainingJumpList.Clear();
             _isJumping = false;
             _dragPointOffset = 1;
+            _attackCooldown = _attackInterval;
         }
 
         private void RefreshVelocity()
