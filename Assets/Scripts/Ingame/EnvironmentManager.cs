@@ -46,6 +46,7 @@ namespace Mixin.TheLastMove
         public bool Paused { get => _paused; }
         public float Hectic { get => _hectic; }
         public float Distance { get => _distance; }
+        public PlayerOperator PlayerOperator { get => _playerOperator; }
 
         public static event Action OnGameStarted;
 
