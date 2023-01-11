@@ -32,7 +32,7 @@ namespace Mixin.TheLastMove
         private List<float> _jumpList;
         private float _gravity = 1f;
         private float _jumpVelocityBreak = 5f;
-        private float _attackInterval = 1f;
+        private float _attackInterval = 0.5f;
 
         private float Hectic => EnvironmentManager.Instance.Hectic;
 

@@ -1234,5 +1234,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackSlash: {fileID: 1579623888}
-  _fadeOutTime: 0.3
-  _targetScale: {x: 1, y: 1, z: 1}
+  _fadeOutTime: 0.4
+  _targetScale: {x: 1.5, y: 2.5, z: 1}
