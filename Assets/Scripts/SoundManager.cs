@@ -16,7 +16,7 @@ namespace Mixin.TheLastMove
 
         public MixinDictionary<SoundType, AudioTrackSetupSO> SoundList { get => _soundList; set => _soundList = value; }
 
-        private void OnEnable()
+        private void Start()
         {
             EnvironmentManager.OnGameStarted += () => PlaySound(SoundType.GameStarted);
             EnvironmentManager.Instance.PlayerOperator.OnPlayerDeathEvent += () => PlaySound(SoundType.Die);
@@ -26,7 +26,7 @@ namespace Mixin.TheLastMove
             InputManager.Instance.Input.Ingame.Descend.started += (context) => PlaySound(SoundType.Descend);
         }
 
-        private void OnDisable()
+       /* private void OnDisable()
         {
             EnvironmentManager.OnGameStarted -= () => PlaySound(SoundType.GameStarted);
             EnvironmentManager.Instance.PlayerOperator.OnPlayerDeathEvent -= () => PlaySound(SoundType.Die);
@@ -34,7 +34,7 @@ namespace Mixin.TheLastMove
             InputManager.Instance.Input.Ingame.Jump.started -= (context) => PlaySound(SoundType.Jump);
             InputManager.Instance.Input.Ingame.Attack.started -= (context) => PlaySound(SoundType.Attack);
             InputManager.Instance.Input.Ingame.Descend.started -= (context) => PlaySound(SoundType.Descend);
-        }
+        }*/
 
         private void PlaySound(SoundType soundType)
         {
