@@ -44,6 +44,15 @@ public partial class @InputControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Descend"",
+                    ""type"": ""Button"",
+                    ""id"": ""e3d6c393-7dd9-4efb-8f7b-64c2d8422653"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -101,6 +110,17 @@ public partial class @InputControls : IInputActionCollection2, IDisposable
                     ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f70b6dc0-cd14-4254-a929-ae38cd87c7b8"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Descend"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -122,6 +142,7 @@ public partial class @InputControls : IInputActionCollection2, IDisposable
         m_Ingame = asset.FindActionMap("Ingame", throwIfNotFound: true);
         m_Ingame_Jump = m_Ingame.FindAction("Jump", throwIfNotFound: true);
         m_Ingame_Attack = m_Ingame.FindAction("Attack", throwIfNotFound: true);
+        m_Ingame_Descend = m_Ingame.FindAction("Descend", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -183,12 +204,14 @@ public partial class @InputControls : IInputActionCollection2, IDisposable
     private IIngameActions m_IngameActionsCallbackInterface;
     private readonly InputAction m_Ingame_Jump;
     private readonly InputAction m_Ingame_Attack;
+    private readonly InputAction m_Ingame_Descend;
     public struct IngameActions
     {
         private @InputControls m_Wrapper;
         public IngameActions(@InputControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Jump => m_Wrapper.m_Ingame_Jump;
         public InputAction @Attack => m_Wrapper.m_Ingame_Attack;
+        public InputAction @Descend => m_Wrapper.m_Ingame_Descend;
         public InputActionMap Get() { return m_Wrapper.m_Ingame; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -204,6 +227,9 @@ public partial class @InputControls : IInputActionCollection2, IDisposable
                 @Attack.started -= m_Wrapper.m_IngameActionsCallbackInterface.OnAttack;
                 @Attack.performed -= m_Wrapper.m_IngameActionsCallbackInterface.OnAttack;
                 @Attack.canceled -= m_Wrapper.m_IngameActionsCallbackInterface.OnAttack;
+                @Descend.started -= m_Wrapper.m_IngameActionsCallbackInterface.OnDescend;
+                @Descend.performed -= m_Wrapper.m_IngameActionsCallbackInterface.OnDescend;
+                @Descend.canceled -= m_Wrapper.m_IngameActionsCallbackInterface.OnDescend;
             }
             m_Wrapper.m_IngameActionsCallbackInterface = instance;
             if (instance != null)
@@ -214,6 +240,9 @@ public partial class @InputControls : IInputActionCollection2, IDisposable
                 @Attack.started += instance.OnAttack;
                 @Attack.performed += instance.OnAttack;
                 @Attack.canceled += instance.OnAttack;
+                @Descend.started += instance.OnDescend;
+                @Descend.performed += instance.OnDescend;
+                @Descend.canceled += instance.OnDescend;
             }
         }
     }
@@ -240,5 +269,6 @@ public partial class @InputControls : IInputActionCollection2, IDisposable
     {
         void OnJump(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
+        void OnDescend(InputAction.CallbackContext context);
     }
 }
