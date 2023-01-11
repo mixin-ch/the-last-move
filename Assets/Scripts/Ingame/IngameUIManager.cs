@@ -1,3 +1,4 @@
+using Mixin.TheLastMove.Player;
 using Mixin.TheLastMove.Save;
 using Mixin.Utils;
 using System.Collections;
@@ -9,7 +10,7 @@ namespace Mixin.TheLastMove.Sound
     public class IngameUIManager : MonoBehaviour
     {
         [SerializeField]
-        private PlayerOperator _playerOperator;
+        private PlayerOperator _playerOperator => EnvironmentManager.Instance.PlayerOperator;
 
         private void EnvironmentManager_OnGameStarted()
         {
