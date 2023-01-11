@@ -81,7 +81,7 @@ Label {
 .page-back-button {
     position: absolute;
     top: 20px;
-    font-size: 26px;
+    font-size: 0;
     background-image: url('project://database/Assets/Graphics/Icons/Home%202.png?fileID=2800000&guid=369399f7266267540a24f41fe2295694&type=3#Home 2');
     background-color: rgba(188, 188, 188, 0);
     -unity-background-scale-mode: scale-to-fit;
@@ -100,6 +100,7 @@ Label {
     padding-right: 0;
     padding-top: 0;
     padding-bottom: 0;
+    color: rgba(27, 27, 27, 0);
 }
 
 .websiteButton {
