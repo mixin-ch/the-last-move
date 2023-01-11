@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Mixin.TheLastMove
+namespace Mixin.TheLastMove.Sound
 {
     public class IngameUIManager : MonoBehaviour
     {
