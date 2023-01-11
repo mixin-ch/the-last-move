@@ -687,7 +687,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1579623887
 Transform:
   m_ObjectHideFlags: 0
@@ -1021,11 +1021,11 @@ MonoBehaviour:
   _imageTransform: {fileID: 1913020222031104092}
   _stretcherTransform: {fileID: 1235152488}
   _collider: {fileID: 3608964335757725249}
+  _startHealth: 10
   _startPosition: {x: -4, y: 2}
   _jumpList:
   - 7
   - 5
-  _startHealth: 10
 --- !u!4 &1913020222031104092
 Transform:
   m_ObjectHideFlags: 0
@@ -1160,6 +1160,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3608964335757725247}
   - component: {fileID: 1822961194634340435}
+  - component: {fileID: 3608964335757725250}
   - component: {fileID: 3608964335757725248}
   - component: {fileID: 801635303027335823}
   - component: {fileID: 3608964335757725249}
@@ -1220,3 +1221,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0.25, y: -0.1}
   m_Size: {x: 1, y: 1.8}
   m_Direction: 0
+--- !u!114 &3608964335757725250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3608964335757725244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 396bdf589a64b5c43a06d18e988a9f5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackSlash: {fileID: 1579623888}
+  _fadeOutTime: 0.3
+  _targetScale: {x: 1, y: 1, z: 1}

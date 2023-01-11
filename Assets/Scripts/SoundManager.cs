@@ -21,8 +21,9 @@ namespace Mixin.TheLastMove
             EnvironmentManager.OnGameStarted += () => PlaySound(SoundType.GameStarted);
             EnvironmentManager.Instance.PlayerOperator.OnPlayerDeathEvent += () => PlaySound(SoundType.Die);
             EnvironmentManager.Instance.PlayerOperator.OnPlayerTakeDamageEvent += () => PlaySound(SoundType.TakeDamage);
+            EnvironmentManager.Instance.PlayerOperator.OnPlayerAttackEvent += () => PlaySound(SoundType.Attack);
             InputManager.Instance.Input.Ingame.Jump.started += (context) => PlaySound(SoundType.Jump);
-            InputManager.Instance.Input.Ingame.Attack.started += (context) => PlaySound(SoundType.Attack);
+            //InputManager.Instance.Input.Ingame.Attack.started += (context) => PlaySound(SoundType.Attack);
             InputManager.Instance.Input.Ingame.Descend.started += (context) => PlaySound(SoundType.Descend);
         }
 
