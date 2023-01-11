@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Mixin.TheLastMove
+namespace Mixin.TheLastMove.Environment
 {
     public class EnvironmentManager : Singleton<EnvironmentManager>
     {

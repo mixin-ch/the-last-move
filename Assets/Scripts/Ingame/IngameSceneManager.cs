@@ -3,8 +3,9 @@ using Mixin.Utils;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Mixin.TheLastMove.Environment;
 
-namespace Mixin.TheLastMove
+namespace Mixin.TheLastMove.Ingame
 {
     public class IngameSceneManager : Singleton<IngameSceneManager>
     {

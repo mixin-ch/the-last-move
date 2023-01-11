@@ -1,12 +1,10 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Mixin.TheLastMove.Save;
 using Mixin.Utils;
 
-namespace Mixin.TheLastMove
+namespace Mixin.TheLastMove.Settings
 {
     public class SettingsManager : MonoBehaviour
     {

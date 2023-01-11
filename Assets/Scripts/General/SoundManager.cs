@@ -1,10 +1,11 @@
+using Mixin.TheLastMove.Environment;
 using Mixin.Utils;
 using Mixin.Utils.Audio;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Mixin.TheLastMove
+namespace Mixin.TheLastMove.Sound
 {
     /// <summary>
     /// Manages the sound.
