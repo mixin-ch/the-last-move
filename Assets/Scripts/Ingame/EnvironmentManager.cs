@@ -209,8 +209,8 @@ namespace Mixin.TheLastMove
             {
                 GameObject gameObject = _obstaclePrefab.GeneratePrefab(_obstacleContainer);
                 ObstacleOperator @operator = gameObject.GetComponent<ObstacleOperator>();
-                float y = _blockSize + Mathf.Lerp(_minInsertHeight, _maxInsertHeight, plan.Height);
-                @operator.Setup(new Vector2(x, y), _blockSize);
+                float y = _blockSize * 0.5f + Mathf.Lerp(_minInsertHeight, _maxInsertHeight, plan.Height);
+                @operator.Setup(new Vector2(x, y));
                 _obstacleOperatorList.Add(@operator);
             }
         }

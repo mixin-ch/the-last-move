@@ -155,7 +155,7 @@ namespace Mixin.TheLastMove
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.enabled)
+            if (collision.enabled && collision.collider.bounds.center.y < collision.otherCollider.bounds.center.y)
             {
                 _remainingJumpList.Clear();
                 _remainingJumpList.AddRange(_jumpList);
