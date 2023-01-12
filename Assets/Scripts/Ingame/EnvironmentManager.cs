@@ -1,7 +1,9 @@
+using Mixin.TheLastMove.Ads;
 using Mixin.TheLastMove.Player;
 using Mixin.Utils;
 using System;
 using System.Collections.Generic;
+using Unity.Services.Mediation;
 using UnityEngine;
 
 namespace Mixin.TheLastMove.Environment
@@ -58,6 +60,7 @@ namespace Mixin.TheLastMove.Environment
             InputManager.OnJumpClicked += JumpClicked;
             InputManager.OnAttackClicked += AttackClicked;
             _playerOperator.OnPlayerDeathEvent += PauseClicked;
+            AdsManager.OnUserRewarded += AdsManager_OnUserRewarded;
         }
 
         private void OnDisable()
@@ -214,6 +217,11 @@ namespace Mixin.TheLastMove.Environment
                 @operator.Setup(new Vector2(x, y));
                 _obstacleOperatorList.Add(@operator);
             }
+        }
+
+        private void AdsManager_OnUserRewarded(RewardEventArgs obj)
+        {
+            //ContinueGame();
         }
     }
 }
