@@ -1021,7 +1021,7 @@ MonoBehaviour:
   _stretcherTransform: {fileID: 1235152488}
   _collider: {fileID: 3608964335757725249}
   _startHealth: 10
-  _startPosition: {x: -4, y: 2}
+  _startPosition: {x: -6, y: 2}
   _jumpList:
   - 7
   - 5
