@@ -63,8 +63,7 @@ namespace Mixin.TheLastMove.Sound
             if (_startVoices == null || _startVoices.Count < 1)
                 return null;
 
-            int random = Random.Range(0, _startVoices.Count - 1);
-            return _startVoices[random];
+            return _startVoices.PickRandom(); ;
         }
 
         private AudioTrackSetupSO GetSoundTrackFromEnum(SoundType soundType)
