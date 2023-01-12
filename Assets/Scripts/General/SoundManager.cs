@@ -15,11 +15,15 @@ namespace Mixin.TheLastMove.Sound
         [SerializeField]
         private MixinDictionary<SoundType, AudioTrackSetupSO> _soundList;
 
-        public MixinDictionary<SoundType, AudioTrackSetupSO> SoundList { get => _soundList; set => _soundList = value; }
+        [SerializeField]
+        private List<AudioTrackSetupSO> _startVoices;
+
+        public MixinDictionary<SoundType, AudioTrackSetupSO> SoundList { get => _soundList; }
+        public List<AudioTrackSetupSO> StartVoices { get => _startVoices; }
 
         private void Start()
         {
-            EnvironmentManager.OnGameStarted += () => PlaySound(SoundType.GameStarted);
+            EnvironmentManager.OnGameStarted += () => PlaySound(GetRandomStartVoice());
             EnvironmentManager.Instance.PlayerOperator.OnPlayerDeathEvent += () => PlaySound(SoundType.Die);
             EnvironmentManager.Instance.PlayerOperator.OnPlayerTakeDamageEvent += () => PlaySound(SoundType.TakeDamage);
             EnvironmentManager.Instance.PlayerOperator.OnPlayerAttackEvent += () => PlaySound(SoundType.Attack);
@@ -28,15 +32,15 @@ namespace Mixin.TheLastMove.Sound
             InputManager.Instance.Input.Ingame.Descend.started += (context) => PlaySound(SoundType.Descend);
         }
 
-       /* private void OnDisable()
-        {
-            EnvironmentManager.OnGameStarted -= () => PlaySound(SoundType.GameStarted);
-            EnvironmentManager.Instance.PlayerOperator.OnPlayerDeathEvent -= () => PlaySound(SoundType.Die);
-            EnvironmentManager.Instance.PlayerOperator.OnPlayerTakeDamageEvent -= () => PlaySound(SoundType.TakeDamage);
-            InputManager.Instance.Input.Ingame.Jump.started -= (context) => PlaySound(SoundType.Jump);
-            InputManager.Instance.Input.Ingame.Attack.started -= (context) => PlaySound(SoundType.Attack);
-            InputManager.Instance.Input.Ingame.Descend.started -= (context) => PlaySound(SoundType.Descend);
-        }*/
+        /* private void OnDisable()
+         {
+             EnvironmentManager.OnGameStarted -= () => PlaySound(SoundType.GameStarted);
+             EnvironmentManager.Instance.PlayerOperator.OnPlayerDeathEvent -= () => PlaySound(SoundType.Die);
+             EnvironmentManager.Instance.PlayerOperator.OnPlayerTakeDamageEvent -= () => PlaySound(SoundType.TakeDamage);
+             InputManager.Instance.Input.Ingame.Jump.started -= (context) => PlaySound(SoundType.Jump);
+             InputManager.Instance.Input.Ingame.Attack.started -= (context) => PlaySound(SoundType.Attack);
+             InputManager.Instance.Input.Ingame.Descend.started -= (context) => PlaySound(SoundType.Descend);
+         }*/
 
         private void PlaySound(SoundType soundType)
         {
@@ -44,6 +48,23 @@ namespace Mixin.TheLastMove.Sound
 
             if (sound != null)
                 AudioManager.Instance.PlayTrack(sound);
+        }
+
+        private void PlaySound(AudioTrackSetupSO audioTrackSetupSO)
+        {
+            if (audioTrackSetupSO == null)
+                return;
+
+            AudioManager.Instance.PlayTrack(audioTrackSetupSO);
+        }
+
+        private AudioTrackSetupSO GetRandomStartVoice()
+        {
+            if (_startVoices == null || _startVoices.Count < 1)
+                return null;
+
+            int random = Random.Range(0, _startVoices.Count - 1);
+            return _startVoices[random];
         }
 
         private AudioTrackSetupSO GetSoundTrackFromEnum(SoundType soundType)

@@ -67,11 +67,20 @@ MonoBehaviour:
       elementIcon: {fileID: 0}
     reqReferences: {fileID: 0}
     isExpanded: 1
-    _keyValues: 0100000000000000
-    _keys: 0100000000000000
+    _keyValues: 0100000000000000020000000300000004000000050000000b000000
+    _keys: 0100000000000000020000000300000004000000050000000b000000
     _values:
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 11400000, guid: 66789f6058824924287b8c5c1ce969eb, type: 2}
+    - {fileID: 11400000, guid: 35668a240782da14d8ccb59cd93060e2, type: 2}
+    - {fileID: 11400000, guid: 1f25879c9d0f7e94fb08a32a988ed960, type: 2}
+    - {fileID: 11400000, guid: a71612f71032c2d40b519c94ba0d1b75, type: 2}
+    - {fileID: 11400000, guid: 35668a240782da14d8ccb59cd93060e2, type: 2}
+    - {fileID: 11400000, guid: 2da99a5b5e0ca2e44bb03e823d53a99b, type: 2}
+    - {fileID: 11400000, guid: e5a250b39b5caaa4ba21726d7ad790ad, type: 2}
+  _startVoices:
+  - {fileID: 11400000, guid: 0083a253ac9cfc942b2e9252967148c1, type: 2}
+  - {fileID: 11400000, guid: a660ac70b3eefb7419114778ac88445e, type: 2}
+  - {fileID: 11400000, guid: 4f99cbc830d0dd4478565390b252bf09, type: 2}
 --- !u!1 &588600912
 GameObject:
   m_ObjectHideFlags: 0
