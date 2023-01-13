@@ -1,14 +1,13 @@
 using Mixin.TheLastMove.Ads;
 using Mixin.TheLastMove.Environment;
+using Mixin.TheLastMove.Ingame;
 using Mixin.TheLastMove.Player;
 using Mixin.TheLastMove.Save;
 using Mixin.Utils;
 using System.Collections;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Mixin.TheLastMove.Sound
+namespace Mixin.TheLastMove.Ingame.UI
 {
     public class IngameUIManager : MonoBehaviour
     {
@@ -39,7 +38,6 @@ namespace Mixin.TheLastMove.Sound
             IngamePauseUIB.OnResumeButtonClicked += IngamePauseUIB_OnResumeButtonClicked;
             _playerOperator.OnPlayerTakeDamageEvent += _playerOperator_OnPlayerTakeDamageEvent;
             _playerOperator.OnPlayerDeathEvent += _playerOperator_OnPlayerDeathEvent;
-            AdsManager.OnUserRewarded += AdsManager_OnUserRewarded;
         }
 
         private void OnDisable()
@@ -53,7 +51,6 @@ namespace Mixin.TheLastMove.Sound
             IngamePauseUIB.OnResumeButtonClicked -= IngamePauseUIB_OnResumeButtonClicked;
             _playerOperator.OnPlayerTakeDamageEvent -= _playerOperator_OnPlayerTakeDamageEvent;
             _playerOperator.OnPlayerDeathEvent -= _playerOperator_OnPlayerDeathEvent;
-            AdsManager.OnUserRewarded -= AdsManager_OnUserRewarded;
         }
 
         private void GoToMainMenu()
@@ -74,7 +71,7 @@ namespace Mixin.TheLastMove.Sound
 
         private void IngameDeathScreenUIB_OnRespawnButtonClicked()
         {
-            _ = AdsManager.Instance.ShowRewardedAdAsync();
+            IngameSceneManager.Instance.ShowRespawnAd();
         }
 
         private void IngameOverlayUIB_OnPauseButtonClicked()
@@ -115,11 +112,6 @@ namespace Mixin.TheLastMove.Sound
         {
             yield return new WaitForSeconds(delay);
             IngameOverlayUIB.Instance.DamageOverlay.AddToClassList("inactive");
-        }
-
-        private void AdsManager_OnUserRewarded(Unity.Services.Mediation.RewardEventArgs obj)
-        {
-            
         }
 
         private void FillHearts()

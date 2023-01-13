@@ -43,7 +43,8 @@ public class iOSAgent : IronSourceIAgent
 	private static extern void CFSetManualLoadRewardedVideo(bool isOn);
 
 	[DllImport("__Internal")]
-	private static extern void CFSetNetworkData(string networkKey, string networkData);
+	private static extern string CFSetNetworkData(string networkKey, string networkData);
+
 
 	delegate void ISUnityPauseGame(bool pause);
 	[DllImport("__Internal")]
