@@ -1,30 +1,38 @@
 using Mixin.Utils;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class CollectableSpawner : MonoBehaviour
 {
-    public GameObject collectablePrefab; // the collectable object to spawn
+    [SerializeField]
+    private GameObject _collectablePrefab; // the collectable object to spawn
     [SerializeField]
     private GameObject _collectableContainer;
-    public float spawnRadius = 50f; // the radius within which to spawn collectables
-    public int spawnCount = 10; // the number of collectables to spawn
-    public float minHeight = 5f; // the minimum height above the terrain to spawn collectables
-    public float maxJumpRange = 5f; // the maximum jump range of the player
-    public float spawnInterval = 10f; // the time interval between spawning collectables
-    private float timeSinceLastSpawn; // the time since the last collectable was spawned
-    private GameObject[] collectablePool; // the pool of collectable objects
-    private int currentIndex; // the current index of the next collectable to use from the pool
+    [SerializeField]
+    private float _spawnRadius = 50f; // the radius within which to spawn collectables
+    [SerializeField]
+    private int _spawnCount = 10; // the number of collectables to spawn
+    [SerializeField]
+    private float _minHeight = 5f; // the minimum height above the terrain to spawn collectables
+    [SerializeField]
+    private float _maxJumpRange = 5f; // the maximum jump range of the player
+    [SerializeField]
+    private float _spawnInterval = 10f; // the time interval between spawning collectables
+
+    private float _timeSinceLastSpawn; // the time since the last collectable was spawned
+    private GameObject[] _collectablePool; // the pool of collectable objects
+    private int _currentIndex; // the current index of the next collectable to use from the pool
 
     void Start()
     {
         // Initialize the collectable pool
         _collectableContainer.DestroyChildren();
-        collectablePool = new GameObject[spawnCount];
-        for (int i = 0; i < spawnCount; i++)
+        _collectablePool = new GameObject[_spawnCount];
+        for (int i = 0; i < _spawnCount; i++)
         {
-            collectablePool[i] = collectablePrefab.GeneratePrefab(_collectableContainer);
-            collectablePool[i].SetActive(false);
+            _collectablePool[i] = _collectablePrefab.GeneratePrefab(_collectableContainer);
+            _collectablePool[i].SetActive(false);
         }
 
         // Start spawning collectables
@@ -39,21 +47,21 @@ public class CollectableSpawner : MonoBehaviour
             //var terrainCollider = GetComponent<TerrainCollider>();
 
             // Spawn collectables at random positions within the spawn radius
-            for (int i = 0; i < spawnCount; i++)
+            for (int i = 0; i < _spawnCount; i++)
             {
                 // Get the next collectable from the pool
-                var collectable = collectablePool[currentIndex];
-                currentIndex = (currentIndex + 1) % spawnCount;
+                var collectable = _collectablePool[_currentIndex];
+                _currentIndex = (_currentIndex + 1) % _spawnCount;
 
                 // Generate a random position within the spawn radius
-                var randomPos = transform.position + Random.insideUnitSphere * spawnRadius;
+                var randomPos = transform.position + Random.insideUnitSphere * _spawnRadius;
                 // Get the terrain height at the random position
                 //var terrainHeight = Terrain.activeTerrain.SampleHeight(randomPos);
                 var terrainHeight = -5;
                 // Set the y-coordinate of the random position to be above the terrain height
-                randomPos.y = terrainHeight + minHeight;
+                randomPos.y = terrainHeight + _minHeight;
                 // Ensure the collectable is reachable within the player's jump range
-                if (randomPos.y - terrainHeight <= maxJumpRange)
+                if (randomPos.y - terrainHeight <= _maxJumpRange)
                 {
                     collectable.transform.position = randomPos;
                     collectable.SetActive(true);
@@ -61,7 +69,7 @@ public class CollectableSpawner : MonoBehaviour
             }
 
             // Wait for the specified interval before spawning the next set of collectables
-            yield return new WaitForSeconds(spawnInterval);
+            yield return new WaitForSeconds(_spawnInterval);
         }
     }
 }
