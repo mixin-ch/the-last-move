@@ -1,4 +1,5 @@
 using Mixin.TheLastMove.Ads;
+using Mixin.TheLastMove.Ingame;
 using Mixin.TheLastMove.Player;
 using Mixin.Utils;
 using System;
@@ -47,6 +48,7 @@ namespace Mixin.TheLastMove.Environment
 
         public bool Started { get => _started; }
         public bool Paused { get => _paused; }
+        public bool IsGameRunning { get => _started && !_paused; }
         public float Hectic { get => _hectic; }
         public float Distance { get => _distance; }
         public PlayerOperator PlayerOperator { get => _playerOperator; }
@@ -60,21 +62,22 @@ namespace Mixin.TheLastMove.Environment
             InputManager.OnJumpClicked += JumpClicked;
             InputManager.OnAttackClicked += AttackClicked;
             _playerOperator.OnPlayerDeathEvent += PauseClicked;
-            AdsManager.OnUserRewarded += AdsManager_OnUserRewarded;
+            IngameSceneManager.Instance.RewardedAd.OnUserRewarded += RewardedAd_OnUserRewarded;
         }
 
         private void OnDisable()
         {
             IngameOverlayUIB.OnPauseButtonClicked -= PauseClicked;
+            _playerOperator.OnPlayerDeathEvent -= PauseClicked;
+            IngameSceneManager.Instance.RewardedAd.OnUserRewarded -= RewardedAd_OnUserRewarded;
         }
 
         public void StartGame()
         {
             Clear();
 
-            OnGameStarted?.Invoke();
-
             _started = true;
+            OnGameStarted?.Invoke();
         }
 
         private void Clear()
@@ -219,9 +222,10 @@ namespace Mixin.TheLastMove.Environment
             }
         }
 
-        private void AdsManager_OnUserRewarded(RewardEventArgs obj)
+        private void RewardedAd_OnUserRewarded()
         {
-            //ContinueGame();
+            // ContinueGame();
+            StartGame();
         }
     }
 }

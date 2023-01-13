@@ -17,6 +17,8 @@ namespace Mixin.TheLastMove.Ingame
 
         private RewardedAd _rewardedAd = new RewardedAd();
 
+        public RewardedAd RewardedAd { get => _rewardedAd;  }
+
         protected override void Awake()
         {
             base.Awake();
@@ -26,15 +28,26 @@ namespace Mixin.TheLastMove.Ingame
 
         private void Start()
         {
-            EnvironmentManager.Instance.StartGame();
-
             _playlist = AudioManager.Instance.MakePlaylistPlayer(_musicPlaylist.ToAudioPlaylistSetup());
-            _playlist.Play();
+
+            EnvironmentManager.Instance.StartGame();
         }
 
         private void OnEnable()
         {
             _rewardedAd.OnUserRewarded += RewardedAd_OnUserRewarded;
+            EnvironmentManager.Instance.PlayerOperator.OnPlayerDeathEvent += PlayerOperator_OnPlayerDeathEvent;
+            EnvironmentManager.OnGameStarted += EnvironmentManager_OnGameStarted;
+        }
+
+        private void EnvironmentManager_OnGameStarted()
+        {
+            _playlist.Play();
+        }
+
+        private void PlayerOperator_OnPlayerDeathEvent()
+        {
+            _playlist.Stop();
         }
 
         private void OnDisable()
