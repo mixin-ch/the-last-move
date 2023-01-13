@@ -14,19 +14,6 @@ namespace Mixin.TheLastMove.Ingame.UI
         [SerializeField]
         private PlayerOperator _playerOperator => EnvironmentManager.Instance.PlayerOperator;
 
-        private void EnvironmentManager_OnGameStarted()
-        {
-            FillHearts();
-            IngamePauseUIB.Instance.Show(false);
-            IngameDeathScreenUIB.Instance.Show(false);
-        }
-
-        private void Update()
-        {
-            IngameOverlayUIB.Instance.ScoreText.text =
-                EnvironmentManager.Instance.Distance.RoundToInt().ToString();
-        }
-
         private void OnEnable()
         {
             EnvironmentManager.OnGameStarted += EnvironmentManager_OnGameStarted;
@@ -51,6 +38,25 @@ namespace Mixin.TheLastMove.Ingame.UI
             IngamePauseUIB.OnResumeButtonClicked -= IngamePauseUIB_OnResumeButtonClicked;
             _playerOperator.OnPlayerTakeDamageEvent -= _playerOperator_OnPlayerTakeDamageEvent;
             _playerOperator.OnPlayerDeathEvent -= _playerOperator_OnPlayerDeathEvent;
+        }
+
+        private void EnvironmentManager_OnGameStarted()
+        {
+            $"EnvironmentManager_OnGameStarted".Log();
+            StartCoroutine(UpdateScore());
+            FillHearts();
+            IngamePauseUIB.Instance.Show(false);
+            IngameDeathScreenUIB.Instance.Show(false);
+        }
+
+        private IEnumerator UpdateScore()
+        {
+            while (EnvironmentManager.Instance.IsGameRunning)
+            {
+                IngameOverlayUIB.Instance.ScoreText.text =
+                    EnvironmentManager.Instance.Distance.RoundToInt().ToString();
+                yield return new WaitForEndOfFrame();
+            }
         }
 
         private void GoToMainMenu()
