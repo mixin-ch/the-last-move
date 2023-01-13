@@ -15,7 +15,7 @@ namespace Mixin.TheLastMove.Ingame
 
         private AudioPlaylistPlayer _playlist;
 
-        private RewardedAdAndroidBase _rewardedAd = new RewardedAdAndroidBase();
+        private RewardedAd _rewardedAd = new RewardedAd();
 
         protected override void Awake()
         {

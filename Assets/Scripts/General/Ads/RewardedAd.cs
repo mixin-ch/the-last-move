@@ -6,11 +6,17 @@ using UnityEngine;
 
 namespace Mixin.TheLastMove.Ads
 {
-    public class RewardedAdAndroidBase : IDisposable
+    public class RewardedAd : IDisposable
     {
         IRewardedAd ad;
+
+#if UNITY_IOS
+        string adUnitId = "Rewarded_iOS";
+        string gameId = "5116920";
+#else
         string adUnitId = "Rewarded_Android";
         string gameId = "5116921";
+#endif
 
         public event Action OnUserRewarded;
 
