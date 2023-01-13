@@ -42,8 +42,9 @@ namespace Mixin.TheLastMove.Ingame.UI
 
         private void EnvironmentManager_OnGameStarted()
         {
-            $"EnvironmentManager_OnGameStarted".Log();
+            StopAllCoroutines();
             StartCoroutine(UpdateScore());
+
             FillHearts();
             IngamePauseUIB.Instance.Show(false);
             IngameDeathScreenUIB.Instance.Show(false);
@@ -67,6 +68,8 @@ namespace Mixin.TheLastMove.Ingame.UI
         private void IngamePauseUIB_OnResumeButtonClicked()
         {
             IngamePauseUIB.Instance.Show(false);
+            StopAllCoroutines();
+            StartCoroutine(UpdateScore());
         }
 
         private void IngameDeathScreenUIB_OnRestartButtonClicked()
