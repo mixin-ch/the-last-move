@@ -1,3 +1,4 @@
+using Mixin.Language;
 using Mixin.Utils;
 using System;
 using System.Collections;
@@ -12,6 +13,9 @@ namespace Mixin.TheLastMove
         public Button PlayButton { get; set; }
         public Button SettingsButton { get; set; }
         public Button AboutButton { get; set; }
+        public Label TapToPlay { get; set; }
+        [SerializeField]
+        private LanguageTextSO _tapToPlayLanguage;
         public Label GameVersionText { get; set; }
 
         public static event Action OnPlayButtonClicked;
@@ -25,6 +29,10 @@ namespace Mixin.TheLastMove
             PlayButton = _root.Q<Button>("PlayButton");
             SettingsButton = _root.Q<Button>("SettingsButton");
             AboutButton = _root.Q<Button>("AboutButton");
+            
+            TapToPlay = _root.Q<Label>("TapToPlayText");
+            TapToPlay.text = _tapToPlayLanguage.GetText();
+
             GameVersionText = _root.Q<Label>("GameVersionText");
         }
 

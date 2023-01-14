@@ -12,7 +12,7 @@
                 <ui:VisualElement style="background-image: url(&apos;project://database/Assets/Graphics/Icons/Info.png?fileID=2800000&amp;guid=11dd55d1e7d20274ab1b7a9bd899fd79&amp;type=3#Info&apos;); width: 45px; height: 45px;" />
             </ui:Button>
             <ui:VisualElement name="Logo" style="background-image: url(&apos;project://database/Assets/Graphics/CICD/The%20Last%20Move%20Logo%20Text%204000px-w.png?fileID=2800000&amp;guid=e87b4e53ac0915c49be97cac1cc73b1c&amp;type=3#The Last Move Logo Text 4000px-w&apos;); width: 350px; height: 350px; -unity-background-scale-mode: scale-to-fit;" />
-            <ui:Label text="Tap to play" display-tooltip-when-elided="true" style="font-size: 60px; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.77); margin-top: 60px;" />
+            <ui:Label text="Tap to play" display-tooltip-when-elided="true" name="TapToPlayText" style="font-size: 60px; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.77); margin-top: 60px;" />
         </SafeArea>
     </ui:VisualElement>
 </ui:UXML>

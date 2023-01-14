@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using Mixin.TheLastMove.Save;
 using Mixin.Utils;
+using Mixin.Language;
 
 namespace Mixin.TheLastMove.Settings
 {
@@ -29,16 +30,21 @@ namespace Mixin.TheLastMove.Settings
         {
             QualitySettings.SetQualityLevel(_data.Quality);
             SaveManager.Instance.UserSettingsData.Save();
+
+            LanguageManager.Instance.SelectedLanguage = SaveManager.Instance.UserSettingsData.Data.Language;
+            _uib.Init();
         }
 
         private void UpdateMusicVolume(ChangeEvent<int> evt)
         {
             _data.MusicVolume = evt.newValue;
+            SetVolume("MusicVolume", evt.newValue);
         }
 
         private void UpdateSoundVolume(ChangeEvent<int> evt)
         {
             _data.SoundVolume = evt.newValue;
+            SetVolume("SoundVolume", evt.newValue);
         }
 
         private void UpdateQuality(ChangeEvent<string> evt)
@@ -50,6 +56,18 @@ namespace Mixin.TheLastMove.Settings
         {
             if (Enum.TryParse<Language.Language>(evt.newValue, out Language.Language language))
                 _data.Language = language;
+        }
+
+        private void SetVolume(string mixerGroup, float value)
+        {
+            ApplicationManager.Instance.AudioMixer.SetFloat(mixerGroup, CalculateVolume(value));
+        }
+
+        private float CalculateVolume(float value)
+        {
+            float volume = Mathf.Log10(value / 100f) * 20f;
+            if (value == 0) volume = -80f;
+            return volume;
         }
     }
 }

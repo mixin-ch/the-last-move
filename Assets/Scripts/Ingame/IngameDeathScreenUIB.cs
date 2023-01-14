@@ -1,3 +1,4 @@
+using Mixin.Language;
 using Mixin.Utils;
 using System;
 using System.Collections;
@@ -10,9 +11,18 @@ namespace Mixin.TheLastMove
     public class IngameDeathScreenUIB : UIBuildManager<IngameDeathScreenUIB>
     {
         private VisualElement _body;
+
         private Button _respawnButton;
+        [SerializeField]
+        private LanguageTextSO _respawnLanguage;
+
         private Button _restartButton;
+        [SerializeField]
+        private LanguageTextSO _restartLanguage;
+
         private Button _quitButton;
+        [SerializeField]
+        private LanguageTextSO _quitLanguage;
         public Label ScoreText { get; set; }
         public Label HighscoreText { get; set; }
         public Label KillText { get; set; }
@@ -29,8 +39,14 @@ namespace Mixin.TheLastMove
             _body = _root.Q<VisualElement>("DeathScreenBody");
 
             _respawnButton = _body.Q<Button>("RespawnButton");
+            _respawnButton.text = _respawnLanguage.GetText();
+
             _restartButton = _body.Q<Button>("RestartButton");
+            _restartButton.text = _restartLanguage.GetText();
+
             _quitButton = _body.Q<Button>("QuitButton");
+            _quitButton.text = _quitLanguage.GetText();
+
             ScoreText = _body.Q<Label>("ScoreText");
             HighscoreText = _body.Q<Label>("HighscoreText");
             KillText = _body.Q<Label>("KillText");

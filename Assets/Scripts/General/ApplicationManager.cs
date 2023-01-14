@@ -6,17 +6,19 @@ using UnityEngine.Audio;
 
 namespace Mixin.TheLastMove
 {
-    public class ApplicationManager : ApplicationManagerBase
+    public class ApplicationManager : Singleton<ApplicationManager>
     {
         [SerializeField]
         private AudioMixer _audioMixer;
+
+        public AudioMixer AudioMixer { get => _audioMixer; }
 
         private void Start()
         {
             // Load User Game Data
 
             // Load User Settings
-            SetFramerate(60);
+            Application.targetFrameRate = 60;
 
             /*int musicVolume = 100;
             SetVolume(_audioMixer, musicVolume);

@@ -16,7 +16,7 @@ namespace Mixin.TheLastMove
         private void Start()
         {
             MainMenuUIB.Instance.GameVersionText.text =
-                $"Version {ApplicationManager.GetGameVersion()}";
+                $"Version {Application.version}";
 
             AudioManager.Instance.PlayTrack(_themeSong);
         }

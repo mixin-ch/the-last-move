@@ -12,11 +12,24 @@ namespace Mixin.TheLastMove
     {
         private Button ExitButton;
         public SliderInt MusicVolumeSlider { get; set; }
+        [SerializeField]
+        private LanguageTextSO _musicVolumeLanguage;
+
         public SliderInt SoundVolumeSlider { get; set; }
+        [SerializeField]
+        private LanguageTextSO _soundVolumeLanguage;
+
         public DropdownField QualityDropdown { get; set; }
+        [SerializeField]
+        private LanguageTextSO _qualityLanguage;
+
         public DropdownField LanguageDropdown { get; set; }
+        [SerializeField]
+        private LanguageTextSO _languageLanguage;
 
         public Button SaveButton;
+        [SerializeField]
+        private LanguageTextSO _saveLanguage;
 
         public static event Action OnExitButtonClicked;
         public static event Action OnSaveButtonClicked;
@@ -25,12 +38,27 @@ namespace Mixin.TheLastMove
         {
             base.Awake();
 
+            Init();
+        }
+
+        public void Init()
+        {
             ExitButton = _root.Q<Button>("ExitButton");
+
             MusicVolumeSlider = _root.Q<SliderInt>("MusicVolumeSlider");
+            MusicVolumeSlider.label = _musicVolumeLanguage.GetText();
+
             SoundVolumeSlider = _root.Q<SliderInt>("SoundVolumeSlider");
+            SoundVolumeSlider.label = _soundVolumeLanguage.GetText();
+
             QualityDropdown = _root.Q<DropdownField>("QualityDropdown");
+            QualityDropdown.label = _qualityLanguage.GetText();
+
             LanguageDropdown = _root.Q<DropdownField>("LanguageDropdown");
+            LanguageDropdown.label = _languageLanguage.GetText();
+
             SaveButton = _root.Q<Button>("SaveButton");
+            SaveButton.text = _saveLanguage.GetText();
 
             QualityDropdown.choices = QualitySettings.names.ToList();
 

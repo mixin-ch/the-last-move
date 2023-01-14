@@ -10,7 +10,7 @@ namespace Mixin.TheLastMove.Sound
     /// <summary>
     /// Manages the sound.
     /// </summary>
-    public class SoundManager : Singleton<SoundManager>
+    public class IngameSoundManager : Singleton<IngameSoundManager>
     {
         [SerializeField]
         private MixinDictionary<SoundType, AudioTrackSetupSO> _soundList;

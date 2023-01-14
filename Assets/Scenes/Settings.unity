@@ -356,3 +356,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dc6788470723134382ddb8a6bee951b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _musicVolumeLanguage: {fileID: 11400000, guid: 3c881018af659e949a99cc64051279df, type: 2}
+  _soundVolumeLanguage: {fileID: 11400000, guid: 297c8a3626aea5649a5b580cf15f25ba, type: 2}
+  _qualityLanguage: {fileID: 11400000, guid: 0c248332220f22c42a2c32d9be9c4615, type: 2}
+  _languageLanguage: {fileID: 11400000, guid: 1b87f06e097f7bf43b0c6a683c9ad609, type: 2}
+  _saveLanguage: {fileID: 11400000, guid: d18eaf8d4477d5d4da1bab6ac8069027, type: 2}

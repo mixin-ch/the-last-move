@@ -370,3 +370,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba5bc8aa6183931499277664be4c7c2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _tapToPlayLanguage: {fileID: 11400000, guid: 92c8e9778b9bd934da24010e83390390, type: 2}
