@@ -18,6 +18,7 @@ namespace Mixin.TheLastMove
             MainMenuUIB.Instance.GameVersionText.text =
                 $"Version {Application.version}";
 
+            AudioManager.Instance.StopAllAudio();
             AudioManager.Instance.PlayTrack(_themeSong);
         }
 
@@ -54,6 +55,8 @@ namespace Mixin.TheLastMove
             MainMenuUIB.OnPlayButtonClicked -= OnPlayButtonClicked;
             MainMenuUIB.OnSettingsButtonClicked -= OnSettingsButtonClicked;
             MainMenuUIB.OnAboutButtonClicked -= OnAboutButtonClicked;
+
+            AudioManager.Instance.StopAllAudio();
         }
     }
 }
