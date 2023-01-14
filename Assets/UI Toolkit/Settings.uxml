@@ -3,14 +3,24 @@
     <ui:VisualElement name="Background" style="position: absolute; width: 100%; height: 100%; background-image: url(&apos;project://database/Assets/Graphics/Pages/Settings%20Background.jpg?fileID=2800000&amp;guid=5603a0c173e43914dac130bf61dafb59&amp;type=3#Settings Background&apos;);" />
     <ui:VisualElement name="Body" style="flex-basis: 100%;">
         <SafeArea style="justify-content: center;">
-            <ui:Button text="&#x9;" display-tooltip-when-elided="true" name="ExitButton" class="button page-back-button" />
-            <ui:ScrollView name="SettingsContainer" style="padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px;">
+            <ui:VisualElement name="Header">
+                <ui:Label text="Settings" display-tooltip-when-elided="true" name="PageTitle" class="pageTitle" />
+                <ui:Button text="&#x9;" display-tooltip-when-elided="true" name="ExitButton" class="button page-back-button" />
+            </ui:VisualElement>
+            <ui:ScrollView name="SettingsContainer" style="padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px; flex-grow: 0; margin-top: 78px;">
                 <ui:SliderInt picking-mode="Ignore" label="Music Volume" value="42" high-value="100" name="MusicVolumeSlider" />
                 <ui:SliderInt picking-mode="Ignore" label="Sound Volume" value="42" high-value="100" name="SoundVolumeSlider" />
                 <ui:DropdownField label="Quality" index="0" name="QualityDropdown" />
                 <ui:DropdownField label="Language" index="0" name="LanguageDropdown" />
+                <ui:VisualElement name="LanguageContainer" style="align-items: center; justify-content: center; flex-direction: row;">
+                    <ui:Button name="EnglishIcon" class="languageIcon" style="width: 100px; -unity-background-scale-mode: scale-to-fit;" />
+                    <ui:Button name="GermanIcon" class="languageIcon" style="width: 100px; -unity-background-scale-mode: scale-to-fit; background-image: url(&apos;project://database/Assets/Graphics/Icons/Languages/German.png?fileID=2800000&amp;guid=c920738a74c1c394193d0f38dce0cd96&amp;type=3#German&apos;);" />
+                    <ui:Button name="SwissGermanIcon" class="languageIcon" style="width: 100px; -unity-background-scale-mode: scale-to-fit; background-image: url(&apos;project://database/Assets/Graphics/Icons/Languages/Swiss%20German.png?fileID=2800000&amp;guid=9966f6cac33442147b8d55f97b99d440&amp;type=3#Swiss German&apos;);" />
+                    <ui:Button name="FrenchIcon" class="languageIcon" style="width: 100px; -unity-background-scale-mode: scale-to-fit; background-image: url(&apos;project://database/Assets/Graphics/Icons/Languages/French.png?fileID=2800000&amp;guid=1a16670e60ecb8a4ba9b7bf520894e5a&amp;type=3#French&apos;);" />
+                </ui:VisualElement>
             </ui:ScrollView>
-            <ui:VisualElement name="SaveButtonContainer" style="align-items: center;">
+            <ui:VisualElement name="Spacer" style="flex-grow: 1;" />
+            <ui:VisualElement name="SaveButtonContainer" style="align-items: center; margin-bottom: 63px;">
                 <ui:Button text="Save" display-tooltip-when-elided="true" name="SaveButton" class="button" style="background-image: url(&apos;project://database/Assets/Graphics/Icons/Button%20White.png?fileID=21300000&amp;guid=5c39269aa76ce9e49ac66ef9dd10d6f0&amp;type=3#Button White&apos;); -unity-background-image-tint-color: rgb(0, 210, 255);" />
             </ui:VisualElement>
         </SafeArea>
