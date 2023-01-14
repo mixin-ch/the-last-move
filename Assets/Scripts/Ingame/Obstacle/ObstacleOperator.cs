@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Mixin.TheLastMove
+namespace Mixin.TheLastMove.Environment
 {
     public class ObstacleOperator : MonoBehaviour
     {
@@ -14,9 +14,9 @@ namespace Mixin.TheLastMove
             transform.position = transform.position + (Vector3)offset;
         }
 
-        public void Destroy()
+        public void Kill()
         {
-            Destroy(gameObject);
+            EnvironmentManager.Instance.KillObstacle(this);
         }
 
         public Vector2 Position => transform.position;

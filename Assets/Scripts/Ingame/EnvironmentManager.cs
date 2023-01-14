@@ -1,10 +1,8 @@
-using Mixin.TheLastMove.Ads;
 using Mixin.TheLastMove.Ingame;
 using Mixin.TheLastMove.Player;
 using Mixin.Utils;
 using System;
 using System.Collections.Generic;
-using Unity.Services.Mediation;
 using UnityEngine;
 
 namespace Mixin.TheLastMove.Environment
@@ -78,6 +76,15 @@ namespace Mixin.TheLastMove.Environment
 
             _started = true;
             OnGameStarted?.Invoke();
+        }
+
+        public void KillObstacle(ObstacleOperator obstacleOperator)
+        {
+            if (!_started)
+                return;
+
+            _obstacleOperatorList.Remove(obstacleOperator);
+            Destroy(obstacleOperator.gameObject);
         }
 
         private void Clear()
@@ -183,7 +190,7 @@ namespace Mixin.TheLastMove.Environment
                 if (-@operator.Position.x > _deleteDistance)
                 {
                     _obstacleOperatorList.Remove(@operator);
-                    @operator.Destroy();
+                    Destroy(@operator.gameObject);
                     i--;
                 }
             }
