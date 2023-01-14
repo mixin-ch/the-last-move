@@ -1,18 +1,58 @@
+using Mixin.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
-public class GeneralSoundManager : MonoBehaviour
+namespace Mixin.TheLastMove.Sound
 {
-    // Start is called before the first frame update
-    void Start()
+    public class GeneralSoundManager : Singleton<GeneralSoundManager>
     {
-        
-    }
+        [SerializeField]
+        private List<UIDocument> _allUIDocuments = new List<UIDocument>();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        [SerializeField]
+        private MixinDictionary<SoundType, AudioTrackSetupSOList> _soundList;
+
+        private List<Button> _buttonList = new List<Button>();
+
+        public MixinDictionary<SoundType, AudioTrackSetupSOList> SoundList { get => _soundList; }
+
+        protected override void Awake()
+        {
+            base.Awake();
+
+            QueryAllUIDocuments();
+        }
+
+        private void Start()
+        {
+            QueryAllButtons();
+
+            foreach (Button button in _buttonList)
+                button.clicked += () => PlaySound(SoundType.ButtonClick);
+        }
+
+        private void OnDisable()
+        {
+            foreach (Button button in _buttonList)
+                button.clicked -= () => PlaySound(SoundType.ButtonClick);
+        }
+
+        private void QueryAllUIDocuments()
+        {
+            _allUIDocuments.Add(FindObjectOfType<UIDocument>());
+        }
+
+        private void QueryAllButtons()
+        {
+            foreach (UIDocument uiDocument in _allUIDocuments)
+                _buttonList.Add(uiDocument.rootVisualElement.Q<Button>());
+        }
+
+        private void PlaySound(SoundType soundType)
+        {
+            _soundList[soundType].PlaySound();
+        }
     }
 }
