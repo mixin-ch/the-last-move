@@ -555,6 +555,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &958579375 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4459888564106650805, guid: d051f43ede0ee0f43b90c2e1c63f7767, type: 3}
+  m_PrefabInstance: {fileID: 4459888565110187045}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1012875409 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4459888564106650804, guid: d051f43ede0ee0f43b90c2e1c63f7767, type: 3}
@@ -880,6 +885,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 311dbcf8a6894274982975ad343cf9e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _resumeLanguage: {fileID: 11400000, guid: dcbc379a56945d44e8d95dd4588a5430, type: 2}
+  _quitLanguage: {fileID: 11400000, guid: aa1143f6bedcd6b428858672706d6fbb, type: 2}
 --- !u!1 &2005658399
 GameObject:
   m_ObjectHideFlags: 0
@@ -1013,13 +1020,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b94f4d59316af124184bc9c2cfee0cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectablePrefab: {fileID: 4459888564106650805, guid: d051f43ede0ee0f43b90c2e1c63f7767, type: 3}
+  _collectablePrefab: {fileID: 958579375}
   _collectableContainer: {fileID: 841584972}
-  spawnRadius: 50
-  spawnCount: 10
-  minHeight: 5
-  maxJumpRange: 5
-  spawnInterval: 10
+  _spawnRadius: 50
+  _spawnCount: 10
+  _minHeight: 5
+  _maxJumpRange: 5
+  _spawnInterval: 10
 --- !u!1 &2126218167
 GameObject:
   m_ObjectHideFlags: 0

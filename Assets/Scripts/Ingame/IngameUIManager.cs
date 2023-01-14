@@ -36,8 +36,8 @@ namespace Mixin.TheLastMove.Ingame.UI
             IngameDeathScreenUIB.OnQuitButtonClicked -= GoToMainMenu;
             IngamePauseUIB.OnQuitButtonClicked -= GoToMainMenu;
             IngamePauseUIB.OnResumeButtonClicked -= IngamePauseUIB_OnResumeButtonClicked;
-            _playerOperator.OnPlayerTakeDamageEvent -= _playerOperator_OnPlayerTakeDamageEvent;
-            _playerOperator.OnPlayerDeathEvent -= _playerOperator_OnPlayerDeathEvent;
+            //_playerOperator.OnPlayerTakeDamageEvent -= _playerOperator_OnPlayerTakeDamageEvent;
+            //_playerOperator.OnPlayerDeathEvent -= _playerOperator_OnPlayerDeathEvent;
         }
 
         private void EnvironmentManager_OnGameStarted()
