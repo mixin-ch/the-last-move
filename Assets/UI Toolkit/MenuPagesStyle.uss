@@ -24,8 +24,8 @@ Label {
     background-image: url('project://database/Assets/Graphics/UI/Button.png?fileID=21300000&guid=980cff75d41515443b6e4cf2f15beede&type=3#Button');
     padding-left: 62px;
     padding-right: 66px;
-    padding-top: 24px;
-    padding-bottom: 24px;
+    padding-top: 20px;
+    padding-bottom: 30px;
     -unity-background-scale-mode: stretch-to-fill;
     -unity-text-align: middle-center;
     -unity-font: url('project://database/Assets/Font/Rowdies/Rowdies-Bold.ttf?fileID=12800000&guid=ff24f66be5275c940a18a95dea4e3057&type=3#Rowdies-Bold');
