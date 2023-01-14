@@ -17,22 +17,24 @@ namespace Mixin.TheLastMove.Settings
             _uib.MusicVolumeSlider.value = _data.MusicVolume;
             _uib.SoundVolumeSlider.value = _data.SoundVolume;
             _uib.QualityDropdown.value = QualitySettings.names[QualitySettings.GetQualityLevel()];
-            _uib.LanguageDropdown.value = _data.Language.ToString();
+
+            _uib.EnglishButton.clicked += () => UpdateLanguage(Language.Language.English);
+            _uib.GermanButton.clicked += () => UpdateLanguage(Language.Language.German);
+            _uib.SwissGermanButton.clicked += () => UpdateLanguage(Language.Language.SwissGerman);
+            _uib.FrenchButton.clicked += () => UpdateLanguage(Language.Language.French);
 
             _uib.SaveButton.clicked += OnSaveButtonClicked;
             _uib.MusicVolumeSlider.RegisterValueChangedCallback(UpdateMusicVolume);
             _uib.SoundVolumeSlider.RegisterValueChangedCallback(UpdateSoundVolume);
             _uib.QualityDropdown.RegisterValueChangedCallback(UpdateQuality);
-            _uib.LanguageDropdown.RegisterValueChangedCallback(UpdateLanguage);
+
+            SetLanguageButtonActive();
         }
 
         private void OnSaveButtonClicked()
         {
             QualitySettings.SetQualityLevel(_data.Quality);
             SaveManager.Instance.UserSettingsData.Save();
-
-            LanguageManager.Instance.SelectedLanguage = SaveManager.Instance.UserSettingsData.Data.Language;
-            _uib.Init();
         }
 
         private void UpdateMusicVolume(ChangeEvent<int> evt)
@@ -52,18 +54,59 @@ namespace Mixin.TheLastMove.Settings
             _data.Quality = Array.IndexOf(QualitySettings.names, evt.newValue);
         }
 
-        private void UpdateLanguage(ChangeEvent<string> evt)
+        private void UpdateLanguage(Language.Language language)
         {
-            if (Enum.TryParse<Language.Language>(evt.newValue, out Language.Language language))
-                _data.Language = language;
+            _data.Language = language;
+            LanguageManager.Instance.SelectedLanguage = language;
+
+            SetLanguageButtonActive();
+
+            _uib.Init();
+            SaveManager.Instance.UserSettingsData.Save();
         }
 
-        private void SetVolume(string mixerGroup, float value)
+        private void SetLanguageButtonActive()
+        {
+            ResetAllLanguageButtonClasses();
+            AddActiveClassToLanguageButton();
+        }
+
+        private void AddActiveClassToLanguageButton()
+        {
+            switch (_data.Language)
+            {
+                case Language.Language.English:
+                    _uib.EnglishButton.AddToClassList("active");
+                    break;
+                case Language.Language.German:
+                    _uib.GermanButton.AddToClassList("active");
+                    break;
+                case Language.Language.SwissGerman:
+                    _uib.SwissGermanButton.AddToClassList("active");
+                    break;
+                case Language.Language.French:
+                    _uib.FrenchButton.AddToClassList("active");
+                    break;
+                default:
+                    $"Language {_data.Language} is not defined.".LogWarning();
+                    break;
+            }
+        }
+
+        private void ResetAllLanguageButtonClasses()
+        {
+            _uib.EnglishButton.RemoveFromClassList("active");
+            _uib.GermanButton.RemoveFromClassList("active");
+            _uib.SwissGermanButton.RemoveFromClassList("active");
+            _uib.FrenchButton.RemoveFromClassList("active");
+        }
+
+        public static void SetVolume(string mixerGroup, float value)
         {
             ApplicationManager.Instance.AudioMixer.SetFloat(mixerGroup, CalculateVolume(value));
         }
 
-        private float CalculateVolume(float value)
+        public static float CalculateVolume(float value)
         {
             float volume = Mathf.Log10(value / 100f) * 20f;
             if (value == 0) volume = -80f;

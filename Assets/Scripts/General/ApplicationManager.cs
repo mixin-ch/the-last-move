@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mixin.Utils;
 using UnityEngine.Audio;
+using Mixin.TheLastMove.Settings;
+using Mixin.TheLastMove.Save;
+using Mixin.Language;
 
 namespace Mixin.TheLastMove
 {
@@ -10,6 +13,8 @@ namespace Mixin.TheLastMove
     {
         [SerializeField]
         private AudioMixer _audioMixer;
+
+        private UserSettingsData _settingsData => SaveManager.Instance.UserSettingsData.Data;
 
         public AudioMixer AudioMixer { get => _audioMixer; }
 
@@ -20,11 +25,13 @@ namespace Mixin.TheLastMove
             // Load User Settings
             Application.targetFrameRate = 60;
 
-            /*int musicVolume = 100;
-            SetVolume(_audioMixer, musicVolume);
+            int musicVolume = _settingsData.MusicVolume;
+            SettingsManager.SetVolume("MusicVolume", musicVolume);
 
-            int soundVolume = 100;
-            SetVolume(_audioMixer, soundVolume);*/
+            int soundVolume = _settingsData.SoundVolume;
+            SettingsManager.SetVolume("SoundVolume", soundVolume);
+
+            LanguageManager.Instance.SelectedLanguage = _settingsData.Language;
         }
     }
 }

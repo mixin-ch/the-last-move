@@ -10,7 +10,12 @@ namespace Mixin.TheLastMove
 {
     public class SettingsUIB : UIBuildManager<SettingsUIB>
     {
+        private Label PageTitle;
+        [SerializeField]
+        private LanguageTextSO _pageTitleLanguage;
+
         private Button ExitButton;
+
         public SliderInt MusicVolumeSlider { get; set; }
         [SerializeField]
         private LanguageTextSO _musicVolumeLanguage;
@@ -23,9 +28,11 @@ namespace Mixin.TheLastMove
         [SerializeField]
         private LanguageTextSO _qualityLanguage;
 
-        public DropdownField LanguageDropdown { get; set; }
-        [SerializeField]
-        private LanguageTextSO _languageLanguage;
+        /* Language Buttons */
+        public Button EnglishButton { get; set; }
+        public Button GermanButton { get; set; }
+        public Button SwissGermanButton { get; set; }
+        public Button FrenchButton { get; set; }
 
         public Button SaveButton;
         [SerializeField]
@@ -43,6 +50,9 @@ namespace Mixin.TheLastMove
 
         public void Init()
         {
+            PageTitle = _root.Q<Label>("PageTitle");
+            PageTitle.text = _pageTitleLanguage.GetText();
+
             ExitButton = _root.Q<Button>("ExitButton");
 
             MusicVolumeSlider = _root.Q<SliderInt>("MusicVolumeSlider");
@@ -54,18 +64,15 @@ namespace Mixin.TheLastMove
             QualityDropdown = _root.Q<DropdownField>("QualityDropdown");
             QualityDropdown.label = _qualityLanguage.GetText();
 
-            LanguageDropdown = _root.Q<DropdownField>("LanguageDropdown");
-            LanguageDropdown.label = _languageLanguage.GetText();
+            EnglishButton = _root.Q<Button>("EnglishButton");
+            GermanButton = _root.Q<Button>("GermanButton");
+            SwissGermanButton = _root.Q<Button>("SwissGermanButton");
+            FrenchButton = _root.Q<Button>("FrenchButton");
 
             SaveButton = _root.Q<Button>("SaveButton");
             SaveButton.text = _saveLanguage.GetText();
 
             QualityDropdown.choices = QualitySettings.names.ToList();
-
-            LanguageDropdown.choices = Enum.GetValues(typeof(Language.Language))
-                .Cast<Language.Language>()
-                .Select(v => v.ToString())
-                .ToList();
         }
 
         private void OnEnable()
