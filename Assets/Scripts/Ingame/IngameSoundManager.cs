@@ -13,22 +13,18 @@ namespace Mixin.TheLastMove.Sound
     public class IngameSoundManager : Singleton<IngameSoundManager>
     {
         [SerializeField]
-        private MixinDictionary<SoundType, AudioTrackSetupSO> _soundList;
+        private MixinDictionary<SoundType, AudioTrackSetupSOList> _soundList;
 
-        [SerializeField]
-        private List<AudioTrackSetupSO> _startVoices;
-
-        public MixinDictionary<SoundType, AudioTrackSetupSO> SoundList { get => _soundList; }
-        public List<AudioTrackSetupSO> StartVoices { get => _startVoices; }
+        public MixinDictionary<SoundType, AudioTrackSetupSOList> SoundList { get => _soundList; }
 
         private void Start()
         {
-            EnvironmentManager.OnGameStarted += () => PlaySound(GetRandomStartVoice());
+            EnvironmentManager.OnGameStarted += () => PlaySound(SoundType.StartVoice);
             EnvironmentManager.Instance.PlayerOperator.OnPlayerDeathEvent += () => PlaySound(SoundType.Die);
             EnvironmentManager.Instance.PlayerOperator.OnPlayerTakeDamageEvent += () => PlaySound(SoundType.TakeDamage);
             EnvironmentManager.Instance.PlayerOperator.OnPlayerAttackEvent += () => PlaySound(SoundType.Attack);
             InputManager.Instance.Input.Ingame.Jump.started += (context) => PlaySound(SoundType.Jump);
-            //InputManager.Instance.Input.Ingame.Attack.started += (context) => PlaySound(SoundType.Attack);
+            InputManager.Instance.Input.Ingame.Attack.started += (context) => PlaySound(SoundType.Attack);
             InputManager.Instance.Input.Ingame.Descend.started += (context) => PlaySound(SoundType.Descend);
         }
 
@@ -44,31 +40,7 @@ namespace Mixin.TheLastMove.Sound
 
         private void PlaySound(SoundType soundType)
         {
-            AudioTrackSetupSO sound = GetSoundTrackFromEnum(soundType);
-
-            if (sound != null)
-                AudioManager.Instance.PlayTrack(sound);
-        }
-
-        private void PlaySound(AudioTrackSetupSO audioTrackSetupSO)
-        {
-            if (audioTrackSetupSO == null)
-                return;
-
-            AudioManager.Instance.PlayTrack(audioTrackSetupSO);
-        }
-
-        private AudioTrackSetupSO GetRandomStartVoice()
-        {
-            if (_startVoices == null || _startVoices.Count < 1)
-                return null;
-
-            return _startVoices.PickRandom(); ;
-        }
-
-        private AudioTrackSetupSO GetSoundTrackFromEnum(SoundType soundType)
-        {
-            return _soundList.SaveGet(soundType);
+            _soundList[soundType].PlaySound();
         }
     }
 }
