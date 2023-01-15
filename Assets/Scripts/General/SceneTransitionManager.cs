@@ -35,7 +35,7 @@ namespace Mixin.TheLastMove.Scene
 
             yield return new WaitForSeconds(_transitionTime);
 
-            // Now everything is black
+            /*Now everything is black*/
 
             while (operation.progress < 0.9f)
                 yield return null;
@@ -44,7 +44,6 @@ namespace Mixin.TheLastMove.Scene
 
             // Fade out
             TransitionUIB.Instance.TransitionElement.RemoveFromClassList("active");
-            yield return new WaitForSeconds(_transitionTime);
         }
     }
 }
