@@ -292,6 +292,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 566055576213443608, guid: dad7844302d340142bfd0c6f7227394e, type: 3}
+      propertyPath: _transitionScene
+      value: Transition
+      objectReference: {fileID: 0}
     - target: {fileID: 2124896538414484801, guid: dad7844302d340142bfd0c6f7227394e, type: 3}
       propertyPath: m_Name
       value: Main Manager

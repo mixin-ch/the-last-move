@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/Transition.uss?fileID=7433441132597879392&amp;guid=e0a4140fd74768b469205f2c62129d97&amp;type=3#Transition" />
+    <ui:VisualElement name="Body" picking-mode="Ignore" class="transitionElement">
+        <ui:VisualElement name="TransitionElement" picking-mode="Ignore" class="transitionElement" />
+    </ui:VisualElement>
+</ui:UXML>

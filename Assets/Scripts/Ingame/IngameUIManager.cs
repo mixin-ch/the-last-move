@@ -3,9 +3,11 @@ using Mixin.TheLastMove.Environment;
 using Mixin.TheLastMove.Ingame;
 using Mixin.TheLastMove.Player;
 using Mixin.TheLastMove.Save;
+using Mixin.TheLastMove.Scene;
 using Mixin.Utils;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Mixin.TheLastMove.Ingame.UI
 {
@@ -62,7 +64,7 @@ namespace Mixin.TheLastMove.Ingame.UI
 
         private void GoToMainMenu()
         {
-            SceneManager.Instance.LoadScene(SceneName.MainMenu.ToString());
+            SceneTransitionManager.Instance.ChangeSceneWithTransition(SceneName.MainMenu, LoadSceneMode.Single);
         }
 
         private void IngamePauseUIB_OnResumeButtonClicked()

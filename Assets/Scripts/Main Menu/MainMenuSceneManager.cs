@@ -1,3 +1,4 @@
+using Mixin.TheLastMove.Scene;
 using Mixin.Utils;
 using Mixin.Utils.Audio;
 using System;
@@ -39,8 +40,7 @@ namespace Mixin.TheLastMove
 
         private void ChangeScene(SceneName sceneName, LoadSceneMode loadSceneMode)
         {
-            $"Changing to Scene {sceneName}".LogProgress();
-            Utils.SceneManager.Instance.LoadScene(sceneName.ToString(), loadSceneMode);
+            SceneTransitionManager.Instance.ChangeSceneWithTransition(sceneName, loadSceneMode);
         }
 
         private void OnEnable()
