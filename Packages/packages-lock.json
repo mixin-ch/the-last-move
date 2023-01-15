@@ -21,9 +21,10 @@
       "depth": 0,
       "source": "git",
       "dependencies": {
-        "com.mixin.unity-mixin-utils": "0.5.0"
+        "com.mixin.unity-mixin-utils": "0.5.0",
+        "com.unity.nuget.newtonsoft-json": "3.0.2"
       },
-      "hash": "072879f6c7e825c708f067a992d9d6c4841c4014"
+      "hash": "1165ffa5595fd1ab99eeb0b9128c59831c901c94"
     },
     "com.unity.2d.animation": {
       "version": "7.0.8",
@@ -167,7 +168,7 @@
     },
     "com.unity.nuget.newtonsoft-json": {
       "version": "3.0.2",
-      "depth": 2,
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
