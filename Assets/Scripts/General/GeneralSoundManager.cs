@@ -18,7 +18,7 @@ namespace Mixin.TheLastMove.Sound
 
         public MixinDictionary<SoundType, AudioTrackSetupSOList> SoundList { get => _soundList; }
 
-        protected override void Awake()
+        /*protected override void Awake()
         {
             base.Awake();
 
@@ -33,11 +33,11 @@ namespace Mixin.TheLastMove.Sound
                 button.clicked += () => PlaySound(SoundType.ButtonClick);
         }
 
-        private void OnDisable()
+        *//*private void OnDisable()
         {
             foreach (Button button in _buttonList)
                 button.clicked -= () => PlaySound(SoundType.ButtonClick);
-        }
+        }*//*
 
         private void QueryAllUIDocuments()
         {
@@ -49,8 +49,8 @@ namespace Mixin.TheLastMove.Sound
             foreach (UIDocument uiDocument in _allUIDocuments)
                 _buttonList.Add(uiDocument.rootVisualElement.Q<Button>());
         }
-
-        private void PlaySound(SoundType soundType)
+        */
+        public void PlaySound(SoundType soundType)
         {
             _soundList[soundType].PlaySound();
         }
