@@ -1406,8 +1406,8 @@ MonoBehaviour:
   _collectablePrefab: {fileID: 958579375}
   _collectableContainer: {fileID: 841584972}
   _spawnRadius: 50
-  _spawnCount: 10
-  _minHeight: 5
+  _spawnCount: 20
+  _minHeight: -5
   _maxJumpRange: 5
   _spawnInterval: 10
 --- !u!1 &2099940136

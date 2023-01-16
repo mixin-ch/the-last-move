@@ -1,4 +1,5 @@
 using Mixin.TheLastMove.Environment;
+using Mixin.TheLastMove.Environment.Collectable;
 using Mixin.Utils;
 using Mixin.Utils.Audio;
 using System.Collections;
@@ -26,6 +27,7 @@ namespace Mixin.TheLastMove.Sound
             InputManager.Instance.Input.Ingame.Jump.started += (context) => PlaySound(SoundType.Jump);
             InputManager.Instance.Input.Ingame.Attack.started += (context) => PlaySound(SoundType.Attack);
             InputManager.Instance.Input.Ingame.Descend.started += (context) => PlaySound(SoundType.Descend);
+            Collectable.OnCollected += () => PlaySound(SoundType.Collect);
         }
 
         /* private void OnDisable()

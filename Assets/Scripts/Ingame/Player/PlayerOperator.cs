@@ -167,7 +167,6 @@ namespace Mixin.TheLastMove.Player
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            $"Trigger entered".Log();
             if (collision.gameObject.CompareTag("Harmful"))
                 TakeDamage();
 

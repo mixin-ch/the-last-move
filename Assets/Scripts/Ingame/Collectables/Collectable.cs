@@ -6,7 +6,32 @@ namespace Mixin.TheLastMove.Environment.Collectable
 
     public class Collectable : MonoBehaviour
     {
+        private BoxCollider2D _collider;
+
+        [SerializeField]
+        private GameObject _collectableModel;
+
         public static event Action OnCollected;
+
+
+        private void Awake()
+        {
+            _collider = GetComponent<BoxCollider2D>();
+        }
+
+        public void Activate()
+        {
+            // Enable the collectable's renderer and collider
+            _collectableModel.SetActive(true);
+            _collider.enabled = true;
+        }
+
+        public void Deactivate()
+        {
+            // Disable the collectable's renderer and collider
+            _collectableModel.SetActive(false);
+            _collider.enabled = false;
+        }
 
         public void Collect()
         {
@@ -15,12 +40,9 @@ namespace Mixin.TheLastMove.Environment.Collectable
             // or you can call an event that you can listen in the player script.
             Debug.Log("Collectable Collected!");
 
-            OnCollected?.Invoke();
-        }
+            Deactivate();
 
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            Debug.Log("Collectable Collected! 2");
+            OnCollected?.Invoke();
         }
     }
 }

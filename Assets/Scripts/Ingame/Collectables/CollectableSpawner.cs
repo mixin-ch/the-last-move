@@ -1,5 +1,6 @@
 using Mixin.Utils;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -16,7 +17,7 @@ namespace Mixin.TheLastMove.Environment.Collectable
         [SerializeField]
         private int _spawnCount = 10; // the number of collectables to spawn
         [SerializeField]
-        private float _minHeight = 5f; // the minimum height above the terrain to spawn collectables
+        private float _minHeight = -5f; // the minimum height above the terrain to spawn collectables
         [SerializeField]
         private float _maxJumpRange = 5f; // the maximum jump range of the player
         [SerializeField]
@@ -25,6 +26,9 @@ namespace Mixin.TheLastMove.Environment.Collectable
         private float _timeSinceLastSpawn; // the time since the last collectable was spawned
         private GameObject[] _collectablePool; // the pool of collectable objects
         private int _currentIndex; // the current index of the next collectable to use from the pool
+
+        private List<Collectable> _collectableComponents = new List<Collectable>();
+        private int _currentCollectableIndex; // the current index of the next collectable component to use from the list
 
         private float _moveSpeed; // The speed of the terrain movement
         private float _moveDistance; // The distance to move the terrain
@@ -37,7 +41,12 @@ namespace Mixin.TheLastMove.Environment.Collectable
             for (int i = 0; i < _spawnCount; i++)
             {
                 _collectablePool[i] = _collectablePrefab.GeneratePrefab(_collectableContainer);
-                _collectablePool[i].SetActive(false);
+
+                //Save the reference to the Collectable component
+                Collectable collectableComponent = _collectablePool[i].GetComponent<Collectable>();
+                _collectableComponents.Add(collectableComponent);
+
+                _collectableComponents[i].Deactivate();
             }
 
             // Start spawning collectables
@@ -48,35 +57,27 @@ namespace Mixin.TheLastMove.Environment.Collectable
         {
             while (true)
             {
-                // Get the terrain collider component
-                //var terrainCollider = GetComponent<TerrainCollider>();
-
-                // Spawn collectables at random positions within the spawn radius
                 for (int i = 0; i < _spawnCount; i++)
                 {
-                    // Get the next collectable from the pool
                     var collectable = _collectablePool[_currentIndex];
                     _currentIndex = (_currentIndex + 1) % _spawnCount;
 
-                    // Generate a random position within the spawn radius
-                    var randomPos = transform.position + Random.insideUnitSphere * _spawnRadius;
-                    // Get the terrain height at the random position
-                    //var terrainHeight = Terrain.activeTerrain.SampleHeight(randomPos);
-                    var terrainHeight = -5;
-                    // Set the y-coordinate of the random position to be above the terrain height
-                    randomPos.y = terrainHeight + _minHeight;
-                    // Ensure the collectable is reachable within the player's jump range
-                    if (randomPos.y - terrainHeight <= _maxJumpRange)
+                    var randomPos = new Vector3(transform.position.x + Random.Range(-_spawnRadius, _spawnRadius),
+                                                transform.position.y + Random.Range(-_spawnRadius, _spawnRadius),
+                                                0);
+
+                    if (randomPos.y - _minHeight <= _maxJumpRange)
                     {
                         collectable.transform.position = randomPos;
-                        collectable.SetActive(true);
+                        //Activate the collectable
+                        _collectableComponents[_currentCollectableIndex].Activate();
+                        _currentCollectableIndex = (_currentCollectableIndex + 1) % _spawnCount;
                     }
                 }
-
-                // Wait for the specified interval before spawning the next set of collectables
                 yield return new WaitForSeconds(_spawnInterval);
             }
         }
+
 
         public void MoveCollectablesWithTerrain(float distance)
         {
