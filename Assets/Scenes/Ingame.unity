@@ -355,6 +355,7 @@ MonoBehaviour:
   _blockPrefab: {fileID: 3608964336775138525, guid: f1c77ce4284898040a1a5e1a1469caae, type: 3}
   _obstaclePrefab: {fileID: 3608964336775138525, guid: 083f8ea48cdda1147aa420ff4751a720, type: 3}
   _playerOperator: {fileID: 1822961194634340435}
+  _collectableSpawner: {fileID: 2084484239}
 --- !u!1 &642478925
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,7 +481,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3608964336775138526, guid: 083f8ea48cdda1147aa420ff4751a720, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.05
       objectReference: {fileID: 0}
     - target: {fileID: 3608964336775138526, guid: 083f8ea48cdda1147aa420ff4751a720, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1814,7 +1815,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4459888564106650804, guid: d051f43ede0ee0f43b90c2e1c63f7767, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1.28
       objectReference: {fileID: 0}
     - target: {fileID: 4459888564106650804, guid: d051f43ede0ee0f43b90c2e1c63f7767, type: 3}
       propertyPath: m_LocalPosition.y

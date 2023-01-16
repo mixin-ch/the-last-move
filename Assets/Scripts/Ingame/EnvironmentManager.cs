@@ -1,3 +1,4 @@
+using Mixin.TheLastMove.Environment.Collectable;
 using Mixin.TheLastMove.Ingame;
 using Mixin.TheLastMove.Player;
 using Mixin.Utils;
@@ -19,6 +20,8 @@ namespace Mixin.TheLastMove.Environment
         private GameObject _obstaclePrefab;
         [SerializeField]
         private PlayerOperator _playerOperator;
+        [SerializeField]
+        private CollectableSpawner _collectableSpawner;
 
         private const float _blockSize = 4f;
         private const float _insertDistance = 15f;
@@ -156,6 +159,8 @@ namespace Mixin.TheLastMove.Environment
             TickBlocks(offset);
             TickObstacles(offset);
             TickMapGeneration(offset);
+
+            _collectableSpawner.MoveCollectablesWithTerrain(offset);
 
             _playerOperator.Tick(time);
         }

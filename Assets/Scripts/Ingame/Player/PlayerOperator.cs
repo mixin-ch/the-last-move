@@ -1,4 +1,5 @@
 using Mixin.TheLastMove.Environment;
+using Mixin.TheLastMove.Environment.Collectable;
 using Mixin.Utils;
 using System;
 using System.Collections.Generic;
@@ -166,8 +167,12 @@ namespace Mixin.TheLastMove.Player
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
+            $"Trigger entered".Log();
             if (collision.gameObject.CompareTag("Harmful"))
                 TakeDamage();
+
+            if (collision.gameObject.CompareTag("Collectable"))
+                collision.gameObject.GetComponent<Collectable>().Collect();
         }
     }
 }
