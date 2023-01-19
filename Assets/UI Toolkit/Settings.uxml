@@ -1,9 +1,10 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/MenuPagesStyle.uss?fileID=7433441132597879392&amp;guid=5cc3defc6f9dc2f47bbd0ea879a9d8f2&amp;type=3#MenuPagesStyle" />
-    <ui:VisualElement name="Background" style="position: absolute; width: 100%; height: 100%; background-image: url(&apos;project://database/Assets/Graphics/Pages/Settings%20Background.jpg?fileID=2800000&amp;guid=5603a0c173e43914dac130bf61dafb59&amp;type=3#Settings Background&apos;);" />
+    <ui:VisualElement name="Background" style="position: absolute; width: 100%; height: 100%; background-image: url(&apos;project://database/Assets/Graphics/Pages/Settings%20Background.jpg?fileID=2800000&amp;guid=5603a0c173e43914dac130bf61dafb59&amp;type=3#Settings Background&apos;); -unity-background-image-tint-color: rgb(106, 106, 106);" />
     <ui:VisualElement name="Body" style="flex-basis: 100%;">
         <SafeArea style="justify-content: center;">
-            <ui:VisualElement name="Header">
+            <ui:VisualElement name="Header" style="height: 149px;">
+                <ui:VisualElement name="HeaderBackground" style="position: absolute; background-image: url(&apos;project://database/Assets/Graphics/UI/Header%20Background.png?fileID=2800000&amp;guid=d52e053dee9fc6543bfb180a13856f30&amp;type=3#Header Background&apos;); width: 100%; height: 100%; -unity-background-image-tint-color: rgb(255, 0, 0);" />
                 <ui:Label text="Settings" display-tooltip-when-elided="true" name="PageTitle" class="pageTitle" />
                 <ui:Button text="&#x9;" display-tooltip-when-elided="true" name="ExitButton" class="button page-back-button" />
             </ui:VisualElement>
