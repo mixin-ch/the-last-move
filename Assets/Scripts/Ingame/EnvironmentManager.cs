@@ -23,6 +23,9 @@ namespace Mixin.TheLastMove.Environment
         [SerializeField]
         private CollectableSpawner _collectableSpawner;
 
+        [SerializeField]
+        private List<BiomeSO> _biomeList;
+
         private const float _blockSize = 4f;
         private const float _insertDistance = 15f;
         private const float _deleteDistance = 15f;
@@ -32,6 +35,7 @@ namespace Mixin.TheLastMove.Environment
         private const float _hecticGain = 0.05f;
         private const float _maxHectic = 5f;
         private const float _velocityScale = 3f;
+        private const float _biomeDuration = 10f;
 
         private MapGenerator _mapGenerator;
 
@@ -42,6 +46,8 @@ namespace Mixin.TheLastMove.Environment
         private float _hectic;
         private float _distance;
         private float _distancePlanned;
+        private BiomeSO _currentBiome;
+        private float _biomeTime;
 
         public float Velocity => _hectic * _velocityScale;
 
@@ -108,6 +114,9 @@ namespace Mixin.TheLastMove.Environment
             _distancePlanned = 25;
 
             _mapGenerator = new MapGenerator(Hectic / BlockSize, 1);
+
+            _currentBiome = _biomeList.PickRandom();
+            _biomeTime = _biomeDuration;
         }
 
         private void PauseClicked()
@@ -155,6 +164,13 @@ namespace Mixin.TheLastMove.Environment
             _hectic = (_hectic + _hecticGain * time).UpperBound(_maxHectic);
             float offset = Velocity * time;
             _distance += offset;
+            _biomeTime -= time;
+
+            if (_biomeTime <= 0)
+            {
+                _currentBiome = _biomeList.PickRandom();
+                _biomeTime = _biomeDuration;
+            }
 
             TickBlocks(offset);
             TickObstacles(offset);
@@ -220,7 +236,7 @@ namespace Mixin.TheLastMove.Environment
                 GameObject gameObject = _blockPrefab.GeneratePrefab(_blockContainer);
                 BlockOperator @operator = gameObject.GetComponent<BlockOperator>();
                 float y = Mathf.Lerp(_minInsertHeight, _maxInsertHeight, plan.Height);
-                @operator.Setup(new Vector2(x, y), _blockSize);
+                @operator.Setup(new Vector2(x, y), _blockSize, _currentBiome.Sprite);
                 _blockOperatorList.Add(@operator);
             }
 

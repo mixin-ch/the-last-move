@@ -356,6 +356,9 @@ MonoBehaviour:
   _obstaclePrefab: {fileID: 3608964336775138525, guid: 083f8ea48cdda1147aa420ff4751a720, type: 3}
   _playerOperator: {fileID: 1822961194634340435}
   _collectableSpawner: {fileID: 2084484239}
+  _biomeList:
+  - {fileID: 11400000, guid: f375c3f9d8ef8224ca996e06f7bbbfe1, type: 2}
+  - {fileID: 11400000, guid: 0ea0b45c3d2fbbf4695eb9216627ec4c, type: 2}
 --- !u!1 &642478925
 GameObject:
   m_ObjectHideFlags: 0
