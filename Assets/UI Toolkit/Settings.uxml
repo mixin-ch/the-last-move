@@ -8,11 +8,10 @@
                 <ui:Label text="Settings" display-tooltip-when-elided="true" name="PageTitle" class="pageTitle" />
                 <ui:Button text="&#x9;" display-tooltip-when-elided="true" name="ExitButton" class="button page-back-button" />
             </ui:VisualElement>
-            <ui:ScrollView name="SettingsContainer" style="padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px; flex-grow: 0; margin-top: 78px;">
+            <ui:ScrollView name="SettingsContainer" style="padding-left: 80px; padding-right: 80px; padding-top: 20px; padding-bottom: 20px; flex-grow: 0; margin-top: 78px;">
                 <CustomSlider value="8.53" label="Music Volume" focusable="true" name="MusicVolumeSlider" high-value="100" class="custom-slider" />
                 <CustomSlider value="46.3" label="Sound Volume" focusable="true" name="SoundVolumeSlider" high-value="100" class="custom-slider" />
-                <ui:DropdownField label="Quality" index="0" name="QualityDropdown" />
-                <ui:VisualElement name="LanguageContainer" style="align-items: center; justify-content: center; flex-direction: row; padding-left: 45px; padding-right: 45px; padding-top: 45px; padding-bottom: 45px;">
+                <ui:VisualElement name="LanguageContainer" style="align-items: center; justify-content: center; flex-direction: row; padding-left: 45px; padding-right: 45px; padding-top: 45px; padding-bottom: 45px; margin-top: 37px;">
                     <ui:Button name="EnglishButton" class="languageIcon" style="width: 100px; -unity-background-scale-mode: scale-to-fit;" />
                     <ui:Button name="GermanButton" class="languageIcon active" style="width: 100px; -unity-background-scale-mode: scale-to-fit; background-image: url(&apos;project://database/Assets/Graphics/Icons/Languages/German.png?fileID=2800000&amp;guid=c920738a74c1c394193d0f38dce0cd96&amp;type=3#German&apos;);" />
                     <ui:Button name="SwissGermanButton" class="languageIcon" style="width: 100px; -unity-background-scale-mode: scale-to-fit; background-image: url(&apos;project://database/Assets/Graphics/Icons/Languages/Swiss%20German.png?fileID=2800000&amp;guid=9966f6cac33442147b8d55f97b99d440&amp;type=3#Swiss German&apos;);" />

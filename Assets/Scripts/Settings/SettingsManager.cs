@@ -16,7 +16,6 @@ namespace Mixin.TheLastMove.Settings
         {
             _uib.MusicVolumeSlider.value = _data.MusicVolume;
             _uib.SoundVolumeSlider.value = _data.SoundVolume;
-            _uib.QualityDropdown.value = QualitySettings.names[QualitySettings.GetQualityLevel()];
 
             _uib.EnglishButton.clicked += () => UpdateLanguage(Language.Language.English);
             _uib.GermanButton.clicked += () => UpdateLanguage(Language.Language.German);
@@ -26,7 +25,6 @@ namespace Mixin.TheLastMove.Settings
             _uib.SaveButton.clicked += OnSaveButtonClicked;
             _uib.MusicVolumeSlider.RegisterValueChangedCallback(UpdateMusicVolume);
             _uib.SoundVolumeSlider.RegisterValueChangedCallback(UpdateSoundVolume);
-            _uib.QualityDropdown.RegisterValueChangedCallback(UpdateQuality);
 
             SetLanguageButtonActive();
         }
@@ -49,10 +47,10 @@ namespace Mixin.TheLastMove.Settings
             SetVolume("SoundVolume", evt.newValue);
         }
 
-        private void UpdateQuality(ChangeEvent<string> evt)
+        /*private void UpdateQuality(ChangeEvent<string> evt)
         {
             _data.Quality = Array.IndexOf(QualitySettings.names, evt.newValue);
-        }
+        }*/
 
         private void UpdateLanguage(Language.Language language)
         {

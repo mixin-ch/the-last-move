@@ -24,10 +24,6 @@ namespace Mixin.TheLastMove
         [SerializeField]
         private LanguageTextSO _soundVolumeLanguage;
 
-        public DropdownField QualityDropdown { get; set; }
-        [SerializeField]
-        private LanguageTextSO _qualityLanguage;
-
         /* Language Buttons */
         public Button EnglishButton { get; set; }
         public Button GermanButton { get; set; }
@@ -61,9 +57,6 @@ namespace Mixin.TheLastMove
             SoundVolumeSlider = _root.Q<CustomSlider>("SoundVolumeSlider");
             SoundVolumeSlider.label = _soundVolumeLanguage.GetText();
 
-            QualityDropdown = _root.Q<DropdownField>("QualityDropdown");
-            QualityDropdown.label = _qualityLanguage.GetText();
-
             EnglishButton = _root.Q<Button>("EnglishButton");
             GermanButton = _root.Q<Button>("GermanButton");
             SwissGermanButton = _root.Q<Button>("SwissGermanButton");
@@ -71,8 +64,6 @@ namespace Mixin.TheLastMove
 
             SaveButton = _root.Q<Button>("SaveButton");
             SaveButton.text = _saveLanguage.GetText();
-
-            QualityDropdown.choices = QualitySettings.names.ToList();
         }
 
         private void OnEnable()
