@@ -3,6 +3,10 @@
     <ui:VisualElement name="Background" class="background" style="background-image: url(&apos;project://database/Assets/Graphics/Pages/About%20Background.jpg?fileID=2800000&amp;guid=7404f55948eef4241904160f9e7d4bbf&amp;type=3#About Background&apos;);" />
     <ui:VisualElement name="Body" class="body">
         <SafeArea style="justify-content: center; align-items: center;">
+            <ui:VisualElement name="Header" class="header" style="-unity-background-image-tint-color: rgba(0, 204, 51, 255);">
+                <ui:Label text="About" display-tooltip-when-elided="true" name="PageTitle" class="pageTitle" />
+                <ui:Button text="&#x9;" display-tooltip-when-elided="true" name="ExitButton" class="button page-back-button" />
+            </ui:VisualElement>
             <ui:VisualElement name="ContentContainer" style="justify-content: flex-start; align-items: center;">
                 <ui:VisualElement name="TheLastMoveLogo" style="background-image: url(&apos;project://database/Assets/Graphics/CICD/The%20Last%20Move%20Logo%20Text%204000px-w.png?fileID=2800000&amp;guid=e87b4e53ac0915c49be97cac1cc73b1c&amp;type=3#The Last Move Logo Text 4000px-w&apos;); height: 200px; -unity-background-scale-mode: scale-to-fit; width: 200px;" />
                 <ui:Label text="Liv Marin&#10;…ist eine junge Frau, die von ihrem unbezwingbaren Ziel besessen ist. Sie ist entschlossen, immer einen Schritt voraus zu sein und niemals aufzugeben. Doch etwas kommt ihr in die Quere: ihre Tagträume.&#10;&#10;Ihre Kindheit war hart und sie hat keine Erinnerungen an ihren Vater. Trotzdem lässt sie sich von ihrem Traum nicht abbringen und nimmt an dem prestigeträchtigen Tanzwettbewerb teil. Dort entdeckt sie jedoch etwas, das sie nie für möglich gehalten hätte… Werden ihre Träume sie davon abhalten, ihr Ziel zu erreichen?" display-tooltip-when-elided="true" name="AboutText" style="white-space: normal; padding-left: 20px; padding-right: 20px;" />
@@ -11,7 +15,6 @@
                 <ui:Button display-tooltip-when-elided="true" name="MixinGamesLogo" class="logo" style="background-image: url(&apos;project://database/Assets/Graphics/CICD/Mixin%20Text%20Logo%20Original%20700px.png?fileID=2800000&amp;guid=4f646a1f90dd105418572a79f328025a&amp;type=3#Mixin Text Logo Original 700px&apos;);" />
                 <ui:Button text="Privacy" display-tooltip-when-elided="true" name="PrivacyButton" class="button" />
             </ui:VisualElement>
-            <ui:Button name="ExitButton" class="page-back-button" />
         </SafeArea>
     </ui:VisualElement>
 </ui:UXML>

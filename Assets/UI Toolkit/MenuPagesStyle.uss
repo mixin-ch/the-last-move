@@ -141,6 +141,9 @@ Label {
 
 .header {
     height: 149px;
+    width: 100%;
+    background-image: url('project://database/Assets/Graphics/UI/Header%20Background.png?fileID=2800000&guid=d52e053dee9fc6543bfb180a13856f30&type=3#Header Background');
+    -unity-background-image-tint-color: rgba(255, 0, 0, 255);
 }
 
 .custom-slider {

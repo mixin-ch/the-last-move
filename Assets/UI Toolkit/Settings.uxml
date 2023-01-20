@@ -4,7 +4,6 @@
     <ui:VisualElement name="Body" style="flex-basis: 100%;">
         <SafeArea style="justify-content: center;">
             <ui:VisualElement name="Header" class="header">
-                <ui:VisualElement name="HeaderBackground" style="position: absolute; background-image: url(&apos;project://database/Assets/Graphics/UI/Header%20Background.png?fileID=2800000&amp;guid=d52e053dee9fc6543bfb180a13856f30&amp;type=3#Header Background&apos;); width: 100%; height: 100%; -unity-background-image-tint-color: rgb(255, 0, 0);" />
                 <ui:Label text="Settings" display-tooltip-when-elided="true" name="PageTitle" class="pageTitle" />
                 <ui:Button text="&#x9;" display-tooltip-when-elided="true" name="ExitButton" class="button page-back-button" />
             </ui:VisualElement>
