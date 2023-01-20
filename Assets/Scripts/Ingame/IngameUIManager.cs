@@ -64,7 +64,7 @@ namespace Mixin.TheLastMove.Ingame.UI
 
         private void GoToMainMenu()
         {
-            SceneTransitionManager.Instance.ChangeSceneWithTransition(SceneName.MainMenu, LoadSceneMode.Single);
+            SceneTransitionManager.Instance.LoadSceneWithTransition(SceneName.MainMenu, LoadSceneMode.Single);
         }
 
         private void IngamePauseUIB_OnResumeButtonClicked()

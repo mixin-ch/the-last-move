@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mixin.Utils;
 using System;
+using Mixin.TheLastMove.Scene;
+using UnityEngine.SceneManagement;
 
 namespace Mixin.TheLastMove
 {
@@ -35,7 +37,7 @@ namespace Mixin.TheLastMove
 
         private void OnExitButtonClicked()
         {
-            SceneManager.Instance.UnloadScene(SceneName.Settings.ToString());
+            SceneTransitionManager.Instance.UnloadSceneWithTransition(SceneName.Settings);
         }
     }
 }

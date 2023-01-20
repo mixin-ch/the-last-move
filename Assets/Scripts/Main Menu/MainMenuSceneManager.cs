@@ -40,7 +40,7 @@ namespace Mixin.TheLastMove
 
         private void ChangeScene(SceneName sceneName, LoadSceneMode loadSceneMode)
         {
-            SceneTransitionManager.Instance.ChangeSceneWithTransition(sceneName, loadSceneMode);
+            SceneTransitionManager.Instance.LoadSceneWithTransition(sceneName, loadSceneMode);
         }
 
         private void OnEnable()

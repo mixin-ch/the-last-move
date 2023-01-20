@@ -13,12 +13,12 @@ namespace Mixin.TheLastMove.Scene
         [SerializeField]
         private float _transitionTime = .5f;
 
-        public void ChangeSceneWithTransition(SceneName sceneName, LoadSceneMode loadSceneMode)
+        public void LoadSceneWithTransition(SceneName sceneName, LoadSceneMode loadSceneMode)
         {
-            StartCoroutine(ChangeSceneWithTransitionAsync(sceneName, loadSceneMode));
+            StartCoroutine(LoadSceneWithTransitionAsync(sceneName, loadSceneMode));
         }
 
-        private IEnumerator ChangeSceneWithTransitionAsync(SceneName sceneName, LoadSceneMode loadSceneMode)
+        private IEnumerator LoadSceneWithTransitionAsync(SceneName sceneName, LoadSceneMode loadSceneMode)
         {
             // Load new scene
             AsyncOperation operation =
@@ -41,6 +41,38 @@ namespace Mixin.TheLastMove.Scene
                 yield return null;
 
             operation.allowSceneActivation = true;
+
+            // Fade out
+            TransitionUIB.Instance.TransitionElement.RemoveFromClassList("active");
+        }
+
+        public void UnloadSceneWithTransition(
+            SceneName sceneName,
+            UnloadSceneOptions unloadSceneMode = UnloadSceneOptions.None)
+        {
+            StartCoroutine(UnloadSceneWithTransitionAsync(sceneName, unloadSceneMode));
+        }
+
+        private IEnumerator UnloadSceneWithTransitionAsync(SceneName sceneName, UnloadSceneOptions loadSceneMode)
+        {
+
+            // Set transition duration
+            TransitionUIB.Instance.TransitionElement.style.transitionDuration =
+               new List<TimeValue> { _transitionTime };
+            // Add active class
+            TransitionUIB.Instance.TransitionElement.AddToClassList("active");
+
+            yield return new WaitForSeconds(_transitionTime);
+
+            /*Now everything is black*/
+
+            // Unload scene
+            AsyncOperation operation =
+               UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(
+                   sceneName.ToString(), loadSceneMode);
+
+            while (operation.progress < 0.9f)
+                yield return null;
 
             // Fade out
             TransitionUIB.Instance.TransitionElement.RemoveFromClassList("active");
