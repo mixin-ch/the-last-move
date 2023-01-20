@@ -16,11 +16,11 @@ namespace Mixin.TheLastMove
 
         private Button ExitButton;
 
-        public SliderInt MusicVolumeSlider { get; set; }
+        public CustomSlider MusicVolumeSlider { get; set; }
         [SerializeField]
         private LanguageTextSO _musicVolumeLanguage;
 
-        public SliderInt SoundVolumeSlider { get; set; }
+        public CustomSlider SoundVolumeSlider { get; set; }
         [SerializeField]
         private LanguageTextSO _soundVolumeLanguage;
 
@@ -55,10 +55,10 @@ namespace Mixin.TheLastMove
 
             ExitButton = _root.Q<Button>("ExitButton");
 
-            MusicVolumeSlider = _root.Q<SliderInt>("MusicVolumeSlider");
+            MusicVolumeSlider = _root.Q<CustomSlider>("MusicVolumeSlider");
             MusicVolumeSlider.label = _musicVolumeLanguage.GetText();
 
-            SoundVolumeSlider = _root.Q<SliderInt>("SoundVolumeSlider");
+            SoundVolumeSlider = _root.Q<CustomSlider>("SoundVolumeSlider");
             SoundVolumeSlider.label = _soundVolumeLanguage.GetText();
 
             QualityDropdown = _root.Q<DropdownField>("QualityDropdown");

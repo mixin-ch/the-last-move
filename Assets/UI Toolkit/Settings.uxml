@@ -3,14 +3,14 @@
     <ui:VisualElement name="Background" style="position: absolute; width: 100%; height: 100%; background-image: url(&apos;project://database/Assets/Graphics/Pages/Settings%20Background.jpg?fileID=2800000&amp;guid=5603a0c173e43914dac130bf61dafb59&amp;type=3#Settings Background&apos;); -unity-background-image-tint-color: rgb(106, 106, 106);" />
     <ui:VisualElement name="Body" style="flex-basis: 100%;">
         <SafeArea style="justify-content: center;">
-            <ui:VisualElement name="Header" style="height: 149px;">
+            <ui:VisualElement name="Header" class="header">
                 <ui:VisualElement name="HeaderBackground" style="position: absolute; background-image: url(&apos;project://database/Assets/Graphics/UI/Header%20Background.png?fileID=2800000&amp;guid=d52e053dee9fc6543bfb180a13856f30&amp;type=3#Header Background&apos;); width: 100%; height: 100%; -unity-background-image-tint-color: rgb(255, 0, 0);" />
                 <ui:Label text="Settings" display-tooltip-when-elided="true" name="PageTitle" class="pageTitle" />
                 <ui:Button text="&#x9;" display-tooltip-when-elided="true" name="ExitButton" class="button page-back-button" />
             </ui:VisualElement>
             <ui:ScrollView name="SettingsContainer" style="padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px; flex-grow: 0; margin-top: 78px;">
-                <ui:SliderInt picking-mode="Ignore" label="Music Volume" value="42" high-value="100" name="MusicVolumeSlider" />
-                <ui:SliderInt picking-mode="Ignore" label="Sound Volume" value="42" high-value="100" name="SoundVolumeSlider" />
+                <CustomSlider value="8.53" label="Music Volume" focusable="true" name="MusicVolumeSlider" high-value="100" class="custom-slider" />
+                <CustomSlider value="46.3" label="Sound Volume" focusable="true" name="SoundVolumeSlider" high-value="100" class="custom-slider" />
                 <ui:DropdownField label="Quality" index="0" name="QualityDropdown" />
                 <ui:VisualElement name="LanguageContainer" style="align-items: center; justify-content: center; flex-direction: row; padding-left: 45px; padding-right: 45px; padding-top: 45px; padding-bottom: 45px;">
                     <ui:Button name="EnglishButton" class="languageIcon" style="width: 100px; -unity-background-scale-mode: scale-to-fit;" />

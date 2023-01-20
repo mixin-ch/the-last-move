@@ -37,15 +37,15 @@ namespace Mixin.TheLastMove.Settings
             SaveManager.Instance.UserSettingsData.Save();
         }
 
-        private void UpdateMusicVolume(ChangeEvent<int> evt)
+        private void UpdateMusicVolume(ChangeEvent<float> evt)
         {
-            _data.MusicVolume = evt.newValue;
+            _data.MusicVolume = evt.newValue.RoundToInt();
             SetVolume("MusicVolume", evt.newValue);
         }
 
-        private void UpdateSoundVolume(ChangeEvent<int> evt)
+        private void UpdateSoundVolume(ChangeEvent<float> evt)
         {
-            _data.SoundVolume = evt.newValue;
+            _data.SoundVolume = evt.newValue.RoundToInt();
             SetVolume("SoundVolume", evt.newValue);
         }
 
