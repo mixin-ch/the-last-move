@@ -4,7 +4,7 @@ namespace Mixin.TheLastMove.Environment
 {
     public class ObstacleOperator : MonoBehaviour
     {
-        public void Setup(Vector2 position)
+        public void Setup(Vector3 position)
         {
             transform.position = position;
         }
@@ -16,7 +16,7 @@ namespace Mixin.TheLastMove.Environment
 
         public void Kill()
         {
-            EnvironmentManager.Instance.KillObstacle(this);
+            MapManager.Instance.KillObstacle(this);
         }
 
         public Vector2 Position => transform.position;

@@ -37,7 +37,7 @@ namespace Mixin.TheLastMove
             set { _obstacleMultiplier = value; _generator0.ObstacleMultiplier = SingleLineObstacleMultiplier; _generator1.ObstacleMultiplier = SingleLineObstacleMultiplier; }
         }
 
-        private float SingleLineGapMultiplier => GapMultiplier * 2;
+        private float SingleLineGapMultiplier => GapMultiplier * 1;
         private float SingleLineObstacleMultiplier => ObstacleMultiplier * 2;
 
         private SingleLineMapGenerator _generator0;

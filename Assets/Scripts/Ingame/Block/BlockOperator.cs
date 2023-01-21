@@ -7,7 +7,7 @@ namespace Mixin.TheLastMove
         [SerializeField]
         private SpriteRenderer _sprite;
 
-        public void Setup(Vector2 position, float size, Sprite sprite)
+        public void Setup(Vector3 position, float size, Sprite sprite)
         {
             transform.position = position;
             transform.localScale = Vector2.one * size;
