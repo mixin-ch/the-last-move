@@ -138,7 +138,7 @@ namespace Mixin.TheLastMove.Environment
                 //GameObject gameObject = _blockPrefab.GeneratePrefab(_blockContainer);
                 BlockOperator @operator = gameObject.GetComponent<BlockOperator>();
                 float y = Mathf.Lerp(_minInsertHeight, _maxInsertHeight, plan.Height);
-                @operator.Setup(new Vector2(x, y), _blockSize, EnvironmentManager.Instance.CurrentBiome.Sprite);
+                @operator.Setup(new Vector3(x, y, y * 0.1f), _blockSize, EnvironmentManager.Instance.CurrentBiome.Sprite);
                 _blockOperatorList.Add(@operator);
                 gameObject.SetActive(true);
             }
@@ -150,7 +150,7 @@ namespace Mixin.TheLastMove.Environment
                 //GameObject gameObject = _obstaclePrefab.GeneratePrefab(_obstacleContainer);
                 ObstacleOperator @operator = gameObject.GetComponent<ObstacleOperator>();
                 float y = _blockSize * 0.5f + Mathf.Lerp(_minInsertHeight, _maxInsertHeight, plan.Height);
-                @operator.Setup(new Vector2(x, y));
+                @operator.Setup(new Vector3(x, y, y * 0.1f));
                 _obstacleOperatorList.Add(@operator);
                 gameObject.SetActive(true);
             }
