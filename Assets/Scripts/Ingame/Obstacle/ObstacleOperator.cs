@@ -16,7 +16,7 @@ namespace Mixin.TheLastMove.Environment
 
         public void Kill()
         {
-            EnvironmentManager.Instance.KillObstacle(this);
+            MapManager.Instance.KillObstacle(this);
         }
 
         public Vector2 Position => transform.position;

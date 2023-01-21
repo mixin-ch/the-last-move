@@ -11,14 +11,6 @@ namespace Mixin.TheLastMove.Environment
     public class EnvironmentManager : Singleton<EnvironmentManager>
     {
         [SerializeField]
-        private GameObject _blockContainer;
-        [SerializeField]
-        private GameObject _obstacleContainer;
-        [SerializeField]
-        private GameObject _blockPrefab;
-        [SerializeField]
-        private GameObject _obstaclePrefab;
-        [SerializeField]
         private PlayerOperator _playerOperator;
         [SerializeField]
         private CollectableSpawner _collectableSpawner;
@@ -26,39 +18,29 @@ namespace Mixin.TheLastMove.Environment
         [SerializeField]
         private List<BiomeSO> _biomeList;
 
-        private const float _blockSize = 4f;
-        private const float _insertDistance = 15f;
-        private const float _deleteDistance = 15f;
-        private const float _maxInsertHeight = 0f;
-        private const float _minInsertHeight = -5f;
         private const float _hecticStart = 1;
         private const float _hecticGain = 0.05f;
         private const float _maxHectic = 5f;
         private const float _velocityScale = 3f;
         private const float _biomeDuration = 10f;
 
-        private MapGenerator _mapGenerator;
-
         private bool _started;
         private bool _paused;
-        private List<BlockOperator> _blockOperatorList = new List<BlockOperator>();
-        private List<ObstacleOperator> _obstacleOperatorList = new List<ObstacleOperator>();
         private float _hectic;
         private float _distance;
-        private float _distancePlanned;
         private BiomeSO _currentBiome;
         private float _biomeTime;
 
-        public float Velocity => _hectic * _velocityScale;
+        public PlayerOperator PlayerOperator { get => _playerOperator; }
 
-        public static float BlockSize => _blockSize;
+        public float Velocity => _hectic * _velocityScale;
 
         public bool Started { get => _started; }
         public bool Paused { get => _paused; }
         public bool IsGameRunning { get => _started && !_paused; }
         public float Hectic { get => _hectic; }
         public float Distance { get => _distance; }
-        public PlayerOperator PlayerOperator { get => _playerOperator; }
+        public BiomeSO CurrentBiome { get => _currentBiome; }
 
         public static event Action OnGameStarted;
 
@@ -87,33 +69,17 @@ namespace Mixin.TheLastMove.Environment
             OnGameStarted?.Invoke();
         }
 
-        public void KillObstacle(ObstacleOperator obstacleOperator)
-        {
-            if (!_started)
-                return;
-
-            _obstacleOperatorList.Remove(obstacleOperator);
-            Destroy(obstacleOperator.gameObject);
-        }
-
         private void Clear()
         {
             _started = false;
             _paused = false;
 
+            MapManager.Instance.Clear();
+
             _playerOperator.ResetState();
-
-            _blockContainer.DestroyChildren();
-            _blockOperatorList.Clear();
-
-            _obstacleContainer.DestroyChildren();
-            _obstacleOperatorList.Clear();
 
             _hectic = _hecticStart;
             _distance = 0;
-            _distancePlanned = 25;
-
-            _mapGenerator = new MapGenerator(Hectic / BlockSize, 1);
 
             _currentBiome = _biomeList.PickRandom();
             _biomeTime = _biomeDuration;
@@ -172,82 +138,11 @@ namespace Mixin.TheLastMove.Environment
                 _biomeTime = _biomeDuration;
             }
 
-            TickBlocks(offset);
-            TickObstacles(offset);
-            TickMapGeneration(offset);
+            MapManager.Instance.Tick(offset);
 
             _collectableSpawner.MoveCollectablesWithTerrain(offset);
 
             _playerOperator.Tick(time);
-        }
-
-        private void TickBlocks(float offset)
-        {
-            foreach (BlockOperator @operator in _blockOperatorList)
-                @operator.Move(Vector2.left * offset);
-
-            for (int i = 0; i < _blockOperatorList.Count; i++)
-            {
-                BlockOperator @operator = _blockOperatorList[i];
-
-                if (-@operator.Position.x > _deleteDistance)
-                {
-                    _blockOperatorList.Remove(@operator);
-                    @operator.Destroy();
-                    i--;
-                }
-            }
-        }
-
-        private void TickObstacles(float offset)
-        {
-            foreach (ObstacleOperator @operator in _obstacleOperatorList)
-                @operator.Move(Vector2.left * offset);
-
-            for (int i = 0; i < _obstacleOperatorList.Count; i++)
-            {
-                ObstacleOperator @operator = _obstacleOperatorList[i];
-
-                if (-@operator.Position.x > _deleteDistance)
-                {
-                    _obstacleOperatorList.Remove(@operator);
-                    Destroy(@operator.gameObject);
-                    i--;
-                }
-            }
-        }
-
-        private void TickMapGeneration(float offset)
-        {
-            _distancePlanned += offset;
-
-            while (_distancePlanned > 0)
-            {
-                _mapGenerator.BlockChunkSize = Hectic / BlockSize;
-                PlaceMapPlan(_mapGenerator.Tick(), _insertDistance - _distancePlanned);
-                _distancePlanned -= BlockSize;
-            }
-        }
-
-        private void PlaceMapPlan(MapPlan mapPlan, float x)
-        {
-            foreach (BlockPlan plan in mapPlan.BlockPlanList)
-            {
-                GameObject gameObject = _blockPrefab.GeneratePrefab(_blockContainer);
-                BlockOperator @operator = gameObject.GetComponent<BlockOperator>();
-                float y = Mathf.Lerp(_minInsertHeight, _maxInsertHeight, plan.Height);
-                @operator.Setup(new Vector2(x, y), _blockSize, _currentBiome.Sprite);
-                _blockOperatorList.Add(@operator);
-            }
-
-            foreach (ObstaclePlan plan in mapPlan.ObstaclePlanList)
-            {
-                GameObject gameObject = _obstaclePrefab.GeneratePrefab(_obstacleContainer);
-                ObstacleOperator @operator = gameObject.GetComponent<ObstacleOperator>();
-                float y = _blockSize * 0.5f + Mathf.Lerp(_minInsertHeight, _maxInsertHeight, plan.Height);
-                @operator.Setup(new Vector2(x, y));
-                _obstacleOperatorList.Add(@operator);
-            }
         }
 
         private void RewardedAd_OnUserRewarded()
