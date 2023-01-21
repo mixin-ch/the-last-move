@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using Mixin.TheLastMove.Environment;
 
 public class BackgroundManager : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class BackgroundManager : MonoBehaviour
 
     IEnumerator MoveBackground()
     {
-        while (true)
+        while (EnvironmentManager.Instance.IsGameRunning)
         {
             // the parallax is the opposite of the environment movement since the previous frame multiplied by the scale
             float parallax = (previousEnvironmentPos.x - transform.position.x) * parallaxScale;
