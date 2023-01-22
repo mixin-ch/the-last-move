@@ -53,6 +53,15 @@ public partial class @InputControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TouchPosition"",
+                    ""type"": ""Value"",
+                    ""id"": ""ce683724-1c14-4c3e-9c19-02779a2c36c4"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -121,6 +130,28 @@ public partial class @InputControls : IInputActionCollection2, IDisposable
                     ""action"": ""Descend"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2d9d8422-0d8b-44d5-b005-cd10a4931354"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Computer"",
+                    ""action"": ""TouchPosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""38b8e768-3674-49d7-a22c-69ce033f50eb"",
+                    ""path"": ""<Touchscreen>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mobile"",
+                    ""action"": ""TouchPosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -143,6 +174,7 @@ public partial class @InputControls : IInputActionCollection2, IDisposable
         m_Ingame_Jump = m_Ingame.FindAction("Jump", throwIfNotFound: true);
         m_Ingame_Attack = m_Ingame.FindAction("Attack", throwIfNotFound: true);
         m_Ingame_Descend = m_Ingame.FindAction("Descend", throwIfNotFound: true);
+        m_Ingame_TouchPosition = m_Ingame.FindAction("TouchPosition", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -205,6 +237,7 @@ public partial class @InputControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Ingame_Jump;
     private readonly InputAction m_Ingame_Attack;
     private readonly InputAction m_Ingame_Descend;
+    private readonly InputAction m_Ingame_TouchPosition;
     public struct IngameActions
     {
         private @InputControls m_Wrapper;
@@ -212,6 +245,7 @@ public partial class @InputControls : IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Ingame_Jump;
         public InputAction @Attack => m_Wrapper.m_Ingame_Attack;
         public InputAction @Descend => m_Wrapper.m_Ingame_Descend;
+        public InputAction @TouchPosition => m_Wrapper.m_Ingame_TouchPosition;
         public InputActionMap Get() { return m_Wrapper.m_Ingame; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -230,6 +264,9 @@ public partial class @InputControls : IInputActionCollection2, IDisposable
                 @Descend.started -= m_Wrapper.m_IngameActionsCallbackInterface.OnDescend;
                 @Descend.performed -= m_Wrapper.m_IngameActionsCallbackInterface.OnDescend;
                 @Descend.canceled -= m_Wrapper.m_IngameActionsCallbackInterface.OnDescend;
+                @TouchPosition.started -= m_Wrapper.m_IngameActionsCallbackInterface.OnTouchPosition;
+                @TouchPosition.performed -= m_Wrapper.m_IngameActionsCallbackInterface.OnTouchPosition;
+                @TouchPosition.canceled -= m_Wrapper.m_IngameActionsCallbackInterface.OnTouchPosition;
             }
             m_Wrapper.m_IngameActionsCallbackInterface = instance;
             if (instance != null)
@@ -243,6 +280,9 @@ public partial class @InputControls : IInputActionCollection2, IDisposable
                 @Descend.started += instance.OnDescend;
                 @Descend.performed += instance.OnDescend;
                 @Descend.canceled += instance.OnDescend;
+                @TouchPosition.started += instance.OnTouchPosition;
+                @TouchPosition.performed += instance.OnTouchPosition;
+                @TouchPosition.canceled += instance.OnTouchPosition;
             }
         }
     }
@@ -270,5 +310,6 @@ public partial class @InputControls : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnDescend(InputAction.CallbackContext context);
+        void OnTouchPosition(InputAction.CallbackContext context);
     }
 }

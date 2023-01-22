@@ -33,6 +33,9 @@ namespace Mixin.TheLastMove
         {
             _isPressingJumpButton = _input.Ingame.Jump.IsPressed();
             _isPressingAttackButton = _input.Ingame.Attack.IsPressed();
+
+            //Debug.Log(_input.Ingame.Jump.ReadValue<Vector2>());
+            //Debug.Log(_input.Ingame.Jump.IsPressed());
         }
 
         private void OnEnable()
@@ -51,11 +54,25 @@ namespace Mixin.TheLastMove
 
         private void Jump_started(InputAction.CallbackContext obj)
         {
+            Vector2 touchPosition = _input.Ingame.TouchPosition.ReadValue<Vector2>();
+
+            // Check on mobile if click was on left side of the screen
+            if (Application.isMobilePlatform
+                && touchPosition.x >= Camera.main.scaledPixelWidth / 2)
+                return;
+
             OnJumpClicked?.Invoke();
         }
 
         private void Attack_started(InputAction.CallbackContext obj)
         {
+            Vector2 touchPosition = _input.Ingame.TouchPosition.ReadValue<Vector2>();
+
+            // Check on mobile if click was on right side of the screen
+            if (Application.isMobilePlatform
+                && touchPosition.x <= Camera.main.scaledPixelWidth / 2)
+                return;
+
             OnAttackClicked?.Invoke();
         }
     }
