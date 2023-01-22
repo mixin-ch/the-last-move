@@ -1,4 +1,4 @@
-using System;
+/*using System;
 using UnityEngine;
 using Unity.Services.Core;
 using Unity.Services.Mediation;
@@ -20,7 +20,7 @@ namespace Mixin.TheLastMove.Ads
 
         private void OnEnable()
         {
-            Initialize();
+            //Initialize();
         }
 
         private async void Initialize()
@@ -167,3 +167,4 @@ namespace Mixin.TheLastMove.Ads
         }
     }
 }
+*/

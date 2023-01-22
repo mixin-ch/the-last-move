@@ -1,14 +1,14 @@
 using System;
 using System.Threading.Tasks;
-using Unity.Services.Core;
-using Unity.Services.Mediation;
+//using Unity.Services.Core;
+//using Unity.Services.Mediation;
 using UnityEngine;
 
 namespace Mixin.TheLastMove.Ads
 {
-    public class RewardedAd : IDisposable
+    public class RewardedAd 
     {
-        IRewardedAd ad;
+        //IRewardedAd ad;
 
 #if UNITY_IOS
         string adUnitId = "Rewarded_iOS";
@@ -22,7 +22,7 @@ namespace Mixin.TheLastMove.Ads
 
         public async Task InitServices()
         {
-            try
+            /*try
             {
                 InitializationOptions initializationOptions = new InitializationOptions();
                 initializationOptions.SetGameId(gameId);
@@ -33,12 +33,12 @@ namespace Mixin.TheLastMove.Ads
             catch (Exception e)
             {
                 InitializationFailed(e);
-            }
+            }*/
         }
 
         public void SetupAd()
         {
-            //Create
+            /*//Create
             ad = MediationService.Instance.CreateRewardedAd(adUnitId);
 
             //Subscribe to events
@@ -49,15 +49,15 @@ namespace Mixin.TheLastMove.Ads
             ad.OnUserRewarded += UserRewarded;
 
             // Impression Event
-            MediationService.Instance.ImpressionEventPublisher.OnImpression += ImpressionEvent;
+            MediationService.Instance.ImpressionEventPublisher.OnImpression += ImpressionEvent;*/
         }
 
-        public void Dispose() => ad?.Dispose();
+        //public void Dispose() => ad?.Dispose();
 
 
         public async void ShowAd()
         {
-            if (ad.AdState == AdState.Loaded)
+            /*if (ad.AdState == AdState.Loaded)
             {
                 try
                 {
@@ -70,7 +70,7 @@ namespace Mixin.TheLastMove.Ads
                 {
                     AdFailedShow(e);
                 }
-            }
+            }*/
         }
 
         void InitializationComplete()
@@ -81,14 +81,14 @@ namespace Mixin.TheLastMove.Ads
 
         async Task LoadAd()
         {
-            try
+           /* try
             {
                 await ad.LoadAsync();
             }
             catch (LoadFailedException)
             {
                 // We will handle the failure in the OnFailedLoad callback
-            }
+            }*/
         }
 
         void InitializationFailed(Exception e)
@@ -101,11 +101,11 @@ namespace Mixin.TheLastMove.Ads
             Debug.Log("Ad loaded");
         }
 
-        void AdFailedLoad(object sender, LoadErrorEventArgs e)
+       /* void AdFailedLoad(object sender, LoadErrorEventArgs e)
         {
             Debug.Log("Failed to load ad");
             Debug.Log(e.Message);
-        }
+        }*/
 
         void AdShown()
         {
@@ -124,22 +124,22 @@ namespace Mixin.TheLastMove.Ads
             // Execute logic after an ad has been clicked.
         }
 
-        void AdFailedShow(ShowFailedException e)
+        /*void AdFailedShow(ShowFailedException e)
         {
             Debug.Log(e.Message);
-        }
+        }*/
 
-        void ImpressionEvent(object sender, ImpressionEventArgs args)
+        /*void ImpressionEvent(object sender, ImpressionEventArgs args)
         {
             var impressionData = args.ImpressionData != null ? JsonUtility.ToJson(args.ImpressionData, true) : "null";
             Debug.Log("Impression event from ad unit id " + args.AdUnitId + " " + impressionData);
-        }
+        }*/
 
-        void UserRewarded(object sender, RewardEventArgs e)
+        /*void UserRewarded(object sender, RewardEventArgs e)
         {
             Debug.Log($"Received reward: type:{e.Type}; amount:{e.Amount}");
             OnUserRewarded?.Invoke();
-        }
+        }*/
 
     }
 }

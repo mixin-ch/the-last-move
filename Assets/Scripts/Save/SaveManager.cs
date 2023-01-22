@@ -18,22 +18,22 @@ namespace Mixin.TheLastMove.Save
 
         protected override void Awake()
         {
-            _ingameData = new DataFileManager<IngameData>(
-                "data.mxn",
-                FileType.JSON,
-                _salt);
+            //_ingameData = new DataFileManager<IngameData>(
+            //    "data.mxn",
+            //    FileType.JSON,
+            //    _salt);
 
-            _userSettingsData = new DataFileManager<UserSettingsData>(
-                "settings.json",
-                FileType.JSON);
+            //_userSettingsData = new DataFileManager<UserSettingsData>(
+            //    "settings.json",
+            //    FileType.JSON);
 
-            _ingameData.Data = new IngameData();
-            _userSettingsData.Data = new UserSettingsData();
+            //_ingameData.Data = new IngameData();
+            //_userSettingsData.Data = new UserSettingsData();
 
-            _ingameData.Data.SetFileInformation(GameVersion, InTestMode);
-            _userSettingsData.Data.SetFileInformation(GameVersion, InTestMode);
+            //_ingameData.Data.SetFileInformation(GameVersion, InTestMode);
+            //_userSettingsData.Data.SetFileInformation(GameVersion, InTestMode);
 
-            LoadAllData();
+            //LoadAllData();
         }
 
         private void LoadAllData()

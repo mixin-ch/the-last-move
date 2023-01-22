@@ -20,7 +20,7 @@ namespace Mixin.TheLastMove
 
         private void Start()
         {
-            // Load User Game Data
+            /*// Load User Game Data
 
             // Load User Settings
             Application.targetFrameRate = 60;
@@ -31,7 +31,7 @@ namespace Mixin.TheLastMove
             int soundVolume = _settingsData.SoundVolume;
             SettingsManager.SetVolume("SoundVolume", soundVolume);
 
-            LanguageManager.Instance.SelectedLanguage = _settingsData.Language;
+            LanguageManager.Instance.SelectedLanguage = _settingsData.Language;*/
         }
     }
 }

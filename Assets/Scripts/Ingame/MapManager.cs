@@ -32,9 +32,8 @@ namespace Mixin.TheLastMove.Environment
         private List<ObstacleOperator> _obstacleOperatorList = new List<ObstacleOperator>();
         private float _distancePlanned;
 
-        protected override void Awake()
+        private void Start()
         {
-            base.Awake();
             _blockContainer.DestroyChildren();
             _obstacleContainer.DestroyChildren();
             _op = ObjectPooler.SharedInstance;
