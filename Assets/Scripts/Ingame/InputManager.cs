@@ -58,10 +58,16 @@ namespace Mixin.TheLastMove
 
             // Check on mobile if click was on left side of the screen
             if (Application.isMobilePlatform
-                && touchPosition.x >= Camera.main.scaledPixelWidth / 2)
-                return;
+                && touchPosition.x <= Camera.main.scaledPixelWidth / 2)
+                OnJumpClicked?.Invoke();
 
-            OnJumpClicked?.Invoke();
+            // Check on mobile if click was on right side of the screen
+            if (Application.isMobilePlatform
+                && touchPosition.x >= Camera.main.scaledPixelWidth / 2)
+                OnAttackClicked?.Invoke();
+
+            if (!Application.isMobilePlatform)
+                OnJumpClicked?.Invoke();
         }
 
         private void Attack_started(InputAction.CallbackContext obj)
