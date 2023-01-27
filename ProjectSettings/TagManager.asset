@@ -50,6 +50,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: World Transition
+    uniqueID: 4164682163
+    locked: 0
   - name: Terrain
     uniqueID: 2052743477
     locked: 0

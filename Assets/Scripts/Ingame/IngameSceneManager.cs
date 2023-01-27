@@ -30,7 +30,7 @@ namespace Mixin.TheLastMove.Ingame
         {
             _playlist = AudioManager.Instance.MakePlaylistPlayer(_musicPlaylist.ToAudioPlaylistSetup());
 
-            EnvironmentManager.Instance.StartGame();
+            //EnvironmentManager.Instance.StartGame();
         }
 
         private void OnEnable()

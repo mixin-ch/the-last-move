@@ -6,8 +6,12 @@ namespace Mixin.TheLastMove.Environment
     public class BiomeSO : ScriptableObject
     {
         [SerializeField]
+        private Sprite _background;
+
+        [SerializeField]
         private Sprite _sprite;
 
         public Sprite Sprite { get => _sprite; }
+        public Sprite Background { get => _background; }
     }
 }

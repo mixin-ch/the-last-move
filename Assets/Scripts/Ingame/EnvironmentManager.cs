@@ -43,6 +43,7 @@ namespace Mixin.TheLastMove.Environment
         public BiomeSO CurrentBiome { get => _currentBiome; }
 
         public static event Action OnGameStarted;
+        public static event Action<BiomeSO> OnBiomeChanged;
 
         private void OnEnable()
         {
@@ -61,9 +62,16 @@ namespace Mixin.TheLastMove.Environment
             IngameSceneManager.Instance.RewardedAd.OnUserRewarded -= RewardedAd_OnUserRewarded;
         }
 
+        private void Start()
+        {
+            StartGame();
+        }
+
         public void StartGame()
         {
             Clear();
+
+            BackgroundManager.Instance.Init();
 
             _started = true;
             OnGameStarted?.Invoke();
@@ -134,8 +142,15 @@ namespace Mixin.TheLastMove.Environment
 
             if (_biomeTime <= 0)
             {
-                _currentBiome = _biomeList.PickRandom();
+                BiomeSO newBiome = _biomeList.PickRandom();
                 _biomeTime = _biomeDuration;
+
+                if (newBiome == _currentBiome)
+                    return;
+
+                _currentBiome = newBiome;
+
+                OnBiomeChanged?.Invoke(_currentBiome);
             }
 
             MapManager.Instance.Tick(offset);
