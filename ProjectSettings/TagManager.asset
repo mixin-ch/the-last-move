@@ -41,11 +41,20 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Background Farest
+  - name: Fixed Background
+    uniqueID: 3649471417
+    locked: 0
+  - name: Background 2
     uniqueID: 1491921349
     locked: 0
-  - name: Background Closest
+  - name: Fog 2
+    uniqueID: 3061411515
+    locked: 0
+  - name: Background 1
     uniqueID: 3996142137
+    locked: 0
+  - name: Fog 1
+    uniqueID: 965769861
     locked: 0
   - name: Default
     uniqueID: 0
