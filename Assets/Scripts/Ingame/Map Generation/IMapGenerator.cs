@@ -6,6 +6,6 @@ namespace Mixin.TheLastMove
 {
     public interface IMapGenerator
     {
-        public MapPlan Tick(float blockChunkSize);
+        public MapPlan Tick();
     }
 }

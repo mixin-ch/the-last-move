@@ -1,12 +1,13 @@
 using Mixin.Utils;
 using Mixin.Save;
+using UnityEngine;
 
 namespace Mixin.TheLastMove.Save
 {
     public class SaveManager : Singleton<SaveManager>
     {
         private const string _salt = "ja0s9dj0u1938zhasiduhlz989&%751z3iuhi7dtba87s82e7b87asd87btq34";
-        private string GameVersion => ApplicationManager.GetGameVersion();
+        private string GameVersion => Application.version;
         private bool InTestMode => false;
 
         private DataFileManager<IngameData> _ingameData;

@@ -5,7 +5,7 @@ namespace Mixin.TheLastMove
     [System.Serializable]
     public class BlockPlan
     {
-        [Range(0,1)]
+        [Range(0, 1)]
         private float _height;
 
         public float Height { get => _height; }
