@@ -162,7 +162,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3170842274828873047}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1331617522
 MonoBehaviour:
@@ -377,9 +377,9 @@ Transform:
   - {fileID: 984549841}
   - {fileID: 1454045952}
   - {fileID: 1080477015}
-  - {fileID: 57883927021062129}
   - {fileID: 1331617521}
   - {fileID: 2449768373013743280}
+  - {fileID: 2272894012418852423}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -395,7 +395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64066464788c926438dd94340a5509f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &3018923545509244823
+--- !u!1 &4088490324221263715
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -403,44 +403,42 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 57883927021062129}
-  - component: {fileID: 1992216601961756517}
+  - component: {fileID: 2272894012418852423}
+  - component: {fileID: 1105834579544436575}
   m_Layer: 0
-  m_Name: Ads Manager
+  m_Name: Google Play Games Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &57883927021062129
+--- !u!4 &2272894012418852423
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3018923545509244823}
+  m_GameObject: {fileID: 4088490324221263715}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3170842274828873047}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1992216601961756517
+--- !u!114 &1105834579544436575
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3018923545509244823}
+  m_GameObject: {fileID: 4088490324221263715}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f8bb594c582cad40a964af59e85e190, type: 3}
+  m_Script: {fileID: 11500000, guid: 14ffbacb07e511642a8ebd2e5e0befca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameID_android: 5116921
-  _gameID_ios: 5116920
 --- !u!1 &8236063288391602972
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,7 +471,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3170842274828873047}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &566055576213443608
 MonoBehaviour:

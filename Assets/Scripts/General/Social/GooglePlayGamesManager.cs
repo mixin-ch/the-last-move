@@ -1,8 +1,9 @@
-/*using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
+using Mixin.Utils;
 
 namespace Mixin.TheLastMove.Social
 {
@@ -10,11 +11,13 @@ namespace Mixin.TheLastMove.Social
     {
         public void Start()
         {
-            //PlayGamesPlatform.Instance.Authenticate(ProcessAuthentication);
+            PlayGamesPlatform.Instance.Authenticate(ProcessAuthentication);
         }
 
         internal void ProcessAuthentication(SignInStatus status)
         {
+            $"{status}".Log();
+
             if (status == SignInStatus.Success)
             {
                 // Continue with Play Games Services
@@ -29,4 +32,3 @@ namespace Mixin.TheLastMove.Social
     }
 }
 
-*/
