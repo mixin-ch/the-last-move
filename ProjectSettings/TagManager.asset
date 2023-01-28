@@ -44,6 +44,9 @@ TagManager:
   - name: Fixed Background
     uniqueID: 3649471417
     locked: 0
+  - name: Fog Fixed Background
+    uniqueID: 1451055151
+    locked: 0
   - name: Background 2
     uniqueID: 1491921349
     locked: 0
