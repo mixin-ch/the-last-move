@@ -8,15 +8,21 @@ namespace Mixin.TheLastMove.Environment.Collectable
     {
         private BoxCollider2D _collider;
 
+        /// <summary>
+        /// The amount of collectables collected in the round.
+        /// </summary>
+        public static int Counter;
+
         [SerializeField]
         private GameObject _collectableModel;
 
-        public static event Action OnCollected;
+        public static event Action<Collectable> OnCollected;
 
 
         private void Awake()
         {
             _collider = GetComponent<BoxCollider2D>();
+            ResetCounter();
         }
 
         public void Activate()
@@ -42,7 +48,14 @@ namespace Mixin.TheLastMove.Environment.Collectable
 
             Deactivate();
 
-            OnCollected?.Invoke();
+            Counter++;
+
+            OnCollected?.Invoke(this);
+        }
+
+        private void ResetCounter()
+        {
+            Counter = 0;
         }
     }
 }

@@ -27,7 +27,7 @@ namespace Mixin.TheLastMove.Sound
             InputManager.Instance.Input.Ingame.Jump.started += (context) => PlaySound(SoundType.Jump);
             InputManager.Instance.Input.Ingame.Attack.started += (context) => PlaySound(SoundType.Attack);
             InputManager.Instance.Input.Ingame.Descend.started += (context) => PlaySound(SoundType.Descend);
-            Collectable.OnCollected += () => PlaySound(SoundType.Collect);
+            Collectable.OnCollected += (collectable) => PlaySound(SoundType.Collect);
         }
 
         /* private void OnDisable()

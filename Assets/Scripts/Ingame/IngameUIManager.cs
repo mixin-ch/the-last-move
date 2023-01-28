@@ -1,5 +1,6 @@
 using Mixin.TheLastMove.Ads;
 using Mixin.TheLastMove.Environment;
+using Mixin.TheLastMove.Environment.Collectable;
 using Mixin.TheLastMove.Ingame;
 using Mixin.TheLastMove.Player;
 using Mixin.TheLastMove.Save;
@@ -27,6 +28,8 @@ namespace Mixin.TheLastMove.Ingame.UI
             IngamePauseUIB.OnResumeButtonClicked += IngamePauseUIB_OnResumeButtonClicked;
             _playerOperator.OnPlayerTakeDamageEvent += _playerOperator_OnPlayerTakeDamageEvent;
             _playerOperator.OnPlayerDeathEvent += _playerOperator_OnPlayerDeathEvent;
+            Collectable.OnCollected += (collectable) => SetCollectableText();
+            ObstacleOperator.OnKilled += (obstacle) => SetKillText();
         }
 
         private void OnDisable()
@@ -46,6 +49,9 @@ namespace Mixin.TheLastMove.Ingame.UI
         {
             StopAllCoroutines();
             StartCoroutine(UpdateScore());
+
+            SetCollectableText();
+            SetKillText();
 
             FillHearts();
             IngamePauseUIB.Instance.Show(false);
@@ -94,6 +100,8 @@ namespace Mixin.TheLastMove.Ingame.UI
         {
             int score = EnvironmentManager.Instance.Distance.RoundToInt();
             int highscore = SaveManager.Instance.IngameData.Data.Highscore;
+            int kills = ObstacleOperator.Counter;
+            int collectable = Collectable.Counter;
 
             // Set score text
             IngameDeathScreenUIB.Instance.ScoreText.text = $"Score: {score}";
@@ -103,11 +111,12 @@ namespace Mixin.TheLastMove.Ingame.UI
             {
                 highscore = score;
                 SaveManager.Instance.IngameData.Data.Highscore = score;
+                SaveManager.Instance.IngameData.Save();
             }
 
             IngameDeathScreenUIB.Instance.HighscoreText.text = $"Your Highscore: {highscore}";
-            IngameDeathScreenUIB.Instance.KillText.text = $"Kills: 0";
-            IngameDeathScreenUIB.Instance.CurrencyText.text = $"Figures Collected: 0";
+            IngameDeathScreenUIB.Instance.KillText.text = $"Kills: {kills}";
+            IngameDeathScreenUIB.Instance.CurrencyText.text = $"Figures Collected: {collectable}";
 
             IngameDeathScreenUIB.Instance.Show(true);
         }
@@ -131,6 +140,16 @@ namespace Mixin.TheLastMove.Ingame.UI
 
             for (int i = 0; i < _playerOperator.Health; i++)
                 IngameOverlayUIB.Instance.AddHeart();
+        }
+
+        private void SetCollectableText()
+        {
+            IngameOverlayUIB.Instance.CurrencyText.text = Collectable.Counter.ToString();
+        }
+
+        private void SetKillText()
+        {
+            IngameOverlayUIB.Instance.KillText.text = ObstacleOperator.Counter.ToString();
         }
     }
 }
