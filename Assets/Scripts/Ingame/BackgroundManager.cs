@@ -10,6 +10,9 @@ namespace Mixin.TheLastMove.Environment
         [SerializeField]
         private SpriteRenderer _background;
 
+        [SerializeField]
+        private SpriteToCameraFitter _spriteToCameraFitter;
+
         private void Start()
         {
             WorldTransitionManager.OnBiomeChangeTransition += SetBiomeBackground;
@@ -28,6 +31,7 @@ namespace Mixin.TheLastMove.Environment
         private void SetBiomeBackground(BiomeSO biome)
         {
             _background.sprite = biome.Background;
+            _spriteToCameraFitter.Fit();
         }
     }
 }

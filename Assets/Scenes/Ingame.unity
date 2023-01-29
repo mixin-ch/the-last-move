@@ -315,6 +315,7 @@ GameObject:
   m_Component:
   - component: {fileID: 382160290}
   - component: {fileID: 382160291}
+  - component: {fileID: 382160292}
   m_Layer: 0
   m_Name: Fog 1
   m_TagString: Untagged
@@ -389,6 +390,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &382160292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382160289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fd7f2f00bd0d1541814664c4f8a8ef4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keepAspectRatio: 0
 --- !u!1 &399157850
 GameObject:
   m_ObjectHideFlags: 0
@@ -1189,6 +1203,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1470888141}
   - component: {fileID: 1470888142}
+  - component: {fileID: 1470888143}
   m_Layer: 0
   m_Name: Fog 2
   m_TagString: Untagged
@@ -1263,6 +1278,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1470888143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470888140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fd7f2f00bd0d1541814664c4f8a8ef4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keepAspectRatio: 0
 --- !u!1 &1520070792
 GameObject:
   m_ObjectHideFlags: 0
@@ -1677,6 +1705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _background: {fileID: 2005658401}
+  _spriteToCameraFitter: {fileID: 2005658402}
 --- !u!1 &2005658399
 GameObject:
   m_ObjectHideFlags: 0
@@ -1687,6 +1716,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2005658400}
   - component: {fileID: 2005658401}
+  - component: {fileID: 2005658402}
   m_Layer: 0
   m_Name: Fixed Background
   m_TagString: Untagged
@@ -1761,6 +1791,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2005658402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005658399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fd7f2f00bd0d1541814664c4f8a8ef4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keepAspectRatio: 1
 --- !u!4 &2022298542 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3608964336775138526, guid: f1c77ce4284898040a1a5e1a1469caae, type: 3}
@@ -1776,6 +1819,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2070597814}
   - component: {fileID: 2070597815}
+  - component: {fileID: 2070597816}
   m_Layer: 0
   m_Name: Fog Fixed Background
   m_TagString: Untagged
@@ -1850,6 +1894,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2070597816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2070597813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fd7f2f00bd0d1541814664c4f8a8ef4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keepAspectRatio: 0
 --- !u!1 &2084484237
 GameObject:
   m_ObjectHideFlags: 0
