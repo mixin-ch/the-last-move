@@ -16,7 +16,7 @@ namespace Mixin.TheLastMove
 
         public void Move(Vector2 offset)
         {
-            transform.position = transform.position + (Vector3)offset;
+            transform.position += (Vector3)offset;
         }
 
         public void Destroy()
