@@ -8,10 +8,15 @@ namespace Mixin.TheLastMove.Environment
         [SerializeField]
         private Sprite _background;
 
+        [System.Obsolete]
         [SerializeField]
         private Sprite _sprite;
 
+        [SerializeField]
+        private GameObject _prefab;
+
         public Sprite Sprite { get => _sprite; }
         public Sprite Background { get => _background; }
+        public GameObject Prefab { get => _prefab; }
     }
 }
