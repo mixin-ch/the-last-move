@@ -122,6 +122,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sprite: {fileID: 3069896437363928750}
+  _mainSprite: {fileID: 3069896437363928750}
+  _fundament: {fileID: 443916008933168903}
 --- !u!1 &6769918826144048466
 GameObject:
   m_ObjectHideFlags: 0
