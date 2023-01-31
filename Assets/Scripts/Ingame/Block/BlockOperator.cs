@@ -57,6 +57,9 @@ namespace Mixin.TheLastMove
         {
             for (int i = 0; i < _decorationList.Length; i++)
             {
+                // Set sprite
+                _decorationList[i].sprite = prefab.DecorationList[i].sprite;
+
                 // Set position
                 _decorationList[i].transform.localPosition = prefab.DecorationList[i].transform.localPosition;
 
