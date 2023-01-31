@@ -10,7 +10,7 @@ public class SpriteToCameraFitter : MonoBehaviour
 
     public bool KeepAspectRatio { get => keepAspectRatio; set => keepAspectRatio = value; }
 
-    private void Start()
+    private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         mainCamera = Camera.main;
