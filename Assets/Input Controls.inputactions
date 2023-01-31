@@ -122,8 +122,19 @@
                 },
                 {
                     "name": "",
+                    "id": "586fccac-7973-478a-97a5-723e77ed27db",
+                    "path": "<Touchscreen>/touch0/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mobile",
+                    "action": "TouchPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "38b8e768-3674-49d7-a22c-69ce033f50eb",
-                    "path": "<Touchscreen>/position",
+                    "path": "<Touchscreen>/touch1/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "Mobile",
