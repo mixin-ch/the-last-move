@@ -24,9 +24,9 @@ namespace Mixin.TheLastMove.Sound
             EnvironmentManager.Instance.PlayerOperator.OnPlayerDeathEvent += () => PlaySound(SoundType.Die);
             EnvironmentManager.Instance.PlayerOperator.OnPlayerTakeDamageEvent += () => PlaySound(SoundType.TakeDamage);
             EnvironmentManager.Instance.PlayerOperator.OnPlayerAttackEvent += () => PlaySound(SoundType.Attack);
-            InputManager.Instance.Input.Ingame.Jump.started += (context) => PlaySound(SoundType.Jump);
-            InputManager.Instance.Input.Ingame.Attack.started += (context) => PlaySound(SoundType.Attack);
-            InputManager.Instance.Input.Ingame.Descend.started += (context) => PlaySound(SoundType.Descend);
+            InputManager.OnJumpClicked += () => PlaySound(SoundType.Jump);
+            InputManager.OnAttackClicked += () => PlaySound(SoundType.Attack);
+            InputManager.Instance.InputControls.Ingame.Descend.started += (context) => PlaySound(SoundType.Descend);
             Collectable.OnCollected += (collectable) => PlaySound(SoundType.Collect);
         }
 

@@ -33,42 +33,38 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "TouchPosition",
+                    "name": "TouchPosition1",
                     "type": "Value",
                     "id": "ce683724-1c14-4c3e-9c19-02779a2c36c4",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "TouchPosition2",
+                    "type": "Value",
+                    "id": "9464304d-37f2-4be6-a6b0-bc9dcdeeb851",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "TouchPress",
+                    "type": "Button",
+                    "id": "b8909592-4887-4a05-8c3f-e0296be4a139",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
-                    "id": "64f286db-3cd1-44a5-add6-0542c716b825",
-                    "path": "<Touchscreen>/Press",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mobile",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "32b9a96b-795c-4900-9f8c-36340664e6e0",
                     "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Computer",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4f01d21c-ea6a-47d7-9dca-bd0e92d1b8ac",
-                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "Computer",
@@ -111,34 +107,34 @@
                 },
                 {
                     "name": "",
-                    "id": "2d9d8422-0d8b-44d5-b005-cd10a4931354",
+                    "id": "dd875b2e-c824-416b-84ac-6bdceee32f18",
+                    "path": "<Touchscreen>/touch*/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mobile",
+                    "action": "TouchPress",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dc0c7939-2677-42ad-a07f-f65703f955cf",
                     "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "Computer",
-                    "action": "TouchPosition",
+                    "action": "TouchPosition2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "586fccac-7973-478a-97a5-723e77ed27db",
-                    "path": "<Touchscreen>/touch0/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mobile",
-                    "action": "TouchPosition",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "38b8e768-3674-49d7-a22c-69ce033f50eb",
+                    "id": "5f3a081b-1e35-4054-9b97-46a30872a622",
                     "path": "<Touchscreen>/touch1/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "Mobile",
-                    "action": "TouchPosition",
+                    "action": "TouchPosition2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
