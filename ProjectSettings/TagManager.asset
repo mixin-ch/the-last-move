@@ -77,3 +77,6 @@ TagManager:
   - name: Player
     uniqueID: 1203532125
     locked: 0
+  - name: Terrain Foreground
+    uniqueID: 655620735
+    locked: 0

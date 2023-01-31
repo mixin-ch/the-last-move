@@ -23,6 +23,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.3584906
       objectReference: {fileID: 0}
+    - target: {fileID: 2447189985413337062, guid: f1c77ce4284898040a1a5e1a1469caae, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3069896437363928750, guid: f1c77ce4284898040a1a5e1a1469caae, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -73,6 +77,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3608964336775138526, guid: f1c77ce4284898040a1a5e1a1469caae, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6560929252240000629, guid: f1c77ce4284898040a1a5e1a1469caae, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8959927576848321497, guid: f1c77ce4284898040a1a5e1a1469caae, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
