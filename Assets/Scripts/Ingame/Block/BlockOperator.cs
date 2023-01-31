@@ -33,7 +33,8 @@ namespace Mixin.TheLastMove
             transform.position = position;
             transform.localScale = Vector2.one * size;
 
-            _mainSprite.sprite = biome.Sprite;
+            _mainSprite.sprite = prefab.MainSprite.sprite;
+
             _mainSprite.gameObject.transform.localPosition =
                 prefab.MainSprite.transform.localPosition;
 

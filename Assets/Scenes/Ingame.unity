@@ -502,6 +502,7 @@ MonoBehaviour:
   _biomeList:
   - {fileID: 11400000, guid: f375c3f9d8ef8224ca996e06f7bbbfe1, type: 2}
   - {fileID: 11400000, guid: 0ea0b45c3d2fbbf4695eb9216627ec4c, type: 2}
+  - {fileID: 11400000, guid: f9eac7926fec8d546a761995295ff7ab, type: 2}
 --- !u!114 &629764254
 MonoBehaviour:
   m_ObjectHideFlags: 0
