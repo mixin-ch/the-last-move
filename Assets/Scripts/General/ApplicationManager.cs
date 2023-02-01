@@ -31,6 +31,17 @@ namespace Mixin.TheLastMove
             int soundVolume = _settingsData.SoundVolume;
             SettingsManager.SetVolume("SoundVolume", soundVolume);
 
+            // If user is playing first time, get the system language
+            if (_settingsData.FirstTime)
+            {
+                _settingsData.Language =
+                    LanguageManager.GetLanguageFromSystemLanguageType(Application.systemLanguage);
+
+                _settingsData.FirstTime = false;
+                SaveManager.Instance.UserSettingsData.Save();
+            }
+
+            // Set language from saved settings
             LanguageManager.Instance.SelectedLanguage = _settingsData.Language;
         }
     }

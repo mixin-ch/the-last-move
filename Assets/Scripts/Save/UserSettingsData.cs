@@ -8,6 +8,7 @@ namespace Mixin.TheLastMove.Save
     [Serializable]
     public class UserSettingsData : DataFile
     {
+        public bool FirstTime = true;
         public int MusicVolume = 100;
         public int SoundVolume = 100;
         public int Quality = 6;
