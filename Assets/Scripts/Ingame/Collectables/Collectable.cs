@@ -16,6 +16,18 @@ namespace Mixin.TheLastMove.Environment.Collectable
         [SerializeField]
         private GameObject _collectableModel;
 
+        [SerializeField]
+        private SpriteFadeAndScaler _spriteFadeAndScaler;
+
+        [SerializeField]
+        private SpriteRenderer _spriteRenderer;
+
+        [SerializeField]
+        private Sprite _sprite;
+
+        [SerializeField]
+        private Sprite _collectedSprite;
+
         public static event Action<Collectable> OnCollected;
 
 
@@ -25,8 +37,21 @@ namespace Mixin.TheLastMove.Environment.Collectable
             ResetCounter();
         }
 
+        private void OnEnable()
+        {
+            _spriteFadeAndScaler.AfterExecute += Deactivate;
+        }
+
+        private void OnDisable()
+        {
+            _spriteFadeAndScaler.AfterExecute -= Deactivate;
+        }
+
         public void Activate()
         {
+            _spriteRenderer.sprite = _sprite;
+            _spriteRenderer.transform.localScale = Vector3.one;
+
             // Enable the collectable's renderer and collider
             _collectableModel.SetActive(true);
             _collider.enabled = true;
@@ -46,7 +71,8 @@ namespace Mixin.TheLastMove.Environment.Collectable
             // or you can call an event that you can listen in the player script.
             Debug.Log("Collectable Collected!");
 
-            Deactivate();
+            _spriteRenderer.sprite = _collectedSprite;
+            StartCoroutine(_spriteFadeAndScaler.FadeAndScale());
 
             Counter++;
 

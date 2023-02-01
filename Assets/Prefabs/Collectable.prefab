@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1395229783830962600}
   - component: {fileID: 6579885265916377218}
+  - component: {fileID: 8943709910305254466}
   m_Layer: 9
   m_Name: Sprite
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 4160080573510255740}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4459888564106650804}
@@ -71,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -979654105
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b6cb4d14906dcee419bde88cb06a100c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -84,6 +85,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8943709910305254466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4160080573510255740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb78f70ee389c1b4d8631dfac1f48e4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fadeTime: 1
+  _scaleFactor: 1.01
 --- !u!1 &4459888564106650805
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,6 +146,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _collectableModel: {fileID: 4160080573510255740}
+  _spriteFadeAndScaler: {fileID: 8943709910305254466}
+  _spriteRenderer: {fileID: 6579885265916377218}
+  _sprite: {fileID: 21300000, guid: b6cb4d14906dcee419bde88cb06a100c, type: 3}
+  _collectedSprite: {fileID: 21300000, guid: a44a966e7f60beb4f835ba742a6f8daa, type: 3}
 --- !u!61 &1616316165631315329
 BoxCollider2D:
   m_ObjectHideFlags: 0
