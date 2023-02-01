@@ -51,14 +51,14 @@ namespace Mixin.TheLastMove.Environment
             IngamePauseUIB.OnResumeButtonClicked += UnpauseClicked;
             InputManager.OnJumpClicked += JumpClicked;
             InputManager.OnAttackClicked += AttackClicked;
-            _playerOperator.OnPlayerDeathEvent += PauseClicked;
+            _playerOperator.OnPlayerDeathEvent += _playerOperator_OnPlayerDeathEvent; ;
             IngameSceneManager.Instance.RewardedAd.OnUserRewarded += RewardedAd_OnUserRewarded;
         }
 
         private void OnDisable()
         {
             IngameOverlayUIB.OnPauseButtonClicked -= PauseClicked;
-            _playerOperator.OnPlayerDeathEvent -= PauseClicked;
+            _playerOperator.OnPlayerDeathEvent -= _playerOperator_OnPlayerDeathEvent;
             IngameSceneManager.Instance.RewardedAd.OnUserRewarded -= RewardedAd_OnUserRewarded;
         }
 
@@ -75,6 +75,12 @@ namespace Mixin.TheLastMove.Environment
 
             _started = true;
             OnGameStarted?.Invoke();
+        }
+
+        private void _playerOperator_OnPlayerDeathEvent()
+        {
+            PauseClicked();
+            _started = false;
         }
 
         private void Clear()
