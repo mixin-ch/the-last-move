@@ -547,9 +547,13 @@ MonoBehaviour:
   _playerOperator: {fileID: 1822961194634340435}
   _collectableSpawner: {fileID: 2084484239}
   _biomeList:
-  - {fileID: 11400000, guid: f375c3f9d8ef8224ca996e06f7bbbfe1, type: 2}
+  - {fileID: 11400000, guid: fa6bc0987a5b7fe4998b866e20f9741c, type: 2}
+  - {fileID: 11400000, guid: 35a50a3c806e3c84dbd5eb5b30bbbd8b, type: 2}
   - {fileID: 11400000, guid: 0ea0b45c3d2fbbf4695eb9216627ec4c, type: 2}
   - {fileID: 11400000, guid: f9eac7926fec8d546a761995295ff7ab, type: 2}
+  - {fileID: 11400000, guid: eeae631ee53f60f43908bb76bac11902, type: 2}
+  - {fileID: 11400000, guid: 8514bd42534426049939b1939f19ccff, type: 2}
+  - {fileID: 11400000, guid: f375c3f9d8ef8224ca996e06f7bbbfe1, type: 2}
 --- !u!114 &629764254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -642,6 +646,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38117d8a655b2c94c838136c208d16b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 0}
+  _sprite: {fileID: 0}
+  _deathSprite: {fileID: 0}
+  _collider2D: {fileID: 0}
+  _fadeTime: 1
+  _scaleFactor: 1.2
 --- !u!1 &841584972
 GameObject:
   m_ObjectHideFlags: 0
