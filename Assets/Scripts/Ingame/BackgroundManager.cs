@@ -13,6 +13,9 @@ namespace Mixin.TheLastMove.Environment
         [SerializeField]
         private SpriteToCameraFitter _spriteToCameraFitter;
 
+        [SerializeField]
+        private SpriteRenderer[] _fogList;
+
         private void Start()
         {
             WorldTransitionManager.OnBiomeChangeTransition += SetBiomeBackground;
@@ -32,6 +35,12 @@ namespace Mixin.TheLastMove.Environment
         {
             _background.sprite = biome.Background;
             _spriteToCameraFitter.Fit();
+
+            // Set fog color
+            for (int i = 0; i < _fogList.Length; i++)
+            {
+                _fogList[i].color = biome.FogColor;
+            }
         }
     }
 }

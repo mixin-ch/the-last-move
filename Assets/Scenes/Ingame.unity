@@ -1764,6 +1764,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _background: {fileID: 2005658401}
   _spriteToCameraFitter: {fileID: 2005658402}
+  _fogList:
+  - {fileID: 2070597815}
+  - {fileID: 1470888142}
+  - {fileID: 382160291}
 --- !u!1 &2005658399
 GameObject:
   m_ObjectHideFlags: 0

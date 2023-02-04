@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Night City
   m_EditorClassIdentifier: 
   _background: {fileID: 21300000, guid: f28880ca8121276498b370c213064751, type: 3}
-  _fogColor: {r: 1, g: 1, b: 1, a: 1}
+  _fogColor: {r: 0.18141685, g: 0.34712854, b: 0.5283019, a: 1}
   _sprite: {fileID: 21300000, guid: 4ed1a732d1b7bad479e4b3d4fe6a5a0c, type: 3}
   _prefab: {fileID: 4230435648551104127, guid: 379fafdb206aba34f93ba7213f31b510, type: 3}
