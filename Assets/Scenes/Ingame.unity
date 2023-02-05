@@ -2214,7 +2214,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 801635303027335823}
-  _imageTransform: {fileID: 1913020222031104092}
   _stretcherTransform: {fileID: 1235152488}
   _collider: {fileID: 3608964335757725249}
   _startHealth: 10
@@ -2230,8 +2229,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1096123729632926492}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.25, y: 1, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1235152488}
@@ -2278,7 +2277,7 @@ SpriteRenderer:
   m_SortingLayerID: 1203532125
   m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1106387956, guid: 83d0985f5a261d24593bda94dbcb3427, type: 3}
+  m_Sprite: {fileID: 1126566049, guid: 2a469c3a767b5044795fdfd96ca62b52, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2396,9 +2395,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sprites:
-  - {fileID: 1106387956, guid: 83d0985f5a261d24593bda94dbcb3427, type: 3}
-  - {fileID: -1724963742, guid: 83d0985f5a261d24593bda94dbcb3427, type: 3}
-  _changeTime: 0.2
+  - {fileID: 1126566049, guid: 2a469c3a767b5044795fdfd96ca62b52, type: 3}
+  - {fileID: 1126566049, guid: 2a469c3a767b5044795fdfd96ca62b52, type: 3}
+  - {fileID: 1126566049, guid: 2a469c3a767b5044795fdfd96ca62b52, type: 3}
+  - {fileID: -673052637, guid: 2a469c3a767b5044795fdfd96ca62b52, type: 3}
+  - {fileID: 308308194, guid: 2a469c3a767b5044795fdfd96ca62b52, type: 3}
+  - {fileID: 308308194, guid: 2a469c3a767b5044795fdfd96ca62b52, type: 3}
+  - {fileID: 308308194, guid: 2a469c3a767b5044795fdfd96ca62b52, type: 3}
+  - {fileID: -673052637, guid: 2a469c3a767b5044795fdfd96ca62b52, type: 3}
+  _changeTime: 0.05
   _spriteRenderer: {fileID: 3244794083955830634}
 --- !u!70 &3608964335757725249
 CapsuleCollider2D:

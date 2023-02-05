@@ -16,8 +16,6 @@ namespace Mixin.TheLastMove.Player
         [SerializeField]
         private Rigidbody2D _rigidbody;
         [SerializeField]
-        private Transform _imageTransform;
-        [SerializeField]
         private Transform _stretcherTransform;
         [SerializeField]
         private Collider2D _collider;
@@ -131,7 +129,7 @@ namespace Mixin.TheLastMove.Player
             transform.position = _startPosition;
             _rigidbody.gravityScale = 0;
             _rigidbody.velocity = Vector2.zero;
-            _imageTransform.localScale = Vector2.one;
+            _stretcherTransform.localScale = Vector2.one;
 
             _health = _startHealth;
             _pausedVelocity = 0;
