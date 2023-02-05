@@ -88,7 +88,8 @@ namespace Mixin.TheLastMove.Ingame.UI
 
         private void IngameDeathScreenUIB_OnRespawnButtonClicked()
         {
-            IngameSceneManager.Instance.ShowRespawnAd();
+            AdsManager.Instance.ShowRewardedAd();
+            //IngameSceneManager.Instance.ShowRespawnAd();
         }
 
         private void IngameOverlayUIB_OnPauseButtonClicked()

@@ -47,6 +47,7 @@ namespace Mixin.TheLastMove
 
         void OnApplicationPause(bool isPaused)
         {
+            Debug.Log("unity-script: OnApplicationPause = " + isPaused);
             IronSource.Agent.onApplicationPause(isPaused);
         }
     }
