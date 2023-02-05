@@ -32,15 +32,10 @@ namespace Mixin.TheLastMove.Ads
         {
             //Add Init Event
             IronSourceEvents.onSdkInitializationCompletedEvent += SdkInitializationCompletedEvent;
-
+/*
             //Add Rewarded Video Events
             IronSourceEvents.onRewardedVideoAdRewardedEvent += RewardedVideoAdRewardedEvent;
-            IronSourceEvents.onRewardedVideoAdShowFailedEvent += RewardedVideoAdShowFailedEvent;
-        }
-
-        public void ShowRewardedAd()
-        {
-            
+            IronSourceEvents.onRewardedVideoAdShowFailedEvent += RewardedVideoAdShowFailedEvent;*/
         }
 
         private void RewardedVideoAdShowFailedEvent(IronSourceError obj)
