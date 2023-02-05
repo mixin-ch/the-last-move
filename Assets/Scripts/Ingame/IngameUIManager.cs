@@ -6,6 +6,7 @@ using Mixin.TheLastMove.Player;
 using Mixin.TheLastMove.Save;
 using Mixin.TheLastMove.Scene;
 using Mixin.Utils;
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -30,6 +31,12 @@ namespace Mixin.TheLastMove.Ingame.UI
             _playerOperator.OnPlayerDeathEvent += _playerOperator_OnPlayerDeathEvent;
             Collectable.OnCollected += (collectable) => SetCollectableText();
             ObstacleOperator.OnKilled += (obstacle) => SetKillText();
+
+            //Add Rewarded Video Events
+            IronSourceEvents.onRewardedVideoAdRewardedEvent += RewardedVideoAdRewardedEvent;
+            IronSourceEvents.onRewardedVideoAdShowFailedEvent += RewardedVideoAdShowFailedEvent;
+
+            IronSourceEvents.onInterstitialAdShowSucceededEvent += RestartGame;
         }
 
         private void OnDisable()
@@ -82,18 +89,39 @@ namespace Mixin.TheLastMove.Ingame.UI
 
         private void IngameDeathScreenUIB_OnRestartButtonClicked()
         {
+            if (EnvironmentManager.PlayCounter > 6) { 
+                IronSource.Agent.showInterstitial();
+                EnvironmentManager.PlayCounter = 0;
+            }
+            else
+                RestartGame();
+        }
+
+        private void RestartGame()
+        {
             EnvironmentManager.Instance.StartGame();
             IngameDeathScreenUIB.Instance.Show(false);
         }
 
         private void IngameDeathScreenUIB_OnRespawnButtonClicked()
         {
-            IngameSceneManager.Instance.ShowRespawnAd();
+            IronSource.Agent.showRewardedVideo();
         }
 
         private void IngameOverlayUIB_OnPauseButtonClicked()
         {
             IngamePauseUIB.Instance.Show(true);
+        }
+
+        private void RewardedVideoAdShowFailedEvent(IronSourceError obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void RewardedVideoAdRewardedEvent(IronSourcePlacement obj)
+        {
+            // TODO: Continue
+            EnvironmentManager.Instance.StartGame();
         }
 
         private void _playerOperator_OnPlayerDeathEvent()

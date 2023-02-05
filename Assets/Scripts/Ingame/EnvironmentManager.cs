@@ -31,6 +31,8 @@ namespace Mixin.TheLastMove.Environment
         private BiomeSO _currentBiome;
         private float _biomeTime;
 
+        public static int PlayCounter = 0;
+
         public PlayerOperator PlayerOperator { get => _playerOperator; }
 
         public float Velocity => _hectic * _velocityScale;
@@ -62,6 +64,13 @@ namespace Mixin.TheLastMove.Environment
             IngameSceneManager.Instance.RewardedAd.OnUserRewarded -= RewardedAd_OnUserRewarded;
         }
 
+        protected override void Awake()
+        {
+            base.Awake();
+
+            PlayCounter = 0;
+        }
+
         private void Start()
         {
             StartGame();
@@ -73,6 +82,7 @@ namespace Mixin.TheLastMove.Environment
 
             BackgroundManager.Instance.Init();
 
+            PlayCounter++;
             _started = true;
             OnGameStarted?.Invoke();
         }
