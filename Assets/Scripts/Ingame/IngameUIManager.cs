@@ -88,7 +88,7 @@ namespace Mixin.TheLastMove.Ingame.UI
 
         private void IngameDeathScreenUIB_OnRespawnButtonClicked()
         {
-            AdsManager.Instance.ShowRewardedAd();
+            IronSource.Agent.showRewardedVideo();
             //IngameSceneManager.Instance.ShowRespawnAd();
         }
 

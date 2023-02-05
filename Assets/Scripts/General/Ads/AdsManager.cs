@@ -40,8 +40,7 @@ namespace Mixin.TheLastMove.Ads
 
         public void ShowRewardedAd()
         {
-            if (IronSource.Agent.isRewardedVideoAvailable())
-                IronSource.Agent.showRewardedVideo();
+            
         }
 
         private void RewardedVideoAdShowFailedEvent(IronSourceError obj)
