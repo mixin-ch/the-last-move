@@ -44,5 +44,10 @@ namespace Mixin.TheLastMove
             // Set language from saved settings
             LanguageManager.Instance.SelectedLanguage = _settingsData.Language;
         }
+
+        void OnApplicationPause(bool isPaused)
+        {
+            IronSource.Agent.onApplicationPause(isPaused);
+        }
     }
 }
