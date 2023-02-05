@@ -1,5 +1,6 @@
 using Mixin.TheLastMove.Environment;
 using Mixin.TheLastMove.Environment.Collectable;
+using Mixin.TheLastMove.Sound;
 using Mixin.Utils;
 using System;
 using System.Collections.Generic;

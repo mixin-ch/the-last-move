@@ -2087,8 +2087,8 @@ MonoBehaviour:
       elementIcon: {fileID: 0}
     reqReferences: {fileID: 0}
     isExpanded: 1
-    _keyValues: 010000000000000002000000030000000400000005000000060000000d0000000b0000000c000000
-    _keys: 010000000000000002000000030000000400000005000000060000000d0000000b0000000c000000
+    _keyValues: 010000000000000002000000030000000400000005000000060000000d0000000b0000000c00000007000000
+    _keys: 010000000000000002000000030000000400000005000000060000000d0000000b0000000c00000007000000
     _values:
     - _playRandom: 1
       _soundList:
@@ -2098,16 +2098,17 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 35668a240782da14d8ccb59cd93060e2, type: 2}
     - _playRandom: 1
       _soundList:
-      - {fileID: 11400000, guid: 1f25879c9d0f7e94fb08a32a988ed960, type: 2}
+      - {fileID: 11400000, guid: 7bcb9169afc178841bba0591bb304c22, type: 2}
     - _playRandom: 1
       _soundList:
-      - {fileID: 11400000, guid: a71612f71032c2d40b519c94ba0d1b75, type: 2}
+      - {fileID: 11400000, guid: 6f79752d4993c724a96b079ac6b9c511, type: 2}
     - _playRandom: 1
       _soundList:
       - {fileID: 11400000, guid: 35668a240782da14d8ccb59cd93060e2, type: 2}
     - _playRandom: 1
       _soundList:
-      - {fileID: 11400000, guid: 2da99a5b5e0ca2e44bb03e823d53a99b, type: 2}
+      - {fileID: 11400000, guid: 60d5bf03f8f22df4f89a1b53363bc8d4, type: 2}
+      - {fileID: 11400000, guid: 278f3d109af13c7499b9cce8c7eb3bf0, type: 2}
     - _playRandom: 1
       _soundList:
       - {fileID: 11400000, guid: 2da99a5b5e0ca2e44bb03e823d53a99b, type: 2}
@@ -2118,10 +2119,15 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 4f99cbc830d0dd4478565390b252bf09, type: 2}
     - _playRandom: 1
       _soundList:
-      - {fileID: 11400000, guid: e5a250b39b5caaa4ba21726d7ad790ad, type: 2}
+      - {fileID: 11400000, guid: 0b1ac290b09b664469664fca28f0c436, type: 2}
+      - {fileID: 11400000, guid: 012e69515f5236248ad0302bd036060c, type: 2}
+    - _playRandom: 0
+      _soundList:
+      - {fileID: 11400000, guid: d093d0d6be40a324bbbc433a1491f093, type: 2}
+      - {fileID: 11400000, guid: 94189d1e98c5f9148a9228928671fc88, type: 2}
     - _playRandom: 1
       _soundList:
-      - {fileID: 11400000, guid: 58ee9d102ea0b5a428734faeaf33feba, type: 2}
+      - {fileID: 11400000, guid: f7593971431eb38488bdefcf7f08ee1f, type: 2}
 --- !u!1 &2126218167
 GameObject:
   m_ObjectHideFlags: 0
