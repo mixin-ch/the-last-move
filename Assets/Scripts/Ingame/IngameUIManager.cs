@@ -1,3 +1,4 @@
+using GooglePlayGames;
 using Mixin.TheLastMove.Ads;
 using Mixin.TheLastMove.Environment;
 using Mixin.TheLastMove.Environment.Collectable;
@@ -89,7 +90,8 @@ namespace Mixin.TheLastMove.Ingame.UI
 
         private void IngameDeathScreenUIB_OnRestartButtonClicked()
         {
-            if (EnvironmentManager.PlayCounter > 6) { 
+            if (EnvironmentManager.PlayCounter > 6)
+            {
                 IronSource.Agent.showInterstitial();
                 EnvironmentManager.PlayCounter = 0;
             }
@@ -142,6 +144,11 @@ namespace Mixin.TheLastMove.Ingame.UI
                 SaveManager.Instance.IngameData.Save();
             }
 
+            // Set leaderboard
+            if (UnityEngine.Social.localUser.authenticated)
+                UnityEngine.Social.ReportScore(score, GPGSIds.leaderboard_highest_score, null);
+
+            // Set texts
             IngameDeathScreenUIB.Instance.HighscoreText.text = $"Your Highscore: {highscore}";
             IngameDeathScreenUIB.Instance.KillText.text = $"Kills: {kills}";
             IngameDeathScreenUIB.Instance.CurrencyText.text = $"Figures Collected: {collectable}";
