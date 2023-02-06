@@ -554,6 +554,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: eeae631ee53f60f43908bb76bac11902, type: 2}
   - {fileID: 11400000, guid: 8514bd42534426049939b1939f19ccff, type: 2}
   - {fileID: 11400000, guid: f375c3f9d8ef8224ca996e06f7bbbfe1, type: 2}
+  _biomeDurationMinMax: {x: 15, y: 45}
 --- !u!114 &629764254
 MonoBehaviour:
   m_ObjectHideFlags: 0

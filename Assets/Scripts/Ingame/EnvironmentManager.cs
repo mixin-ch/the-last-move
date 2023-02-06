@@ -22,7 +22,9 @@ namespace Mixin.TheLastMove.Environment
         private const float _hecticGain = 0.05f;
         private const float _maxHectic = 5f;
         private const float _velocityScale = 3f;
-        private const float _biomeDuration = 10f;
+
+        [SerializeField]
+        private Vector2Int _biomeDurationMinMax = Vector2Int.one;
 
         private bool _started;
         private bool _paused;
@@ -102,7 +104,9 @@ namespace Mixin.TheLastMove.Environment
             _distance = 0;
 
             _currentBiome = _biomeList.PickRandom();
-            _biomeTime = _biomeDuration;
+
+            // Get random biome duration
+            _biomeTime = GetRandomBiomeDuration();
         }
 
         private void PauseClicked()
@@ -138,7 +142,7 @@ namespace Mixin.TheLastMove.Environment
             if (_biomeTime <= 0)
             {
                 BiomeSO newBiome = _biomeList.PickRandom();
-                _biomeTime = _biomeDuration;
+                _biomeTime = GetRandomBiomeDuration();
 
                 if (newBiome == _currentBiome)
                     return;
@@ -159,6 +163,11 @@ namespace Mixin.TheLastMove.Environment
         {
             // ContinueGame();
             StartGame();
+        }
+
+        private float GetRandomBiomeDuration()
+        {
+            return new System.Random().Range(_biomeDurationMinMax.x, _biomeDurationMinMax.y);
         }
     }
 }
