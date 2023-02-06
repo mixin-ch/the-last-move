@@ -16,7 +16,13 @@ namespace Mixin.TheLastMove.Environment
         private CollectableSpawner _collectableSpawner;
 
         [SerializeField]
-        private List<BiomeSO> _biomeList;
+        private BiomeSO[] _biomeList;
+
+        /*/// <summary>
+        /// A list of all blockoperators.
+        /// Inited at Awake.
+        /// </summary>
+        private BlockOperator[] _blockOperatorList;*/
 
         private const float _hecticStart = 1;
         private const float _hecticGain = 0.05f;
@@ -65,6 +71,12 @@ namespace Mixin.TheLastMove.Environment
         protected override void Awake()
         {
             base.Awake();
+
+            /*for (int i = 0; i < _biomeList.Length; i++)
+            {
+                // Add BlockOperator to list. This reduces requests.
+                _blockOperatorList[i] = _biomeList[i].Prefab.GetComponent<BlockOperator>();
+            }*/
 
             PlayCounter = 0;
         }
