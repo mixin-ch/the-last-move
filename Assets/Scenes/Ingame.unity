@@ -2222,10 +2222,10 @@ MonoBehaviour:
   _rigidbody: {fileID: 801635303027335823}
   _stretcherTransform: {fileID: 1235152488}
   _collider: {fileID: 3608964335757725249}
-  _startHealth: 10
-  _startPosition: {x: -6, y: 2}
+  _startHealth: 3
+  _startPosition: {x: -5, y: 2}
   _jumpList:
-  - 7
+  - 8
   - 5
 --- !u!4 &1913020222031104092
 Transform:

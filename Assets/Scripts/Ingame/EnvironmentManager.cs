@@ -51,17 +51,13 @@ namespace Mixin.TheLastMove.Environment
         {
             IngameOverlayUIB.OnPauseButtonClicked += PauseClicked;
             IngamePauseUIB.OnResumeButtonClicked += UnpauseClicked;
-            InputManager.OnJumpClicked += JumpClicked;
-            InputManager.OnAttackClicked += AttackClicked;
-            _playerOperator.OnPlayerDeathEvent += _playerOperator_OnPlayerDeathEvent; ;
-            IngameSceneManager.Instance.RewardedAd.OnUserRewarded += RewardedAd_OnUserRewarded;
+            _playerOperator.OnPlayerDeathEvent += _playerOperator_OnPlayerDeathEvent;
         }
 
         private void OnDisable()
         {
             IngameOverlayUIB.OnPauseButtonClicked -= PauseClicked;
             _playerOperator.OnPlayerDeathEvent -= _playerOperator_OnPlayerDeathEvent;
-            IngameSceneManager.Instance.RewardedAd.OnUserRewarded -= RewardedAd_OnUserRewarded;
         }
 
         protected override void Awake()
@@ -128,23 +124,6 @@ namespace Mixin.TheLastMove.Environment
 
             _playerOperator.PauseRefresh();
         }
-
-        private void JumpClicked()
-        {
-            if (!_started || _paused)
-                return;
-
-            _playerOperator.TryJump();
-        }
-
-        private void AttackClicked()
-        {
-            if (!_started || _paused)
-                return;
-
-            _playerOperator.TryAttack();
-        }
-
         private void FixedUpdate()
         {
             if (!_started || _paused)

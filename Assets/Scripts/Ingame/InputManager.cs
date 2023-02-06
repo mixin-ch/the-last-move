@@ -30,8 +30,8 @@ namespace Mixin.TheLastMove
         public bool IsPressingJumpButton { get => _isPressingJumpButton; }
         public InputControls InputControls { get => _input; set => _input = value; }
 
-        public static event Action OnJumpClicked;
-        public static event Action OnAttackClicked;
+        public static event Action OnPlayerJump;
+        public static event Action OnPlayerAttack;
 
         protected override void Awake()
         {
@@ -98,11 +98,14 @@ namespace Mixin.TheLastMove
 
         private void Jump()
         {
+            if (!EnvironmentManager.Instance.PlayerOperator.CanJump)
+                return;
+
             if (Time.time >= _jumpTimer)
             {
                 // Code to handle Jump action
                 _jumpTimer = Time.time + _jumpDelay;
-                OnJumpClicked?.Invoke();
+                OnPlayerJump?.Invoke();
                 _isPressingJumpButton = true;
             }
         }
@@ -113,7 +116,7 @@ namespace Mixin.TheLastMove
             {
                 // Code to handle Attack action
                 _attackTimer = Time.time + _attackDelay;
-                OnAttackClicked?.Invoke();
+                OnPlayerAttack?.Invoke();
             }
         }
 

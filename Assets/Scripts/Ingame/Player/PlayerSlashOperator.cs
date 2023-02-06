@@ -29,7 +29,7 @@ namespace Mixin.TheLastMove
         // Start is called before the first frame update
         private void OnEnable()
         {
-            EnvironmentManager.Instance.PlayerOperator.OnPlayerAttackEvent += PlayerOperator_OnPlayerAttackEvent;
+            InputManager.OnPlayerAttack += PlayerOperator_OnPlayerAttackEvent;
             _attackSlash.enabled = false;
         }
 
