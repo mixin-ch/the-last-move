@@ -16,7 +16,7 @@ namespace Mixin.TheLastMove.Social
 
         internal void ProcessAuthentication(SignInStatus status)
         {
-            $"{status}".Log();
+            $"Google Play Games Status: {status}".Log();
 
             if (status == SignInStatus.Success)
             {
