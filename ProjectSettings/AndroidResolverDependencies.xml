@@ -48,7 +48,7 @@
   </files>
   <settings>
     <setting name="androidAbis" value="arm64-v8a,armeabi-v7a" />
-    <setting name="bundleId" value="com.mixin.the_last_move" />
+    <setting name="bundleId" value="ch.mixin.thelastmove" />
     <setting name="explodeAars" value="True" />
     <setting name="gradleBuildEnabled" value="True" />
     <setting name="gradlePropertiesTemplateEnabled" value="False" />
