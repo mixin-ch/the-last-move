@@ -1,3 +1,4 @@
+using Mixin.TheLastMove.Environment;
 using Mixin.Utils;
 using UnityEngine;
 
@@ -57,10 +58,8 @@ namespace Mixin.TheLastMove
 
         private void SetupSingleLineFirst(float blockChunkSize)
         {
-            System.Random random = new System.Random();
-
-            float height = (float)random.NextDouble().Between(_lastHeight - 0.5, _lastHeight + 0.5);
-            _currentGenerator = new SingleLineMapGenerator(_lastHeight, blockChunkSize, 0, 0);
+            float height = MapManager.StartBlockHeightFraction;
+            _currentGenerator = new SingleLineMapGenerator(height, blockChunkSize, 0, 0);
 
             _steps = (30 * blockChunkSize).RoundToInt().LowerBound(1);
 
@@ -72,7 +71,7 @@ namespace Mixin.TheLastMove
             System.Random random = new System.Random();
 
             float height = (float)random.NextDouble().Between(_lastHeight - 0.5, _lastHeight + 0.5);
-            _currentGenerator = new SingleLineMapGenerator(_lastHeight, blockChunkSize, gapMultiplier, obstacleMultiplier);
+            _currentGenerator = new SingleLineMapGenerator(height, blockChunkSize, gapMultiplier, obstacleMultiplier);
 
             int min = (10 * blockChunkSize).RoundToInt().LowerBound(1);
             int max = (50 * blockChunkSize).RoundToInt().LowerBound(1);

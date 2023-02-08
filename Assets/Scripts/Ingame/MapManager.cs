@@ -18,8 +18,9 @@ namespace Mixin.TheLastMove.Environment
         private const float _blockSize = 4f;
         private const float _insertDistance = 15f;
         private const float _deleteDistance = 15f;
-        private const float _maxInsertHeight = 0f;
-        private const float _minInsertHeight = -5f;
+        private const float _maxInsertHeight = 1f;
+        private const float _minInsertHeight = -3f;
+        private const float _startBlockHeightFraction = 0.5f;
 
         private ObjectPooler _op;
 
@@ -31,6 +32,8 @@ namespace Mixin.TheLastMove.Environment
         private List<BlockOperator> _blockOperatorList = new List<BlockOperator>();
         private List<ObstacleOperator> _obstacleOperatorList = new List<ObstacleOperator>();
         private float _distancePlanned;
+
+        public static float StartBlockHeightFraction => _startBlockHeightFraction;
 
         private void Start()
         {
@@ -80,8 +83,10 @@ namespace Mixin.TheLastMove.Environment
 
         private void TickBlocks(float offset)
         {
-            foreach (BlockOperator @operator in _blockOperatorList)
-                @operator.Move(Vector2.left * offset);
+            //foreach (BlockOperator @operator in _blockOperatorList)
+            //    @operator.Move(Vector2.left * offset);
+
+            _blockContainer.transform.position += (Vector3)Vector2.left * offset;
 
             for (int i = 0; i < _blockOperatorList.Count; i++)
             {
@@ -99,8 +104,10 @@ namespace Mixin.TheLastMove.Environment
 
         private void TickObstacles(float offset)
         {
-            foreach (ObstacleOperator @operator in _obstacleOperatorList)
-                @operator.Move(Vector2.left * offset);
+            //foreach (ObstacleOperator @operator in _obstacleOperatorList)
+            //    @operator.Move(Vector2.left * offset);
+
+            _obstacleContainer.transform.position += (Vector3)Vector2.left * offset;
 
             for (int i = 0; i < _obstacleOperatorList.Count; i++)
             {
