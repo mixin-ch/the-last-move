@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Mixin.Utils;
 
@@ -38,21 +36,6 @@ namespace Mixin.TheLastMove.About
         private void OpenURL(string url)
         {
             Application.OpenURL(url);
-        }
-
-        private void RedgreenbirdFilmsLogo_clicked()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        private void MixinGamesLogo_clicked()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        private void PrivacyButton_clicked()
-        {
-            throw new System.NotImplementedException();
         }
     }
 }
