@@ -24,6 +24,9 @@ namespace Mixin.TheLastMove.Environment
         [SerializeField]
         private float _scaleFactor = 1.2f;
 
+        [SerializeField]
+        private float _groundOffset = 0;
+
         public static int Counter;
 
         public static event Action<ObstacleOperator> OnKilled;
@@ -33,13 +36,20 @@ namespace Mixin.TheLastMove.Environment
             ResetCounter();
         }
 
-        public void Setup(Vector3 position)
+        public void Setup(ObstacleOperator obstacle, Vector3 position)
         {
-            _spriteRenderer.sprite = _sprite;
+            _spriteRenderer.sprite = obstacle._sprite;
             _spriteRenderer.color = Color.white;
+
+            // Position and scale
+            position.y += obstacle._groundOffset;
             transform.position = position;
-            _spriteRenderer.transform.localScale = new Vector3(1, 1, 1);
+            transform.localScale = obstacle.transform.localScale;
+
+            // Collider
             _collider2D.enabled = true;
+            _collider2D.transform.localScale = obstacle._collider2D.transform.localScale;
+            _collider2D.transform.localPosition = obstacle._collider2D.transform.localPosition;
         }
 
         public void Move(Vector2 offset)

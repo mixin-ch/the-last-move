@@ -23,10 +23,16 @@ namespace Mixin.TheLastMove.Environment.Collectable
         private SpriteRenderer _spriteRenderer;
 
         [SerializeField]
+        private Sprite _collectedSprite;
+
+        /* Data */
+        [SerializeField]
         private Sprite _sprite;
 
-        [SerializeField]
-        private Sprite _collectedSprite;
+
+        public Sprite Sprite { get => _sprite; set => _sprite = value; }
+        public Vector2 Position { get => transform.localPosition; set => transform.localPosition = value; }
+        public Vector2 Scale { get => transform.localScale; set => transform.localScale = value; }
 
         public static event Action<Collectable> OnCollected;
 
