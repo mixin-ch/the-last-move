@@ -10,13 +10,10 @@ namespace Mixin.TheLastMove.Environment
         private SpriteRenderer _spriteRenderer;
 
         [SerializeField]
-        private Sprite _sprite;
-
-        [SerializeField]
         private Sprite _deathSprite;
 
         [SerializeField]
-        private Collider2D _collider2D;
+        private BoxCollider2D _collider2D;
 
         [SerializeField]
         private float _fadeTime = 1f;
@@ -38,7 +35,11 @@ namespace Mixin.TheLastMove.Environment
 
         public void Setup(ObstacleOperator obstacle, Vector3 position)
         {
-            _spriteRenderer.sprite = obstacle._sprite;
+            // Reset scale of Sprite
+            _spriteRenderer.transform.localScale = new Vector3(1, 1, 1);
+
+            // Set image
+            _spriteRenderer.sprite = obstacle._spriteRenderer.sprite;
             _spriteRenderer.color = Color.white;
 
             // Position and scale
@@ -48,8 +49,8 @@ namespace Mixin.TheLastMove.Environment
 
             // Collider
             _collider2D.enabled = true;
-            _collider2D.transform.localScale = obstacle._collider2D.transform.localScale;
-            _collider2D.transform.localPosition = obstacle._collider2D.transform.localPosition;
+            _collider2D.offset = obstacle._collider2D.offset;
+            _collider2D.size = obstacle._collider2D.size;
         }
 
         public void Move(Vector2 offset)
