@@ -7,6 +7,8 @@ namespace Mixin.TheLastMove.Environment
     public class MapManager : Singleton<MapManager>
     {
         [SerializeField]
+        private GameObject _movingContainer;
+        [SerializeField]
         private GameObject _blockContainer;
         [SerializeField]
         private GameObject _blockPrefab;
@@ -65,8 +67,9 @@ namespace Mixin.TheLastMove.Environment
 
         public void Tick(float offset)
         {
-            TickBlocks(offset);
-            TickObstacles(offset);
+            _movingContainer.transform.position += (Vector3)Vector2.left * offset;
+            TickBlocks();
+            TickObstacles();
             TickMapGeneration(offset);
         }
 
@@ -76,18 +79,12 @@ namespace Mixin.TheLastMove.Environment
                 return;
 
             _obstacleOperatorList.Remove(obstacleOperator);
-            //Destroy(obstacleOperator.gameObject);
             obstacleOperator.gameObject.SetActive(false);
         }
 
 
-        private void TickBlocks(float offset)
+        private void TickBlocks()
         {
-            //foreach (BlockOperator @operator in _blockOperatorList)
-            //    @operator.Move(Vector2.left * offset);
-
-            _blockContainer.transform.position += (Vector3)Vector2.left * offset;
-
             for (int i = 0; i < _blockOperatorList.Count; i++)
             {
                 BlockOperator @operator = _blockOperatorList[i];
@@ -102,13 +99,8 @@ namespace Mixin.TheLastMove.Environment
             }
         }
 
-        private void TickObstacles(float offset)
+        private void TickObstacles()
         {
-            //foreach (ObstacleOperator @operator in _obstacleOperatorList)
-            //    @operator.Move(Vector2.left * offset);
-
-            _obstacleContainer.transform.position += (Vector3)Vector2.left * offset;
-
             for (int i = 0; i < _obstacleOperatorList.Count; i++)
             {
                 ObstacleOperator @operator = _obstacleOperatorList[i];

@@ -567,6 +567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45847708c3f024744a687ecbbbd8e034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _movingContainer: {fileID: 1241622250}
   _blockContainer: {fileID: 874045375}
   _blockPrefab: {fileID: 3608964336775138525, guid: f1c77ce4284898040a1a5e1a1469caae, type: 3}
   _obstacleContainer: {fileID: 642478925}
