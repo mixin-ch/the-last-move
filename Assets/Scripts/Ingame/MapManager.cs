@@ -150,7 +150,7 @@ namespace Mixin.TheLastMove.Environment
                 gameObject.transform.SetParent(_obstacleContainer.transform);
                 //GameObject gameObject = _obstaclePrefab.GeneratePrefab(_obstacleContainer);
                 ObstacleOperator @operator = gameObject.GetComponent<ObstacleOperator>();
-                float y = _blockSize * 0.5f + Mathf.Lerp(_minInsertHeight, _maxInsertHeight, plan.Height);
+                float y = Mathf.Lerp(_minInsertHeight, _maxInsertHeight, plan.Height);
                 @operator.Setup(plan.Obstacle, new Vector3(x, y, y * 0.1f));
                 _obstacleOperatorList.Add(@operator);
                 gameObject.SetActive(true);
