@@ -1,5 +1,7 @@
+using Mixin.TheLastMove.Environment;
 using Mixin.Utils;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Mixin.TheLastMove
 {
@@ -9,22 +11,24 @@ namespace Mixin.TheLastMove
         private float _height;
         private float _blockChunkSize;
         private float _gapMultiplier;
-        private float _obstacleMultiplier;
+        private MixinDictionary<ObstacleOperator, float> _obstacleMultiplierDict = new MixinDictionary<ObstacleOperator, float>();
 
         public float Height { get => _height; set => _height = value; }
         public float BlockChunkSize { get => _blockChunkSize; set => _blockChunkSize = value; }
         public float GapMultiplier { get => _gapMultiplier; set => _gapMultiplier = value; }
-        public float ObstacleMultiplier { get => _obstacleMultiplier; set => _obstacleMultiplier = value; }
+        public MixinDictionary<ObstacleOperator, float> ObstacleMultiplierDict { get => _obstacleMultiplierDict; set => _obstacleMultiplierDict = value; }
 
         private bool _filled;
         private int _steps;
 
-        public SingleLineMapGenerator(float height, float blockChunkSize = 1, float gapMultiplier = 1, float obstacleMultiplier = 1)
+        public SingleLineMapGenerator(float height, float blockChunkSize = 1, float gapMultiplier = 1, MixinDictionary<ObstacleOperator, float> obstacleMultiplierDict = null)
         {
             _height = height;
             _blockChunkSize = blockChunkSize;
             _gapMultiplier = gapMultiplier;
-            _obstacleMultiplier = obstacleMultiplier;
+
+            if (obstacleMultiplierDict != null)
+                _obstacleMultiplierDict = obstacleMultiplierDict;
         }
 
         public MapPlan Tick()
@@ -62,8 +66,18 @@ namespace Mixin.TheLastMove
             {
                 blockPlanList.Add(new BlockPlan(_height));
 
-                if (random.RandomTrue(0.1 * _obstacleMultiplier))
-                    obstaclePlanList.Add(new ObstaclePlan(_height));
+                if (!_obstacleMultiplierDict.IsEmpty())
+                {
+                    float sum = 0;
+
+                    foreach (float probability in _obstacleMultiplierDict.Values)
+                        sum += probability;
+
+                    ObstacleOperator obstacle = _obstacleMultiplierDict.PickWeightedRandom(random);
+
+                    if (random.RandomTrue(sum))
+                        obstaclePlanList.Add(new ObstaclePlan(obstacle, _height));
+                }
             }
 
             _steps--;

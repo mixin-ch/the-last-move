@@ -1,3 +1,4 @@
+using Mixin.TheLastMove.Utils;
 using Mixin.Utils;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,9 @@ namespace Mixin.TheLastMove.Environment
         private GameObject _obstacleContainer;
         [SerializeField]
         private GameObject _obstaclePrefab;
+
+        [SerializeField]
+        private List<KeyAndValueLocked<ObstacleOperator, float>> _obstacleMultiplierDict;
 
         private const float _blockSize = 4f;
         private const float _insertDistance = 15f;
@@ -61,8 +65,7 @@ namespace Mixin.TheLastMove.Environment
             }
 
             _distancePlanned = 25;
-
-            _mapGenerator = new MapGenerator(EnvironmentManager.Instance.Hectic / _blockSize, 1);
+            _mapGenerator = new MapGenerator(EnvironmentManager.Instance.Hectic / _blockSize, 1, _obstacleMultiplierDict.ToDictionary());
         }
 
         public void Tick(float offset)
@@ -148,7 +151,7 @@ namespace Mixin.TheLastMove.Environment
                 //GameObject gameObject = _obstaclePrefab.GeneratePrefab(_obstacleContainer);
                 ObstacleOperator @operator = gameObject.GetComponent<ObstacleOperator>();
                 float y = _blockSize * 0.5f + Mathf.Lerp(_minInsertHeight, _maxInsertHeight, plan.Height);
-                @operator.Setup(new Vector3(x, y, y * 0.1f));
+                @operator.Setup(plan.Obstacle, new Vector3(x, y, y * 0.1f));
                 _obstacleOperatorList.Add(@operator);
                 gameObject.SetActive(true);
             }

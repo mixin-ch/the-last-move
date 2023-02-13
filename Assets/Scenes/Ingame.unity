@@ -572,6 +572,11 @@ MonoBehaviour:
   _blockPrefab: {fileID: 3608964336775138525, guid: f1c77ce4284898040a1a5e1a1469caae, type: 3}
   _obstacleContainer: {fileID: 642478925}
   _obstaclePrefab: {fileID: 3608964336775138525, guid: 083f8ea48cdda1147aa420ff4751a720, type: 3}
+  _obstacleMultiplierDict:
+  - _key: {fileID: 7109862074252922431, guid: 415fb1081c6f9624e801def3052ddc92, type: 3}
+    _value: 0.05
+  - _key: {fileID: 7109862074252922431, guid: 1edada02435febf47903b68f6530a2f3, type: 3}
+    _value: 0.2
 --- !u!1 &642478925
 GameObject:
   m_ObjectHideFlags: 0
@@ -686,6 +691,7 @@ MonoBehaviour:
   _collider2D: {fileID: 0}
   _fadeTime: 1
   _scaleFactor: 1.2
+  _groundOffset: 0
 --- !u!1 &841584972
 GameObject:
   m_ObjectHideFlags: 0

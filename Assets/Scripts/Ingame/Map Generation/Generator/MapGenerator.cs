@@ -8,22 +8,24 @@ namespace Mixin.TheLastMove
     {
         private float _blockChunkSize;
         private float _gapMultiplier;
-        private float _obstacleMultiplier;
+        private MixinDictionary<ObstacleOperator, float> _obstacleMultiplierDict = new MixinDictionary<ObstacleOperator, float>();
 
         public float BlockChunkSize { get => _blockChunkSize; set => _blockChunkSize = value; }
         public float GapMultiplier { get => _gapMultiplier; set => _gapMultiplier = value; }
-        public float ObstacleMultiplier { get => _obstacleMultiplier; set => _obstacleMultiplier = value; }
+        public MixinDictionary<ObstacleOperator, float> ObstacleMultiplierDict { get => _obstacleMultiplierDict; set => _obstacleMultiplierDict = value; }
 
         private IMapGenerator _currentGenerator;
         private float _lastHeight;
         private int _steps;
         private bool _firstStep;
 
-        public MapGenerator(float blockChunkSize = 1, float gapMultiplier = 1, float obstacleMultiplier = 1)
+        public MapGenerator(float blockChunkSize = 1, float gapMultiplier = 1, MixinDictionary<ObstacleOperator, float> obstacleMultiplierDict = null)
         {
             _blockChunkSize = blockChunkSize;
             _gapMultiplier = gapMultiplier;
-            _obstacleMultiplier = obstacleMultiplier;
+
+            if (obstacleMultiplierDict != null)
+                _obstacleMultiplierDict = obstacleMultiplierDict;
 
             _firstStep = true;
         }
@@ -43,10 +45,10 @@ namespace Mixin.TheLastMove
                 switch (random.Range(0, 1))
                 {
                     case 0:
-                        SetupSingleLine(_blockChunkSize, _gapMultiplier, _obstacleMultiplier);
+                        SetupSingleLine(_blockChunkSize, _gapMultiplier, _obstacleMultiplierDict);
                         break;
                     case 1:
-                        SetupDoubleLine(_blockChunkSize, _gapMultiplier, _obstacleMultiplier);
+                        SetupDoubleLine(_blockChunkSize, _gapMultiplier, _obstacleMultiplierDict);
                         break;
                 }
             }
@@ -59,19 +61,19 @@ namespace Mixin.TheLastMove
         private void SetupSingleLineFirst(float blockChunkSize)
         {
             float height = MapManager.StartBlockHeightFraction;
-            _currentGenerator = new SingleLineMapGenerator(height, blockChunkSize, 0, 0);
+            _currentGenerator = new SingleLineMapGenerator(height, blockChunkSize, 0, new MixinDictionary<ObstacleOperator, float>());
 
             _steps = (30 * blockChunkSize).RoundToInt().LowerBound(1);
 
             _lastHeight = height;
         }
 
-        private void SetupSingleLine(float blockChunkSize, float gapMultiplier, float obstacleMultiplier)
+        private void SetupSingleLine(float blockChunkSize, float gapMultiplier, MixinDictionary<ObstacleOperator, float> obstacleMultiplierDict)
         {
             System.Random random = new System.Random();
 
             float height = (float)random.NextDouble().Between(_lastHeight - 0.5, _lastHeight + 0.5);
-            _currentGenerator = new SingleLineMapGenerator(height, blockChunkSize, gapMultiplier, obstacleMultiplier);
+            _currentGenerator = new SingleLineMapGenerator(height, blockChunkSize, gapMultiplier, obstacleMultiplierDict);
 
             int min = (10 * blockChunkSize).RoundToInt().LowerBound(1);
             int max = (50 * blockChunkSize).RoundToInt().LowerBound(1);
@@ -80,7 +82,7 @@ namespace Mixin.TheLastMove
             _lastHeight = height;
         }
 
-        private void SetupDoubleLine(float blockChunkSize, float gapMultiplier, float obstacleMultiplier)
+        private void SetupDoubleLine(float blockChunkSize, float gapMultiplier, MixinDictionary<ObstacleOperator, float> obstacleMultiplierDict)
         {
             System.Random random = new System.Random();
 
@@ -97,7 +99,7 @@ namespace Mixin.TheLastMove
             while (Mathf.Abs(height1 - height0) < 0.35)
                 height1 = (float)random.NextDouble();
 
-            _currentGenerator = new DoubleLineMapGenerator(height0, height1, blockChunkSize, gapMultiplier, obstacleMultiplier);
+            _currentGenerator = new DoubleLineMapGenerator(height0, height1, blockChunkSize, gapMultiplier, obstacleMultiplierDict);
             int min = (10 * blockChunkSize).RoundToInt().LowerBound(1);
             int max = (50 * blockChunkSize).RoundToInt().LowerBound(1);
             _steps = random.Range(min, max);

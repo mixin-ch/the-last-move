@@ -1,3 +1,5 @@
+using Mixin.TheLastMove.Environment;
+using Mixin.Utils;
 using System.Collections.Generic;
 
 namespace Mixin.TheLastMove
@@ -9,7 +11,7 @@ namespace Mixin.TheLastMove
         private float _height1;
         private float _blockChunkSize;
         private float _gapMultiplier;
-        private float _obstacleMultiplier;
+        private MixinDictionary<ObstacleOperator, float> _obstacleMultiplierDict = new MixinDictionary<ObstacleOperator, float>();
 
         public float Height0
         {
@@ -29,30 +31,29 @@ namespace Mixin.TheLastMove
         public float GapMultiplier
         {
             get => _gapMultiplier;
-            set { _gapMultiplier = value; _generator0.GapMultiplier = SingleLineGapMultiplier; _generator1.GapMultiplier = SingleLineGapMultiplier; }
+            set { _gapMultiplier = value; _generator0.GapMultiplier = GapMultiplier; _generator1.GapMultiplier = GapMultiplier; }
         }
-        public float ObstacleMultiplier
+        public MixinDictionary<ObstacleOperator, float> ObstacleMultiplierDict
         {
-            get => _obstacleMultiplier;
-            set { _obstacleMultiplier = value; _generator0.ObstacleMultiplier = SingleLineObstacleMultiplier; _generator1.ObstacleMultiplier = SingleLineObstacleMultiplier; }
+            get => _obstacleMultiplierDict;
+            set { _obstacleMultiplierDict = value; _generator0.ObstacleMultiplierDict = ObstacleMultiplierDict; _generator1.ObstacleMultiplierDict = ObstacleMultiplierDict; }
         }
-
-        private float SingleLineGapMultiplier => GapMultiplier * 1;
-        private float SingleLineObstacleMultiplier => ObstacleMultiplier * 2;
 
         private SingleLineMapGenerator _generator0;
         private SingleLineMapGenerator _generator1;
 
-        public DoubleLineMapGenerator(float height0, float height1, float blockChunkSize = 1, float gapMultiplier = 1, float obstacleMultiplier = 1)
+        public DoubleLineMapGenerator(float height0, float height1, float blockChunkSize = 1, float gapMultiplier = 1, MixinDictionary<ObstacleOperator, float> obstacleMultiplierDict = null)
         {
             _height0 = height0;
             _height1 = height1;
             _blockChunkSize = blockChunkSize;
             _gapMultiplier = gapMultiplier;
-            _obstacleMultiplier = obstacleMultiplier;
 
-            _generator0 = new SingleLineMapGenerator(height0, blockChunkSize, SingleLineGapMultiplier, SingleLineObstacleMultiplier);
-            _generator1 = new SingleLineMapGenerator(height1, blockChunkSize, SingleLineGapMultiplier, SingleLineObstacleMultiplier);
+            if (obstacleMultiplierDict != null)
+                _obstacleMultiplierDict = obstacleMultiplierDict;
+
+            _generator0 = new SingleLineMapGenerator(_height0, _blockChunkSize, _gapMultiplier, _obstacleMultiplierDict);
+            _generator1 = new SingleLineMapGenerator(_height1, _blockChunkSize, _gapMultiplier, _obstacleMultiplierDict);
         }
 
         public MapPlan Tick()
