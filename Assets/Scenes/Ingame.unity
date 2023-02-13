@@ -2551,16 +2551,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sprites:
-  - {fileID: 1126566049, guid: 2a469c3a767b5044795fdfd96ca62b52, type: 3}
-  - {fileID: 1126566049, guid: 2a469c3a767b5044795fdfd96ca62b52, type: 3}
-  - {fileID: 1126566049, guid: 2a469c3a767b5044795fdfd96ca62b52, type: 3}
-  - {fileID: -673052637, guid: 2a469c3a767b5044795fdfd96ca62b52, type: 3}
-  - {fileID: 308308194, guid: 2a469c3a767b5044795fdfd96ca62b52, type: 3}
-  - {fileID: 308308194, guid: 2a469c3a767b5044795fdfd96ca62b52, type: 3}
-  - {fileID: 308308194, guid: 2a469c3a767b5044795fdfd96ca62b52, type: 3}
-  - {fileID: -673052637, guid: 2a469c3a767b5044795fdfd96ca62b52, type: 3}
+  - {fileID: -215509113, guid: fb3e8ab2cc830064381c7149e0edb738, type: 3}
+  - {fileID: -215509113, guid: fb3e8ab2cc830064381c7149e0edb738, type: 3}
+  - {fileID: -215509113, guid: fb3e8ab2cc830064381c7149e0edb738, type: 3}
+  - {fileID: -1827305610, guid: fb3e8ab2cc830064381c7149e0edb738, type: 3}
+  - {fileID: -1248468798, guid: fb3e8ab2cc830064381c7149e0edb738, type: 3}
+  - {fileID: -1248468798, guid: fb3e8ab2cc830064381c7149e0edb738, type: 3}
+  - {fileID: -1248468798, guid: fb3e8ab2cc830064381c7149e0edb738, type: 3}
+  - {fileID: -1827305610, guid: fb3e8ab2cc830064381c7149e0edb738, type: 3}
   _changeTime: 0.05
   _spriteRenderer: {fileID: 3244794083955830634}
+  _jump: {fileID: 1803999851, guid: fb3e8ab2cc830064381c7149e0edb738, type: 3}
+  _fall: {fileID: 429438832, guid: fb3e8ab2cc830064381c7149e0edb738, type: 3}
 --- !u!70 &3608964335757725249
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

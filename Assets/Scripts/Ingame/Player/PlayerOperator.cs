@@ -12,6 +12,7 @@ namespace Mixin.TheLastMove.Player
     {
         public event Action OnPlayerDeathEvent;
         public event Action OnPlayerTakeDamageEvent;
+        public event Action OnPlayerLanded;
 
         [SerializeField]
         private Rigidbody2D _rigidbody;
@@ -54,6 +55,9 @@ namespace Mixin.TheLastMove.Player
 
         public Vector2 Position => transform.position;
         public float Health { get => _health; }
+        public bool IsWalking { get => !_isJumping; }
+        public bool IsFalling { get => _rigidbody.velocity.y < -8f; }
+        public bool IsJumping { get => _isJumping; }
 
         private void OnEnable()
         {
@@ -152,6 +156,8 @@ namespace Mixin.TheLastMove.Player
                 _remainingJumpList.Clear();
                 _remainingJumpList.AddRange(_jumpList);
                 _isJumping = false;
+
+                OnPlayerLanded?.Invoke();
             }
         }
 
