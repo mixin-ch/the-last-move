@@ -59,9 +59,6 @@ namespace Mixin.TheLastMove.Player
 
         public Vector2 Position => transform.position;
         public float Health { get => _health; }
-        public bool IsWalking { get => !_isJumping; }
-        public bool IsFalling { get => _rigidbody.velocity.y < -8f; }
-        public bool IsJumping { get => _isJumping; }
         public PlayerSpriteState PlayerSpriteState { get => _playerSpriteState; }
 
         private void OnEnable()

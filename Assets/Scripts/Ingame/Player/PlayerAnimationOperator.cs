@@ -59,6 +59,11 @@ namespace Mixin.TheLastMove.Player
                     case PlayerSpriteState.Walk:
                         _currentSprite = (_currentSprite + 1) % _sprites.Length; // move to the next sprite
                         _spriteRenderer.sprite = _sprites[_currentSprite]; // change the sprite
+
+                        if (_currentSprite % soundPlayInterval == 0) // play the sound only on specific indices
+                        {
+                            PlayWalkSound();
+                        }
                         break;
                     case PlayerSpriteState.Jump:
                         _spriteRenderer.sprite = _jump;
@@ -71,11 +76,6 @@ namespace Mixin.TheLastMove.Player
                         break;
                     default:
                         break;
-                }
-
-                if (_currentSprite % soundPlayInterval == 0) // play the sound only on specific indices
-                {
-                    PlayWalkSound();
                 }
             }
         }
