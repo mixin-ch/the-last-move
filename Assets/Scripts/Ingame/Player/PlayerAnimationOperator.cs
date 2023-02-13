@@ -54,20 +54,24 @@ namespace Mixin.TheLastMove.Player
             {
                 yield return new WaitForSeconds(_changeTime); // wait for changeTime seconds
 
-                if (_playerOperator.IsFalling)
+                switch (_playerOperator.PlayerSpriteState)
                 {
-                    _spriteRenderer.sprite = _fall;
-                    break;
+                    case PlayerSpriteState.Walk:
+                        _currentSprite = (_currentSprite + 1) % _sprites.Length; // move to the next sprite
+                        _spriteRenderer.sprite = _sprites[_currentSprite]; // change the sprite
+                        break;
+                    case PlayerSpriteState.Jump:
+                        _spriteRenderer.sprite = _jump;
+                        break;
+                    case PlayerSpriteState.Fall:
+                        _spriteRenderer.sprite = _fall;
+                        break;
+                    case PlayerSpriteState.Land:
+                        _spriteRenderer.sprite = _fall;
+                        break;
+                    default:
+                        break;
                 }
-
-                if (_playerOperator.IsJumping)
-                {
-                    _spriteRenderer.sprite = _jump;
-                    break;
-                }
-
-                _currentSprite = (_currentSprite + 1) % _sprites.Length; // move to the next sprite
-                _spriteRenderer.sprite = _sprites[_currentSprite]; // change the sprite
 
                 if (_currentSprite % soundPlayInterval == 0) // play the sound only on specific indices
                 {

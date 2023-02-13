@@ -34,7 +34,7 @@ namespace Mixin.TheLastMove.Player
         private const float _gravity = 1f;
         private const float _jumpVelocityBreak = 5f;
 
-        private const float _landDuration = 0.25f;
+        private const float _landDuration = 0.15f;
 
         private float Hectic => EnvironmentManager.Instance.Hectic;
 
