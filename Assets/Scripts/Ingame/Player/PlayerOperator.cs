@@ -185,7 +185,7 @@ namespace Mixin.TheLastMove.Player
                 TakeDamage();
 
             if (collision.gameObject.CompareTag("Collectable"))
-                collision.gameObject.GetComponent<Collectable>().Collect();
+                collision.gameObject.GetComponent<CollectableOperator>().Collect();
         }
     }
 }

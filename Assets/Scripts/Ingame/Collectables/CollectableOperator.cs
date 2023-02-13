@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Mixin.TheLastMove.Environment.Collectable
 {
 
-    public class Collectable : MonoBehaviour
+    public class CollectableOperator : MonoBehaviour
     {
         private BoxCollider2D _collider;
 
@@ -34,7 +34,15 @@ namespace Mixin.TheLastMove.Environment.Collectable
         public Vector2 Position { get => transform.localPosition; set => transform.localPosition = value; }
         public Vector2 Scale { get => transform.localScale; set => transform.localScale = value; }
 
-        public static event Action<Collectable> OnCollected;
+        public static event Action<CollectableOperator> OnCollected;
+
+        public void Setup(CollectableOperator @operator, Vector3 position)
+        {
+            _spriteRenderer.sprite = @operator.Sprite;
+            _spriteRenderer.transform.localScale = Vector3.one;
+
+            transform.position = position;
+        }
 
 
         private void Awake()

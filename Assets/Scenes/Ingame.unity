@@ -545,7 +545,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerOperator: {fileID: 1822961194634340435}
-  _collectableSpawner: {fileID: 2084484239}
   _biomeList:
   - {fileID: 11400000, guid: fa6bc0987a5b7fe4998b866e20f9741c, type: 2}
   - {fileID: 11400000, guid: 35a50a3c806e3c84dbd5eb5b30bbbd8b, type: 2}
@@ -572,11 +571,20 @@ MonoBehaviour:
   _blockPrefab: {fileID: 3608964336775138525, guid: f1c77ce4284898040a1a5e1a1469caae, type: 3}
   _obstacleContainer: {fileID: 642478925}
   _obstaclePrefab: {fileID: 3608964336775138525, guid: 083f8ea48cdda1147aa420ff4751a720, type: 3}
+  _collectableContainer: {fileID: 841584972}
+  _collectablePrefab: {fileID: 8675707686634140811, guid: f4cda81dbab23964394a0a1413bd8182, type: 3}
   _obstacleMultiplierDict:
   - _key: {fileID: 7109862074252922431, guid: 415fb1081c6f9624e801def3052ddc92, type: 3}
     _value: 0.05
   - _key: {fileID: 7109862074252922431, guid: 1edada02435febf47903b68f6530a2f3, type: 3}
     _value: 0.2
+  _collectableMultiplierDict:
+  - _key: {fileID: 2707790426842692254, guid: edf26c571003e4d46936715b2b30661f, type: 3}
+    _value: 0.1
+  - _key: {fileID: 4343537796481903438, guid: 1db62d0c41aa10542b169648e492df54, type: 3}
+    _value: 0.1
+  - _key: {fileID: 1002807670932056152, guid: 93e7bc4e8b315694f94617d51517b0a6, type: 3}
+    _value: 0.1
 --- !u!1 &642478925
 GameObject:
   m_ObjectHideFlags: 0
@@ -2094,6 +2102,13 @@ MonoBehaviour:
   _minHeight: -5
   _maxJumpRange: 5
   _spawnInterval: 10
+  _timeSinceLastSpawn: 0
+  _collectablePool: []
+  _currentIndex: 0
+  _collectableComponents: []
+  _currentCollectableIndex: 0
+  _moveSpeed: 0
+  _moveDistance: 0
 --- !u!1 &2099940136
 GameObject:
   m_ObjectHideFlags: 0

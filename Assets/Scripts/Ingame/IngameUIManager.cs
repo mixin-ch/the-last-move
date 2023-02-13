@@ -30,7 +30,7 @@ namespace Mixin.TheLastMove.Ingame.UI
             IngamePauseUIB.OnResumeButtonClicked += IngamePauseUIB_OnResumeButtonClicked;
             _playerOperator.OnPlayerTakeDamageEvent += _playerOperator_OnPlayerTakeDamageEvent;
             _playerOperator.OnPlayerDeathEvent += _playerOperator_OnPlayerDeathEvent;
-            Collectable.OnCollected += (collectable) => SetCollectableText();
+            CollectableOperator.OnCollected += (collectable) => SetCollectableText();
             ObstacleOperator.OnKilled += (obstacle) => SetKillText();
 
             //Add Rewarded Video Events
@@ -131,7 +131,7 @@ namespace Mixin.TheLastMove.Ingame.UI
             int score = EnvironmentManager.Instance.Distance.RoundToInt();
             int highscore = SaveManager.Instance.IngameData.Data.Highscore;
             int kills = ObstacleOperator.Counter;
-            int collectable = Collectable.Counter;
+            int collectable = CollectableOperator.Counter;
 
             // Set score text
             IngameDeathScreenUIB.Instance.ScoreText.text = $"Score: {score}";
@@ -179,7 +179,7 @@ namespace Mixin.TheLastMove.Ingame.UI
 
         private void SetCollectableText()
         {
-            IngameOverlayUIB.Instance.CurrencyText.text = Collectable.Counter.ToString();
+            IngameOverlayUIB.Instance.CurrencyText.text = CollectableOperator.Counter.ToString();
         }
 
         private void SetKillText()

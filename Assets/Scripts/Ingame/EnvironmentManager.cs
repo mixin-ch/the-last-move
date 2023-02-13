@@ -1,9 +1,6 @@
-using Mixin.TheLastMove.Environment.Collectable;
-using Mixin.TheLastMove.Ingame;
 using Mixin.TheLastMove.Player;
 using Mixin.Utils;
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Mixin.TheLastMove.Environment
@@ -12,8 +9,6 @@ namespace Mixin.TheLastMove.Environment
     {
         [SerializeField]
         private PlayerOperator _playerOperator;
-        [SerializeField]
-        private CollectableSpawner _collectableSpawner;
 
         [SerializeField]
         private BiomeSO[] _biomeList;
@@ -167,8 +162,6 @@ namespace Mixin.TheLastMove.Environment
             }
 
             MapManager.Instance.Tick(offset);
-
-            _collectableSpawner.MoveCollectablesWithTerrain(offset);
 
             _playerOperator.Tick(time);
         }

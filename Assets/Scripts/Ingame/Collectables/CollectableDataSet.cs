@@ -4,7 +4,7 @@ using UnityEngine;
 public class CollectableDataSet : MonoBehaviour
 {
     [SerializeField]
-    private Collectable[] _collectables;
+    private CollectableOperator[] _collectables;
 
-    public Collectable[] Collectables { get => _collectables; set => _collectables = value; }
+    public CollectableOperator[] Collectables { get => _collectables; set => _collectables = value; }
 }

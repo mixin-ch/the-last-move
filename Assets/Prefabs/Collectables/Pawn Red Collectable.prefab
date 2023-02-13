@@ -108,7 +108,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3995326943261638364}
-  - component: {fileID: 5643089208155673514}
+  - component: {fileID: 3407673122534021591}
   - component: {fileID: 4423639361953837824}
   m_Layer: 0
   m_Name: Pawn Red Collectable
@@ -133,7 +133,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5643089208155673514
+--- !u!114 &3407673122534021591
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -142,14 +142,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8675707686634140811}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1d4ddb434c877b488b22ed3adeae446, type: 3}
+  m_Script: {fileID: 11500000, guid: 9afd5022f9c9eab41ae831f71c0421e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _collectableModel: {fileID: 5183037804515772524}
   _spriteFadeAndScaler: {fileID: 3409979744578687834}
   _spriteRenderer: {fileID: 2689544858665014306}
-  _sprite: {fileID: 21300000, guid: b6cb4d14906dcee419bde88cb06a100c, type: 3}
   _collectedSprite: {fileID: 21300000, guid: a44a966e7f60beb4f835ba742a6f8daa, type: 3}
+  _sprite: {fileID: 21300000, guid: fea3afec963eb2143a9f1e69f3a0b199, type: 3}
 --- !u!61 &4423639361953837824
 BoxCollider2D:
   m_ObjectHideFlags: 0
