@@ -1,6 +1,5 @@
 using Mixin.TheLastMove.Environment;
 using Mixin.TheLastMove.Environment.Collectable;
-using Mixin.TheLastMove.Sound;
 using Mixin.Utils;
 using System;
 using System.Collections.Generic;
@@ -21,19 +20,21 @@ namespace Mixin.TheLastMove.Player
         [SerializeField]
         private Collider2D _collider;
 
-        private float _stretchCatchup = 300f;
-        private float _stretchCushion = 10f;
-        private float _stretchExtent = 1f;
-
         [SerializeField]
         private int _startHealth;
         [SerializeField]
         private Vector2 _startPosition;
         [SerializeField]
         private List<float> _jumpList;
-        private float _gravity = 1f;
-        private float _jumpVelocityBreak = 5f;
-        private float _attackInterval = 0.5f;
+
+        private const float _stretchCatchup = 300f;
+        private const float _stretchCushion = 10f;
+        private const float _stretchExtent = 1f;
+
+        private const float _gravity = 1f;
+        private const float _jumpVelocityBreak = 5f;
+
+        private const float _landDuration = 0.25f;
 
         private float Hectic => EnvironmentManager.Instance.Hectic;
 
@@ -49,6 +50,9 @@ namespace Mixin.TheLastMove.Player
         private List<float> _remainingJumpList = new List<float>();
         private bool _isJumping;
 
+        private PlayerSpriteState _playerSpriteState;
+        private float _landTime;
+
         private bool HasJump => _remainingJumpList.Count > 0;
 
         public bool CanJump => HasJump && !_isJumping;
@@ -58,6 +62,7 @@ namespace Mixin.TheLastMove.Player
         public bool IsWalking { get => !_isJumping; }
         public bool IsFalling { get => _rigidbody.velocity.y < -8f; }
         public bool IsJumping { get => _isJumping; }
+        public PlayerSpriteState PlayerSpriteState { get => _playerSpriteState; }
 
         private void OnEnable()
         {
@@ -75,6 +80,17 @@ namespace Mixin.TheLastMove.Player
 
             if (!_isJumping && _rigidbody.velocity.y > 0)
                 _rigidbody.velocity = Vector2.up * Mathf.Lerp(_rigidbody.velocity.y, 0, _jumpVelocityBreak * time);
+
+            if (_playerSpriteState == PlayerSpriteState.Jump && _rigidbody.velocity.y <= 0)
+                _playerSpriteState = PlayerSpriteState.Land;
+
+            if (_playerSpriteState == PlayerSpriteState.Land)
+            {
+                _landTime += time;
+
+                if (_landTime >= _landDuration)
+                    _playerSpriteState = PlayerSpriteState.Walk;
+            }
 
             _rigidbody.gravityScale = Gravity;
 
@@ -104,6 +120,7 @@ namespace Mixin.TheLastMove.Player
             _isJumping = true;
             _rigidbody.velocity = Vector2.up * _remainingJumpList[0] * Mathf.Sqrt(Hectic);
             _remainingJumpList.RemoveAt(0);
+            _playerSpriteState = PlayerSpriteState.Jump;
         }
 
         private void TakeDamage()
@@ -133,6 +150,7 @@ namespace Mixin.TheLastMove.Player
             _remainingJumpList.Clear();
             _isJumping = false;
             _dragPointOffset = 1;
+            _playerSpriteState = PlayerSpriteState.Walk;
         }
 
         private void RefreshVelocity()
@@ -158,6 +176,9 @@ namespace Mixin.TheLastMove.Player
                 _isJumping = false;
 
                 OnPlayerLanded?.Invoke();
+
+                _playerSpriteState = PlayerSpriteState.Land;
+                _landTime = 0;
             }
         }
 
