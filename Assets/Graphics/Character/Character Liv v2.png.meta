@@ -141,7 +141,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Character Liv v2_0
+      name: Liv Walk 0
       rect:
         serializedVersion: 2
         x: 0
@@ -149,7 +149,7 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -162,7 +162,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character Liv v2_1
+      name: Liv Walk 1
       rect:
         serializedVersion: 2
         x: 128
@@ -170,7 +170,7 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -183,7 +183,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character Liv v2_2
+      name: Liv Walk 2
       rect:
         serializedVersion: 2
         x: 256
@@ -191,7 +191,7 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -204,7 +204,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character Liv v2_3
+      name: Liv Jump
       rect:
         serializedVersion: 2
         x: 384
@@ -212,7 +212,7 @@ TextureImporter:
         width: 128
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -225,10 +225,52 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Character Liv v2_4
+      name: Liv Fall
       rect:
         serializedVersion: 2
         x: 512
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e01e7324c97d8da49be3f279f2b14cf4
+      internalID: 429438832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Liv Land
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a33fc6c9e4e27a14192ff76bdb97df7e
+      internalID: -1903807932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Liv Attack
+      rect:
+        serializedVersion: 2
+        x: 768
         y: 0
         width: 128
         height: 128
@@ -239,8 +281,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e01e7324c97d8da49be3f279f2b14cf4
-      internalID: 429438832
+      spriteID: 14169f94c708afd45ab345f8ed9d6ebc
+      internalID: 589237030
       vertices: []
       indices: 
       edges: []
@@ -256,11 +298,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Character Liv v2_3: 1803999851
-      Character Liv v2_1: -1827305610
-      Character Liv v2_4: 429438832
-      Character Liv v2_2: -1248468798
-      Character Liv v2_0: -215509113
+      Liv Attack: 589237030
+      Liv Walk 2: -1248468798
+      Liv Jump: 1803999851
+      Liv Land: -1903807932
+      Liv Walk 0: -215509113
+      Liv Fall: 429438832
+      Liv Walk 1: -1827305610
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
