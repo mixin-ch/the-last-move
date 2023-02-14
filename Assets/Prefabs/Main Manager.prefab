@@ -156,12 +156,15 @@ MonoBehaviour:
       elementIcon: {fileID: 0}
     reqReferences: {fileID: 0}
     isExpanded: 1
-    _keyValues: 64000000
-    _keys: 64000000
+    _keyValues: 6400000065000000
+    _keys: 6400000065000000
     _values:
     - _playRandom: 1
       _soundList:
       - {fileID: 11400000, guid: 185ba58bd677bc14ea38eb4946ff12a0, type: 2}
+    - _playRandom: 1
+      _soundList:
+      - {fileID: 11400000, guid: 278f3d109af13c7499b9cce8c7eb3bf0, type: 2}
 --- !u!1 &1454045951
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,7 +398,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f8bb594c582cad40a964af59e85e190, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _appKey: 182f7a4cd
 --- !u!1 &4088490324221263715
 GameObject:
   m_ObjectHideFlags: 0

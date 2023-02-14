@@ -4,6 +4,8 @@ using UnityEngine.UIElements;
 using Mixin.TheLastMove.Save;
 using Mixin.Utils;
 using Mixin.Language;
+using Mixin.TheLastMove.Sound;
+using System.Collections;
 
 namespace Mixin.TheLastMove.Settings
 {
@@ -45,6 +47,19 @@ namespace Mixin.TheLastMove.Settings
         {
             _data.SoundVolume = evt.newValue.RoundToInt();
             SetVolume("SoundVolume", evt.newValue);
+            if (_canPlaySound)
+            {
+                StartCoroutine(PlaySoundWithCooldown());
+            }
+        }
+
+        private bool _canPlaySound = true;
+        private IEnumerator PlaySoundWithCooldown()
+        {
+            _canPlaySound = false;
+            GeneralSoundManager.Instance.PlaySound(SoundType.SliderDrag);
+            yield return new WaitForSeconds(0.12f); // Adjust the cooldown time as needed
+            _canPlaySound = true;
         }
 
         /*private void UpdateQuality(ChangeEvent<string> evt)
@@ -60,7 +75,6 @@ namespace Mixin.TheLastMove.Settings
             SetLanguageButtonActive();
 
             _uib.Init();
-            SaveManager.Instance.UserSettingsData.Save();
         }
 
         private void SetLanguageButtonActive()

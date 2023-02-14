@@ -18,7 +18,7 @@
                 </ui:VisualElement>
             </ui:ScrollView>
             <ui:VisualElement name="Spacer" style="flex-grow: 1;" />
-            <ui:VisualElement name="SaveButtonContainer" style="align-items: center; margin-bottom: 63px;">
+            <ui:VisualElement name="SaveButtonContainer" style="align-items: center; margin-bottom: 63px; display: none;">
                 <ui:Button text="Save" display-tooltip-when-elided="true" name="SaveButton" class="button" style="background-image: url(&apos;project://database/Assets/Graphics/Icons/Button%20White.png?fileID=21300000&amp;guid=5c39269aa76ce9e49ac66ef9dd10d6f0&amp;type=3#Button White&apos;); -unity-background-image-tint-color: rgb(0, 210, 255);" />
             </ui:VisualElement>
         </SafeArea>
