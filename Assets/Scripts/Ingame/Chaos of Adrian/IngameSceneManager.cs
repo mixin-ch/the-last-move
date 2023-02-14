@@ -62,7 +62,7 @@ namespace Mixin.TheLastMove.Ingame
 
         private void RewardedAd_OnUserRewarded()
         {
-            // Continue the game
+            EnvironmentManager.Instance.Continue();
         }
     }
 }

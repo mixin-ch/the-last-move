@@ -91,7 +91,13 @@ namespace Mixin.TheLastMove.Environment
         private void _playerOperator_OnPlayerDeathEvent()
         {
             PauseClicked();
-            _started = false;
+        }
+
+        public void Continue()
+        {
+            if (!_started) return;
+
+            UnpauseClicked();
         }
 
         private void Clear()
