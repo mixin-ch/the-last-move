@@ -79,8 +79,8 @@ namespace Mixin.TheLastMove.Environment
 
             while (_collectableOperatorList.Count > 0)
             {
-                _obstacleOperatorList[0].gameObject.SetActive(false);
-                _obstacleOperatorList.RemoveAt(0);
+                _collectableOperatorList[0].gameObject.SetActive(false);
+                _collectableOperatorList.RemoveAt(0);
             }
 
             _distancePlanned = 25;
