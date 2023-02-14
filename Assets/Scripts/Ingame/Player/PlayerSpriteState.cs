@@ -6,5 +6,6 @@
         Jump,
         Fall,
         Land,
+        Attack,
     }
 }

@@ -26,6 +26,9 @@ namespace Mixin.TheLastMove.Player
         [SerializeField]
         private Sprite _land;
 
+        [SerializeField]
+        private Sprite _attack;
+
         private int _currentSprite = 0; // index of the current sprite
 
         private PlayerOperator _playerOperator => EnvironmentManager.Instance.PlayerOperator;
@@ -76,6 +79,9 @@ namespace Mixin.TheLastMove.Player
                         break;
                     case PlayerSpriteState.Land:
                         _spriteRenderer.sprite = _land;
+                        break;
+                    case PlayerSpriteState.Attack:
+                        _spriteRenderer.sprite = _attack;
                         break;
                     default:
                         break;

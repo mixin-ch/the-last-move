@@ -35,6 +35,7 @@ namespace Mixin.TheLastMove.Player
         private const float _jumpVelocityBreak = 5f;
 
         private const float _landDuration = 0.15f;
+        private const float _attackDuration = 0.15f;
 
         private float Hectic => EnvironmentManager.Instance.Hectic;
 
@@ -51,7 +52,7 @@ namespace Mixin.TheLastMove.Player
         private bool _isJumping;
 
         private PlayerSpriteState _playerSpriteState;
-        private float _landTime;
+        private float _spriteTime;
 
         private bool HasJump => _remainingJumpList.Count > 0;
 
@@ -64,11 +65,13 @@ namespace Mixin.TheLastMove.Player
         private void OnEnable()
         {
             InputManager.OnPlayerJump += Jump;
+            InputManager.OnPlayerAttack += Attack;
         }
 
         private void OnDisable()
         {
             InputManager.OnPlayerJump -= Jump;
+            InputManager.OnPlayerAttack += Attack;
         }
 
         public void Tick(float time)
@@ -78,22 +81,33 @@ namespace Mixin.TheLastMove.Player
             if (!_isJumping && _rigidbody.velocity.y > 0)
                 _rigidbody.velocity = Vector2.up * Mathf.Lerp(_rigidbody.velocity.y, 0, _jumpVelocityBreak * time);
 
-            if (_rigidbody.velocity.y > 0)
-                _playerSpriteState = PlayerSpriteState.Jump;
-            else if (_rigidbody.velocity.y < 0)
-                _playerSpriteState = PlayerSpriteState.Fall;
-            else if (_rigidbody.velocity.y == 0)
+            if (_playerSpriteState == PlayerSpriteState.Attack)
             {
-                if (_playerSpriteState == PlayerSpriteState.Land)
-                {
-                    _landTime += time;
+                _spriteTime += time;
 
-                    if (_landTime >= _landDuration)
-                        _playerSpriteState = PlayerSpriteState.Walk;
-                }
-                else
-                {
+                if (_spriteTime >= _attackDuration)
                     _playerSpriteState = PlayerSpriteState.Walk;
+            }
+
+            if (_playerSpriteState != PlayerSpriteState.Attack)
+            {
+                if (_rigidbody.velocity.y > 0)
+                    _playerSpriteState = PlayerSpriteState.Jump;
+                else if (_rigidbody.velocity.y < 0)
+                    _playerSpriteState = PlayerSpriteState.Fall;
+                else if (_rigidbody.velocity.y == 0)
+                {
+                    if (_playerSpriteState == PlayerSpriteState.Land)
+                    {
+                        _spriteTime += time;
+
+                        if (_spriteTime >= _landDuration)
+                            _playerSpriteState = PlayerSpriteState.Walk;
+                    }
+                    else
+                    {
+                        _playerSpriteState = PlayerSpriteState.Walk;
+                    }
                 }
             }
 
@@ -120,12 +134,18 @@ namespace Mixin.TheLastMove.Player
             RefreshVelocity();
         }
 
-        public void Jump()
+        private void Jump()
         {
             _isJumping = true;
             _rigidbody.velocity = Vector2.up * _remainingJumpList[0] * Mathf.Sqrt(Hectic);
             _remainingJumpList.RemoveAt(0);
             _playerSpriteState = PlayerSpriteState.Jump;
+        }
+
+        private void Attack()
+        {
+            _playerSpriteState = PlayerSpriteState.Attack;
+            _spriteTime = 0;
         }
 
         private void TakeDamage()
@@ -185,7 +205,7 @@ namespace Mixin.TheLastMove.Player
                 if (_playerSpriteState == PlayerSpriteState.Fall)
                 {
                     _playerSpriteState = PlayerSpriteState.Land;
-                    _landTime = 0;
+                    _spriteTime = 0;
                 }
             }
         }
