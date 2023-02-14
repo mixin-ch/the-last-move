@@ -3,15 +3,10 @@ using UnityEngine;
 
 namespace Mixin.TheLastMove.Environment.Collectable
 {
-
     public class CollectableOperator : MonoBehaviour
     {
+        [SerializeField]
         private BoxCollider2D _collider;
-
-        /// <summary>
-        /// The amount of collectables collected in the round.
-        /// </summary>
-        public static int Counter;
 
         [SerializeField]
         private GameObject _collectableModel;
@@ -29,7 +24,6 @@ namespace Mixin.TheLastMove.Environment.Collectable
         [SerializeField]
         private Sprite _sprite;
 
-
         public Sprite Sprite { get => _sprite; set => _sprite = value; }
         public Vector2 Position { get => transform.localPosition; set => transform.localPosition = value; }
         public Vector2 Scale { get => transform.localScale; set => transform.localScale = value; }
@@ -39,43 +33,14 @@ namespace Mixin.TheLastMove.Environment.Collectable
         public void Setup(CollectableOperator @operator, Vector3 position)
         {
             _spriteRenderer.sprite = @operator.Sprite;
-            _spriteRenderer.transform.localScale = Vector3.one;
+            _spriteRenderer.transform.localScale = @operator._spriteRenderer.transform.localScale;
 
             transform.position = position;
-        }
 
-
-        private void Awake()
-        {
-            _collider = GetComponent<BoxCollider2D>();
-            ResetCounter();
-        }
-
-        private void OnEnable()
-        {
-            _spriteFadeAndScaler.AfterExecute += Deactivate;
-        }
-
-        private void OnDisable()
-        {
-            _spriteFadeAndScaler.AfterExecute -= Deactivate;
-        }
-
-        public void Activate()
-        {
-            _spriteRenderer.sprite = _sprite;
-            _spriteRenderer.transform.localScale = Vector3.one;
-
-            // Enable the collectable's renderer and collider
-            _collectableModel.SetActive(true);
+            // Collider
             _collider.enabled = true;
-        }
-
-        public void Deactivate()
-        {
-            // Disable the collectable's renderer and collider
-            _collectableModel.SetActive(false);
-            _collider.enabled = false;
+            _collider.offset = @operator._collider.offset;
+            _collider.size = @operator._collider.size;
         }
 
         public void Collect()
@@ -88,14 +53,9 @@ namespace Mixin.TheLastMove.Environment.Collectable
             _spriteRenderer.sprite = _collectedSprite;
             StartCoroutine(_spriteFadeAndScaler.FadeAndScale());
 
-            Counter++;
+            EnvironmentManager.Instance.CollectablesCollected++;
 
             OnCollected?.Invoke(this);
-        }
-
-        private void ResetCounter()
-        {
-            Counter = 0;
         }
     }
 }

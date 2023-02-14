@@ -13,12 +13,6 @@ namespace Mixin.TheLastMove.Environment
         [SerializeField]
         private BiomeSO[] _biomeList;
 
-        /*/// <summary>
-        /// A list of all blockoperators.
-        /// Inited at Awake.
-        /// </summary>
-        private BlockOperator[] _blockOperatorList;*/
-
         private const float _hecticStart = 1;
         private const float _hecticGain = 0.05f;
         private const float _maxHectic = 5f;
@@ -34,6 +28,9 @@ namespace Mixin.TheLastMove.Environment
         private BiomeSO _currentBiome;
         private float _biomeTime;
 
+        private int _collectablesCollected;
+        private int _obstaclesKilled;
+
         public static int PlayCounter = 0;
 
         public PlayerOperator PlayerOperator { get => _playerOperator; }
@@ -46,6 +43,9 @@ namespace Mixin.TheLastMove.Environment
         public float Hectic { get => _hectic; }
         public float Distance { get => _distance; }
         public BiomeSO CurrentBiome { get => _currentBiome; }
+
+        public int CollectablesCollected { get => _collectablesCollected; set => _collectablesCollected = value; }
+        public int ObstaclesKilled { get => _obstaclesKilled; set => _obstaclesKilled = value; }
 
         public static event Action OnGameStarted;
         public static event Action<BiomeSO> OnBiomeChanged;
@@ -68,12 +68,6 @@ namespace Mixin.TheLastMove.Environment
         protected override void Awake()
         {
             base.Awake();
-
-            /*for (int i = 0; i < _biomeList.Length; i++)
-            {
-                // Add BlockOperator to list. This reduces requests.
-                _blockOperatorList[i] = _biomeList[i].Prefab.GetComponent<BlockOperator>();
-            }*/
 
             PlayCounter = 0;
         }
@@ -116,6 +110,9 @@ namespace Mixin.TheLastMove.Environment
 
             // Get random biome duration
             _biomeTime = GetRandomBiomeDuration();
+
+            _collectablesCollected = 0;
+            _obstaclesKilled = 0;
         }
 
         private void PauseClicked()

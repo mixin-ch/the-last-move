@@ -24,14 +24,7 @@ namespace Mixin.TheLastMove.Environment
         [SerializeField]
         private float _groundOffset = 0;
 
-        public static int Counter;
-
         public static event Action<ObstacleOperator> OnKilled;
-
-        private void Awake()
-        {
-            ResetCounter();
-        }
 
         public void Setup(ObstacleOperator obstacle, Vector3 position)
         {
@@ -61,13 +54,8 @@ namespace Mixin.TheLastMove.Environment
         public void Kill()
         {
             StartCoroutine(FadeAndScale());
-            Counter++;
+            EnvironmentManager.Instance.ObstaclesKilled++;
             OnKilled?.Invoke(this);
-        }
-
-        private void ResetCounter()
-        {
-            Counter = 0;
         }
 
         private IEnumerator FadeAndScale()

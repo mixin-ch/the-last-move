@@ -110,9 +110,9 @@ GameObject:
   - component: {fileID: 3995326943261638364}
   - component: {fileID: 3407673122534021591}
   - component: {fileID: 4423639361953837824}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pawn Red Collectable
-  m_TagString: Untagged
+  m_TagString: Collectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9afd5022f9c9eab41ae831f71c0421e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collider: {fileID: 4423639361953837824}
   _collectableModel: {fileID: 5183037804515772524}
   _spriteFadeAndScaler: {fileID: 3409979744578687834}
   _spriteRenderer: {fileID: 2689544858665014306}
@@ -163,7 +164,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0075190067, y: -0.010500193}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}

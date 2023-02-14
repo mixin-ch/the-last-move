@@ -130,8 +130,8 @@ namespace Mixin.TheLastMove.Ingame.UI
         {
             int score = EnvironmentManager.Instance.Distance.RoundToInt();
             int highscore = SaveManager.Instance.IngameData.Data.Highscore;
-            int kills = ObstacleOperator.Counter;
-            int collectable = CollectableOperator.Counter;
+            int kills = EnvironmentManager.Instance.ObstaclesKilled;
+            int collectable = EnvironmentManager.Instance.CollectablesCollected;
 
             // Set score text
             IngameDeathScreenUIB.Instance.ScoreText.text = $"Score: {score}";
@@ -179,12 +179,12 @@ namespace Mixin.TheLastMove.Ingame.UI
 
         private void SetCollectableText()
         {
-            IngameOverlayUIB.Instance.CurrencyText.text = CollectableOperator.Counter.ToString();
+            IngameOverlayUIB.Instance.CurrencyText.text = EnvironmentManager.Instance.CollectablesCollected.ToString();
         }
 
         private void SetKillText()
         {
-            IngameOverlayUIB.Instance.KillText.text = ObstacleOperator.Counter.ToString();
+            IngameOverlayUIB.Instance.KillText.text = EnvironmentManager.Instance.ObstaclesKilled.ToString();
         }
     }
 }
