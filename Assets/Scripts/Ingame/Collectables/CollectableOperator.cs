@@ -20,11 +20,6 @@ namespace Mixin.TheLastMove.Environment.Collectable
         [SerializeField]
         private Sprite _collectedSprite;
 
-        /* Data */
-        [SerializeField]
-        private Sprite _sprite;
-
-        public Sprite Sprite { get => _sprite; set => _sprite = value; }
         public Vector2 Position { get => transform.localPosition; set => transform.localPosition = value; }
         public Vector2 Scale { get => transform.localScale; set => transform.localScale = value; }
 
@@ -32,7 +27,7 @@ namespace Mixin.TheLastMove.Environment.Collectable
 
         public void Setup(CollectableOperator @operator, Vector3 position)
         {
-            _spriteRenderer.sprite = @operator.Sprite;
+            _spriteRenderer.sprite = @operator._spriteRenderer.sprite;
             _spriteRenderer.transform.localScale = @operator._spriteRenderer.transform.localScale;
 
             transform.position = position;

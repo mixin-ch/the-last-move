@@ -78,15 +78,23 @@ namespace Mixin.TheLastMove.Player
             if (!_isJumping && _rigidbody.velocity.y > 0)
                 _rigidbody.velocity = Vector2.up * Mathf.Lerp(_rigidbody.velocity.y, 0, _jumpVelocityBreak * time);
 
-            if (_playerSpriteState == PlayerSpriteState.Jump && _rigidbody.velocity.y <= 0)
-                _playerSpriteState = PlayerSpriteState.Land;
-
-            if (_playerSpriteState == PlayerSpriteState.Land)
+            if (_rigidbody.velocity.y > 0)
+                _playerSpriteState = PlayerSpriteState.Jump;
+            else if (_rigidbody.velocity.y < 0)
+                _playerSpriteState = PlayerSpriteState.Fall;
+            else if (_rigidbody.velocity.y == 0)
             {
-                _landTime += time;
+                if (_playerSpriteState == PlayerSpriteState.Land)
+                {
+                    _landTime += time;
 
-                if (_landTime >= _landDuration)
+                    if (_landTime >= _landDuration)
+                        _playerSpriteState = PlayerSpriteState.Walk;
+                }
+                else
+                {
                     _playerSpriteState = PlayerSpriteState.Walk;
+                }
             }
 
             _rigidbody.gravityScale = Gravity;
@@ -174,8 +182,11 @@ namespace Mixin.TheLastMove.Player
 
                 OnPlayerLanded?.Invoke();
 
-                _playerSpriteState = PlayerSpriteState.Land;
-                _landTime = 0;
+                if (_playerSpriteState == PlayerSpriteState.Fall)
+                {
+                    _playerSpriteState = PlayerSpriteState.Land;
+                    _landTime = 0;
+                }
             }
         }
 
