@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3608964336775138525, guid: 083f8ea48cdda1147aa420ff4751a720, type: 3}
       propertyPath: m_Name
-      value: Ground Spikes
+      value: Wall Spikes
       objectReference: {fileID: 0}
     - target: {fileID: 3608964336775138526, guid: 083f8ea48cdda1147aa420ff4751a720, type: 3}
       propertyPath: m_RootOrder
@@ -65,19 +65,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6459326259943849330, guid: 083f8ea48cdda1147aa420ff4751a720, type: 3}
       propertyPath: m_Size.x
-      value: 0.9189725
+      value: 0.53
       objectReference: {fileID: 0}
     - target: {fileID: 6459326259943849330, guid: 083f8ea48cdda1147aa420ff4751a720, type: 3}
       propertyPath: m_Size.y
-      value: 0.11756855
+      value: 0.92
       objectReference: {fileID: 0}
     - target: {fileID: 6459326259943849330, guid: 083f8ea48cdda1147aa420ff4751a720, type: 3}
       propertyPath: m_Offset.y
-      value: 0.07
+      value: 0.48
       objectReference: {fileID: 0}
     - target: {fileID: 8929524851366485977, guid: 083f8ea48cdda1147aa420ff4751a720, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 97a6e9790801e2641838b39cc73c5180, type: 3}
+      objectReference: {fileID: 21300000, guid: 2e44aa4784aacf240baab31bdbf81cf3, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 083f8ea48cdda1147aa420ff4751a720, type: 3}
