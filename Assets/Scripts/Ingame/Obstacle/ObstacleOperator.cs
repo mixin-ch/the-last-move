@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using Mixin.Utils;
 
 namespace Mixin.TheLastMove.Environment
 {
@@ -16,8 +17,13 @@ namespace Mixin.TheLastMove.Environment
         private BoxCollider2D _collider2D;
 
         [SerializeField]
+        private bool _killable;
+
+        [ConditionalField("_killable", true)]
+        [SerializeField]
         private float _fadeTime = 1f;
 
+        [ConditionalField("_killable", true)]
         [SerializeField]
         private float _scaleFactor = 1.2f;
 
@@ -28,6 +34,11 @@ namespace Mixin.TheLastMove.Environment
 
         public void Setup(ObstacleOperator obstacle, Vector3 position)
         {
+            // Attributes
+            _killable = obstacle._killable;
+            _fadeTime = obstacle._fadeTime;
+            _scaleFactor = obstacle._scaleFactor;
+
             // Reset scale of Sprite
             _spriteRenderer.transform.localScale = new Vector3(1, 1, 1);
 
@@ -44,6 +55,9 @@ namespace Mixin.TheLastMove.Environment
             _collider2D.enabled = true;
             _collider2D.offset = obstacle._collider2D.offset;
             _collider2D.size = obstacle._collider2D.size;
+
+            // Tag
+            transform.tag = obstacle.transform.tag;
         }
 
         public void Move(Vector2 offset)
@@ -53,6 +67,9 @@ namespace Mixin.TheLastMove.Environment
 
         public void Kill()
         {
+            if (!_killable)
+                return; 
+
             StartCoroutine(FadeAndScale());
             EnvironmentManager.Instance.ObstaclesKilled++;
             OnKilled?.Invoke(this);
