@@ -1,0 +1,224 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4376682135722468446
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6668612377657524011}
+    m_Modifications:
+    - target: {fileID: 3590141656611249335, guid: 35dfcfdc5c99c1b478a1f40afa5998b5, type: 3}
+      propertyPath: m_Name
+      value: Pawn Red Collectable Variant (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135182767615203040, guid: 35dfcfdc5c99c1b478a1f40afa5998b5, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135182767615203040, guid: 35dfcfdc5c99c1b478a1f40afa5998b5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135182767615203040, guid: 35dfcfdc5c99c1b478a1f40afa5998b5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135182767615203040, guid: 35dfcfdc5c99c1b478a1f40afa5998b5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135182767615203040, guid: 35dfcfdc5c99c1b478a1f40afa5998b5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135182767615203040, guid: 35dfcfdc5c99c1b478a1f40afa5998b5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135182767615203040, guid: 35dfcfdc5c99c1b478a1f40afa5998b5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135182767615203040, guid: 35dfcfdc5c99c1b478a1f40afa5998b5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135182767615203040, guid: 35dfcfdc5c99c1b478a1f40afa5998b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135182767615203040, guid: 35dfcfdc5c99c1b478a1f40afa5998b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135182767615203040, guid: 35dfcfdc5c99c1b478a1f40afa5998b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 35dfcfdc5c99c1b478a1f40afa5998b5, type: 3}
+--- !u!114 &6504206580669552053 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7421523554532340203, guid: 35dfcfdc5c99c1b478a1f40afa5998b5, type: 3}
+  m_PrefabInstance: {fileID: 4376682135722468446}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9afd5022f9c9eab41ae831f71c0421e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &6409766496358756337
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 324183354912362714, guid: edf26c571003e4d46936715b2b30661f, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 324183354912362714, guid: edf26c571003e4d46936715b2b30661f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 324183354912362714, guid: edf26c571003e4d46936715b2b30661f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 324183354912362714, guid: edf26c571003e4d46936715b2b30661f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 324183354912362714, guid: edf26c571003e4d46936715b2b30661f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 324183354912362714, guid: edf26c571003e4d46936715b2b30661f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 324183354912362714, guid: edf26c571003e4d46936715b2b30661f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 324183354912362714, guid: edf26c571003e4d46936715b2b30661f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 324183354912362714, guid: edf26c571003e4d46936715b2b30661f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 324183354912362714, guid: edf26c571003e4d46936715b2b30661f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 324183354912362714, guid: edf26c571003e4d46936715b2b30661f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2263157810550171637, guid: edf26c571003e4d46936715b2b30661f, type: 3}
+      propertyPath: m_Name
+      value: Pawn Set Variant 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2707790426842692254, guid: edf26c571003e4d46936715b2b30661f, type: 3}
+      propertyPath: _collectables.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2707790426842692254, guid: edf26c571003e4d46936715b2b30661f, type: 3}
+      propertyPath: _collectables.Array.data[3]
+      value: 
+      objectReference: {fileID: 1648034606112304245}
+    - target: {fileID: 2707790426842692254, guid: edf26c571003e4d46936715b2b30661f, type: 3}
+      propertyPath: _collectables.Array.data[4]
+      value: 
+      objectReference: {fileID: 6504206580669552053}
+    - target: {fileID: 6792119293388153672, guid: edf26c571003e4d46936715b2b30661f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6906719288411697620, guid: edf26c571003e4d46936715b2b30661f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8362046749884976412, guid: edf26c571003e4d46936715b2b30661f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: edf26c571003e4d46936715b2b30661f, type: 3}
+--- !u!4 &6668612377657524011 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 324183354912362714, guid: edf26c571003e4d46936715b2b30661f, type: 3}
+  m_PrefabInstance: {fileID: 6409766496358756337}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8079584055127432606
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6668612377657524011}
+    m_Modifications:
+    - target: {fileID: 3590141656611249335, guid: 35dfcfdc5c99c1b478a1f40afa5998b5, type: 3}
+      propertyPath: m_Name
+      value: Pawn Red Collectable Variant (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135182767615203040, guid: 35dfcfdc5c99c1b478a1f40afa5998b5, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135182767615203040, guid: 35dfcfdc5c99c1b478a1f40afa5998b5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135182767615203040, guid: 35dfcfdc5c99c1b478a1f40afa5998b5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135182767615203040, guid: 35dfcfdc5c99c1b478a1f40afa5998b5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135182767615203040, guid: 35dfcfdc5c99c1b478a1f40afa5998b5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135182767615203040, guid: 35dfcfdc5c99c1b478a1f40afa5998b5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135182767615203040, guid: 35dfcfdc5c99c1b478a1f40afa5998b5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135182767615203040, guid: 35dfcfdc5c99c1b478a1f40afa5998b5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135182767615203040, guid: 35dfcfdc5c99c1b478a1f40afa5998b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135182767615203040, guid: 35dfcfdc5c99c1b478a1f40afa5998b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135182767615203040, guid: 35dfcfdc5c99c1b478a1f40afa5998b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 35dfcfdc5c99c1b478a1f40afa5998b5, type: 3}
+--- !u!114 &1648034606112304245 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7421523554532340203, guid: 35dfcfdc5c99c1b478a1f40afa5998b5, type: 3}
+  m_PrefabInstance: {fileID: 8079584055127432606}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9afd5022f9c9eab41ae831f71c0421e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

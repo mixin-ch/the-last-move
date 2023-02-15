@@ -584,11 +584,15 @@ MonoBehaviour:
   - _key: {fileID: 7109862074252922431, guid: 1edada02435febf47903b68f6530a2f3, type: 3}
     _value: 0.2
   _collectableMultiplierDict:
-  - _key: {fileID: 2707790426842692254, guid: edf26c571003e4d46936715b2b30661f, type: 3}
+  - _key: {fileID: 9034240235466167663, guid: ca60d35736d9b2f409e962ee52a3c85a, type: 3}
     _value: 0.1
-  - _key: {fileID: 4343537796481903438, guid: 1db62d0c41aa10542b169648e492df54, type: 3}
+  - _key: {fileID: 9034240235466167663, guid: 3a27d7ff79c32514996fbbc3386db03b, type: 3}
     _value: 0.1
-  - _key: {fileID: 1002807670932056152, guid: 93e7bc4e8b315694f94617d51517b0a6, type: 3}
+  - _key: {fileID: 9034240235466167663, guid: 166977bd5b71fba4092c5f607a682a81, type: 3}
+    _value: 0.1
+  - _key: {fileID: 9034240235466167663, guid: 513601a2b56ab854aafd6ca75beb29bf, type: 3}
+    _value: 0.1
+  - _key: {fileID: 9034240235466167663, guid: 588babe319cb62c48a6dda6b6ad50a0b, type: 3}
     _value: 0.1
 --- !u!1 &642478925
 GameObject:
@@ -2019,7 +2023,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3995326943261638364, guid: f4cda81dbab23964394a0a1413bd8182, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3995326943261638364, guid: f4cda81dbab23964394a0a1413bd8182, type: 3}
       propertyPath: m_LocalPosition.x

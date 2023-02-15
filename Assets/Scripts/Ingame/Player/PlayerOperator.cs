@@ -59,7 +59,7 @@ namespace Mixin.TheLastMove.Player
         public bool CanJump => HasJump && !_isJumping;
 
         public Vector2 Position => transform.position;
-        public float Health { get => _health; }
+        public float Health { get => _health; set => _health = value; }
         public PlayerSpriteState PlayerSpriteState { get => _playerSpriteState; }
 
         private void OnEnable()

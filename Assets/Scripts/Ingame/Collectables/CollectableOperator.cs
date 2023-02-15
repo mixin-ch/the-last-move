@@ -9,9 +9,6 @@ namespace Mixin.TheLastMove.Environment.Collectable
         private BoxCollider2D _collider;
 
         [SerializeField]
-        private GameObject _collectableModel;
-
-        [SerializeField]
         private SpriteFadeAndScaler _spriteFadeAndScaler;
 
         [SerializeField]
@@ -20,22 +17,37 @@ namespace Mixin.TheLastMove.Environment.Collectable
         [SerializeField]
         private Sprite _collectedSprite;
 
+        /// <summary>
+        /// How high the counter should be increased
+        /// </summary>
+        [Header("Attributes")]
+        [SerializeField]
+        private int _scoreIncrease = 0;
+
+        [SerializeField]
+        private int _healthIncrease = 0;
+
+
         public Vector2 Position { get => transform.localPosition; set => transform.localPosition = value; }
         public Vector2 Scale { get => transform.localScale; set => transform.localScale = value; }
 
         public static event Action<CollectableOperator> OnCollected;
 
-        public void Setup(CollectableOperator @operator, Vector3 position)
+        public void Setup(CollectableOperator prefab, Vector3 position)
         {
-            _spriteRenderer.sprite = @operator._spriteRenderer.sprite;
-            _spriteRenderer.transform.localScale = @operator._spriteRenderer.transform.localScale;
+            _spriteRenderer.sprite = prefab._spriteRenderer.sprite;
+            _spriteRenderer.transform.localScale = prefab._spriteRenderer.transform.localScale;
 
             transform.position = position;
 
             // Collider
             _collider.enabled = true;
-            _collider.offset = @operator._collider.offset;
-            _collider.size = @operator._collider.size;
+            _collider.offset = prefab._collider.offset;
+            _collider.size = prefab._collider.size;
+
+            // Attributes
+            _scoreIncrease = prefab._scoreIncrease;
+            _healthIncrease = prefab._healthIncrease;
         }
 
         public void Collect()
@@ -48,7 +60,9 @@ namespace Mixin.TheLastMove.Environment.Collectable
             _spriteRenderer.sprite = _collectedSprite;
             StartCoroutine(_spriteFadeAndScaler.FadeAndScale());
 
-            EnvironmentManager.Instance.CollectablesCollected++;
+            EnvironmentManager.Instance.CollectablesCollected += _scoreIncrease;
+            EnvironmentManager.Instance.PlayerOperator.Health += _healthIncrease;
+            IngameOverlayUIB.Instance.AddHearts(_healthIncrease);
 
             OnCollected?.Invoke(this);
         }

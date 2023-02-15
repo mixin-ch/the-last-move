@@ -69,6 +69,14 @@ namespace Mixin.TheLastMove
             HealthContainer.Add(heart);
         }
 
+        public void AddHearts(int amount)
+        {
+            for (int i = 0; i < amount; i++)
+            {
+                AddHeart();
+            }
+        }
+
         public void RemoveHeart()
         {
             if (HealthContainer.childCount > 0)
