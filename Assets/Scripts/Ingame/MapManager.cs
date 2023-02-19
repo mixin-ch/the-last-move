@@ -24,9 +24,13 @@ namespace Mixin.TheLastMove.Environment
         private GameObject _collectablePrefab;
 
         [SerializeField]
-        private List<KeyAndValueLocked<ObstacleOperator, float>> _obstacleMultiplierDict;
+        private float _obstacleProbability;
         [SerializeField]
-        private List<KeyAndValueLocked<CollectableDataSet, float>> _collectableMultiplierDict;
+        private List<KeyAndValueLocked<ObstacleOperator, float>> _obstacleWeightDict;
+        [SerializeField]
+        private float _collectableProbability;
+        [SerializeField]
+        private List<KeyAndValueLocked<CollectableDataSet, float>> _collectableWeightDict;
 
         private const float _blockSize = 4f;
         private const float _insertDistance = 15f;
@@ -85,7 +89,8 @@ namespace Mixin.TheLastMove.Environment
 
             _distancePlanned = 25;
             _mapGenerator = new MapGenerator(EnvironmentManager.Instance.Hectic / _blockSize, 1
-                , _obstacleMultiplierDict.ToDictionary(), _collectableMultiplierDict.ToDictionary());
+                , _obstacleProbability, _collectableProbability
+                , _obstacleWeightDict.ToDictionary(), _collectableWeightDict.ToDictionary());
         }
 
         public void Tick(float offset)
