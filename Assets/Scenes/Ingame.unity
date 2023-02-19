@@ -655,26 +655,28 @@ MonoBehaviour:
   _obstaclePrefab: {fileID: 3608964336775138525, guid: 083f8ea48cdda1147aa420ff4751a720, type: 3}
   _collectableContainer: {fileID: 841584972}
   _collectablePrefab: {fileID: 8675707686634140811, guid: f4cda81dbab23964394a0a1413bd8182, type: 3}
-  _obstacleMultiplierDict:
+  _obstacleProbability: 0.1
+  _obstacleWeightDict:
   - _key: {fileID: 7109862074252922431, guid: 415fb1081c6f9624e801def3052ddc92, type: 3}
-    _value: 0.05
+    _value: 4
   - _key: {fileID: 7109862074252922431, guid: 1edada02435febf47903b68f6530a2f3, type: 3}
-    _value: 0.1
+    _value: 3
   - _key: {fileID: 7109862074252922431, guid: f6fc86dc38a9fe4409a4c83925fb5086, type: 3}
-    _value: 0.2
+    _value: 2
   - _key: {fileID: 7109862074252922431, guid: 90ac1594fe110b341a7f60a398666d0c, type: 3}
-    _value: 0.1
-  _collectableMultiplierDict:
+    _value: 1
+  _collectableProbability: 0.1
+  _collectableWeightDict:
   - _key: {fileID: 9034240235466167663, guid: ca60d35736d9b2f409e962ee52a3c85a, type: 3}
-    _value: 0.1
+    _value: 1
   - _key: {fileID: 9034240235466167663, guid: 3a27d7ff79c32514996fbbc3386db03b, type: 3}
-    _value: 0.1
+    _value: 1
   - _key: {fileID: 9034240235466167663, guid: 166977bd5b71fba4092c5f607a682a81, type: 3}
-    _value: 0.1
+    _value: 1
   - _key: {fileID: 9034240235466167663, guid: 513601a2b56ab854aafd6ca75beb29bf, type: 3}
-    _value: 0.1
+    _value: 1
   - _key: {fileID: 9034240235466167663, guid: 588babe319cb62c48a6dda6b6ad50a0b, type: 3}
-    _value: 0.1
+    _value: 1
 --- !u!1 &642478925
 GameObject:
   m_ObjectHideFlags: 0

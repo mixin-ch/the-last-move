@@ -11,29 +11,38 @@ namespace Mixin.TheLastMove
         private float _height;
         private float _blockChunkSize;
         private float _gapMultiplier;
-        private MixinDictionary<ObstacleOperator, float> _obstacleMultiplierDict = new MixinDictionary<ObstacleOperator, float>();
-        private MixinDictionary<CollectableDataSet, float> _collectableMultiplierDict = new MixinDictionary<CollectableDataSet, float>();
+        private float _obstacleProbability;
+        private float _collectableProbability;
+        private MixinDictionary<ObstacleOperator, float> _obstacleWeightDict = new MixinDictionary<ObstacleOperator, float>();
+        private MixinDictionary<CollectableDataSet, float> _collectableWeightDict = new MixinDictionary<CollectableDataSet, float>();
 
         public float Height { get => _height; set => _height = value; }
         public float BlockChunkSize { get => _blockChunkSize; set => _blockChunkSize = value; }
         public float GapMultiplier { get => _gapMultiplier; set => _gapMultiplier = value; }
-        public MixinDictionary<ObstacleOperator, float> ObstacleMultiplierDict { get => _obstacleMultiplierDict; set => _obstacleMultiplierDict = value; }
-        public MixinDictionary<CollectableDataSet, float> CollectableMultiplierDict { get => _collectableMultiplierDict; set => _collectableMultiplierDict = value; }
+        public float ObstacleProbability { get => _obstacleProbability; set => _obstacleProbability = value; }
+        public float CollectableProbability { get => _collectableProbability; set => _collectableProbability = value; }
+        public MixinDictionary<ObstacleOperator, float> ObstacleWeightDict { get => _obstacleWeightDict; set => _obstacleWeightDict = value; }
+        public MixinDictionary<CollectableDataSet, float> CollectableWeightDict { get => _collectableWeightDict; set => _collectableWeightDict = value; }
 
         private bool _filled;
         private int _steps;
 
-        public SingleLineMapGenerator(float height, float blockChunkSize = 1, float gapMultiplier = 1, MixinDictionary<ObstacleOperator, float> obstacleMultiplierDict = null, MixinDictionary<CollectableDataSet, float> collectableMultiplierDict = null)
+        public SingleLineMapGenerator(float height, float blockChunkSize = 1, float gapMultiplier = 1
+            , float obstacleProbability = 0, float collectableProbability = 0
+            , MixinDictionary<ObstacleOperator, float> obstacleWeightDict = null, MixinDictionary<CollectableDataSet, float> collectableWeightDict = null)
         {
             _height = height;
             _blockChunkSize = blockChunkSize;
             _gapMultiplier = gapMultiplier;
 
-            if (obstacleMultiplierDict != null)
-                _obstacleMultiplierDict = obstacleMultiplierDict;
+            _obstacleProbability = obstacleProbability;
+            _collectableProbability = collectableProbability;
 
-            if (collectableMultiplierDict != null)
-                _collectableMultiplierDict = collectableMultiplierDict;
+            if (obstacleWeightDict != null)
+                _obstacleWeightDict = obstacleWeightDict;
+
+            if (collectableWeightDict != null)
+                _collectableWeightDict = collectableWeightDict;
         }
 
         public MapPlan Tick()
@@ -72,29 +81,19 @@ namespace Mixin.TheLastMove
             {
                 blockPlanList.Add(new BlockPlan(_height));
 
-                if (!_obstacleMultiplierDict.IsEmpty())
+                if (!_obstacleWeightDict.IsEmpty())
                 {
-                    float sum = 0;
+                    ObstacleOperator obstacle = _obstacleWeightDict.PickWeightedRandom(random);
 
-                    foreach (float probability in _obstacleMultiplierDict.Values)
-                        sum += probability;
-
-                    ObstacleOperator obstacle = _obstacleMultiplierDict.PickWeightedRandom(random);
-
-                    if (random.RandomTrue(sum))
+                    if (random.RandomTrue(_obstacleProbability))
                         obstaclePlanList.Add(new ObstaclePlan(obstacle, _height));
                 }
 
-                if (!_collectableMultiplierDict.IsEmpty())
+                if (!_collectableWeightDict.IsEmpty())
                 {
-                    float sum = 0;
+                    CollectableDataSet collectableDataSet = _collectableWeightDict.PickWeightedRandom(random);
 
-                    foreach (float probability in _collectableMultiplierDict.Values)
-                        sum += probability;
-
-                    CollectableDataSet collectableDataSet = _collectableMultiplierDict.PickWeightedRandom(random);
-
-                    if (random.RandomTrue(sum))
+                    if (random.RandomTrue(_collectableProbability))
                         foreach (CollectableOperator collectable in collectableDataSet.Collectables)
                             collectablePlanList.Add(new CollectablePlan(collectable, _height, collectable.Position));
                 }

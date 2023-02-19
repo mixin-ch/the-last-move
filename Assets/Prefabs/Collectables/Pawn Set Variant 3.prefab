@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: _collectables.Array.data[4]
       value: 
       objectReference: {fileID: 6504206580669552053}
+    - target: {fileID: 6146314577948578626, guid: edf26c571003e4d46936715b2b30661f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6792119293388153672, guid: edf26c571003e4d46936715b2b30661f, type: 3}
       propertyPath: m_LocalPosition.y
       value: 2
@@ -145,7 +149,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8362046749884976412, guid: edf26c571003e4d46936715b2b30661f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edf26c571003e4d46936715b2b30661f, type: 3}

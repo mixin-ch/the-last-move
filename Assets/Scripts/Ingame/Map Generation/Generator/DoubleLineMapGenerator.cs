@@ -11,8 +11,10 @@ namespace Mixin.TheLastMove
         private float _height1;
         private float _blockChunkSize;
         private float _gapMultiplier;
-        private MixinDictionary<ObstacleOperator, float> _obstacleMultiplierDict = new MixinDictionary<ObstacleOperator, float>();
-        private MixinDictionary<CollectableDataSet, float> _collectableMultiplierDict = new MixinDictionary<CollectableDataSet, float>();
+        private float _obstacleProbability;
+        private float _collectableProbability;
+        private MixinDictionary<ObstacleOperator, float> _obstacleWeightDict = new MixinDictionary<ObstacleOperator, float>();
+        private MixinDictionary<CollectableDataSet, float> _collectableWeightDict = new MixinDictionary<CollectableDataSet, float>();
 
         public float Height0
         {
@@ -34,36 +36,52 @@ namespace Mixin.TheLastMove
             get => _gapMultiplier;
             set { _gapMultiplier = value; _generator0.GapMultiplier = GapMultiplier; _generator1.GapMultiplier = GapMultiplier; }
         }
-        public MixinDictionary<ObstacleOperator, float> ObstacleMultiplierDict
+        public float ObstacleProbability
         {
-            get => _obstacleMultiplierDict;
-            set { _obstacleMultiplierDict = value; _generator0.ObstacleMultiplierDict = ObstacleMultiplierDict; _generator1.ObstacleMultiplierDict = ObstacleMultiplierDict; }
+            get => _obstacleProbability;
+            set { _obstacleProbability = value; _generator0.ObstacleProbability = ObstacleProbability; _generator1.ObstacleProbability = ObstacleProbability; }
         }
-        public MixinDictionary<CollectableDataSet, float> CollectableMultiplierDict
+        public float CollectableProbability
         {
-            get => _collectableMultiplierDict;
-            set { _collectableMultiplierDict = value; _generator0.CollectableMultiplierDict = CollectableMultiplierDict; _generator1.CollectableMultiplierDict = CollectableMultiplierDict; }
+            get => _collectableProbability;
+            set { _collectableProbability = value; _generator0.CollectableProbability = CollectableProbability; _generator1.CollectableProbability = CollectableProbability; }
+        }
+        public MixinDictionary<ObstacleOperator, float> ObstacleWeightDict
+        {
+            get => _obstacleWeightDict;
+            set { _obstacleWeightDict = value; _generator0.ObstacleWeightDict = ObstacleWeightDict; _generator1.ObstacleWeightDict = ObstacleWeightDict; }
+        }
+        public MixinDictionary<CollectableDataSet, float> CollectableWeightDict
+        {
+            get => _collectableWeightDict;
+            set { _collectableWeightDict = value; _generator0.CollectableWeightDict = CollectableWeightDict; _generator1.CollectableWeightDict = CollectableWeightDict; }
         }
 
         private SingleLineMapGenerator _generator0;
         private SingleLineMapGenerator _generator1;
 
         public DoubleLineMapGenerator(float height0, float height1, float blockChunkSize = 1, float gapMultiplier = 1
-            , MixinDictionary<ObstacleOperator, float> obstacleMultiplierDict = null, MixinDictionary<CollectableDataSet, float> collectableMultiplierDict = null)
+            , float obstacleProbability = 0, float collectableProbability = 0
+            , MixinDictionary<ObstacleOperator, float> obstacleWeightDict = null, MixinDictionary<CollectableDataSet, float> collectableWeightDict = null)
         {
             _height0 = height0;
             _height1 = height1;
             _blockChunkSize = blockChunkSize;
             _gapMultiplier = gapMultiplier;
 
-            if (obstacleMultiplierDict != null)
-                _obstacleMultiplierDict = obstacleMultiplierDict;
+            _obstacleProbability = obstacleProbability;
+            _collectableProbability = collectableProbability;
 
-            if (collectableMultiplierDict != null)
-                _collectableMultiplierDict = collectableMultiplierDict;
+            if (obstacleWeightDict != null)
+                _obstacleWeightDict = obstacleWeightDict;
 
-            _generator0 = new SingleLineMapGenerator(_height0, _blockChunkSize, _gapMultiplier, _obstacleMultiplierDict);
-            _generator1 = new SingleLineMapGenerator(_height1, _blockChunkSize, _gapMultiplier, _obstacleMultiplierDict);
+            if (collectableWeightDict != null)
+                _collectableWeightDict = collectableWeightDict;
+
+            _generator0 = new SingleLineMapGenerator(_height0, _blockChunkSize, _gapMultiplier
+                , _obstacleProbability, _collectableProbability, _obstacleWeightDict, _collectableWeightDict);
+            _generator1 = new SingleLineMapGenerator(_height1, _blockChunkSize, _gapMultiplier
+                 , _obstacleProbability, _collectableProbability, _obstacleWeightDict, _collectableWeightDict);
         }
 
         public MapPlan Tick()
