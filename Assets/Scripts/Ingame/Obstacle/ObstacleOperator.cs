@@ -32,6 +32,8 @@ namespace Mixin.TheLastMove.Environment
 
         public static event Action<ObstacleOperator> OnKilled;
 
+        public bool Killable { get => _killable; }
+
         public void Setup(ObstacleOperator obstacle, Vector3 position)
         {
             // Attributes
@@ -68,7 +70,7 @@ namespace Mixin.TheLastMove.Environment
         public void Kill()
         {
             if (!_killable)
-                return; 
+                return;
 
             StartCoroutine(FadeAndScale());
             EnvironmentManager.Instance.ObstaclesKilled++;

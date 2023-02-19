@@ -256,10 +256,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79938994bac490246be1d0e3a63aa5d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canBoost: 1
+  _boostIntensity: 8
+  _boostSound: {fileID: 11400000, guid: ed86717bfe33c95409a52bf59b93cc25, type: 2}
   _attackSlash: {fileID: 662415549}
   _physical: {fileID: 662415546}
-  _startSize: {x: 1, y: 1}
-  _endSize: {x: 1, y: 1}
+  _startSize: {x: 1.5, y: 1.5}
+  _endSize: {x: 1.5, y: 1.5}
   _endDisplacement: 0
   _stayDuration: 0.1
   _fadeOutDuration: 0.05
@@ -715,10 +718,9 @@ GameObject:
   - component: {fileID: 662415546}
   - component: {fileID: 662415549}
   - component: {fileID: 662415548}
-  - component: {fileID: 662415547}
   m_Layer: 6
   m_Name: Physical
-  m_TagString: Untagged
+  m_TagString: Slash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -732,14 +734,14 @@ Transform:
   m_GameObject: {fileID: 662415545}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 32759231}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &662415547
-CapsuleCollider2D:
+--- !u!58 &662415548
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -752,24 +754,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.6, y: 1.6}
-  m_Direction: 1
---- !u!58 &662415548
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 662415545}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.8
+  m_Radius: 0.85
 --- !u!212 &662415549
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -901,6 +887,7 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 0}
   _deathSprite: {fileID: 0}
   _collider2D: {fileID: 0}
+  _killable: 0
   _fadeTime: 1
   _scaleFactor: 1.2
   _groundOffset: 0
@@ -1875,11 +1862,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1886527396}
   - component: {fileID: 1886527398}
-  - component: {fileID: 1886527397}
   - component: {fileID: 1886527399}
   m_Layer: 6
   m_Name: Physical
-  m_TagString: Untagged
+  m_TagString: Slash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1899,22 +1885,6 @@ Transform:
   m_Father: {fileID: 1942810799}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &1886527397
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1886527395}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.8
 --- !u!212 &1886527398
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2029,6 +1999,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79938994bac490246be1d0e3a63aa5d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canBoost: 0
+  _boostIntensity: 0
+  _boostSound: {fileID: 0}
   _attackSlash: {fileID: 1886527398}
   _physical: {fileID: 1886527396}
   _startSize: {x: 1, y: 1}

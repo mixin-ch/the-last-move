@@ -146,11 +146,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _collider: {fileID: 4423639361953837824}
-  _collectableModel: {fileID: 5183037804515772524}
   _spriteFadeAndScaler: {fileID: 3409979744578687834}
   _spriteRenderer: {fileID: 2689544858665014306}
   _collectedSprite: {fileID: 21300000, guid: a44a966e7f60beb4f835ba742a6f8daa, type: 3}
-  _sprite: {fileID: 21300000, guid: fea3afec963eb2143a9f1e69f3a0b199, type: 3}
+  _scoreIncrease: 0
+  _healthIncrease: 0
 --- !u!61 &4423639361953837824
 BoxCollider2D:
   m_ObjectHideFlags: 0

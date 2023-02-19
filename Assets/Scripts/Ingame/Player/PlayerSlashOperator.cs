@@ -1,11 +1,19 @@
 using Mixin.TheLastMove.Environment;
+using Mixin.Utils.Audio;
 using System.Collections;
 using UnityEngine;
 
-namespace Mixin.TheLastMove
+namespace Mixin.TheLastMove.Player
 {
     public class PlayerSlashOperator : MonoBehaviour
     {
+        [SerializeField]
+        private bool _canBoost;
+        [SerializeField]
+        private float _boostIntensity;
+        [SerializeField]
+        private AudioTrackSetupSO _boostSound;
+
         [SerializeField]
         private SpriteRenderer _attackSlash;
         [SerializeField]
@@ -22,7 +30,6 @@ namespace Mixin.TheLastMove
         [SerializeField]
         private float _fadeOutDuration;
 
-        private bool _active;
         private float _elapsedTime;
 
         // Start is called before the first frame update
@@ -30,6 +37,7 @@ namespace Mixin.TheLastMove
         {
             InputManager.OnPlayerAttack += PlayerOperator_OnPlayerAttackEvent;
             _attackSlash.enabled = false;
+            _physical.gameObject.SetActive(false);
         }
 
         private void PlayerOperator_OnPlayerAttackEvent()
@@ -38,7 +46,7 @@ namespace Mixin.TheLastMove
             _physical.transform.localScale = _startSize;
             _attackSlash.color = Color.white;
             _elapsedTime = 0;
-            _active = true;
+            _physical.gameObject.SetActive(true);
 
             // Display the sprite
             _attackSlash.enabled = true;
@@ -72,13 +80,30 @@ namespace Mixin.TheLastMove
 
             // Disable the sprite renderer when the fade is complete
             _attackSlash.enabled = false;
-            _active = false;
+            _physical.gameObject.SetActive(false);
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (_active && collision.gameObject.CompareTag("Harmful"))
-                collision.gameObject.GetComponent<ObstacleOperator>()?.Kill();
+            if (!collision.gameObject.CompareTag("Obstacle"))
+                return;
+
+            ObstacleOperator @operator = collision.gameObject.GetComponent<ObstacleOperator>();
+
+            if (@operator == null)
+                return;
+
+            if (@operator.Killable)
+            {
+                @operator.Kill();
+                return;
+            }
+
+            if (!_canBoost)
+                return;
+
+            EnvironmentManager.Instance.PlayerOperator.Boost(_boostIntensity);
+            AudioManager.Instance.PlayTrack(_boostSound);
         }
     }
 }
