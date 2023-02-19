@@ -17,7 +17,16 @@ namespace Mixin.TheLastMove.Ingame.UI
     public class IngameUIManager : MonoBehaviour
     {
         [SerializeField]
+        private MinMaxInt _showAdRange;
+
+        private int? _showAdInt = null;
+
         private PlayerOperator _playerOperator => EnvironmentManager.Instance.PlayerOperator;
+
+        private void Awake()
+        {
+            _showAdInt = _showAdRange.GetRandomBetween();
+        }
 
         private void OnEnable()
         {
@@ -90,10 +99,12 @@ namespace Mixin.TheLastMove.Ingame.UI
 
         private void IngameDeathScreenUIB_OnRestartButtonClicked()
         {
-            if (EnvironmentManager.PlayCounter > 6)
+            // Show ad or restart
+            if (EnvironmentManager.PlayCounter > _showAdInt)
             {
                 IronSource.Agent.showInterstitial();
                 EnvironmentManager.PlayCounter = 0;
+                _showAdInt = _showAdRange.GetRandomBetween();
             }
             else
                 RestartGame();
