@@ -21,6 +21,11 @@ namespace Mixin.Utils
         {
             return Random.Range(Min, Max);
         }
+
+        public float GetRandomFloatBetween()
+        {
+            return Random.Range((float)Min, (float)Max);
+        }
     }
 
 #if UNITY_EDITOR

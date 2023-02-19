@@ -149,6 +149,9 @@ MonoBehaviour:
   _spriteFadeAndScaler: {fileID: 3409979744578687834}
   _spriteRenderer: {fileID: 2689544858665014306}
   _collectedSprite: {fileID: 21300000, guid: a44a966e7f60beb4f835ba742a6f8daa, type: 3}
+  _height:
+    Min: 3
+    Max: 3
   _scoreIncrease: 0
   _healthIncrease: 0
 --- !u!61 &4423639361953837824

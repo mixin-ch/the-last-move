@@ -1,3 +1,4 @@
+using Mixin.Utils;
 using System;
 using UnityEngine;
 
@@ -16,6 +17,9 @@ namespace Mixin.TheLastMove.Environment.Collectable
 
         [SerializeField]
         private Sprite _collectedSprite;
+
+        [SerializeField]
+        private MinMaxInt _height;
 
         /// <summary>
         /// How high the counter should be increased
@@ -39,6 +43,7 @@ namespace Mixin.TheLastMove.Environment.Collectable
             _spriteRenderer.transform.localScale = prefab._spriteRenderer.transform.localScale;
             _spriteRenderer.color = prefab._spriteRenderer.color;
 
+            position.y += _height.GetRandomFloatBetween();
             transform.position = position;
 
             // Collider
