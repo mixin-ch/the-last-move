@@ -1,8 +1,8 @@
 .heart {
     background-image: url('project://database/Assets/Graphics/Icons/Heart%202.png?fileID=2800000&guid=28936d373d3fca64f9feee238a60cd0f&type=3#Heart 2');
     -unity-background-scale-mode: scale-to-fit;
-    margin-left: 2px;
-    margin-right: 2px;
+    margin-left: 5px;
+    margin-right: 5px;
     flex-grow: 1;
     width: 100px;
 }
@@ -22,6 +22,8 @@
     font-size: 40px;
     color: rgb(255, 255, 255);
     -unity-font-style: normal;
+    margin-right: 25px;
+    margin-left: -10px;
 }
 
 .icon {
@@ -69,7 +71,7 @@
     background-image: url('project://database/Assets/Graphics/Icons/Pause%20Button.png?fileID=2800000&guid=a361af4e8096110438f71e561c981dbf&type=3#Pause Button');
     -unity-background-scale-mode: scale-to-fit;
     background-color: rgba(188, 188, 188, 0);
-    flex-basis: 70px;
+    flex-basis: 90px;
     border-left-width: 0;
     border-right-width: 0;
     border-top-width: 0;
@@ -77,5 +79,5 @@
 }
 
 .pauseButton:hover {
-    -unity-background-image-tint-color: rgba(152, 152, 152, 255);
+    -unity-background-image-tint-color: rgb(152, 152, 152);
 }
