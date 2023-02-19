@@ -37,6 +37,7 @@ namespace Mixin.TheLastMove.Environment.Collectable
         {
             _spriteRenderer.sprite = prefab._spriteRenderer.sprite;
             _spriteRenderer.transform.localScale = prefab._spriteRenderer.transform.localScale;
+            _spriteRenderer.color = prefab._spriteRenderer.color;
 
             transform.position = position;
 
