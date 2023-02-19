@@ -142,6 +142,15 @@ namespace Mixin.TheLastMove.Player
             _playerSpriteState = PlayerSpriteState.Jump;
         }
 
+        public void Boost(float intensity)
+        {
+            _isJumping = true;
+            _rigidbody.velocity = Vector2.up * intensity * Mathf.Sqrt(Hectic);
+            _playerSpriteState = PlayerSpriteState.Jump;
+            _remainingJumpList.Clear();
+            _remainingJumpList.AddRange(_jumpList);
+        }
+
         private void Attack()
         {
             _playerSpriteState = PlayerSpriteState.Attack;
@@ -212,7 +221,7 @@ namespace Mixin.TheLastMove.Player
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.CompareTag("Harmful"))
+            if (collision.gameObject.CompareTag("Obstacle"))
                 TakeDamage();
 
             if (collision.gameObject.CompareTag("Collectable"))

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6459326259943849330}
   m_Layer: 7
   m_Name: Obstacle Prefab
-  m_TagString: Harmful
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,6 +49,7 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 8929524851366485977}
   _deathSprite: {fileID: 21300000, guid: 0b6aa0d7d793fc149946dde5b7e658ce, type: 3}
   _collider2D: {fileID: 6459326259943849330}
+  _killable: 0
   _fadeTime: 1
   _scaleFactor: 1.01
   _groundOffset: 0

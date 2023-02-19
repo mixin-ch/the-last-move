@@ -4,9 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Harmful
   - Slash
   - Collectable
+  - Obstacle
   layers:
   - Default
   - TransparentFX
