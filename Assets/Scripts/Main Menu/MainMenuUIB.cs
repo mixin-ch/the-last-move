@@ -1,4 +1,5 @@
 using Mixin.Language;
+using Mixin.TheLastMove.Settings;
 using Mixin.TheLastMove.Sound;
 using Mixin.Utils;
 using System;
@@ -39,14 +40,25 @@ namespace Mixin.TheLastMove
             _buttonList.Add(AboutButton);
 
             TapToPlay = _root.Q<Label>("TapToPlayText");
-            TapToPlay.text = _tapToPlayLanguage.GetText();
 
             GameVersionText = _root.Q<Label>("GameVersionText");
+        }
+
+        private void OnEnable()
+        {
+            SettingsManager.OnLanguageChange += SetTapToPlayText;
+        }
+
+        private void OnDisable()
+        {
+            SettingsManager.OnLanguageChange -= SetTapToPlayText;
         }
 
         private void Start()
         {
             AddSoundToAllButtons();
+
+            SetTapToPlayText();
 
             PlayButton.clicked += () => OnPlayButtonClicked?.Invoke();
             SettingsButton.clicked += () => OnSettingsButtonClicked?.Invoke();
@@ -62,6 +74,11 @@ namespace Mixin.TheLastMove
         private void PlaySound(SoundType soundType)
         {
             GeneralSoundManager.Instance.PlaySound(soundType);
+        }
+
+        private void SetTapToPlayText()
+        {
+            TapToPlay.text = _tapToPlayLanguage.GetText();
         }
     }
 }

@@ -14,6 +14,8 @@ namespace Mixin.TheLastMove.Settings
         private UserSettingsData _data => SaveManager.Instance.UserSettingsData.Data;
         private SettingsUIB _uib => SettingsUIB.Instance;
 
+        public static event Action OnLanguageChange;
+
         private void Start()
         {
             _uib.MusicVolumeSlider.value = _data.MusicVolume;
@@ -75,6 +77,8 @@ namespace Mixin.TheLastMove.Settings
             SetLanguageButtonActive();
 
             _uib.Init();
+
+            OnLanguageChange?.Invoke();
         }
 
         private void SetLanguageButtonActive()

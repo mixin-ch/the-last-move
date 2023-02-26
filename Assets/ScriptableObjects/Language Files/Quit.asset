@@ -35,9 +35,10 @@ MonoBehaviour:
       elementIcon: {fileID: 0}
     reqReferences: {fileID: 0}
     isExpanded: 1
-    _keyValues: 010000000000000002000000
-    _keys: 010000000000000002000000
+    _keyValues: 01000000000000000200000003000000
+    _keys: 01000000000000000200000003000000
     _values:
     - Text: Quit
     - Text: Verlassen
     - Text: Verlah
+    - Text: "Arr\xEAter"
