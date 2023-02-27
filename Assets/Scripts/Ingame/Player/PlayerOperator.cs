@@ -222,7 +222,13 @@ namespace Mixin.TheLastMove.Player
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.gameObject.CompareTag("Obstacle"))
-                TakeDamage();
+            {
+                ObstacleOperator @operator = collision.gameObject.GetComponent<ObstacleOperator>();
+
+                if ((_collider.bounds.center.y >= collision.bounds.min.y && @operator.UpHarm)
+                      || (_collider.bounds.center.y <= collision.bounds.max.y && @operator.DownHarm))
+                    TakeDamage();
+            }
 
             if (collision.gameObject.CompareTag("Collectable"))
                 collision.gameObject.GetComponent<CollectableOperator>().Collect();

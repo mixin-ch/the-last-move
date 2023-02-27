@@ -79,6 +79,14 @@ PrefabInstance:
       propertyPath: m_UsedByEffector
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8311730700049252289, guid: 083f8ea48cdda1147aa420ff4751a720, type: 3}
+      propertyPath: _upHarm
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8311730700049252289, guid: 083f8ea48cdda1147aa420ff4751a720, type: 3}
+      propertyPath: _downHarm
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8929524851366485977, guid: 083f8ea48cdda1147aa420ff4751a720, type: 3}
       propertyPath: m_Sprite
       value: 

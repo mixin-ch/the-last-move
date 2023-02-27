@@ -22,6 +22,12 @@ namespace Mixin.TheLastMove.Environment
         [SerializeField]
         private bool _killable;
 
+        [SerializeField]
+        private bool _upHarm;
+
+        [SerializeField]
+        private bool _downHarm;
+
         [ConditionalField("_killable", true)]
         [SerializeField]
         private float _fadeTime = 1f;
@@ -37,12 +43,19 @@ namespace Mixin.TheLastMove.Environment
 
         public bool Killable { get => _killable; }
 
+        public bool UpHarm { get => _upHarm; }
+
+        public bool DownHarm { get => _downHarm; }
+
         public void Setup(ObstacleOperator obstacle, Vector3 position)
         {
             // Attributes
-            _killable = obstacle._killable;
             _fadeTime = obstacle._fadeTime;
             _scaleFactor = obstacle._scaleFactor;
+
+            _killable = obstacle._killable;
+            _upHarm = obstacle._upHarm;
+            _downHarm = obstacle._downHarm;
 
             // Reset scale of Sprite
             _spriteRenderer.transform.localScale = new Vector3(1, 1, 1);
