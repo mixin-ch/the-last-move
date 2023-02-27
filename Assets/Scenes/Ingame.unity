@@ -2431,7 +2431,6 @@ MonoBehaviour:
     - _playRandom: 1
       _soundList:
       - {fileID: 11400000, guid: 60d5bf03f8f22df4f89a1b53363bc8d4, type: 2}
-      - {fileID: 11400000, guid: 278f3d109af13c7499b9cce8c7eb3bf0, type: 2}
     - _playRandom: 1
       _soundList:
       - {fileID: 11400000, guid: 2da99a5b5e0ca2e44bb03e823d53a99b, type: 2}
