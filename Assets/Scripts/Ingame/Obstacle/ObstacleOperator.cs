@@ -14,7 +14,10 @@ namespace Mixin.TheLastMove.Environment
         private Sprite _deathSprite;
 
         [SerializeField]
-        private BoxCollider2D _collider2D;
+        private BoxCollider2D _harmCollider;
+
+        [SerializeField]
+        private EdgeCollider2D _groundCollider;
 
         [SerializeField]
         private bool _killable;
@@ -54,9 +57,13 @@ namespace Mixin.TheLastMove.Environment
             transform.localScale = obstacle.transform.localScale;
 
             // Collider
-            _collider2D.enabled = true;
-            _collider2D.offset = obstacle._collider2D.offset;
-            _collider2D.size = obstacle._collider2D.size;
+            _harmCollider.enabled = true;
+            _harmCollider.offset = obstacle._harmCollider.offset;
+            _harmCollider.size = obstacle._harmCollider.size;
+
+            _groundCollider.enabled = true;
+            _groundCollider.offset = obstacle._groundCollider.offset;
+            _groundCollider.points = obstacle._groundCollider.points;
 
             // Tag
             transform.tag = obstacle.transform.tag;
@@ -82,7 +89,7 @@ namespace Mixin.TheLastMove.Environment
             float elapsedTime = 0f;
             Color originalColor = _spriteRenderer.color;
 
-            _collider2D.enabled = false;
+            _harmCollider.enabled = false;
             _spriteRenderer.sprite = _deathSprite;
 
             while (elapsedTime < _fadeTime)

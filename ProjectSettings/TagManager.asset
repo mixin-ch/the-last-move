@@ -7,6 +7,7 @@ TagManager:
   - Slash
   - Collectable
   - Obstacle
+  - Ground
   layers:
   - Default
   - TransparentFX

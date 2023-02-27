@@ -562,7 +562,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 629764252}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &399157852
 MonoBehaviour:
@@ -607,7 +607,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2084484238}
   - {fileID: 1969339365}
   - {fileID: 809692951}
   - {fileID: 399157851}
@@ -655,7 +654,7 @@ MonoBehaviour:
   _obstaclePrefab: {fileID: 3608964336775138525, guid: 083f8ea48cdda1147aa420ff4751a720, type: 3}
   _collectableContainer: {fileID: 841584972}
   _collectablePrefab: {fileID: 8675707686634140811, guid: f4cda81dbab23964394a0a1413bd8182, type: 3}
-  _obstacleProbability: 0.1
+  _obstacleProbability: 0.2
   _obstacleWeightDict:
   - _key: {fileID: 7109862074252922431, guid: 415fb1081c6f9624e801def3052ddc92, type: 3}
     _value: 4
@@ -872,7 +871,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 629764252}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &809692952
 MonoBehaviour:
@@ -888,7 +887,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spriteRenderer: {fileID: 0}
   _deathSprite: {fileID: 0}
-  _collider2D: {fileID: 0}
+  _harmCollider: {fileID: 0}
+  _groundCollider: {fileID: 0}
   _killable: 0
   _fadeTime: 1
   _scaleFactor: 1.2
@@ -1984,7 +1984,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1942810798}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0.15, z: 0}
+  m_LocalPosition: {x: 2, y: 0.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2011,7 +2011,7 @@ MonoBehaviour:
   _physical: {fileID: 1886527396}
   _startSize: {x: 1, y: 1}
   _endSize: {x: 3, y: 1}
-  _endDisplacement: 3
+  _endDisplacement: 4
   _stayDuration: 0.1
   _fadeOutDuration: 0.05
 --- !u!50 &1942810802
@@ -2065,7 +2065,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 629764252}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1969339366
 MonoBehaviour:
@@ -2343,50 +2343,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keepAspectRatio: 0
---- !u!1 &2084484237
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2084484238}
-  - component: {fileID: 2084484239}
-  m_Layer: 0
-  m_Name: Collectable Spawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2084484238
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2084484237}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.883092, y: 0.3915275, z: 0.04190915}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 629764252}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2084484239
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2084484237}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b94f4d59316af124184bc9c2cfee0cfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2099940136
 GameObject:
   m_ObjectHideFlags: 0

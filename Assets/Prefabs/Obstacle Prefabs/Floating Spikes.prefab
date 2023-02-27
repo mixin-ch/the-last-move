@@ -65,19 +65,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6459326259943849330, guid: 083f8ea48cdda1147aa420ff4751a720, type: 3}
       propertyPath: m_Size.x
-      value: 0.9189725
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 6459326259943849330, guid: 083f8ea48cdda1147aa420ff4751a720, type: 3}
       propertyPath: m_Size.y
-      value: 0.27645147
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 6459326259943849330, guid: 083f8ea48cdda1147aa420ff4751a720, type: 3}
       propertyPath: m_Offset.y
-      value: -0.15
+      value: -0.23
       objectReference: {fileID: 0}
     - target: {fileID: 8311730700049252289, guid: 083f8ea48cdda1147aa420ff4751a720, type: 3}
       propertyPath: _groundOffset
       value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8332558590168860772, guid: 083f8ea48cdda1147aa420ff4751a720, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8332558590168860772, guid: 083f8ea48cdda1147aa420ff4751a720, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8332558590168860772, guid: 083f8ea48cdda1147aa420ff4751a720, type: 3}
+      propertyPath: m_Points.Array.data[0].x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8332558590168860772, guid: 083f8ea48cdda1147aa420ff4751a720, type: 3}
+      propertyPath: m_Points.Array.data[1].x
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8929524851366485977, guid: 083f8ea48cdda1147aa420ff4751a720, type: 3}
       propertyPath: m_Sprite
