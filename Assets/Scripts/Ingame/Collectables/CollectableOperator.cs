@@ -34,6 +34,8 @@ namespace Mixin.TheLastMove.Environment.Collectable
 
         public Vector2 Position { get => transform.localPosition; set => transform.localPosition = value; }
         public Vector2 Scale { get => transform.localScale; set => transform.localScale = value; }
+        public int ScoreIncrease { get => _scoreIncrease; }
+        public int HealthIncrease { get => _healthIncrease; }
 
         public static event Action<CollectableOperator> OnCollected;
 

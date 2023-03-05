@@ -2412,8 +2412,8 @@ MonoBehaviour:
       elementIcon: {fileID: 0}
     reqReferences: {fileID: 0}
     isExpanded: 1
-    _keyValues: 010000000000000002000000030000000400000005000000060000000d0000000b0000000c00000007000000
-    _keys: 010000000000000002000000030000000400000005000000060000000d0000000b0000000c00000007000000
+    _keyValues: 010000000000000002000000030000000400000005000000060000000d0000000b0000000c00000007000000090000000e0000000f000000
+    _keys: 010000000000000002000000030000000400000005000000060000000d0000000b0000000c00000007000000090000000e0000000f000000
     _values:
     - _playRandom: 1
       _soundList:
@@ -2449,6 +2449,15 @@ MonoBehaviour:
       _soundList:
       - {fileID: 11400000, guid: d093d0d6be40a324bbbc433a1491f093, type: 2}
       - {fileID: 11400000, guid: 94189d1e98c5f9148a9228928671fc88, type: 2}
+    - _playRandom: 1
+      _soundList:
+      - {fileID: 11400000, guid: f7593971431eb38488bdefcf7f08ee1f, type: 2}
+    - _playRandom: 1
+      _soundList:
+      - {fileID: 11400000, guid: f7593971431eb38488bdefcf7f08ee1f, type: 2}
+    - _playRandom: 1
+      _soundList:
+      - {fileID: 11400000, guid: f7593971431eb38488bdefcf7f08ee1f, type: 2}
     - _playRandom: 1
       _soundList:
       - {fileID: 11400000, guid: f7593971431eb38488bdefcf7f08ee1f, type: 2}

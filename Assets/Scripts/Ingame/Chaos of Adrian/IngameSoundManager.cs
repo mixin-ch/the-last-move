@@ -20,15 +20,18 @@ namespace Mixin.TheLastMove.Sound
 
         private void Start()
         {
-            EnvironmentManager.OnGameStarted += () => PlaySound(SoundType.StartVoice);
+            //EnvironmentManager.OnGameStarted += () => PlaySound(SoundType.StartVoice);
             EnvironmentManager.Instance.PlayerOperator.OnPlayerDeathEvent += () => PlaySound(SoundType.Die);
             EnvironmentManager.Instance.PlayerOperator.OnPlayerTakeDamageEvent += () => PlaySound(SoundType.TakeDamage);
             EnvironmentManager.OnBiomeChanged += (biome) => PlaySound(SoundType.Teleport);
             InputManager.OnPlayerJump += () => PlaySound(SoundType.Jump);
             InputManager.OnPlayerAttack += () => PlaySound(SoundType.Attack);
-            InputManager.Instance.InputControls.Ingame.Descend.started += (context) => PlaySound(SoundType.Descend);
-            CollectableOperator.OnCollected += (collectable) => PlaySound(SoundType.Collect);
-
+            InputManager.Instance.InputControls.Ingame.Descend.started += _ => PlaySound(SoundType.Descend);
+            CollectableOperator.OnCollected += PlayCollectableSound;
+            ObstacleOperator.OnKilled += _ => PlaySound(SoundType.ObstacleKill);
+            EnvironmentManager.Instance.PlayerOperator.MeleeSlash.OnBounceObstacleEvent +=
+                () => PlaySound(SoundType.PlatformBounce);
+            EnvironmentManager.OnGameStarted += () => PlaySound(SoundType.GameStarted);
         }
 
         /* private void OnDisable()
@@ -44,6 +47,14 @@ namespace Mixin.TheLastMove.Sound
         public void PlaySound(SoundType soundType)
         {
             _soundList[soundType].PlaySound();
+        }
+
+        private void PlayCollectableSound(CollectableOperator collectable)
+        {
+            if (collectable.HealthIncrease >= 1)
+                PlaySound(SoundType.HeartRefill);
+            else if (collectable.ScoreIncrease >= 1)
+                PlaySound(SoundType.Collect);
         }
     }
 }
