@@ -18,6 +18,9 @@ namespace Mixin.TheLastMove.Environment
         private const float _maxHectic = 5f;
         private const float _velocityScale = 3f;
 
+        private const int _collectablePoints = 10;
+        private const int _obstaclePoints = 10;
+
         [SerializeField]
         private Vector2Int _biomeDurationMinMax = Vector2Int.one;
 
@@ -46,6 +49,8 @@ namespace Mixin.TheLastMove.Environment
 
         public int CollectablesCollected { get => _collectablesCollected; set => _collectablesCollected = value; }
         public int ObstaclesKilled { get => _obstaclesKilled; set => _obstaclesKilled = value; }
+
+        public int Score { get => Distance.FloorToInt() + CollectablesCollected * _collectablePoints + ObstaclesKilled * _obstaclePoints; }
 
         public static event Action OnGameStarted;
         public static event Action<BiomeSO> OnBiomeChanged;

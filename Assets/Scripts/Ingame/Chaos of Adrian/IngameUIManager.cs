@@ -80,7 +80,7 @@ namespace Mixin.TheLastMove.Ingame.UI
             while (EnvironmentManager.Instance.IsGameRunning)
             {
                 IngameOverlayUIB.Instance.ScoreText.text =
-                    EnvironmentManager.Instance.Distance.RoundToInt().ToString();
+                    EnvironmentManager.Instance.Score.ToString();
                 yield return new WaitForEndOfFrame();
             }
         }
@@ -139,7 +139,7 @@ namespace Mixin.TheLastMove.Ingame.UI
 
         private void _playerOperator_OnPlayerDeathEvent()
         {
-            int score = EnvironmentManager.Instance.Distance.RoundToInt();
+            int score = EnvironmentManager.Instance.Score;
             int highscore = SaveManager.Instance.IngameData.Data.Highscore;
             int kills = EnvironmentManager.Instance.ObstaclesKilled;
             int collectable = EnvironmentManager.Instance.CollectablesCollected;
