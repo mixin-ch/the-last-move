@@ -1,6 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/MenuPagesStyle.uss?fileID=7433441132597879392&amp;guid=5cc3defc6f9dc2f47bbd0ea879a9d8f2&amp;type=3#MenuPagesStyle" />
-    <ui:VisualElement name="Background" style="position: absolute; width: 100%; height: 100%; background-image: url(&apos;project://database/Assets/Graphics/Backgrounds/Liv%20playing%20Chess%20in%20Bathtub.JPG?fileID=2800000&amp;guid=27557ec526bba77428a1204daec28795&amp;type=3#Liv playing Chess in Bathtub&apos;); -unity-background-scale-mode: scale-and-crop;" />
+    <ui:VisualElement name="Background" style="position: absolute; width: 100%; height: 100%; background-image: url(&apos;project://database/Assets/Graphics/Backgrounds/Liv%20playing%20Chess%20in%20Bathtub%20v2.1.jpg?fileID=2800000&amp;guid=93469dd6f2275174291a3b83d5eeddee&amp;type=3#Liv playing Chess in Bathtub v2.1&apos;); -unity-background-scale-mode: scale-and-crop;" />
     <ui:VisualElement name="Body" style="flex-basis: 100%;">
         <SafeArea style="justify-content: center; align-items: center;">
             <ui:Label text="Version 0.2" display-tooltip-when-elided="true" name="GameVersionText" style="font-size: 20px; color: rgb(255, 255, 255); -unity-font-style: bold; position: absolute; bottom: 16px; right: 23px;" />

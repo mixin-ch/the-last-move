@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: School
   m_EditorClassIdentifier: 
   _background: {fileID: 21300000, guid: be42d984a2fad0941aefa4065235eaec, type: 3}
-  _fogColor: {r: 0.53207546, g: 0.9763549, b: 1, a: 1}
+  _fogColor: {r: 0.53333336, g: 1, b: 0.618223, a: 1}
   _sprite: {fileID: 21300000, guid: 6f85dedd72c490f4eb71dce303f7bb54, type: 3}
   _prefab: {fileID: 4230435648551104127, guid: 2eff54f8381f98a47ab63de0b159b28e, type: 3}
