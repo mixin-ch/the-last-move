@@ -83,7 +83,7 @@ namespace Mixin.TheLastMove.Player
 
         public void Tick(float time)
         {
-            _isJumping = _isJumping && InputManager.Instance.IsPressingJumpButton;
+            _isJumping = _isJumping && InputManager.Instance.IsPressingJumpButton && _rigidbody.velocity.y > 0;
 
             if (!_isJumping && _rigidbody.velocity.y > 0)
                 _rigidbody.velocity = Vector2.up * Mathf.Lerp(_rigidbody.velocity.y, 0, _jumpVelocityBreak * time);
@@ -217,12 +217,10 @@ namespace Mixin.TheLastMove.Player
             {
                 _remainingJumpList.Clear();
                 _remainingJumpList.AddRange(_jumpList);
-                _isJumping = false;
-
-                OnPlayerLanded?.Invoke();
 
                 if (_playerSpriteState == PlayerSpriteState.Fall)
                 {
+                    OnPlayerLanded?.Invoke();
                     _playerSpriteState = PlayerSpriteState.Land;
                     _spriteTime = 0;
                 }
