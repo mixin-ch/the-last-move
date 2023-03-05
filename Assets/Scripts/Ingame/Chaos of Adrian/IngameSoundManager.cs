@@ -23,6 +23,7 @@ namespace Mixin.TheLastMove.Sound
             //EnvironmentManager.OnGameStarted += () => PlaySound(SoundType.StartVoice);
             EnvironmentManager.Instance.PlayerOperator.OnPlayerDeathEvent += () => PlaySound(SoundType.Die);
             EnvironmentManager.Instance.PlayerOperator.OnPlayerTakeDamageEvent += () => PlaySound(SoundType.TakeDamage);
+            EnvironmentManager.Instance.PlayerOperator.OnPlayerLanded += () => PlaySound(SoundType.Land);
             EnvironmentManager.OnBiomeChanged += (biome) => PlaySound(SoundType.Teleport);
             InputManager.OnPlayerJump += () => PlaySound(SoundType.Jump);
             InputManager.OnPlayerAttack += () => PlaySound(SoundType.Attack);
