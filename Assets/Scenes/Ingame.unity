@@ -257,7 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canBoost: 1
-  _boostIntensity: 8
+  _boostIntensity: 10
   _attackSlash: {fileID: 662415549}
   _physical: {fileID: 662415546}
   _startSize: {x: 1.5, y: 1.5}
