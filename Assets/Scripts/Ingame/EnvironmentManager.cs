@@ -89,6 +89,7 @@ namespace Mixin.TheLastMove.Environment
             BackgroundManager.Instance.Init();
 
             PlayCounter++;
+            _playerOperator.StartPlayer();
             _started = true;
             OnGameStarted?.Invoke();
         }
@@ -111,8 +112,6 @@ namespace Mixin.TheLastMove.Environment
             _paused = false;
 
             MapManager.Instance.Clear();
-
-            _playerOperator.ResetState();
 
             _hectic = _hecticStart;
             _distance = 0;

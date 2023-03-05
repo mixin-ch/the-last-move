@@ -20,6 +20,8 @@ namespace Mixin.TheLastMove.Player
         [SerializeField]
         private Collider2D _collider;
         [SerializeField]
+        private PlayerAnimationOperator _playerAnimator;
+        [SerializeField]
         private PlayerSlashOperator _meleeSlash;
         [SerializeField]
         private PlayerSlashOperator _rangedSlash;
@@ -173,14 +175,20 @@ namespace Mixin.TheLastMove.Player
                 Die();
         }
 
+        public void StartPlayer()
+        {
+            _playerAnimator.AnimationStart();
+            ResetState();
+        }
+
         private void Die()
         {
+            _playerAnimator.AnimationStop();
             gameObject.SetActive(false);
-            //ResetState();
             OnPlayerDeathEvent?.Invoke();
         }
 
-        public void ResetState()
+        private void ResetState()
         {
             transform.position = _startPosition;
             _rigidbody.gravityScale = 0;
