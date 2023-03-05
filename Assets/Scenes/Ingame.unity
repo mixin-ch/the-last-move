@@ -2460,7 +2460,7 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 14f3378bb76e9f648839379e2b2a5872, type: 2}
     - _playRandom: 1
       _soundList:
-      - {fileID: 11400000, guid: 77bda3e431598764eae2a1e87b2545b1, type: 2}
+      - {fileID: 11400000, guid: 8a868efced6a77e44a4f8da572f1dfb0, type: 2}
 --- !u!1 &2103117234
 GameObject:
   m_ObjectHideFlags: 0
