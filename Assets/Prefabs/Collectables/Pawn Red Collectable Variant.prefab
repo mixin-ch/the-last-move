@@ -8,6 +8,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3407673122534021591, guid: f4cda81dbab23964394a0a1413bd8182, type: 3}
+      propertyPath: _height.Max
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3407673122534021591, guid: f4cda81dbab23964394a0a1413bd8182, type: 3}
+      propertyPath: _height.Min
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3407673122534021591, guid: f4cda81dbab23964394a0a1413bd8182, type: 3}
       propertyPath: _scoreIncrease
       value: 1
       objectReference: {fileID: 0}

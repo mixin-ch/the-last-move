@@ -19,7 +19,7 @@ namespace Mixin.TheLastMove.Environment.Collectable
         private Sprite _collectedSprite;
 
         [SerializeField]
-        private MinMaxInt _height;
+        private MinMaxFloat _height;
 
         /// <summary>
         /// How high the counter should be increased

@@ -6,12 +6,12 @@ using UnityEngine;
 namespace Mixin.Utils
 {
     [System.Serializable]
-    public struct MinMaxInt
+    public struct MinMaxFloat
     {
-        public int Min;
-        public int Max;
+        public float Min;
+        public float Max;
 
-        public MinMaxInt(int min, int max)
+        public MinMaxFloat(float min, float max)
         {
             Min = min;
             Max = max;
@@ -19,7 +19,7 @@ namespace Mixin.Utils
 
         public int GetRandomIntBetween()
         {
-            return Random.Range(Min, Max);
+            return Random.Range((int)Min, (int)Max);
         }
 
         public float GetRandomFloatBetween()
@@ -29,8 +29,8 @@ namespace Mixin.Utils
     }
 
 #if UNITY_EDITOR
-    [CustomPropertyDrawer(typeof(MinMaxInt))]
-    public class MinMaxIntDrawer : PropertyDrawer
+    [CustomPropertyDrawer(typeof(MinMaxFloat))]
+    public class MinMaxFloatDrawer : PropertyDrawer
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {

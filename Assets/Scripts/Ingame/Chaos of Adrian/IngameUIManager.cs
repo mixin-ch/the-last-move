@@ -25,7 +25,7 @@ namespace Mixin.TheLastMove.Ingame.UI
 
         private void Awake()
         {
-            _showAdInt = _showAdRange.GetRandomBetween();
+            _showAdInt = _showAdRange.GetRandomIntBetween();
         }
 
         private void OnEnable()
@@ -104,7 +104,7 @@ namespace Mixin.TheLastMove.Ingame.UI
             {
                 IronSource.Agent.showInterstitial();
                 EnvironmentManager.PlayCounter = 0;
-                _showAdInt = _showAdRange.GetRandomBetween();
+                _showAdInt = _showAdRange.GetRandomIntBetween();
             }
             else
                 RestartGame();
