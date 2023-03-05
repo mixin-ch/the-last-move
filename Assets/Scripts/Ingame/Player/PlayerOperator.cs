@@ -39,6 +39,7 @@ namespace Mixin.TheLastMove.Player
 
         private const float _gravity = 1f;
         private const float _jumpVelocityBreak = 5f;
+        private const float _immunityDuration = 1;
 
         private const float _landDuration = 0.15f;
         private const float _attackDuration = 0.15f;
@@ -48,6 +49,8 @@ namespace Mixin.TheLastMove.Player
         private float Gravity => _gravity * Hectic;
 
         private float _health;
+
+        private float _immunityTime;
 
         private float _pausedVelocity;
 
@@ -85,6 +88,7 @@ namespace Mixin.TheLastMove.Player
 
         public void Tick(float time)
         {
+            _immunityTime = (_immunityTime - time).LowerBound(0);
             _isJumping = _isJumping && InputManager.Instance.IsPressingJumpButton && _rigidbody.velocity.y > 0;
 
             if (!_isJumping && _rigidbody.velocity.y > 0)
@@ -168,6 +172,7 @@ namespace Mixin.TheLastMove.Player
 
         private void TakeDamage()
         {
+            _immunityTime = _immunityDuration;
             _health--;
             OnPlayerTakeDamageEvent?.Invoke();
 
@@ -237,7 +242,7 @@ namespace Mixin.TheLastMove.Player
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.CompareTag("Obstacle"))
+            if (collision.gameObject.CompareTag("Obstacle") && _immunityTime <= 0)
             {
                 ObstacleOperator @operator = collision.gameObject.GetComponent<ObstacleOperator>();
 
