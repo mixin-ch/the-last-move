@@ -19,6 +19,10 @@ namespace Mixin.TheLastMove.Player
         private Transform _stretcherTransform;
         [SerializeField]
         private Collider2D _collider;
+        [SerializeField]
+        private PlayerSlashOperator _meleeSlash;
+        [SerializeField]
+        private PlayerSlashOperator _rangedSlash;
 
         [SerializeField]
         private int _startHealth;
@@ -57,6 +61,9 @@ namespace Mixin.TheLastMove.Player
         private bool HasJump => _remainingJumpList.Count > 0;
 
         public bool CanJump => HasJump && !_isJumping;
+
+        public PlayerSlashOperator MeleeSlash { get => _meleeSlash; }
+        public PlayerSlashOperator RangedSlash { get => _rangedSlash; }
 
         public Vector2 Position => transform.position;
         public float Health { get => _health; set => _health = value; }

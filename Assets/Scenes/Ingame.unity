@@ -258,7 +258,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canBoost: 1
   _boostIntensity: 8
-  _boostSound: {fileID: 11400000, guid: ed86717bfe33c95409a52bf59b93cc25, type: 2}
   _attackSlash: {fileID: 662415549}
   _physical: {fileID: 662415546}
   _startSize: {x: 1.5, y: 1.5}
@@ -2010,7 +2009,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canBoost: 0
   _boostIntensity: 0
-  _boostSound: {fileID: 0}
   _attackSlash: {fileID: 1886527398}
   _physical: {fileID: 1886527396}
   _startSize: {x: 1, y: 1}
@@ -2630,6 +2628,8 @@ MonoBehaviour:
   _rigidbody: {fileID: 801635303027335823}
   _stretcherTransform: {fileID: 1235152488}
   _collider: {fileID: 3608964335757725249}
+  _meleeSlash: {fileID: 32759233}
+  _rangedSlash: {fileID: 1942810801}
   _startHealth: 3
   _startPosition: {x: -5, y: 2}
   _jumpList:
