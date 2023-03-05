@@ -118,7 +118,9 @@ namespace Mixin.TheLastMove.Ingame.UI
 
         private void Continue()
         {
-            IronSource.Agent.showRewardedVideo();
+            EnvironmentManager.Instance.Continue();
+            IngameDeathScreenUIB.Instance.Show(false);
+            //IronSource.Agent.showRewardedVideo();
         }
 
         private void IngameOverlayUIB_OnPauseButtonClicked()
