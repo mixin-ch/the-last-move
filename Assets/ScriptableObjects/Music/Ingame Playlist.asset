@@ -20,5 +20,5 @@ MonoBehaviour:
   _fadeInDuration: 0
   _fadeOutDuration: 0
   _audioTrackSetups:
-  - {fileID: 11400000, guid: 9ec7ea42056c3fb49a1dbb786b09f112, type: 2}
   - {fileID: 11400000, guid: f154cdce722340846b1a520777ebef8f, type: 2}
+  - {fileID: 11400000, guid: 9ec7ea42056c3fb49a1dbb786b09f112, type: 2}
