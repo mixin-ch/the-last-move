@@ -30,6 +30,7 @@ namespace Mixin.TheLastMove.Player
         private Sprite _attack;
 
         private int _currentSprite = 0; // index of the current sprite
+        private bool _wasWalking;
 
         private PlayerOperator _playerOperator => EnvironmentManager.Instance.PlayerOperator;
 
@@ -56,17 +57,21 @@ namespace Mixin.TheLastMove.Player
             while (true) // loop indefinitely
             {
                 yield return new WaitForSeconds(_changeTime); // wait for changeTime seconds
+                bool isWalking = false;
 
                 switch (_playerOperator.PlayerSpriteState)
                 {
                     case PlayerSpriteState.Walk:
+                        isWalking = true;
                         _currentSprite = (_currentSprite + 1) % _sprites.Length; // move to the next sprite
+
+                        if (!_wasWalking)
+                            _currentSprite = 0;
+
                         _spriteRenderer.sprite = _sprites[_currentSprite]; // change the sprite
 
                         if (_currentSprite % soundPlayInterval == 0) // play the sound only on specific indices
-                        {
                             PlayWalkSound();
-                        }
                         break;
                     case PlayerSpriteState.Jump:
                         _spriteRenderer.sprite = _jump;
@@ -83,6 +88,8 @@ namespace Mixin.TheLastMove.Player
                     default:
                         break;
                 }
+
+                _wasWalking = isWalking;
             }
         }
 

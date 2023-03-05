@@ -2420,7 +2420,7 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 66789f6058824924287b8c5c1ce969eb, type: 2}
     - _playRandom: 1
       _soundList:
-      - {fileID: 11400000, guid: 35668a240782da14d8ccb59cd93060e2, type: 2}
+      - {fileID: 11400000, guid: 0db7035c1c721854ea34c01e4eda16f1, type: 2}
     - _playRandom: 1
       _soundList:
       - {fileID: 11400000, guid: 83c5017bd2c4ea844a892e84ebf0ee67, type: 2}
@@ -2435,7 +2435,7 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 60d5bf03f8f22df4f89a1b53363bc8d4, type: 2}
     - _playRandom: 1
       _soundList:
-      - {fileID: 11400000, guid: 2da99a5b5e0ca2e44bb03e823d53a99b, type: 2}
+      - {fileID: 11400000, guid: 125f0723a5ed0f84c9624d9059a6859a, type: 2}
     - _playRandom: 1
       _soundList:
       - {fileID: 11400000, guid: 0083a253ac9cfc942b2e9252967148c1, type: 2}
@@ -2454,7 +2454,7 @@ MonoBehaviour:
       - {fileID: 11400000, guid: f7593971431eb38488bdefcf7f08ee1f, type: 2}
     - _playRandom: 1
       _soundList:
-      - {fileID: 11400000, guid: f7593971431eb38488bdefcf7f08ee1f, type: 2}
+      - {fileID: 11400000, guid: 310b93a7d575c394c92cd12ae1f05151, type: 2}
     - _playRandom: 1
       _soundList:
       - {fileID: 11400000, guid: 14f3378bb76e9f648839379e2b2a5872, type: 2}
