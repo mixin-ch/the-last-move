@@ -1,5 +1,6 @@
 using Mixin.TheLastMove.Environment;
 using Mixin.Utils.Audio;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -7,12 +8,12 @@ namespace Mixin.TheLastMove.Player
 {
     public class PlayerSlashOperator : MonoBehaviour
     {
+        public event Action OnBounceObstacleEvent;
+
         [SerializeField]
         private bool _canBoost;
         [SerializeField]
         private float _boostIntensity;
-        [SerializeField]
-        private AudioTrackSetupSO _boostSound;
 
         [SerializeField]
         private SpriteRenderer _attackSlash;
@@ -108,7 +109,7 @@ namespace Mixin.TheLastMove.Player
                 return;
 
             EnvironmentManager.Instance.PlayerOperator.Boost(_boostIntensity);
-            AudioManager.Instance.PlayTrack(_boostSound);
+            OnBounceObstacleEvent?.Invoke();
         }
     }
 }
