@@ -70,11 +70,11 @@ namespace Mixin.TheLastMove.Environment
             transform.localScale = obstacle.transform.localScale;
 
             // Collider
-            _harmCollider.enabled = true;
+            _harmCollider.enabled = obstacle._harmCollider.enabled;
             _harmCollider.offset = obstacle._harmCollider.offset;
             _harmCollider.size = obstacle._harmCollider.size;
 
-            _groundCollider.enabled = true;
+            _groundCollider.enabled = obstacle._groundCollider.enabled;
             _groundCollider.offset = obstacle._groundCollider.offset;
             _groundCollider.points = obstacle._groundCollider.points;
 
