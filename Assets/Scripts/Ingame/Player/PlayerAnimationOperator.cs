@@ -40,13 +40,21 @@ namespace Mixin.TheLastMove.Player
         {
             InputManager.OnPlayerJump += InputManager_OnPlayerJump;
             _playerOperator.OnPlayerLanded += _playerOperator_OnPlayerLanded;
-            StartCoroutine(ChangeSprite()); // start coroutine to change sprites
         }
 
         private void OnDisable()
         {
             InputManager.OnPlayerJump -= InputManager_OnPlayerJump;
             _playerOperator.OnPlayerLanded -= _playerOperator_OnPlayerLanded;
+        }
+
+        public void AnimationStart()
+        {
+            StartCoroutine(ChangeSprite()); // start coroutine to change sprites
+        }
+
+        public void AnimationStop()
+        {
             StopAllCoroutines();
         }
 
@@ -56,7 +64,7 @@ namespace Mixin.TheLastMove.Player
 
             while (true) // loop indefinitely
             {
-                yield return new WaitForSeconds(_changeTime); // wait for changeTime seconds
+                yield return new WaitForSeconds(_changeTime / EnvironmentManager.Instance.Hectic); // wait for changeTime seconds
                 bool isWalking = false;
 
                 switch (_playerOperator.PlayerSpriteState)

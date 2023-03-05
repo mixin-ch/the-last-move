@@ -2637,6 +2637,7 @@ MonoBehaviour:
   _rigidbody: {fileID: 801635303027335823}
   _stretcherTransform: {fileID: 1235152488}
   _collider: {fileID: 3608964335757725249}
+  _playerAnimator: {fileID: 3608964335757725248}
   _meleeSlash: {fileID: 32759233}
   _rangedSlash: {fileID: 1942810801}
   _startHealth: 3
@@ -2828,7 +2829,7 @@ MonoBehaviour:
   - {fileID: -1248468798, guid: fb3e8ab2cc830064381c7149e0edb738, type: 3}
   - {fileID: -1248468798, guid: fb3e8ab2cc830064381c7149e0edb738, type: 3}
   - {fileID: -1827305610, guid: fb3e8ab2cc830064381c7149e0edb738, type: 3}
-  _changeTime: 0.05
+  _changeTime: 0.1
   _spriteRenderer: {fileID: 3244794083955830634}
   _jump: {fileID: 1803999851, guid: fb3e8ab2cc830064381c7149e0edb738, type: 3}
   _fall: {fileID: 429438832, guid: fb3e8ab2cc830064381c7149e0edb738, type: 3}
