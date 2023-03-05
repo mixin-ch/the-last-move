@@ -40,6 +40,11 @@ namespace Mixin.TheLastMove.Player
             _physical.gameObject.SetActive(false);
         }
 
+        private void OnDisable()
+        {
+            InputManager.OnPlayerAttack -= PlayerOperator_OnPlayerAttackEvent;
+        }
+
         private void PlayerOperator_OnPlayerAttackEvent()
         {
             _physical.transform.localPosition = Vector3.zero;

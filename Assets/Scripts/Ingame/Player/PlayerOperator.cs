@@ -168,7 +168,8 @@ namespace Mixin.TheLastMove.Player
 
         private void Die()
         {
-            ResetState();
+            gameObject.SetActive(false);
+            //ResetState();
             OnPlayerDeathEvent?.Invoke();
         }
 
@@ -185,6 +186,8 @@ namespace Mixin.TheLastMove.Player
             _isJumping = false;
             _dragPointOffset = 1;
             _playerSpriteState = PlayerSpriteState.Walk;
+
+            gameObject.SetActive(true);
         }
 
         private void RefreshVelocity()

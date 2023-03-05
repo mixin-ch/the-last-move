@@ -38,18 +38,15 @@ namespace Mixin.TheLastMove.Player
         private void OnEnable()
         {
             InputManager.OnPlayerJump += InputManager_OnPlayerJump;
+            _playerOperator.OnPlayerLanded += _playerOperator_OnPlayerLanded;
+            StartCoroutine(ChangeSprite()); // start coroutine to change sprites
         }
 
         private void OnDisable()
         {
             InputManager.OnPlayerJump -= InputManager_OnPlayerJump;
             _playerOperator.OnPlayerLanded -= _playerOperator_OnPlayerLanded;
-        }
-
-        void Start()
-        {
-            StartCoroutine(ChangeSprite()); // start coroutine to change sprites
-            _playerOperator.OnPlayerLanded += _playerOperator_OnPlayerLanded;
+            StopAllCoroutines();
         }
 
         private IEnumerator ChangeSprite()
