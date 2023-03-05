@@ -32,7 +32,7 @@ namespace Mixin.TheLastMove.Ingame.UI
         {
             EnvironmentManager.OnGameStarted += EnvironmentManager_OnGameStarted;
             IngameOverlayUIB.OnPauseButtonClicked += IngameOverlayUIB_OnPauseButtonClicked;
-            IngameDeathScreenUIB.OnRespawnButtonClicked += IngameDeathScreenUIB_OnRespawnButtonClicked;
+            IngameDeathScreenUIB.OnRespawnButtonClicked += Continue;
             IngameDeathScreenUIB.OnRestartButtonClicked += IngameDeathScreenUIB_OnRestartButtonClicked;
             IngameDeathScreenUIB.OnQuitButtonClicked += GoToMainMenu;
             IngamePauseUIB.OnQuitButtonClicked += GoToMainMenu;
@@ -53,7 +53,7 @@ namespace Mixin.TheLastMove.Ingame.UI
         {
             EnvironmentManager.OnGameStarted -= EnvironmentManager_OnGameStarted;
             IngameOverlayUIB.OnPauseButtonClicked -= IngameOverlayUIB_OnPauseButtonClicked;
-            IngameDeathScreenUIB.OnRespawnButtonClicked -= IngameDeathScreenUIB_OnRespawnButtonClicked;
+            IngameDeathScreenUIB.OnRespawnButtonClicked -= Continue;
             IngameDeathScreenUIB.OnRestartButtonClicked -= IngameDeathScreenUIB_OnRestartButtonClicked;
             IngameDeathScreenUIB.OnQuitButtonClicked -= GoToMainMenu;
             IngamePauseUIB.OnQuitButtonClicked -= GoToMainMenu;
@@ -116,7 +116,7 @@ namespace Mixin.TheLastMove.Ingame.UI
             IngameDeathScreenUIB.Instance.Show(false);
         }
 
-        private void IngameDeathScreenUIB_OnRespawnButtonClicked()
+        private void Continue()
         {
             IronSource.Agent.showRewardedVideo();
         }
@@ -133,8 +133,8 @@ namespace Mixin.TheLastMove.Ingame.UI
 
         private void RewardedVideoAdRewardedEvent(IronSourcePlacement obj)
         {
-            // TODO: Continue
-            EnvironmentManager.Instance.StartGame();
+            EnvironmentManager.Instance.Continue();
+            IngameDeathScreenUIB.Instance.Show(false);
         }
 
         private void _playerOperator_OnPlayerDeathEvent()
