@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8db054b649fb834d8306950cac526fd, type: 3}
-  m_Name: Obstacle Die
+  m_Name: Platform Bounce
   m_EditorClassIdentifier: 
-  _audioClip: {fileID: 8300000, guid: 70c9b9769a85725439d9255e9aca987b, type: 3}
+  _audioClip: {fileID: 8300000, guid: f5c1bd0a2f696644991b7b7a64274e59, type: 3}
   _audioMixerGroup: {fileID: -2938485225418946323, guid: 6e31a6f8a124f5c4da4e6fea98b516ba, type: 2}
   _volume: 0.083
   _pitch: 1

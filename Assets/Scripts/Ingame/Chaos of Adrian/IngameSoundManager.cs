@@ -18,6 +18,13 @@ namespace Mixin.TheLastMove.Sound
 
         public MixinDictionary<SoundType, AudioTrackSetupSOList> SoundList { get => _soundList; }
 
+        protected override void Awake()
+        {
+            base.Awake();
+
+            EnvironmentManager.OnGameStarted += () => PlaySound(SoundType.GameStarted);
+        }
+
         private void Start()
         {
             //EnvironmentManager.OnGameStarted += () => PlaySound(SoundType.StartVoice);
@@ -32,7 +39,6 @@ namespace Mixin.TheLastMove.Sound
             ObstacleOperator.OnKilled += _ => PlaySound(SoundType.ObstacleKill);
             EnvironmentManager.Instance.PlayerOperator.MeleeSlash.OnBounceObstacleEvent +=
                 () => PlaySound(SoundType.PlatformBounce);
-            EnvironmentManager.OnGameStarted += () => PlaySound(SoundType.GameStarted);
         }
 
         /* private void OnDisable()

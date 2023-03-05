@@ -2423,7 +2423,7 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 35668a240782da14d8ccb59cd93060e2, type: 2}
     - _playRandom: 1
       _soundList:
-      - {fileID: 11400000, guid: 7bcb9169afc178841bba0591bb304c22, type: 2}
+      - {fileID: 11400000, guid: 83c5017bd2c4ea844a892e84ebf0ee67, type: 2}
     - _playRandom: 1
       _soundList:
       - {fileID: 11400000, guid: 6f79752d4993c724a96b079ac6b9c511, type: 2}
@@ -2457,10 +2457,10 @@ MonoBehaviour:
       - {fileID: 11400000, guid: f7593971431eb38488bdefcf7f08ee1f, type: 2}
     - _playRandom: 1
       _soundList:
-      - {fileID: 11400000, guid: f7593971431eb38488bdefcf7f08ee1f, type: 2}
+      - {fileID: 11400000, guid: 14f3378bb76e9f648839379e2b2a5872, type: 2}
     - _playRandom: 1
       _soundList:
-      - {fileID: 11400000, guid: f7593971431eb38488bdefcf7f08ee1f, type: 2}
+      - {fileID: 11400000, guid: 77bda3e431598764eae2a1e87b2545b1, type: 2}
 --- !u!1 &2103117234
 GameObject:
   m_ObjectHideFlags: 0
