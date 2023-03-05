@@ -671,11 +671,13 @@ MonoBehaviour:
   - _key: {fileID: 9034240235466167663, guid: 3a27d7ff79c32514996fbbc3386db03b, type: 3}
     _value: 1
   - _key: {fileID: 9034240235466167663, guid: 166977bd5b71fba4092c5f607a682a81, type: 3}
-    _value: 1
+    _value: 0.6
   - _key: {fileID: 9034240235466167663, guid: 513601a2b56ab854aafd6ca75beb29bf, type: 3}
-    _value: 1
+    _value: 0.6
   - _key: {fileID: 9034240235466167663, guid: 588babe319cb62c48a6dda6b6ad50a0b, type: 3}
-    _value: 1
+    _value: 0.375
+  - _key: {fileID: 9034240235466167663, guid: b35637f2043994e44b815c9f4f4443ef, type: 3}
+    _value: 0.1
 --- !u!1 &642478925
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,6 +892,8 @@ MonoBehaviour:
   _harmCollider: {fileID: 0}
   _groundCollider: {fileID: 0}
   _killable: 0
+  _upHarm: 0
+  _downHarm: 0
   _fadeTime: 1
   _scaleFactor: 1.2
   _groundOffset: 0
