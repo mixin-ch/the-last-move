@@ -235,11 +235,13 @@ namespace Mixin.TheLastMove.Player
         {
             if (EnvironmentManager.Instance.Paused)
             {
+                _rigidbody.gravityScale = 0;
                 _pausedVelocity = _rigidbody.velocity.y;
                 _rigidbody.velocity = Vector2.zero;
             }
             else
             {
+                _rigidbody.gravityScale = Gravity;
                 _rigidbody.velocity = Vector2.up * _pausedVelocity;
                 _pausedVelocity = 0;
             }
