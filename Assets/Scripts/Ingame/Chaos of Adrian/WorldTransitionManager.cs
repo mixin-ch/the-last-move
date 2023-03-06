@@ -24,11 +24,13 @@ namespace Mixin.TheLastMove.Environment
             _sprite.gameObject.SetActive(false);
             SetOpacity(0);
             EnvironmentManager.OnBiomeChanged += MakeTransition;
+            EnvironmentManager.OnGameStarted += MakeFadeOutTransition;
         }
 
         private void OnDestroy()
         {
             EnvironmentManager.OnBiomeChanged -= MakeTransition;
+            EnvironmentManager.OnGameStarted -= MakeFadeOutTransition;
         }
 
         private void MakeTransition(BiomeSO biome)
@@ -50,6 +52,31 @@ namespace Mixin.TheLastMove.Environment
             yield return new WaitForSeconds(_duration * 1.5f);
 
             OnBiomeChangeTransition?.Invoke(biome);
+
+            // Start the fade out coroutine
+            StartCoroutine(FadeToOpacity(0f));
+
+            // Wait for the fade in to finish
+            yield return new WaitForSeconds(_duration);
+
+            _sprite.gameObject.SetActive(false);
+
+            Log = $"Finished transition";
+        }
+
+        private void MakeFadeOutTransition()
+        {
+            StartCoroutine(MakeTransitionCoroutine());
+        }
+
+        private IEnumerator MakeTransitionCoroutine()
+        {
+            Log = $"Making transition";
+
+            SetOpacity(1);
+            _sprite.gameObject.SetActive(true);
+
+            OnBiomeChangeTransition?.Invoke(EnvironmentManager.Instance.CurrentBiome);
 
             // Start the fade out coroutine
             StartCoroutine(FadeToOpacity(0f));
