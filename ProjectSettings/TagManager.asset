@@ -81,3 +81,6 @@ TagManager:
   - name: Terrain Foreground
     uniqueID: 655620735
     locked: 0
+  - name: Obstacle Platform
+    uniqueID: 1634645079
+    locked: 0
