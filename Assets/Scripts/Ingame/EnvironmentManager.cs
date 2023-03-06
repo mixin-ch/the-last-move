@@ -100,6 +100,7 @@ namespace Mixin.TheLastMove.Environment
 
             _playerOperator.SoftStartPlayer();
             _started = true;
+            OnBiomeChanged?.Invoke(_currentBiome);
             OnGameStarted?.Invoke();
         }
 
