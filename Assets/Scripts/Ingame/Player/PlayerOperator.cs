@@ -187,6 +187,14 @@ namespace Mixin.TheLastMove.Player
             _playerAnimator.AnimationStart();
         }
 
+        public void SoftStartPlayer()
+        {
+            ResetState();
+            _health = 1;
+            gameObject.SetActive(true);
+            _playerAnimator.AnimationStart();
+        }
+
         private void Die()
         {
             _playerAnimator.AnimationStop();

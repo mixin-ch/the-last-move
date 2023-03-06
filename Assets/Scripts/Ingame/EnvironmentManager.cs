@@ -94,6 +94,15 @@ namespace Mixin.TheLastMove.Environment
             OnGameStarted?.Invoke();
         }
 
+        public void SoftRestartGame()
+        {
+            SoftClear();
+
+            _playerOperator.SoftStartPlayer();
+            _started = true;
+            OnGameStarted?.Invoke();
+        }
+
         private void _playerOperator_OnPlayerDeathEvent()
         {
             PauseClicked();
@@ -103,7 +112,20 @@ namespace Mixin.TheLastMove.Environment
         {
             if (!_started) return;
 
-            UnpauseClicked();
+            SoftRestartGame();
+        }
+
+        private void SoftClear()
+        {
+            _started = false;
+            _paused = false;
+
+            MapManager.Instance.Clear();
+
+            _currentBiome = _biomeList.PickRandom();
+
+            // Get random biome duration
+            _biomeTime = GetRandomBiomeDuration();
         }
 
         private void Clear()
