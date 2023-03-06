@@ -48,6 +48,8 @@ namespace Mixin.TheLastMove.Player
 
         private float Gravity => _gravity * Hectic;
 
+        private bool _active;
+
         private float _health;
 
         private float _immunityTime;
@@ -88,6 +90,9 @@ namespace Mixin.TheLastMove.Player
 
         public void Tick(float time)
         {
+            if (!_active)
+                return;
+
             _immunityTime = (_immunityTime - time).LowerBound(0);
             _isJumping = _isJumping && InputManager.Instance.IsPressingJumpButton && _rigidbody.velocity.y > 0;
 
@@ -144,6 +149,9 @@ namespace Mixin.TheLastMove.Player
 
         public void PauseRefresh()
         {
+            if (!_active)
+                return;
+
             RefreshVelocity();
         }
 
@@ -157,6 +165,9 @@ namespace Mixin.TheLastMove.Player
 
         public void Boost(float intensity)
         {
+            if (!_active)
+                return;
+
             _isJumping = true;
             _rigidbody.velocity = Vector2.up * intensity * Mathf.Sqrt(Hectic);
             _playerSpriteState = PlayerSpriteState.Jump;
@@ -185,6 +196,7 @@ namespace Mixin.TheLastMove.Player
             ResetState();
             gameObject.SetActive(true);
             _playerAnimator.AnimationStart();
+            _active = true;
         }
 
         public void SoftStartPlayer()
@@ -193,10 +205,12 @@ namespace Mixin.TheLastMove.Player
             _health = 1;
             gameObject.SetActive(true);
             _playerAnimator.AnimationStart();
+            _active = true;
         }
 
         private void Die()
         {
+            _active = false;
             _playerAnimator.AnimationStop();
             gameObject.SetActive(false);
             OnPlayerDeathEvent?.Invoke();
