@@ -201,6 +201,7 @@ namespace Mixin.TheLastMove.Environment
                 @operator.Setup(plan.Collectable, new Vector3(x, y, y * 0.1f) + (Vector3)plan.Offset);
                 _collectableOperatorList.Add(@operator);
                 gameObject.SetActive(true);
+                @operator.MakeStart();
             }
         }
     }

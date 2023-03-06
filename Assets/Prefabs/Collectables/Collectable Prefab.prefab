@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 3995326943261638364}
   - component: {fileID: 3407673122534021591}
   - component: {fileID: 4423639361953837824}
+  - component: {fileID: 5477416810139852416}
   m_Layer: 9
   m_Name: Collectable Prefab
   m_TagString: Collectable
@@ -149,9 +150,11 @@ MonoBehaviour:
   _spriteFadeAndScaler: {fileID: 3409979744578687834}
   _spriteRenderer: {fileID: 2689544858665014306}
   _collectedSprite: {fileID: 21300000, guid: a44a966e7f60beb4f835ba742a6f8daa, type: 3}
+  _pulseAnimator: {fileID: 5477416810139852416}
   _height:
     Min: 3
     Max: 3
+  _pulse: 0
   _scoreIncrease: 0
   _healthIncrease: 0
 --- !u!61 &4423639361953837824
@@ -180,3 +183,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.32472026, y: 0.6445867}
   m_EdgeRadius: 0
+--- !u!114 &5477416810139852416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8675707686634140811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9f80e1e42a7f39459e5b91959ba75b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _period: 1
+  _extent: 0.5

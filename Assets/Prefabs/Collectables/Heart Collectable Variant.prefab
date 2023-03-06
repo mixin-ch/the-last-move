@@ -12,6 +12,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 28936d373d3fca64f9feee238a60cd0f, type: 3}
     - target: {fileID: 3407673122534021591, guid: f4cda81dbab23964394a0a1413bd8182, type: 3}
+      propertyPath: _pulse
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3407673122534021591, guid: f4cda81dbab23964394a0a1413bd8182, type: 3}
       propertyPath: _height.Max
       value: 4
       objectReference: {fileID: 0}

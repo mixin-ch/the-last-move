@@ -19,7 +19,13 @@ namespace Mixin.TheLastMove.Environment.Collectable
         private Sprite _collectedSprite;
 
         [SerializeField]
+        private PulseAnimator _pulseAnimator;
+
+        [SerializeField]
         private MinMaxFloat _height;
+
+        [SerializeField]
+        private bool _pulse;
 
         /// <summary>
         /// How high the counter should be increased
@@ -36,6 +42,7 @@ namespace Mixin.TheLastMove.Environment.Collectable
         public Vector2 Scale { get => transform.localScale; set => transform.localScale = value; }
         public int ScoreIncrease { get => _scoreIncrease; }
         public int HealthIncrease { get => _healthIncrease; }
+        public bool Pulse { get => _pulse;  }
 
         public static event Action<CollectableOperator> OnCollected;
 
@@ -48,6 +55,8 @@ namespace Mixin.TheLastMove.Environment.Collectable
             position.y += _height.GetRandomFloatBetween();
             transform.position = position;
 
+            _pulse = prefab._pulse;
+
             // Collider
             _collider.enabled = true;
             _collider.offset = prefab._collider.offset;
@@ -56,6 +65,12 @@ namespace Mixin.TheLastMove.Environment.Collectable
             // Attributes
             _scoreIncrease = prefab._scoreIncrease;
             _healthIncrease = prefab._healthIncrease;
+        }
+
+        public void MakeStart()
+        {
+            if (_pulse)
+                _pulseAnimator.StartAnimation();
         }
 
         public void Collect()
