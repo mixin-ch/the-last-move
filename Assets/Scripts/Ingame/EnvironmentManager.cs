@@ -59,15 +59,16 @@ namespace Mixin.TheLastMove.Environment
         {
             IngameOverlayUIB.OnPauseButtonClicked += PauseClicked;
             IngamePauseUIB.OnResumeButtonClicked += UnpauseClicked;
-            _playerOperator.OnPlayerDeathEvent += _playerOperator_OnPlayerDeathEvent;
-            PlayerOperator.OnPlayerTakeDamageEvent += SlowPlayerDown;
+            PlayerOperator.OnPlayerDeathEvent += (_) => _playerOperator_OnPlayerDeathEvent();
+            PlayerOperator.OnPlayerTakeDamageEvent += (_) => SlowPlayerDown();
         }
 
         private void OnDisable()
         {
             IngameOverlayUIB.OnPauseButtonClicked -= PauseClicked;
-            _playerOperator.OnPlayerDeathEvent -= _playerOperator_OnPlayerDeathEvent;
-            PlayerOperator.OnPlayerTakeDamageEvent -= SlowPlayerDown;
+            IngamePauseUIB.OnResumeButtonClicked -= UnpauseClicked;
+            PlayerOperator.OnPlayerDeathEvent -= (_) => _playerOperator_OnPlayerDeathEvent();
+            PlayerOperator.OnPlayerTakeDamageEvent -= (_) => SlowPlayerDown();
         }
 
         protected override void Awake()

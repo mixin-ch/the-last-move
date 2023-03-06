@@ -1,4 +1,5 @@
 using Mixin.TheLastMove.Environment;
+using Mixin.TheLastMove.Player;
 using Mixin.Utils;
 using System;
 using System.Collections;
@@ -84,7 +85,7 @@ namespace Mixin.TheLastMove
         {
             _input.Ingame.Jump.performed += (context) => Jump();
             _input.Ingame.Attack.performed += (context) => Attack();
-            EnvironmentManager.Instance.PlayerOperator.OnPlayerDeathEvent += PlayerOperator_OnPlayerDeathEvent;
+            PlayerOperator.OnPlayerDeathEvent += (_) => PlayerOperator_OnPlayerDeathEvent();
             EnvironmentManager.OnGameStarted += EnvironmentManager_OnGameStarted;
         }
 
@@ -92,7 +93,7 @@ namespace Mixin.TheLastMove
         {
             _input.Ingame.Jump.performed -= (context) => Jump();
             _input.Ingame.Attack.performed -= (context) => Attack();
-            EnvironmentManager.Instance.PlayerOperator.OnPlayerDeathEvent -= PlayerOperator_OnPlayerDeathEvent;
+            PlayerOperator.OnPlayerDeathEvent -= (_) => PlayerOperator_OnPlayerDeathEvent();
             EnvironmentManager.OnGameStarted -= EnvironmentManager_OnGameStarted;
         }
 

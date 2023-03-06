@@ -37,8 +37,9 @@ namespace Mixin.TheLastMove.Ingame.UI
             IngameDeathScreenUIB.OnQuitButtonClicked += GoToMainMenu;
             IngamePauseUIB.OnQuitButtonClicked += GoToMainMenu;
             IngamePauseUIB.OnResumeButtonClicked += IngamePauseUIB_OnResumeButtonClicked;
-            _playerOperator.OnPlayerTakeDamageEvent += _playerOperator_OnPlayerTakeDamageEvent;
-            _playerOperator.OnPlayerDeathEvent += _playerOperator_OnPlayerDeathEvent;
+
+            PlayerOperator.OnPlayerTakeDamageEvent += (_) => _playerOperator_OnPlayerTakeDamageEvent();
+            PlayerOperator.OnPlayerDeathEvent += (_) => _playerOperator_OnPlayerDeathEvent();
             CollectableOperator.OnCollected += (collectable) => SetCollectableText();
             ObstacleOperator.OnKilled += (obstacle) => SetKillText();
 
@@ -58,8 +59,17 @@ namespace Mixin.TheLastMove.Ingame.UI
             IngameDeathScreenUIB.OnQuitButtonClicked -= GoToMainMenu;
             IngamePauseUIB.OnQuitButtonClicked -= GoToMainMenu;
             IngamePauseUIB.OnResumeButtonClicked -= IngamePauseUIB_OnResumeButtonClicked;
-            //_playerOperator.OnPlayerTakeDamageEvent -= _playerOperator_OnPlayerTakeDamageEvent;
-            //_playerOperator.OnPlayerDeathEvent -= _playerOperator_OnPlayerDeathEvent;
+
+            PlayerOperator.OnPlayerTakeDamageEvent -= (_) => _playerOperator_OnPlayerTakeDamageEvent();
+            PlayerOperator.OnPlayerDeathEvent -= (_) => _playerOperator_OnPlayerDeathEvent();
+            CollectableOperator.OnCollected -= (collectable) => SetCollectableText();
+            ObstacleOperator.OnKilled -= (obstacle) => SetKillText();
+
+            //Add Rewarded Video Events
+            IronSourceEvents.onRewardedVideoAdRewardedEvent -= RewardedVideoAdRewardedEvent;
+            IronSourceEvents.onRewardedVideoAdShowFailedEvent -= RewardedVideoAdShowFailedEvent;
+
+            IronSourceEvents.onInterstitialAdShowSucceededEvent -= RestartGame;
         }
 
         private void EnvironmentManager_OnGameStarted()
@@ -118,9 +128,7 @@ namespace Mixin.TheLastMove.Ingame.UI
 
         private void Continue()
         {
-            EnvironmentManager.Instance.Continue();
-            IngameDeathScreenUIB.Instance.Show(false);
-            //IronSource.Agent.showRewardedVideo();
+            IronSource.Agent.showRewardedVideo();
         }
 
         private void IngameOverlayUIB_OnPauseButtonClicked()

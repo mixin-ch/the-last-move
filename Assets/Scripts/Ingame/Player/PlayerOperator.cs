@@ -9,9 +9,9 @@ namespace Mixin.TheLastMove.Player
 {
     public class PlayerOperator : MonoBehaviour
     {
-        public event Action OnPlayerDeathEvent;
-        public event Action OnPlayerTakeDamageEvent;
-        public event Action OnPlayerLanded;
+        public static event Action<PlayerOperator> OnPlayerDeathEvent;
+        public static event Action<PlayerOperator> OnPlayerTakeDamageEvent;
+        public static event Action<PlayerOperator> OnPlayerLanded;
 
         [SerializeField]
         private Rigidbody2D _rigidbody;
@@ -85,7 +85,7 @@ namespace Mixin.TheLastMove.Player
         private void OnDisable()
         {
             InputManager.OnPlayerJump -= Jump;
-            InputManager.OnPlayerAttack += Attack;
+            InputManager.OnPlayerAttack -= Attack;
         }
 
         public void Tick(float time)
@@ -185,7 +185,7 @@ namespace Mixin.TheLastMove.Player
         {
             _immunityTime = _immunityDuration;
             _health--;
-            OnPlayerTakeDamageEvent?.Invoke();
+            OnPlayerTakeDamageEvent?.Invoke(this);
 
             if (_health <= 0)
                 Die();
@@ -213,7 +213,7 @@ namespace Mixin.TheLastMove.Player
             _active = false;
             _playerAnimator.AnimationStop();
             gameObject.SetActive(false);
-            OnPlayerDeathEvent?.Invoke();
+            OnPlayerDeathEvent?.Invoke(this);
         }
 
         private void ResetState()
@@ -256,7 +256,7 @@ namespace Mixin.TheLastMove.Player
 
                 if (_playerSpriteState == PlayerSpriteState.Fall)
                 {
-                    OnPlayerLanded?.Invoke();
+                    OnPlayerLanded?.Invoke(this);
                     _playerSpriteState = PlayerSpriteState.Land;
                     _spriteTime = 0;
                 }

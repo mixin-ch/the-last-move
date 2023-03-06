@@ -39,13 +39,13 @@ namespace Mixin.TheLastMove.Player
         private void OnEnable()
         {
             InputManager.OnPlayerJump += InputManager_OnPlayerJump;
-            _playerOperator.OnPlayerLanded += _playerOperator_OnPlayerLanded;
+            PlayerOperator.OnPlayerLanded += (_) => _playerOperator_OnPlayerLanded();
         }
 
         private void OnDisable()
         {
             InputManager.OnPlayerJump -= InputManager_OnPlayerJump;
-            _playerOperator.OnPlayerLanded -= _playerOperator_OnPlayerLanded;
+            PlayerOperator.OnPlayerLanded -= (_) => _playerOperator_OnPlayerLanded();
         }
 
         public void AnimationStart()
