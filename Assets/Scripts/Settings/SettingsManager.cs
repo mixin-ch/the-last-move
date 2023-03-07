@@ -12,7 +12,9 @@ namespace Mixin.TheLastMove.Settings
     public class SettingsManager : MonoBehaviour
     {
         private UserSettingsData _data => SaveManager.Instance.UserSettingsData.Data;
-        private SettingsUIB _uib => SettingsUIB.Instance;
+
+        [SerializeField]
+        private SettingsUIB _uib;
 
         public static event Action OnLanguageChange;
 

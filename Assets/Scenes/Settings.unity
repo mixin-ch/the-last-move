@@ -196,6 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2e79a96d03eff94dbe2d2ec936f0f9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _uib: {fileID: 1992402372}
 --- !u!4 &1446410493
 Transform:
   m_ObjectHideFlags: 0
@@ -275,5 +276,4 @@ MonoBehaviour:
   _pageTitleLanguage: {fileID: 11400000, guid: f83c3d8fa32796d469a45ff68fb7b8ea, type: 2}
   _musicVolumeLanguage: {fileID: 11400000, guid: 3c881018af659e949a99cc64051279df, type: 2}
   _soundVolumeLanguage: {fileID: 11400000, guid: 297c8a3626aea5649a5b580cf15f25ba, type: 2}
-  _qualityLanguage: {fileID: 11400000, guid: 0c248332220f22c42a2c32d9be9c4615, type: 2}
   _saveLanguage: {fileID: 11400000, guid: d18eaf8d4477d5d4da1bab6ac8069027, type: 2}
