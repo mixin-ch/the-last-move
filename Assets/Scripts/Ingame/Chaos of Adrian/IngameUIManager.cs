@@ -6,6 +6,7 @@ using Mixin.TheLastMove.Ingame;
 using Mixin.TheLastMove.Player;
 using Mixin.TheLastMove.Save;
 using Mixin.TheLastMove.Scene;
+using Mixin.TheLastMove.Sound;
 using Mixin.Utils;
 using System;
 using System.Collections;
@@ -133,6 +134,7 @@ namespace Mixin.TheLastMove.Ingame.UI
 
         private void IngameOverlayUIB_OnPauseButtonClicked()
         {
+            GeneralSoundManager.Instance.PlaySound(SoundType.ButtonClick);
             IngamePauseUIB.Instance.Show(true);
         }
 

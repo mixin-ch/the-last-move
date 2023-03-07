@@ -1,5 +1,6 @@
 using UnityEngine;
 using Mixin.Utils;
+using Mixin.TheLastMove.Sound;
 
 namespace Mixin.TheLastMove.About
 {
@@ -27,10 +28,19 @@ namespace Mixin.TheLastMove.About
             _uib.MixinGamesLogo.clicked += () => OpenURL(_mixinGamesURL);
             _uib.PrivacyButton.clicked += () => OpenURL(_privacyURL);
         }
+        private void OnDisable()
+        {
+            _uib.ExitButton.clicked -= ExitButton_clicked;
+            _uib.ProjectWebsiteButton.clicked -= () => OpenURL(_projectWebsiteURL);
+            _uib.redgreenbirdFilmsLogo.clicked -= () => OpenURL(_redgreenbirdFilmsURL);
+            _uib.MixinGamesLogo.clicked -= () => OpenURL(_mixinGamesURL);
+            _uib.PrivacyButton.clicked -= () => OpenURL(_privacyURL);
+        }
 
         private void ExitButton_clicked()
         {
             SceneManager.Instance.UnloadScene(SceneName.About.ToString());
+            GeneralSoundManager.Instance.PlaySound(SoundType.ButtonClick);
         }
 
         private void OpenURL(string url)

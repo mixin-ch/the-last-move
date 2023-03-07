@@ -6,6 +6,7 @@ using System;
 using Mixin.TheLastMove.Scene;
 using UnityEngine.SceneManagement;
 using Mixin.TheLastMove.Save;
+using Mixin.TheLastMove.Sound;
 
 namespace Mixin.TheLastMove
 {
@@ -40,6 +41,7 @@ namespace Mixin.TheLastMove
         {
             SaveManager.Instance.UserSettingsData.Save();
             SceneTransitionManager.Instance.UnloadSceneWithTransition(SceneName.Settings);
+            GeneralSoundManager.Instance.PlaySound(SoundType.ButtonClick);
         }
     }
 }

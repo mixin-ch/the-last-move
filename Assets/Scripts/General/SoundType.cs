@@ -27,5 +27,6 @@
         DropdownClose = 103,
         DropdownSelect = 104,
         CheckboxToggle = 105,
+        LanguageSelect = 106,
     }
 }

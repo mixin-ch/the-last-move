@@ -40,6 +40,13 @@ namespace Mixin.TheLastMove.Sound
             ObstacleOperator.OnKilled += _ => PlaySound(SoundType.ObstacleKill);
             EnvironmentManager.Instance.PlayerOperator.MeleeSlash.OnBounceObstacleEvent +=
                 () => PlaySound(SoundType.PlatformBounce);
+
+            // Button Press
+            IngameDeathScreenUIB.OnQuitButtonClicked += () => PlayGeneralSound(SoundType.ButtonClick);
+            IngameDeathScreenUIB.OnRespawnButtonClicked += () => PlayGeneralSound(SoundType.ButtonClick);
+            IngameDeathScreenUIB.OnRestartButtonClicked += () => PlayGeneralSound(SoundType.ButtonClick);
+            IngamePauseUIB.OnQuitButtonClicked += () => PlayGeneralSound(SoundType.ButtonClick);
+            IngamePauseUIB.OnResumeButtonClicked += () => PlayGeneralSound(SoundType.ButtonClick);
         }
 
         private void OnDisable()
@@ -55,11 +62,23 @@ namespace Mixin.TheLastMove.Sound
             ObstacleOperator.OnKilled -= _ => PlaySound(SoundType.ObstacleKill);
             EnvironmentManager.Instance.PlayerOperator.MeleeSlash.OnBounceObstacleEvent -=
                 () => PlaySound(SoundType.PlatformBounce);
+
+            // Button Press
+            IngameDeathScreenUIB.OnQuitButtonClicked -= () => PlayGeneralSound(SoundType.ButtonClick);
+            IngameDeathScreenUIB.OnRespawnButtonClicked -= () => PlayGeneralSound(SoundType.ButtonClick);
+            IngameDeathScreenUIB.OnRestartButtonClicked -= () => PlayGeneralSound(SoundType.ButtonClick);
+            IngamePauseUIB.OnQuitButtonClicked -= () => PlayGeneralSound(SoundType.ButtonClick);
+            IngamePauseUIB.OnResumeButtonClicked -= () => PlayGeneralSound(SoundType.ButtonClick);
         }
 
         public void PlaySound(SoundType soundType)
         {
             _soundList[soundType].PlaySound();
+        }
+
+        private void PlayGeneralSound(SoundType soundType)
+        {
+            GeneralSoundManager.Instance.PlaySound(soundType);
         }
 
         private void PlayCollectableSound(CollectableOperator collectable)

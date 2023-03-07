@@ -156,8 +156,8 @@ MonoBehaviour:
       elementIcon: {fileID: 0}
     reqReferences: {fileID: 0}
     isExpanded: 1
-    _keyValues: 6400000065000000
-    _keys: 6400000065000000
+    _keyValues: 64000000650000006a000000
+    _keys: 64000000650000006a000000
     _values:
     - _playRandom: 1
       _soundList:
@@ -165,6 +165,9 @@ MonoBehaviour:
     - _playRandom: 1
       _soundList:
       - {fileID: 11400000, guid: 278f3d109af13c7499b9cce8c7eb3bf0, type: 2}
+    - _playRandom: 1
+      _soundList:
+      - {fileID: 11400000, guid: 2dde5d1c1f5c19345a6545a9eb39a0fd, type: 2}
 --- !u!1 &1454045951
 GameObject:
   m_ObjectHideFlags: 0

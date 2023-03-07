@@ -33,6 +33,18 @@ namespace Mixin.TheLastMove.Settings
             SetLanguageButtonActive();
         }
 
+        private void OnDisable()
+        {
+            _uib.EnglishButton.clicked -= () => UpdateLanguage(Language.Language.English);
+            _uib.GermanButton.clicked -= () => UpdateLanguage(Language.Language.German);
+            _uib.SwissGermanButton.clicked -= () => UpdateLanguage(Language.Language.SwissGerman);
+            _uib.FrenchButton.clicked -= () => UpdateLanguage(Language.Language.French);
+
+            _uib.SaveButton.clicked -= OnSaveButtonClicked;
+            _uib.MusicVolumeSlider.UnregisterValueChangedCallback(UpdateMusicVolume);
+            _uib.SoundVolumeSlider.UnregisterValueChangedCallback(UpdateSoundVolume);
+        }
+
         private void OnSaveButtonClicked()
         {
             QualitySettings.SetQualityLevel(_data.Quality);
@@ -73,6 +85,8 @@ namespace Mixin.TheLastMove.Settings
         {
             _data.Language = language;
             LanguageManager.Instance.SelectedLanguage = language;
+
+            GeneralSoundManager.Instance.PlaySound(SoundType.LanguageSelect);
 
             SetLanguageButtonActive();
 
