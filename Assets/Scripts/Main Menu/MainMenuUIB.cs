@@ -1,4 +1,4 @@
-using Mixin.Language;
+using Mixin.MultiLanguage;
 using Mixin.TheLastMove.Settings;
 using Mixin.TheLastMove.Sound;
 using Mixin.Utils;

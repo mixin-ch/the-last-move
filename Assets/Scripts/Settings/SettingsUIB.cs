@@ -1,4 +1,4 @@
-using Mixin.Language;
+using Mixin.MultiLanguage;
 using Mixin.Utils;
 using System;
 using System.Collections.Generic;

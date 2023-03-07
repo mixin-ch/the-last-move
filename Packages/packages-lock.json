@@ -12,9 +12,9 @@
       "depth": 0,
       "source": "git",
       "dependencies": {
-        "com.mixin.unity-mixin-utils": "0.5.0"
+        "com.mixin.unity-mixin-utils": "0.7.1"
       },
-      "hash": "29571b3910b958333a043559013e70e2401ad3a0"
+      "hash": "2e51bca879c557478234b5e04bbf71f4c516bf80"
     },
     "com.mixin.unity-save-system": {
       "version": "https://github.com/mixin-ch/unity-save-system.git",

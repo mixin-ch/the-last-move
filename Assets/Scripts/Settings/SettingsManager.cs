@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using Mixin.TheLastMove.Save;
 using Mixin.Utils;
-using Mixin.Language;
+using Mixin.MultiLanguage;
 using Mixin.TheLastMove.Sound;
 using System.Collections;
 
@@ -21,10 +21,10 @@ namespace Mixin.TheLastMove.Settings
             _uib.MusicVolumeSlider.value = _data.MusicVolume;
             _uib.SoundVolumeSlider.value = _data.SoundVolume;
 
-            _uib.EnglishButton.clicked += () => UpdateLanguage(Language.Language.English);
-            _uib.GermanButton.clicked += () => UpdateLanguage(Language.Language.German);
-            _uib.SwissGermanButton.clicked += () => UpdateLanguage(Language.Language.SwissGerman);
-            _uib.FrenchButton.clicked += () => UpdateLanguage(Language.Language.French);
+            _uib.EnglishButton.clicked += () => UpdateLanguage(Language.English);
+            _uib.GermanButton.clicked += () => UpdateLanguage(Language.German);
+            _uib.SwissGermanButton.clicked += () => UpdateLanguage(Language.SwissGerman);
+            _uib.FrenchButton.clicked += () => UpdateLanguage(Language.French);
 
             _uib.SaveButton.clicked += OnSaveButtonClicked;
             _uib.MusicVolumeSlider.RegisterValueChangedCallback(UpdateMusicVolume);
@@ -35,10 +35,10 @@ namespace Mixin.TheLastMove.Settings
 
         private void OnDisable()
         {
-            _uib.EnglishButton.clicked -= () => UpdateLanguage(Language.Language.English);
-            _uib.GermanButton.clicked -= () => UpdateLanguage(Language.Language.German);
-            _uib.SwissGermanButton.clicked -= () => UpdateLanguage(Language.Language.SwissGerman);
-            _uib.FrenchButton.clicked -= () => UpdateLanguage(Language.Language.French);
+            _uib.EnglishButton.clicked -= () => UpdateLanguage(Language.English);
+            _uib.GermanButton.clicked -= () => UpdateLanguage(Language.German);
+            _uib.SwissGermanButton.clicked -= () => UpdateLanguage(Language.SwissGerman);
+            _uib.FrenchButton.clicked -= () => UpdateLanguage(Language.French);
 
             _uib.SaveButton.clicked -= OnSaveButtonClicked;
             _uib.MusicVolumeSlider.UnregisterValueChangedCallback(UpdateMusicVolume);
@@ -81,7 +81,7 @@ namespace Mixin.TheLastMove.Settings
             _data.Quality = Array.IndexOf(QualitySettings.names, evt.newValue);
         }*/
 
-        private void UpdateLanguage(Language.Language language)
+        private void UpdateLanguage(Language language)
         {
             _data.Language = language;
             LanguageManager.Instance.SelectedLanguage = language;
@@ -105,16 +105,16 @@ namespace Mixin.TheLastMove.Settings
         {
             switch (_data.Language)
             {
-                case Language.Language.English:
+                case Language.English:
                     _uib.EnglishButton.AddToClassList("active");
                     break;
-                case Language.Language.German:
+                case Language.German:
                     _uib.GermanButton.AddToClassList("active");
                     break;
-                case Language.Language.SwissGerman:
+                case Language.SwissGerman:
                     _uib.SwissGermanButton.AddToClassList("active");
                     break;
-                case Language.Language.French:
+                case Language.French:
                     _uib.FrenchButton.AddToClassList("active");
                     break;
                 default:

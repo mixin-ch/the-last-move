@@ -1,7 +1,7 @@
 using Mixin.Utils;
 using UnityEngine.UIElements;
 using System;
-using Mixin.Language;
+using Mixin.MultiLanguage;
 using UnityEngine;
 
 namespace Mixin.TheLastMove.About

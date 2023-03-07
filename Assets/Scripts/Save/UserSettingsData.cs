@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 using Mixin.Save;
-using Mixin.Language;
+using Mixin.MultiLanguage;
 
 namespace Mixin.TheLastMove.Save
 {
@@ -12,6 +12,6 @@ namespace Mixin.TheLastMove.Save
         public int MusicVolume = 100;
         public int SoundVolume = 100;
         public int Quality = 6;
-        public Language.Language Language = Mixin.Language.Language.English;
+        public Language Language = Language.English;
     }
 }

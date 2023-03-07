@@ -5,7 +5,7 @@ using Mixin.Utils;
 using UnityEngine.Audio;
 using Mixin.TheLastMove.Settings;
 using Mixin.TheLastMove.Save;
-using Mixin.Language;
+using Mixin.MultiLanguage;
 
 namespace Mixin.TheLastMove
 {
