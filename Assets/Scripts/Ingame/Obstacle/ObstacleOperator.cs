@@ -63,6 +63,7 @@ namespace Mixin.TheLastMove.Environment
             // Set image
             _spriteRenderer.sprite = obstacle._spriteRenderer.sprite;
             _spriteRenderer.color = Color.white;
+            _spriteRenderer.sortingLayerID = obstacle._spriteRenderer.sortingLayerID;
 
             // Position and scale
             position.y += obstacle._groundOffset;
