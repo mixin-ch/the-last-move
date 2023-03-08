@@ -39,10 +39,10 @@ namespace Mixin.TheLastMove.Ingame.UI
             IngamePauseUIB.OnQuitButtonClicked += GoToMainMenu;
             IngamePauseUIB.OnResumeButtonClicked += IngamePauseUIB_OnResumeButtonClicked;
 
-            PlayerOperator.OnPlayerTakeDamageEvent += (_) => _playerOperator_OnPlayerTakeDamageEvent();
-            PlayerOperator.OnPlayerDeathEvent += (_) => _playerOperator_OnPlayerDeathEvent();
-            CollectableOperator.OnCollected += (collectable) => SetCollectableText();
-            ObstacleOperator.OnKilled += (obstacle) => SetKillText();
+            PlayerOperator.OnPlayerTakeDamageEvent += playerOperator_OnPlayerTakeDamageEvent;
+            PlayerOperator.OnPlayerDeathEvent += playerOperator_OnPlayerDeathEvent;
+            CollectableOperator.OnCollected += SetCollectableText;
+            ObstacleOperator.OnKilled += SetKillText;
 
             //Add Rewarded Video Events
             IronSourceEvents.onRewardedVideoAdRewardedEvent += RewardedVideoAdRewardedEvent;
@@ -61,10 +61,10 @@ namespace Mixin.TheLastMove.Ingame.UI
             IngamePauseUIB.OnQuitButtonClicked -= GoToMainMenu;
             IngamePauseUIB.OnResumeButtonClicked -= IngamePauseUIB_OnResumeButtonClicked;
 
-            PlayerOperator.OnPlayerTakeDamageEvent -= (_) => _playerOperator_OnPlayerTakeDamageEvent();
-            PlayerOperator.OnPlayerDeathEvent -= (_) => _playerOperator_OnPlayerDeathEvent();
-            CollectableOperator.OnCollected -= (collectable) => SetCollectableText();
-            ObstacleOperator.OnKilled -= (obstacle) => SetKillText();
+            PlayerOperator.OnPlayerTakeDamageEvent -= playerOperator_OnPlayerTakeDamageEvent;
+            PlayerOperator.OnPlayerDeathEvent -= playerOperator_OnPlayerDeathEvent;
+            CollectableOperator.OnCollected -= SetCollectableText;
+            ObstacleOperator.OnKilled -= SetKillText;
 
             //Add Rewarded Video Events
             IronSourceEvents.onRewardedVideoAdRewardedEvent -= RewardedVideoAdRewardedEvent;
@@ -78,8 +78,8 @@ namespace Mixin.TheLastMove.Ingame.UI
             StopAllCoroutines();
             StartCoroutine(UpdateScore());
 
-            SetCollectableText();
-            SetKillText();
+            SetCollectableText(null);
+            SetKillText(null);
 
             FillHearts();
             IngamePauseUIB.Instance.Show(false);
@@ -129,7 +129,11 @@ namespace Mixin.TheLastMove.Ingame.UI
 
         private void Continue()
         {
+#if UNITY_EDITOR
+            RewardedVideoAdRewardedEvent(null);
+#else
             IronSource.Agent.showRewardedVideo();
+#endif
         }
 
         private void IngameOverlayUIB_OnPauseButtonClicked()
@@ -149,7 +153,7 @@ namespace Mixin.TheLastMove.Ingame.UI
             IngameDeathScreenUIB.Instance.Show(false);
         }
 
-        private void _playerOperator_OnPlayerDeathEvent()
+        private void playerOperator_OnPlayerDeathEvent(PlayerOperator _)
         {
             int score = EnvironmentManager.Instance.Score;
             int highscore = SaveManager.Instance.IngameData.Data.Highscore;
@@ -179,7 +183,7 @@ namespace Mixin.TheLastMove.Ingame.UI
             IngameDeathScreenUIB.Instance.Show(true);
         }
 
-        private void _playerOperator_OnPlayerTakeDamageEvent()
+        private void playerOperator_OnPlayerTakeDamageEvent(PlayerOperator _)
         {
             IngameOverlayUIB.Instance.RemoveHeart();
             IngameOverlayUIB.Instance.DamageOverlay.RemoveFromClassList("inactive");
@@ -200,12 +204,12 @@ namespace Mixin.TheLastMove.Ingame.UI
                 IngameOverlayUIB.Instance.AddHeart();
         }
 
-        private void SetCollectableText()
+        private void SetCollectableText(CollectableOperator _)
         {
             IngameOverlayUIB.Instance.CurrencyText.text = EnvironmentManager.Instance.CollectablesCollected.ToString();
         }
 
-        private void SetKillText()
+        private void SetKillText(ObstacleOperator _)
         {
             IngameOverlayUIB.Instance.KillText.text = EnvironmentManager.Instance.ObstaclesKilled.ToString();
         }

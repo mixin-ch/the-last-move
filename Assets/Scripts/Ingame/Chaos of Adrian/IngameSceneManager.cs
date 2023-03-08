@@ -37,14 +37,14 @@ namespace Mixin.TheLastMove.Ingame
         private void OnEnable()
         {
             _rewardedAd.OnUserRewarded += RewardedAd_OnUserRewarded;
-            PlayerOperator.OnPlayerDeathEvent += (_) => PlayerOperator_OnPlayerDeathEvent();
+            PlayerOperator.OnPlayerDeathEvent += PlayerOperator_OnPlayerDeathEvent;
             EnvironmentManager.OnGameStarted += EnvironmentManager_OnGameStarted;
         }
 
         private void OnDisable()
         {
             _rewardedAd.OnUserRewarded -= RewardedAd_OnUserRewarded;
-            PlayerOperator.OnPlayerDeathEvent -= (_) => PlayerOperator_OnPlayerDeathEvent();
+            PlayerOperator.OnPlayerDeathEvent -= PlayerOperator_OnPlayerDeathEvent;
             EnvironmentManager.OnGameStarted -= EnvironmentManager_OnGameStarted;
         }
 
@@ -53,7 +53,7 @@ namespace Mixin.TheLastMove.Ingame
             _playlist.Play();
         }
 
-        private void PlayerOperator_OnPlayerDeathEvent()
+        private void PlayerOperator_OnPlayerDeathEvent(PlayerOperator _)
         {
             _playlist.Stop();
         }
