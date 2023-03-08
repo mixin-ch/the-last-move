@@ -55,6 +55,11 @@ namespace Mixin.TheLastMove.Environment
         public static event Action OnGameStarted;
         public static event Action<BiomeSO> OnBiomeChanged;
 
+        /// <summary>
+        /// true when it is paused, false when unpaused.
+        /// </summary>
+        public static event Action<bool> OnGamePaused;
+
         private void OnEnable()
         {
             IngameOverlayUIB.OnPauseButtonClicked += PauseClicked;
@@ -151,6 +156,7 @@ namespace Mixin.TheLastMove.Environment
         private void PauseClicked()
         {
             _paused = true;
+            OnGamePaused?.Invoke(true);
 
             if (!_started)
                 return;
@@ -161,6 +167,7 @@ namespace Mixin.TheLastMove.Environment
         private void UnpauseClicked()
         {
             _paused = false;
+            OnGamePaused?.Invoke(false);
 
             if (!_started)
                 return;

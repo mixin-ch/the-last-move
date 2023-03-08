@@ -38,18 +38,25 @@ namespace Mixin.TheLastMove.Player
 
         private void OnEnable()
         {
-            InputManager.OnPlayerJump += InputManager_OnPlayerJump;
-            PlayerOperator.OnPlayerLanded += (_) => _playerOperator_OnPlayerLanded();
+            EnvironmentManager.OnGamePaused += HandlePause;
         }
 
         private void OnDisable()
         {
-            InputManager.OnPlayerJump -= InputManager_OnPlayerJump;
-            PlayerOperator.OnPlayerLanded -= (_) => _playerOperator_OnPlayerLanded();
+            EnvironmentManager.OnGamePaused -= HandlePause;
+        }
+
+        private void HandlePause(bool pause)
+        {
+            if (pause)
+                AnimationStop();
+            else
+                AnimationStart();
         }
 
         public void AnimationStart()
         {
+            AnimationStop();
             StartCoroutine(ChangeSprite()); // start coroutine to change sprites
         }
 
@@ -104,16 +111,6 @@ namespace Mixin.TheLastMove.Player
         private void PlayWalkSound()
         {
             IngameSoundManager.Instance.PlaySound(SoundType.Walk);
-        }
-
-        private void InputManager_OnPlayerJump()
-        {
-            //_spriteRenderer.sprite = _jump;
-        }
-
-        private void _playerOperator_OnPlayerLanded()
-        {
-            //StartCoroutine(ChangeSprite());
         }
     }
 }
