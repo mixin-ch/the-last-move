@@ -83,18 +83,33 @@ namespace Mixin.TheLastMove
 
         private void OnEnable()
         {
-            _input.Ingame.Jump.performed += (context) => Jump();
-            _input.Ingame.Attack.performed += (context) => Attack();
-            PlayerOperator.OnPlayerDeathEvent += (_) => PlayerOperator_OnPlayerDeathEvent();
+            _input.Ingame.Jump.performed += JumpWrapper;
+            _input.Ingame.Attack.performed += AttackWrapper;
+            PlayerOperator.OnPlayerDeathEvent += DeathWrapper;
             EnvironmentManager.OnGameStarted += EnvironmentManager_OnGameStarted;
         }
 
         private void OnDisable()
         {
-            _input.Ingame.Jump.performed -= (context) => Jump();
-            _input.Ingame.Attack.performed -= (context) => Attack();
-            PlayerOperator.OnPlayerDeathEvent -= (_) => PlayerOperator_OnPlayerDeathEvent();
+            _input.Ingame.Jump.performed -= JumpWrapper;
+            _input.Ingame.Attack.performed -= AttackWrapper;
+            PlayerOperator.OnPlayerDeathEvent -= DeathWrapper;
             EnvironmentManager.OnGameStarted -= EnvironmentManager_OnGameStarted;
+        }
+
+        private void JumpWrapper(InputAction.CallbackContext context)
+        {
+            Jump();
+        }
+
+        private void AttackWrapper(InputAction.CallbackContext context)
+        {
+            Attack();
+        }
+
+        private void DeathWrapper(PlayerOperator context)
+        {
+            PlayerOperator_OnPlayerDeathEvent();
         }
 
         private void Jump()
