@@ -59,16 +59,16 @@ namespace Mixin.TheLastMove.Environment
         {
             IngameOverlayUIB.OnPauseButtonClicked += PauseClicked;
             IngamePauseUIB.OnResumeButtonClicked += UnpauseClicked;
-            PlayerOperator.OnPlayerDeathEvent += (_) => _playerOperator_OnPlayerDeathEvent();
-            PlayerOperator.OnPlayerTakeDamageEvent += (_) => SlowPlayerDown();
+            PlayerOperator.OnPlayerDeathEvent += playerOperator_OnPlayerDeathEvent;
+            PlayerOperator.OnPlayerTakeDamageEvent += SlowPlayerDown;
         }
 
         private void OnDisable()
         {
             IngameOverlayUIB.OnPauseButtonClicked -= PauseClicked;
             IngamePauseUIB.OnResumeButtonClicked -= UnpauseClicked;
-            PlayerOperator.OnPlayerDeathEvent -= (_) => _playerOperator_OnPlayerDeathEvent();
-            PlayerOperator.OnPlayerTakeDamageEvent -= (_) => SlowPlayerDown();
+            PlayerOperator.OnPlayerDeathEvent -= playerOperator_OnPlayerDeathEvent;
+            PlayerOperator.OnPlayerTakeDamageEvent -= SlowPlayerDown;
         }
 
         protected override void Awake()
@@ -104,7 +104,7 @@ namespace Mixin.TheLastMove.Environment
             OnGameStarted?.Invoke();
         }
 
-        private void _playerOperator_OnPlayerDeathEvent()
+        private void playerOperator_OnPlayerDeathEvent(PlayerOperator _)
         {
             PauseClicked();
         }
@@ -207,7 +207,7 @@ namespace Mixin.TheLastMove.Environment
             return new System.Random().Range(_biomeDurationMinMax.x, _biomeDurationMinMax.y);
         }
 
-        public void SlowPlayerDown()
+        public void SlowPlayerDown(PlayerOperator _)
         {
             _hectic *= .7f;
         }
