@@ -28,11 +28,10 @@ namespace Mixin.TheLastMove.Sound
 
         private void Start()
         {
-            //EnvironmentManager.OnGameStarted += () => PlaySound(SoundType.StartVoice);
             PlayerOperator.OnPlayerDeathEvent += (_) => PlaySound(SoundType.Die);
             PlayerOperator.OnPlayerTakeDamageEvent += (_) => PlaySound(SoundType.TakeDamage);
             PlayerOperator.OnPlayerLanded += (_) => PlaySound(SoundType.Land);
-            EnvironmentManager.OnBiomeChanged += (biome) => PlaySound(SoundType.Teleport);
+            EnvironmentManager.OnBiomeChanged += _ => PlaySound(SoundType.Teleport);
             InputManager.OnPlayerJump += () => PlaySound(SoundType.Jump);
             InputManager.OnPlayerAttack += () => PlaySound(SoundType.Attack);
             InputManager.Instance.InputControls.Ingame.Descend.started += _ => PlaySound(SoundType.Descend);
@@ -54,7 +53,7 @@ namespace Mixin.TheLastMove.Sound
             PlayerOperator.OnPlayerDeathEvent -= (_) => PlaySound(SoundType.Die);
             PlayerOperator.OnPlayerTakeDamageEvent -= (_) => PlaySound(SoundType.TakeDamage);
             PlayerOperator.OnPlayerLanded -= (_) => PlaySound(SoundType.Land);
-            EnvironmentManager.OnBiomeChanged -= (biome) => PlaySound(SoundType.Teleport);
+            EnvironmentManager.OnBiomeChanged -= _ => PlaySound(SoundType.Teleport);
             InputManager.OnPlayerJump -= () => PlaySound(SoundType.Jump);
             InputManager.OnPlayerAttack -= () => PlaySound(SoundType.Attack);
             InputManager.Instance.InputControls.Ingame.Descend.started -= _ => PlaySound(SoundType.Descend);
