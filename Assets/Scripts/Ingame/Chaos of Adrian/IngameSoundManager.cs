@@ -23,51 +23,53 @@ namespace Mixin.TheLastMove.Sound
         {
             base.Awake();
 
-            EnvironmentManager.OnGameStarted += () => PlaySound(SoundType.GameStarted);
+            EnvironmentManager.OnGameStarted += EnvironmentManager_OnGameStarted;
         }
 
         private void Start()
         {
-            PlayerOperator.OnPlayerDeathEvent += (_) => PlaySound(SoundType.Die);
-            PlayerOperator.OnPlayerTakeDamageEvent += (_) => PlaySound(SoundType.TakeDamage);
-            PlayerOperator.OnPlayerLanded += (_) => PlaySound(SoundType.Land);
-            EnvironmentManager.OnBiomeChanged += _ => PlaySound(SoundType.Teleport);
-            InputManager.OnPlayerJump += () => PlaySound(SoundType.Jump);
-            InputManager.OnPlayerAttack += () => PlaySound(SoundType.Attack);
-            InputManager.Instance.InputControls.Ingame.Descend.started += _ => PlaySound(SoundType.Descend);
+            PlayerOperator.OnPlayerDeathEvent += PlayerOperator_OnPlayerDeathEvent;
+            PlayerOperator.OnPlayerTakeDamageEvent += PlayerOperator_OnPlayerTakeDamageEvent;
+            PlayerOperator.OnPlayerLanded += PlayerOperator_OnPlayerLanded;
+            EnvironmentManager.OnBiomeChanged += EnvironmentManager_OnBiomeChanged;
+            InputManager.OnPlayerJump += InputManager_OnPlayerJump;
+            InputManager.OnPlayerAttack += InputManager_OnPlayerAttack;
+            InputManager.Instance.InputControls.Ingame.Descend.started += Descend_started;
             CollectableOperator.OnCollected += PlayCollectableSound;
-            ObstacleOperator.OnKilled += _ => PlaySound(SoundType.ObstacleKill);
+            ObstacleOperator.OnKilled += ObstacleOperator_OnKilled;
             EnvironmentManager.Instance.PlayerOperator.MeleeSlash.OnBounceObstacleEvent +=
-                () => PlaySound(SoundType.PlatformBounce);
+                MeleeSlash_OnBounceObstacleEvent;
 
             // Button Press
-            IngameDeathScreenUIB.OnQuitButtonClicked += () => PlayGeneralSound(SoundType.ButtonClick);
-            IngameDeathScreenUIB.OnRespawnButtonClicked += () => PlayGeneralSound(SoundType.ButtonClick);
-            IngameDeathScreenUIB.OnRestartButtonClicked += () => PlayGeneralSound(SoundType.ButtonClick);
-            IngamePauseUIB.OnQuitButtonClicked += () => PlayGeneralSound(SoundType.ButtonClick);
-            IngamePauseUIB.OnResumeButtonClicked += () => PlayGeneralSound(SoundType.ButtonClick);
+            IngameDeathScreenUIB.OnQuitButtonClicked += IngameDeathScreenUIB_OnQuitButtonClicked;
+            IngameDeathScreenUIB.OnRespawnButtonClicked += IngameDeathScreenUIB_OnRespawnButtonClicked;
+            IngameDeathScreenUIB.OnRestartButtonClicked += IngameDeathScreenUIB_OnRestartButtonClicked;
+            IngamePauseUIB.OnQuitButtonClicked += IngamePauseUIB_OnQuitButtonClicked;
+            IngamePauseUIB.OnResumeButtonClicked += IngamePauseUIB_OnResumeButtonClicked;
         }
 
         private void OnDisable()
         {
-            PlayerOperator.OnPlayerDeathEvent -= (_) => PlaySound(SoundType.Die);
-            PlayerOperator.OnPlayerTakeDamageEvent -= (_) => PlaySound(SoundType.TakeDamage);
-            PlayerOperator.OnPlayerLanded -= (_) => PlaySound(SoundType.Land);
-            EnvironmentManager.OnBiomeChanged -= _ => PlaySound(SoundType.Teleport);
-            InputManager.OnPlayerJump -= () => PlaySound(SoundType.Jump);
-            InputManager.OnPlayerAttack -= () => PlaySound(SoundType.Attack);
-            InputManager.Instance.InputControls.Ingame.Descend.started -= _ => PlaySound(SoundType.Descend);
+            EnvironmentManager.OnGameStarted -= EnvironmentManager_OnGameStarted;
+
+            PlayerOperator.OnPlayerDeathEvent -= PlayerOperator_OnPlayerDeathEvent;
+            PlayerOperator.OnPlayerTakeDamageEvent -= PlayerOperator_OnPlayerTakeDamageEvent;
+            PlayerOperator.OnPlayerLanded -= PlayerOperator_OnPlayerLanded;
+            EnvironmentManager.OnBiomeChanged -= EnvironmentManager_OnBiomeChanged;
+            InputManager.OnPlayerJump -= InputManager_OnPlayerJump;
+            InputManager.OnPlayerAttack -= InputManager_OnPlayerAttack;
+            InputManager.Instance.InputControls.Ingame.Descend.started -= Descend_started;
             CollectableOperator.OnCollected -= PlayCollectableSound;
-            ObstacleOperator.OnKilled -= _ => PlaySound(SoundType.ObstacleKill);
+            ObstacleOperator.OnKilled -= ObstacleOperator_OnKilled;
             EnvironmentManager.Instance.PlayerOperator.MeleeSlash.OnBounceObstacleEvent -=
-                () => PlaySound(SoundType.PlatformBounce);
+                MeleeSlash_OnBounceObstacleEvent;
 
             // Button Press
-            IngameDeathScreenUIB.OnQuitButtonClicked -= () => PlayGeneralSound(SoundType.ButtonClick);
-            IngameDeathScreenUIB.OnRespawnButtonClicked -= () => PlayGeneralSound(SoundType.ButtonClick);
-            IngameDeathScreenUIB.OnRestartButtonClicked -= () => PlayGeneralSound(SoundType.ButtonClick);
-            IngamePauseUIB.OnQuitButtonClicked -= () => PlayGeneralSound(SoundType.ButtonClick);
-            IngamePauseUIB.OnResumeButtonClicked -= () => PlayGeneralSound(SoundType.ButtonClick);
+            IngameDeathScreenUIB.OnQuitButtonClicked -= IngameDeathScreenUIB_OnQuitButtonClicked;
+            IngameDeathScreenUIB.OnRespawnButtonClicked -= IngameDeathScreenUIB_OnRespawnButtonClicked;
+            IngameDeathScreenUIB.OnRestartButtonClicked -= IngameDeathScreenUIB_OnRestartButtonClicked;
+            IngamePauseUIB.OnQuitButtonClicked -= IngamePauseUIB_OnQuitButtonClicked;
+            IngamePauseUIB.OnResumeButtonClicked -= IngamePauseUIB_OnResumeButtonClicked;
         }
 
         public void PlaySound(SoundType soundType)
@@ -86,6 +88,81 @@ namespace Mixin.TheLastMove.Sound
                 PlaySound(SoundType.HeartRefill);
             else if (collectable.ScoreIncrease >= 1)
                 PlaySound(SoundType.Collect);
+        }
+
+        private void EnvironmentManager_OnGameStarted()
+        {
+            PlaySound(SoundType.GameStarted);
+        }
+
+        private void IngamePauseUIB_OnResumeButtonClicked()
+        {
+            PlayGeneralSound(SoundType.ButtonClick);
+        }
+
+        private void IngamePauseUIB_OnQuitButtonClicked()
+        {
+            PlayGeneralSound(SoundType.ButtonClick);
+        }
+
+        private void IngameDeathScreenUIB_OnRestartButtonClicked()
+        {
+            PlayGeneralSound(SoundType.ButtonClick);
+        }
+
+        private void IngameDeathScreenUIB_OnRespawnButtonClicked()
+        {
+            PlayGeneralSound(SoundType.ButtonClick);
+        }
+
+        private void IngameDeathScreenUIB_OnQuitButtonClicked()
+        {
+            PlayGeneralSound(SoundType.ButtonClick);
+        }
+
+        private void MeleeSlash_OnBounceObstacleEvent()
+        {
+            PlaySound(SoundType.PlatformBounce);
+        }
+
+        private void ObstacleOperator_OnKilled(ObstacleOperator obj)
+        {
+            PlaySound(SoundType.ObstacleKill);
+        }
+
+        private void Descend_started(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+        {
+            PlaySound(SoundType.Descend);
+        }
+
+        private void InputManager_OnPlayerAttack()
+        {
+            PlaySound(SoundType.Attack);
+        }
+
+        private void InputManager_OnPlayerJump()
+        {
+            PlaySound(SoundType.Jump);
+        }
+
+        private void EnvironmentManager_OnBiomeChanged(BiomeSO obj)
+        {
+            PlaySound(SoundType.Teleport);
+        }
+
+        private void PlayerOperator_OnPlayerLanded(PlayerOperator obj)
+        {
+            PlaySound(SoundType.Land);
+        }
+
+        private void PlayerOperator_OnPlayerTakeDamageEvent(PlayerOperator obj)
+        {
+            PlaySound(SoundType.TakeDamage);
+        }
+
+        private void PlayerOperator_OnPlayerDeathEvent(PlayerOperator obj)
+        {
+            PlaySound(SoundType.Die);
         }
     }
 }
