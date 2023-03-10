@@ -41,6 +41,7 @@ namespace Mixin.TheLastMove.Player
         private const float _jumpVelocityBreak = 5f;
         private const float _immunityDuration = 1;
 
+        private const float _fallThresholdSpeed = -1f;
         private const float _landDuration = 0.15f;
         private const float _attackDuration = 0.15f;
 
@@ -111,8 +112,8 @@ namespace Mixin.TheLastMove.Player
             {
                 if (_rigidbody.velocity.y > 0)
                     _playerSpriteState = PlayerSpriteState.Jump;
-                else if (_rigidbody.velocity.y < 0)
-                    _playerSpriteState = PlayerSpriteState.Fall;
+                else if (_rigidbody.velocity.y <= _fallThresholdSpeed)
+                        _playerSpriteState = PlayerSpriteState.Fall;
                 else if (_rigidbody.velocity.y == 0)
                 {
                     if (_playerSpriteState == PlayerSpriteState.Land)
