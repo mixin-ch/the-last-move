@@ -53,11 +53,6 @@ namespace Mixin.TheLastMove.Ingame
             _playlist.Stop();
         }
 
-        public void ShowRespawnAd()
-        {
-            _rewardedAdManager.ShowAd();
-        }
-
         private void RewardedAd_OnUserRewarded()
         {
             EnvironmentManager.Instance.Continue();

@@ -23,8 +23,12 @@ namespace Mixin.TheLastMove.Ingame.UI
         private int? _showAdInt = null;
 
         private PlayerOperator _playerOperator => EnvironmentManager.Instance.PlayerOperator;
-        private InterstitialAdManager _interstitialAdManager => IngameSceneManager.Instance.InterstitialAdManager;
-        private RewardedAdManager _rewardedAdManager => IngameSceneManager.Instance.RewardedAdManager;
+
+        [SerializeField]
+        private RewardedAdManager _rewardedAdManager;
+
+        [SerializeField]
+        private InterstitialAdManager _interstitialAdManager;
 
         private void Awake()
         {

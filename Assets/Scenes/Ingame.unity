@@ -1073,6 +1073,8 @@ MonoBehaviour:
   _showAdRange:
     Min: 3
     Max: 6
+  _rewardedAdManager: {fileID: 2071377584}
+  _interstitialAdManager: {fileID: 2071377582}
 --- !u!1 &1023133410
 GameObject:
   m_ObjectHideFlags: 0
