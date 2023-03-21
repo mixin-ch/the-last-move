@@ -23,6 +23,8 @@ namespace Mixin.TheLastMove.Ingame.UI
         private int? _showAdInt = null;
 
         private PlayerOperator _playerOperator => EnvironmentManager.Instance.PlayerOperator;
+        private InterstitialAdManager _interstitialAdManager => IngameSceneManager.Instance.InterstitialAdManager;
+        private RewardedAdManager _rewardedAdManager => IngameSceneManager.Instance.RewardedAdManager;
 
         private void Awake()
         {
@@ -33,7 +35,7 @@ namespace Mixin.TheLastMove.Ingame.UI
         {
             EnvironmentManager.OnGameStarted += EnvironmentManager_OnGameStarted;
             IngameOverlayUIB.OnPauseButtonClicked += IngameOverlayUIB_OnPauseButtonClicked;
-            IngameDeathScreenUIB.OnRespawnButtonClicked += Continue;
+            IngameDeathScreenUIB.OnRespawnButtonClicked += WatchAdToContinue;
             IngameDeathScreenUIB.OnRestartButtonClicked += IngameDeathScreenUIB_OnRestartButtonClicked;
             IngameDeathScreenUIB.OnQuitButtonClicked += GoToMainMenu;
             IngamePauseUIB.OnQuitButtonClicked += GoToMainMenu;
@@ -45,17 +47,17 @@ namespace Mixin.TheLastMove.Ingame.UI
             ObstacleOperator.OnKilled += SetKillText;
 
             //Add Rewarded Video Events
-            IronSourceEvents.onRewardedVideoAdRewardedEvent += RewardedVideoAdRewardedEvent;
-            IronSourceEvents.onRewardedVideoAdShowFailedEvent += RewardedVideoAdShowFailedEvent;
+            _rewardedAdManager.AdFinished += RewardedVideoAdRewardedEvent;
+            _rewardedAdManager.AdFailed += RewardedVideoAdShowFailedEvent;
 
-            IronSourceEvents.onInterstitialAdShowSucceededEvent += RestartGame;
+            _interstitialAdManager.AdFinished += RestartGame;
         }
 
         private void OnDisable()
         {
             EnvironmentManager.OnGameStarted -= EnvironmentManager_OnGameStarted;
             IngameOverlayUIB.OnPauseButtonClicked -= IngameOverlayUIB_OnPauseButtonClicked;
-            IngameDeathScreenUIB.OnRespawnButtonClicked -= Continue;
+            IngameDeathScreenUIB.OnRespawnButtonClicked -= WatchAdToContinue;
             IngameDeathScreenUIB.OnRestartButtonClicked -= IngameDeathScreenUIB_OnRestartButtonClicked;
             IngameDeathScreenUIB.OnQuitButtonClicked -= GoToMainMenu;
             IngamePauseUIB.OnQuitButtonClicked -= GoToMainMenu;
@@ -67,10 +69,10 @@ namespace Mixin.TheLastMove.Ingame.UI
             ObstacleOperator.OnKilled -= SetKillText;
 
             //Add Rewarded Video Events
-            IronSourceEvents.onRewardedVideoAdRewardedEvent -= RewardedVideoAdRewardedEvent;
-            IronSourceEvents.onRewardedVideoAdShowFailedEvent -= RewardedVideoAdShowFailedEvent;
+            _rewardedAdManager.AdFinished -= RewardedVideoAdRewardedEvent;
+            _rewardedAdManager.AdFailed -= RewardedVideoAdShowFailedEvent;
 
-            IronSourceEvents.onInterstitialAdShowSucceededEvent -= RestartGame;
+            _interstitialAdManager.AdFinished -= RestartGame;
         }
 
         private void EnvironmentManager_OnGameStarted()
@@ -113,7 +115,7 @@ namespace Mixin.TheLastMove.Ingame.UI
             // Show ad or restart
             if (EnvironmentManager.PlayCounter > _showAdInt)
             {
-                IronSource.Agent.showInterstitial();
+                IngameSceneManager.Instance.InterstitialAdManager.ShowAd();
                 EnvironmentManager.PlayCounter = 0;
                 _showAdInt = _showAdRange.GetRandomIntBetween();
             }
@@ -127,13 +129,9 @@ namespace Mixin.TheLastMove.Ingame.UI
             IngameDeathScreenUIB.Instance.Show(false);
         }
 
-        private void Continue()
+        private void WatchAdToContinue()
         {
-#if UNITY_EDITOR
-            RewardedVideoAdRewardedEvent(null);
-#else
-            IronSource.Agent.showRewardedVideo();
-#endif
+            _rewardedAdManager.ShowAd();
         }
 
         private void IngameOverlayUIB_OnPauseButtonClicked()
@@ -142,12 +140,12 @@ namespace Mixin.TheLastMove.Ingame.UI
             IngamePauseUIB.Instance.Show(true);
         }
 
-        private void RewardedVideoAdShowFailedEvent(IronSourceError obj)
+        private void RewardedVideoAdShowFailedEvent()
         {
             throw new NotImplementedException();
         }
 
-        private void RewardedVideoAdRewardedEvent(IronSourcePlacement obj)
+        private void RewardedVideoAdRewardedEvent()
         {
             EnvironmentManager.Instance.Continue();
             IngameDeathScreenUIB.Instance.Show(false);

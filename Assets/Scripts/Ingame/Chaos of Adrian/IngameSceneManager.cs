@@ -1,7 +1,5 @@
 using Mixin.Utils.Audio;
 using Mixin.Utils;
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 using Mixin.TheLastMove.Environment;
 using Mixin.TheLastMove.Ads;
@@ -16,16 +14,13 @@ namespace Mixin.TheLastMove.Ingame
 
         private AudioPlaylistPlayer _playlist;
 
-        private RewardedAd _rewardedAd = new RewardedAd();
+        [SerializeField]
+        private RewardedAdManager _rewardedAdManager;
 
-        public RewardedAd RewardedAd { get => _rewardedAd; }
-
-        protected override void Awake()
-        {
-            base.Awake();
-
-            _ = _rewardedAd.InitServices();
-        }
+        [SerializeField]
+        private InterstitialAdManager _interstitialAdManager;
+        public RewardedAdManager RewardedAdManager { get => _rewardedAdManager; }
+        public InterstitialAdManager InterstitialAdManager { get => _interstitialAdManager; }
 
         private void Start()
         {
@@ -36,14 +31,14 @@ namespace Mixin.TheLastMove.Ingame
 
         private void OnEnable()
         {
-            _rewardedAd.OnUserRewarded += RewardedAd_OnUserRewarded;
+            _rewardedAdManager.AdFinished += RewardedAd_OnUserRewarded;
             PlayerOperator.OnPlayerDeathEvent += PlayerOperator_OnPlayerDeathEvent;
             EnvironmentManager.OnGameStarted += EnvironmentManager_OnGameStarted;
         }
 
         private void OnDisable()
         {
-            _rewardedAd.OnUserRewarded -= RewardedAd_OnUserRewarded;
+            _rewardedAdManager.AdFinished -= RewardedAd_OnUserRewarded;
             PlayerOperator.OnPlayerDeathEvent -= PlayerOperator_OnPlayerDeathEvent;
             EnvironmentManager.OnGameStarted -= EnvironmentManager_OnGameStarted;
         }
@@ -60,7 +55,7 @@ namespace Mixin.TheLastMove.Ingame
 
         public void ShowRespawnAd()
         {
-            _rewardedAd.ShowAd();
+            _rewardedAdManager.ShowAd();
         }
 
         private void RewardedAd_OnUserRewarded()
