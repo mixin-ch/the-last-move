@@ -39,6 +39,10 @@ namespace Mixin.TheLastMove.Ads
                 // Show the ad
                 Advertisement.Show(_adPlacementId);
             }
+            else
+            {
+                Debug.LogWarning("Show Ad was called before ad was ready.");
+            }
         }
 
         public void OnUnityAdsReady(string placementId)
@@ -47,6 +51,7 @@ namespace Mixin.TheLastMove.Ads
             if (placementId == _adPlacementId)
             {
                 _adIsReady = true;
+                Debug.Log("Ad is ready");
             }
         }
 

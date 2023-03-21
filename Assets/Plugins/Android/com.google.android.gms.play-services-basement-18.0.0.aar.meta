@@ -1,5 +1,7 @@
 fileFormatVersion: 2
-guid: 90e7a27938a6343fd9d8bc9fd81b5e0f
+guid: 5c8a27e2d46642b4dabade40740a688f
+labels:
+- gpsr
 PluginImporter:
   externalObjects: {}
   serializedVersion: 2
@@ -12,6 +14,11 @@ PluginImporter:
   validateReferences: 1
   platformData:
   - first:
+      Android: Android
+    second:
+      enabled: 1
+      settings: {}
+  - first:
       Any: 
     second:
       enabled: 0
@@ -22,16 +29,6 @@ PluginImporter:
       enabled: 0
       settings:
         DefaultValueInitialized: true
-  - first:
-      iPhone: iOS
-    second:
-      enabled: 1
-      settings: {}
-  - first:
-      tvOS: tvOS
-    second:
-      enabled: 1
-      settings: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 
