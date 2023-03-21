@@ -4,6 +4,7 @@
     "com.mixin.unity-multi-language": "https://github.com/mixin-ch/unity-multi-language.git",
     "com.mixin.unity-save-system": "https://github.com/mixin-ch/unity-save-system.git",
     "com.unity.ads": "3.7.5",
+    "com.unity.ads.ios-support": "1.0.0",
     "com.unity.feature.2d": "1.0.0",
     "com.unity.ide.visualstudio": "2.0.17",
     "com.unity.inputsystem": "1.4.4",
