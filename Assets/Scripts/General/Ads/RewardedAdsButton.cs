@@ -19,7 +19,7 @@ namespace Mixin.TheLastMove.Ads
         public static event Action AdFinished;
         public static event Action<string> AdFailed;
 
-        void Start()
+        private void Awake()
         {
             // Get the Ad Unit ID for the current platform:
 #if UNITY_IOS
@@ -27,13 +27,14 @@ namespace Mixin.TheLastMove.Ads
 #elif UNITY_ANDROID
             _adUnitId = _androidAdUnitId;
 #endif
+        }
 
+        void Start()
+        {
             _showAdButton = _deathScreenUIB.RespawnButton;
 
             //Disable the button until the ad is ready to show:
             _showAdButton.SetEnabled(false);
-
-            LoadAd();
         }
 
         // Load content to the Ad Unit:

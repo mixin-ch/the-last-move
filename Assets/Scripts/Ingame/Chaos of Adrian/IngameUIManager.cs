@@ -28,7 +28,7 @@ namespace Mixin.TheLastMove.Ingame.UI
         private RewardedAdsButton _rewardedAdsButton;
 
         [SerializeField]
-        private InterstitialAdManager _interstitialAdManager;
+        private InterstitialAd _interstitialAd;
 
         private void Awake()
         {
@@ -54,7 +54,8 @@ namespace Mixin.TheLastMove.Ingame.UI
             RewardedAdsButton.AdFinished += RewardedVideoAdRewardedEvent;
             //RewardedAdManager.AdFailed += RewardedVideoAdShowFailedEvent;
 
-            //_interstitialAdManager.AdFinished += RestartGame;
+            InterstitialAd.AdShowCompleted += RestartGame;
+            InterstitialAd.AdFailed += RestartGame;
         }
 
         private void OnDisable()
@@ -76,7 +77,8 @@ namespace Mixin.TheLastMove.Ingame.UI
             RewardedAdsButton.AdFinished -= RewardedVideoAdRewardedEvent;
             //RewardedAdManager.AdFailed -= RewardedVideoAdShowFailedEvent;
 
-            //_interstitialAdManager.AdFinished -= RestartGame;
+            InterstitialAd.AdShowCompleted -= RestartGame;
+            InterstitialAd.AdFailed -= RestartGame;
         }
 
         private void EnvironmentManager_OnGameStarted()
@@ -119,7 +121,7 @@ namespace Mixin.TheLastMove.Ingame.UI
             // Show ad or restart
             if (EnvironmentManager.PlayCounter > _showAdInt)
             {
-                IngameSceneManager.Instance.InterstitialAdManager.ShowAd();
+                _interstitialAd.ShowAd();
                 EnvironmentManager.PlayCounter = 0;
                 _showAdInt = _showAdRange.GetRandomIntBetween();
             }

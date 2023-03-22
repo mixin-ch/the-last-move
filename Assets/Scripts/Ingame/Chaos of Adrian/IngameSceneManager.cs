@@ -14,31 +14,20 @@ namespace Mixin.TheLastMove.Ingame
 
         private AudioPlaylistPlayer _playlist;
 
-        [SerializeField]
-        private RewardedAdManager _rewardedAdManager;
-
-        [SerializeField]
-        private InterstitialAdManager _interstitialAdManager;
-        public RewardedAdManager RewardedAdManager { get => _rewardedAdManager; }
-        public InterstitialAdManager InterstitialAdManager { get => _interstitialAdManager; }
-
         private void Start()
         {
             _playlist = AudioManager.Instance.MakePlaylistPlayer(_musicPlaylist.ToAudioPlaylistSetup());
-
             //EnvironmentManager.Instance.StartGame();
         }
 
         private void OnEnable()
         {
-            RewardedAdManager.AdFinished += RewardedAd_OnUserRewarded;
             PlayerOperator.OnPlayerDeathEvent += PlayerOperator_OnPlayerDeathEvent;
             EnvironmentManager.OnGameStarted += EnvironmentManager_OnGameStarted;
         }
 
         private void OnDisable()
         {
-            RewardedAdManager.AdFinished -= RewardedAd_OnUserRewarded;
             PlayerOperator.OnPlayerDeathEvent -= PlayerOperator_OnPlayerDeathEvent;
             EnvironmentManager.OnGameStarted -= EnvironmentManager_OnGameStarted;
         }
@@ -51,11 +40,6 @@ namespace Mixin.TheLastMove.Ingame
         private void PlayerOperator_OnPlayerDeathEvent(PlayerOperator _)
         {
             _playlist.Stop();
-        }
-
-        private void RewardedAd_OnUserRewarded()
-        {
-            EnvironmentManager.Instance.Continue();
         }
     }
 }

@@ -5,14 +5,26 @@ namespace Mixin.TheLastMove.Ads
 {
     public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
     {
+        [SerializeField]
+        private RewardedAdsButton _rewardedAdsButton;
+
+        [SerializeField]
+        private InterstitialAd _interstitialAd;
+
         [SerializeField] string _androidGameId;
         [SerializeField] string _iOSGameId;
-        [SerializeField] bool _testMode = true; 
+        [SerializeField] bool _testMode = true;
         private string _gameId;
 
         void Awake()
         {
             InitializeAds();
+        }
+
+        private void Start()
+        {
+            if (Advertisement.isInitialized)
+                LoadAds();
         }
 
         public void InitializeAds()
@@ -26,6 +38,14 @@ namespace Mixin.TheLastMove.Ads
         public void OnInitializationComplete()
         {
             Debug.Log("Unity Ads initialization complete.");
+
+            LoadAds();
+        }
+
+        public void LoadAds()
+        {
+            _rewardedAdsButton.LoadAd();
+            _interstitialAd.LoadAd();
         }
 
         public void OnInitializationFailed(UnityAdsInitializationError error, string message)
