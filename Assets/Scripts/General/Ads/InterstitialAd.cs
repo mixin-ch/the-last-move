@@ -62,5 +62,7 @@ public class InterstitialAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSho
     public void OnUnityAdsShowComplete(string adUnitId, UnityAdsShowCompletionState showCompletionState)
     {
         AdShowCompleted?.Invoke();
+
+        LoadAd();
     }
 }

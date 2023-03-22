@@ -1166,8 +1166,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _showAdRange:
-    Min: 1
-    Max: 2
+    Min: 3
+    Max: 6
   _rewardedAdsButton: {fileID: 2144506949}
   _interstitialAd: {fileID: 717986904}
 --- !u!1 &1023133410
