@@ -25,6 +25,7 @@ namespace Mixin.TheLastMove
         public Label HighscoreText { get; set; }
         public Label KillText { get; set; }
         public Label CurrencyText { get; set; }
+        public Button RespawnButton { get => _respawnButton; }
 
         public static event Action OnRespawnButtonClicked;
         public static event Action OnRestartButtonClicked;

@@ -31,14 +31,14 @@ namespace Mixin.TheLastMove.Ingame
 
         private void OnEnable()
         {
-            _rewardedAdManager.AdFinished += RewardedAd_OnUserRewarded;
+            RewardedAdManager.AdFinished += RewardedAd_OnUserRewarded;
             PlayerOperator.OnPlayerDeathEvent += PlayerOperator_OnPlayerDeathEvent;
             EnvironmentManager.OnGameStarted += EnvironmentManager_OnGameStarted;
         }
 
         private void OnDisable()
         {
-            _rewardedAdManager.AdFinished -= RewardedAd_OnUserRewarded;
+            RewardedAdManager.AdFinished -= RewardedAd_OnUserRewarded;
             PlayerOperator.OnPlayerDeathEvent -= PlayerOperator_OnPlayerDeathEvent;
             EnvironmentManager.OnGameStarted -= EnvironmentManager_OnGameStarted;
         }

@@ -4,7 +4,10 @@ using System;
 
 namespace Mixin.TheLastMove.Ads
 {
-    public class RewardedAdManager : MonoBehaviour, IUnityAdsListener
+    public class RewardedAdManager : MonoBehaviour,
+        IUnityAdsInitializationListener,
+        IUnityAdsLoadListener,
+        IUnityAdsShowListener
     {
         // Set your game ID and ad placement ID in the Unity Editor
 
@@ -16,87 +19,73 @@ namespace Mixin.TheLastMove.Ads
         private string _adPlacementId = "Rewarded_Android";
 #endif
 
-        private bool _adIsReady;
+        private bool _testMode = true;
 
         // Define events for ad events
-        public event Action AdStarted;
-        public event Action AdFinished;
-        public event Action AdSkipped;
-        public event Action AdFailed;
+        public static event Action AdStarted;
+        public static event Action AdFinished;
+        public static event Action AdSkipped;
+        public static event Action AdFailed;
 
         private void Start()
         {
             // Initialize Unity Ads
-            Advertisement.AddListener(this);
-            Advertisement.Initialize(_gameId, true);
+            Advertisement.Initialize(_gameId, _testMode, this);
         }
 
         public void ShowAd()
         {
             // Check if an ad is ready to show
-            if (_adIsReady)
-            {
-                // Show the ad
-                Advertisement.Show(_adPlacementId);
-            }
-            else
+            if (!Advertisement.isInitialized)
             {
                 Debug.LogWarning("Show Ad was called before ad was ready.");
+                return;
             }
+
+            // Show the ad
+            Advertisement.Show(_adPlacementId);
         }
 
-        public void OnUnityAdsReady(string placementId)
+        public void OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message)
         {
-            // Set _adIsReady to true when an ad is ready to show
-            if (placementId == _adPlacementId)
-            {
-                _adIsReady = true;
-                Debug.Log("Ad is ready");
-            }
+            // Ad failed to play, show error message
+            AdFailed?.Invoke();
         }
 
-        public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
+        public void OnUnityAdsShowStart(string placementId)
         {
-            // Fire an event when the ad finishes playing
-            if (placementId == _adPlacementId)
-            {
-                switch (showResult)
-                {
-                    case ShowResult.Finished:
-                        // Ad finished playing, reward the player
-                        AdFinished?.Invoke();
-                        break;
-                    case ShowResult.Skipped:
-                        // Ad was skipped by the player
-                        AdSkipped?.Invoke();
-                        break;
-                    case ShowResult.Failed:
-                        // Ad failed to play, show error message
-                        AdFailed?.Invoke();
-                        break;
-                }
-            }
+            AdStarted?.Invoke();
         }
 
-        public void OnUnityAdsDidStart(string placementId)
+        public void OnUnityAdsShowClick(string placementId)
         {
-            // Fire an event when the ad starts playing
-            if (placementId == _adPlacementId)
-            {
-                AdStarted?.Invoke();
-            }
+            throw new NotImplementedException();
         }
 
-        public void OnUnityAdsDidError(string message)
+        public void OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState)
         {
-            // Show error message if Unity Ads encounters an error
-            Debug.LogError("Unity Ads error: " + message);
+            // Ad finished playing, reward the player
+            AdFinished?.Invoke();
         }
 
-        private void OnDestroy()
+        public void OnInitializationComplete()
         {
-            // Remove the listener when the object is destroyed
-            Advertisement.RemoveListener(this);
+            Debug.Log("OnInitializationComplete");
+        }
+
+        public void OnInitializationFailed(UnityAdsInitializationError error, string message)
+        {
+            Debug.LogWarning(error + message);
+        }
+
+        public void OnUnityAdsAdLoaded(string placementId)
+        {
+            Debug.Log($"Ad {placementId} loaded");
+        }
+
+        public void OnUnityAdsFailedToLoad(string placementId, UnityAdsLoadError error, string message)
+        {
+            throw new NotImplementedException();
         }
     }
 }

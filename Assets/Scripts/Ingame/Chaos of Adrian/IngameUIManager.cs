@@ -25,7 +25,7 @@ namespace Mixin.TheLastMove.Ingame.UI
         private PlayerOperator _playerOperator => EnvironmentManager.Instance.PlayerOperator;
 
         [SerializeField]
-        private RewardedAdManager _rewardedAdManager;
+        private RewardedAdsButton _rewardedAdsButton;
 
         [SerializeField]
         private InterstitialAdManager _interstitialAdManager;
@@ -51,10 +51,10 @@ namespace Mixin.TheLastMove.Ingame.UI
             ObstacleOperator.OnKilled += SetKillText;
 
             //Add Rewarded Video Events
-            _rewardedAdManager.AdFinished += RewardedVideoAdRewardedEvent;
-            _rewardedAdManager.AdFailed += RewardedVideoAdShowFailedEvent;
+            RewardedAdsButton.AdFinished += RewardedVideoAdRewardedEvent;
+            //RewardedAdManager.AdFailed += RewardedVideoAdShowFailedEvent;
 
-            _interstitialAdManager.AdFinished += RestartGame;
+            //_interstitialAdManager.AdFinished += RestartGame;
         }
 
         private void OnDisable()
@@ -73,10 +73,10 @@ namespace Mixin.TheLastMove.Ingame.UI
             ObstacleOperator.OnKilled -= SetKillText;
 
             //Add Rewarded Video Events
-            _rewardedAdManager.AdFinished -= RewardedVideoAdRewardedEvent;
-            _rewardedAdManager.AdFailed -= RewardedVideoAdShowFailedEvent;
+            RewardedAdsButton.AdFinished -= RewardedVideoAdRewardedEvent;
+            //RewardedAdManager.AdFailed -= RewardedVideoAdShowFailedEvent;
 
-            _interstitialAdManager.AdFinished -= RestartGame;
+            //_interstitialAdManager.AdFinished -= RestartGame;
         }
 
         private void EnvironmentManager_OnGameStarted()
@@ -135,7 +135,7 @@ namespace Mixin.TheLastMove.Ingame.UI
 
         private void WatchAdToContinue()
         {
-            _rewardedAdManager.ShowAd();
+            _rewardedAdsButton.ShowAd();
         }
 
         private void IngameOverlayUIB_OnPauseButtonClicked()

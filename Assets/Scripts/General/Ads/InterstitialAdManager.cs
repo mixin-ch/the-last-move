@@ -4,7 +4,7 @@ using System;
 
 namespace Mixin.TheLastMove.Ads
 {
-    public class InterstitialAdManager : MonoBehaviour, IUnityAdsListener
+    public class InterstitialAdManager : MonoBehaviour
     {
         // Set your game ID and ad placement ID in the Unity Editor
 
@@ -27,8 +27,7 @@ namespace Mixin.TheLastMove.Ads
         private void Start()
         {
             // Initialize Unity Ads
-            Advertisement.AddListener(this);
-            Advertisement.Initialize(_gameId, true);
+            //Advertisement.Initialize(_gameId, false);
         }
 
         public void ShowAd()
@@ -86,12 +85,6 @@ namespace Mixin.TheLastMove.Ads
         {
             // Show error message if Unity Ads encounters an error
             Debug.LogError("Unity Ads error: " + message);
-        }
-
-        private void OnDestroy()
-        {
-            // Remove the listener when the object is destroyed
-            Advertisement.RemoveListener(this);
         }
     }
 }
