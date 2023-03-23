@@ -175,9 +175,12 @@ namespace Mixin.TheLastMove.Ingame.UI
                 SaveManager.Instance.IngameData.Save();
             }
 
-            // Set leaderboard
+            // Report the Score
             if (UnityEngine.Social.localUser.authenticated)
+            {
+                Debug.Log("User is authenticated");
                 UnityEngine.Social.ReportScore(score, GPGSIds.leaderboard_highest_score, null);
+            }
 
             // Set texts
             IngameDeathScreenUIB.Instance.HighscoreText.text = $"Your Highscore: {highscore}";
