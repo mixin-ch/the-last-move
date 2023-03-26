@@ -1,8 +1,10 @@
+#if UNITY_ANDROID
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
+
 using Mixin.Utils;
 
 namespace Mixin.TheLastMove.Social
@@ -11,9 +13,7 @@ namespace Mixin.TheLastMove.Social
     {
         public void Start()
         {
-#if UNITY_ANDROID
             PlayGamesPlatform.Instance.Authenticate(ProcessAuthentication);
-#endif
         }
 
         internal void ProcessAuthentication(SignInStatus status)
@@ -33,4 +33,4 @@ namespace Mixin.TheLastMove.Social
         }
     }
 }
-
+#endif

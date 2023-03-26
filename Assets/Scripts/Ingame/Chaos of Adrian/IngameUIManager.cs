@@ -1,4 +1,3 @@
-using GooglePlayGames;
 using Mixin.TheLastMove.Ads;
 using Mixin.TheLastMove.Environment;
 using Mixin.TheLastMove.Environment.Collectable;
