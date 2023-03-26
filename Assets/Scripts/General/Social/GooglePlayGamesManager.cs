@@ -11,7 +11,9 @@ namespace Mixin.TheLastMove.Social
     {
         public void Start()
         {
+#if UNITY_ANDROID
             PlayGamesPlatform.Instance.Authenticate(ProcessAuthentication);
+#endif
         }
 
         internal void ProcessAuthentication(SignInStatus status)
