@@ -141,7 +141,8 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleVersion: 0.0.19
-  preloadedAssets: []
+  preloadedAssets:
+  - {fileID: 11400000, guid: 7c7cca966a177744baae939ddf04980c, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -166,7 +167,7 @@ PlayerSettings:
     iPhone: ch.mixin.thelastmove
   buildNumber:
     Standalone: 0
-    iPhone: 1
+    iPhone: 2
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
   AndroidBundleVersionCode: 3
@@ -184,7 +185,7 @@ PlayerSettings:
   keepLoadedShadersAlive: 0
   StripUnusedMeshComponents: 0
   VertexChannelCompressionMask: 4054
-  iPhoneSdkVersion: 989
+  iPhoneSdkVersion: 988
   iOSTargetOSVersionString: 11.0
   tvOSSdkVersion: 0
   tvOSRequireExtendedGameController: 0
