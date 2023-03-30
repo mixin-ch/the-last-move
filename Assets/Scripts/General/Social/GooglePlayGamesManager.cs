@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
-
 using Mixin.Utils;
 
 namespace Mixin.TheLastMove.Social
@@ -33,4 +32,16 @@ namespace Mixin.TheLastMove.Social
         }
     }
 }
+#else
+using UnityEngine;
+
+namespace Mixin.TheLastMove.Social
+{
+    public class GooglePlayGamesManager : MonoBehaviour
+    {
+      
+    }
+}
+
 #endif
+
