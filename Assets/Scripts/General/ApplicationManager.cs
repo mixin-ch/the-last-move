@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Mixin.Utils;
 using UnityEngine.Audio;
@@ -43,12 +41,6 @@ namespace Mixin.TheLastMove
 
             // Set language from saved settings
             LanguageManager.Instance.SelectedLanguage = _settingsData.Language;
-        }
-
-        void OnApplicationPause(bool isPaused)
-        {
-            Debug.Log("unity-script: OnApplicationPause = " + isPaused);
-            IronSource.Agent.onApplicationPause(isPaused);
         }
     }
 }

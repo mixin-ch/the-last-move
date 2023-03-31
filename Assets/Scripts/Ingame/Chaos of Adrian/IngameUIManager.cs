@@ -1,4 +1,3 @@
-using GooglePlayGames;
 using Mixin.TheLastMove.Ads;
 using Mixin.TheLastMove.Environment;
 using Mixin.TheLastMove.Environment.Collectable;
@@ -24,6 +23,12 @@ namespace Mixin.TheLastMove.Ingame.UI
 
         private PlayerOperator _playerOperator => EnvironmentManager.Instance.PlayerOperator;
 
+        [SerializeField]
+        private RewardedAdsButton _rewardedAdsButton;
+
+        [SerializeField]
+        private InterstitialAd _interstitialAd;
+
         private void Awake()
         {
             _showAdInt = _showAdRange.GetRandomIntBetween();
@@ -33,7 +38,7 @@ namespace Mixin.TheLastMove.Ingame.UI
         {
             EnvironmentManager.OnGameStarted += EnvironmentManager_OnGameStarted;
             IngameOverlayUIB.OnPauseButtonClicked += IngameOverlayUIB_OnPauseButtonClicked;
-            IngameDeathScreenUIB.OnRespawnButtonClicked += Continue;
+            IngameDeathScreenUIB.OnRespawnButtonClicked += WatchAdToContinue;
             IngameDeathScreenUIB.OnRestartButtonClicked += IngameDeathScreenUIB_OnRestartButtonClicked;
             IngameDeathScreenUIB.OnQuitButtonClicked += GoToMainMenu;
             IngamePauseUIB.OnQuitButtonClicked += GoToMainMenu;
@@ -45,17 +50,18 @@ namespace Mixin.TheLastMove.Ingame.UI
             ObstacleOperator.OnKilled += SetKillText;
 
             //Add Rewarded Video Events
-            IronSourceEvents.onRewardedVideoAdRewardedEvent += RewardedVideoAdRewardedEvent;
-            IronSourceEvents.onRewardedVideoAdShowFailedEvent += RewardedVideoAdShowFailedEvent;
+            RewardedAdsButton.AdFinished += RewardedVideoAdRewardedEvent;
+            //RewardedAdManager.AdFailed += RewardedVideoAdShowFailedEvent;
 
-            IronSourceEvents.onInterstitialAdShowSucceededEvent += RestartGame;
+            InterstitialAd.AdShowCompleted += RestartGame;
+            InterstitialAd.AdFailed += RestartGame;
         }
 
         private void OnDisable()
         {
             EnvironmentManager.OnGameStarted -= EnvironmentManager_OnGameStarted;
             IngameOverlayUIB.OnPauseButtonClicked -= IngameOverlayUIB_OnPauseButtonClicked;
-            IngameDeathScreenUIB.OnRespawnButtonClicked -= Continue;
+            IngameDeathScreenUIB.OnRespawnButtonClicked -= WatchAdToContinue;
             IngameDeathScreenUIB.OnRestartButtonClicked -= IngameDeathScreenUIB_OnRestartButtonClicked;
             IngameDeathScreenUIB.OnQuitButtonClicked -= GoToMainMenu;
             IngamePauseUIB.OnQuitButtonClicked -= GoToMainMenu;
@@ -67,10 +73,11 @@ namespace Mixin.TheLastMove.Ingame.UI
             ObstacleOperator.OnKilled -= SetKillText;
 
             //Add Rewarded Video Events
-            IronSourceEvents.onRewardedVideoAdRewardedEvent -= RewardedVideoAdRewardedEvent;
-            IronSourceEvents.onRewardedVideoAdShowFailedEvent -= RewardedVideoAdShowFailedEvent;
+            RewardedAdsButton.AdFinished -= RewardedVideoAdRewardedEvent;
+            //RewardedAdManager.AdFailed -= RewardedVideoAdShowFailedEvent;
 
-            IronSourceEvents.onInterstitialAdShowSucceededEvent -= RestartGame;
+            InterstitialAd.AdShowCompleted -= RestartGame;
+            InterstitialAd.AdFailed -= RestartGame;
         }
 
         private void EnvironmentManager_OnGameStarted()
@@ -113,7 +120,7 @@ namespace Mixin.TheLastMove.Ingame.UI
             // Show ad or restart
             if (EnvironmentManager.PlayCounter > _showAdInt)
             {
-                IronSource.Agent.showInterstitial();
+                _interstitialAd.ShowAd();
                 EnvironmentManager.PlayCounter = 0;
                 _showAdInt = _showAdRange.GetRandomIntBetween();
             }
@@ -127,13 +134,9 @@ namespace Mixin.TheLastMove.Ingame.UI
             IngameDeathScreenUIB.Instance.Show(false);
         }
 
-        private void Continue()
+        private void WatchAdToContinue()
         {
-#if UNITY_EDITOR
-            RewardedVideoAdRewardedEvent(null);
-#else
-            IronSource.Agent.showRewardedVideo();
-#endif
+            _rewardedAdsButton.ShowAd();
         }
 
         private void IngameOverlayUIB_OnPauseButtonClicked()
@@ -142,12 +145,12 @@ namespace Mixin.TheLastMove.Ingame.UI
             IngamePauseUIB.Instance.Show(true);
         }
 
-        private void RewardedVideoAdShowFailedEvent(IronSourceError obj)
+        private void RewardedVideoAdShowFailedEvent()
         {
             throw new NotImplementedException();
         }
 
-        private void RewardedVideoAdRewardedEvent(IronSourcePlacement obj)
+        private void RewardedVideoAdRewardedEvent()
         {
             EnvironmentManager.Instance.Continue();
             IngameDeathScreenUIB.Instance.Show(false);
@@ -171,9 +174,12 @@ namespace Mixin.TheLastMove.Ingame.UI
                 SaveManager.Instance.IngameData.Save();
             }
 
-            // Set leaderboard
+            // Report the Score
             if (UnityEngine.Social.localUser.authenticated)
+            {
+                Debug.Log("User is authenticated");
                 UnityEngine.Social.ReportScore(score, GPGSIds.leaderboard_highest_score, null);
+            }
 
             // Set texts
             IngameDeathScreenUIB.Instance.HighscoreText.text = $"Your Highscore: {highscore}";

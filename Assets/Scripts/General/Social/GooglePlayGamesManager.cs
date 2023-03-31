@@ -1,3 +1,4 @@
+#if UNITY_ANDROID
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,4 +32,16 @@ namespace Mixin.TheLastMove.Social
         }
     }
 }
+#else
+using UnityEngine;
+
+namespace Mixin.TheLastMove.Social
+{
+    public class GooglePlayGamesManager : MonoBehaviour
+    {
+      
+    }
+}
+
+#endif
 
