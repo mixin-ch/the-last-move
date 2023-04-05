@@ -1,6 +1,7 @@
 using UnityEngine;
 using Mixin.Utils;
 using Mixin.TheLastMove.Sound;
+using UnityEngine.SceneManagement;
 
 namespace Mixin.TheLastMove.About
 {
@@ -39,7 +40,7 @@ namespace Mixin.TheLastMove.About
 
         private void ExitButton_clicked()
         {
-            SceneManager.Instance.UnloadScene(SceneName.About.ToString());
+            UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(SceneName.About.ToString());
             GeneralSoundManager.Instance.PlaySound(SoundType.ButtonClick);
         }
 
