@@ -169,7 +169,7 @@ PlayerSettings:
     iPhone: 6
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
-  AndroidBundleVersionCode: 3
+  AndroidBundleVersionCode: 4
   AndroidMinSdkVersion: 22
   AndroidTargetSdkVersion: 33
   AndroidPreferredInstallLocation: 1
@@ -263,8 +263,8 @@ PlayerSettings:
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: //HA6-NAS1/Mixin/Projekte/The Last Move/Keystore/The Last
-    Move.keystore
+  AndroidKeystoreName: //ha6-nas1.home/Mixin/Projekte/The Last Move/Keystore/The
+    Last Move.keystore
   AndroidKeyaliasName: the last move
   AndroidEnableArmv9SecurityFeatures: 0
   AndroidBuildApkPerCpuArchitecture: 0
