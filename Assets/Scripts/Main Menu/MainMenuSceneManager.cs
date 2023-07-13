@@ -14,6 +14,8 @@ namespace Mixin.TheLastMove
         [SerializeField]
         private AudioTrackSetupSO _themeSong;
 
+        private bool _isPlayButtonEnabled = true;
+
         private void Start()
         {
             MainMenuUIB.Instance.GameVersionText.text =
@@ -25,7 +27,11 @@ namespace Mixin.TheLastMove
 
         private void OnPlayButtonClicked()
         {
-            ChangeScene(SceneName.Ingame, LoadSceneMode.Single);
+            if (_isPlayButtonEnabled)
+            {
+                _isPlayButtonEnabled = false;
+                ChangeScene(SceneName.Ingame, LoadSceneMode.Single);
+            }
         }
 
         private void OnSettingsButtonClicked()
