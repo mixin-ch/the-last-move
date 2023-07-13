@@ -32,6 +32,12 @@ jobs:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
+          androidExportType: androidAppBundle
+          androidKeystoreName: The Last Move.keystore
+          androidKeystoreBase64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          androidKeystorePass: ${{ secrets.KEYSTORE_PASSWORD }}
+          androidKeyaliasName: the last move
+          androidKeyaliasPass: ${{ secrets.KEYSTORE_PASSWORD }}
       - uses: actions/upload-artifact@v2
         with:
           name: Build-${{ matrix.targetPlatform }}
