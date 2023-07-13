@@ -1,0 +1,22 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/MenuPagesStyle.uss?fileID=7433441132597879392&amp;guid=5cc3defc6f9dc2f47bbd0ea879a9d8f2&amp;type=3#MenuPagesStyle" />
+    <ui:VisualElement name="Background" class="background" style="background-image: url(&apos;project://database/Assets/Graphics/Pages/About%20Background.jpg?fileID=2800000&amp;guid=7404f55948eef4241904160f9e7d4bbf&amp;type=3#About Background&apos;);" />
+    <ui:VisualElement name="Body" class="body">
+        <SafeArea style="align-items: center;">
+            <ui:VisualElement name="Header" class="header" style="-unity-background-image-tint-color: rgb(0, 204, 51);">
+                <ui:Label text="About" display-tooltip-when-elided="true" name="PageTitle" class="pageTitle" />
+                <ui:Button text="&#x9;" display-tooltip-when-elided="true" name="ExitButton" class="button page-back-button" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ContentContainer" style="justify-content: flex-start; align-items: center; margin-top: auto; margin-bottom: auto; padding-bottom: 0;">
+                <ui:VisualElement name="LogoContainer" style="flex-direction: row; background-color: rgba(0, 0, 0, 0.65); border-top-left-radius: 10px; border-bottom-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; padding-left: 30px; padding-right: 30px; padding-top: 30px; padding-bottom: 30px;">
+                    <ui:Button display-tooltip-when-elided="true" name="redgreenbirdFilmsLogo" class="logo" style="background-image: url(&apos;project://database/Assets/Graphics/CICD/redgreenbird%20films%20no-background%20no-padding%201000x1000px.png?fileID=2800000&amp;guid=7bb23792677df1f4980ea41d03739619&amp;type=3#redgreenbird films no-background no-padding 1000x1000px&apos;);" />
+                    <ui:Button display-tooltip-when-elided="true" name="MixinGamesLogo" class="logo" style="background-image: url(&apos;project://database/Assets/Graphics/CICD/Mixin%20Games%20Logo%20Original%202000px-w.png?fileID=2800000&amp;guid=d33eed0da1fe138468c54657961fca39&amp;type=3#Mixin Games Logo Original 2000px-w&apos;); width: 314px;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="ButtonContainer" style="flex-direction: row; margin-bottom: 66px;">
+                <ui:Button text="Website" display-tooltip-when-elided="true" name="ProjectWebsiteButton" class="websiteButton button" />
+                <ui:Button text="Privacy" display-tooltip-when-elided="true" name="PrivacyButton" class="button" />
+            </ui:VisualElement>
+        </SafeArea>
+    </ui:VisualElement>
+</ui:UXML>

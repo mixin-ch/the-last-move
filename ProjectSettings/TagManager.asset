@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Slash
+  - Collectable
+  - Obstacle
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -11,10 +15,10 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Obstacle
+  - Block
+  - Collectable
   - 
   - 
   - 
@@ -38,6 +42,45 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Fixed Background
+    uniqueID: 3649471417
+    locked: 0
+  - name: Fog Fixed Background
+    uniqueID: 1451055151
+    locked: 0
+  - name: Background 2
+    uniqueID: 1491921349
+    locked: 0
+  - name: Fog 2
+    uniqueID: 3061411515
+    locked: 0
+  - name: Background 1
+    uniqueID: 3996142137
+    locked: 0
+  - name: Fog 1
+    uniqueID: 965769861
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: World Transition
+    uniqueID: 4164682163
+    locked: 0
+  - name: Terrain
+    uniqueID: 2052743477
+    locked: 0
+  - name: Obstacles
+    uniqueID: 2749992769
+    locked: 0
+  - name: Collectables
+    uniqueID: 3315313191
+    locked: 0
+  - name: Player
+    uniqueID: 1203532125
+    locked: 0
+  - name: Terrain Foreground
+    uniqueID: 655620735
+    locked: 0
+  - name: Obstacle Platform
+    uniqueID: 1634645079
     locked: 0

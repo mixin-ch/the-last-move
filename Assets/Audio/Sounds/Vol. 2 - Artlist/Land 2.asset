@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8db054b649fb834d8306950cac526fd, type: 3}
+  m_Name: Land 2
+  m_EditorClassIdentifier: 
+  _audioClip: {fileID: 8300000, guid: 5917e1d47246a6e4382e403914753a52, type: 3}
+  _audioMixerGroup: {fileID: -2938485225418946323, guid: 6e31a6f8a124f5c4da4e6fea98b516ba, type: 2}
+  _volume: 1
+  _pitch: 1
+  _loop: 0
+  _startFadeDuration: 0
+  _endFadeDuration: 0

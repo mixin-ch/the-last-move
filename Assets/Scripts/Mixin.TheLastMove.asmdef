@@ -1,0 +1,24 @@
+{
+    "name": "Mixin.TheLastMove",
+    "rootNamespace": "",
+    "references": [
+        "GUID:72360ac344346684e9e27a1a126f833a",
+        "GUID:1ed07ff861e5f468287b0baef844706d",
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:3a3f7d4ae54f8a3409043f877e729c7f",
+        "GUID:6b84f7a92a924ef4394762e4c5b593d7",
+        "GUID:b708ce3d2362bc049a7fb3b1afb84301",
+        "GUID:d3605378acb696d439d1a8b5509c830a",
+        "GUID:fba75d1dacb48cc419eba0da9788a82e",
+        "GUID:ff6de30450f3748908ff580f6ec64d9a"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

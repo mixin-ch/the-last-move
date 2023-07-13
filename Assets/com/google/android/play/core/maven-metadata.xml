@@ -1,0 +1,9 @@
+<metadata>
+    <groupId>com.google.android.play</groupId>
+    <artifactId>core</artifactId>
+    <versioning>
+        <release>2.0.0</release>
+        <versions><version>2.0.0</version></versions>
+        <lastUpdated/>
+    </versioning>
+</metadata>

@@ -1,0 +1,26 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/MenuPagesStyle.uss?fileID=7433441132597879392&amp;guid=5cc3defc6f9dc2f47bbd0ea879a9d8f2&amp;type=3#MenuPagesStyle" />
+    <ui:VisualElement name="Background" style="position: absolute; width: 100%; height: 100%; background-image: url(&apos;project://database/Assets/Graphics/Pages/Settings%20Background.jpg?fileID=2800000&amp;guid=5603a0c173e43914dac130bf61dafb59&amp;type=3#Settings Background&apos;); -unity-background-image-tint-color: rgb(106, 106, 106);" />
+    <ui:VisualElement name="Body" style="flex-basis: 100%;">
+        <SafeArea style="justify-content: center;">
+            <ui:VisualElement name="Header" class="header">
+                <ui:Label text="Settings" display-tooltip-when-elided="true" name="PageTitle" class="pageTitle" />
+                <ui:Button text="&#x9;" display-tooltip-when-elided="true" name="ExitButton" class="button page-back-button" />
+            </ui:VisualElement>
+            <ui:ScrollView name="SettingsContainer" style="padding-left: 80px; padding-right: 80px; padding-top: 20px; padding-bottom: 20px; flex-grow: 0; margin-top: 78px;">
+                <CustomSlider value="8.53" label="Music Volume" focusable="true" name="MusicVolumeSlider" high-value="100" class="custom-slider" />
+                <CustomSlider value="46.3" label="Sound Volume" focusable="true" name="SoundVolumeSlider" high-value="100" class="custom-slider" />
+                <ui:VisualElement name="LanguageContainer" style="align-items: center; justify-content: center; flex-direction: row; padding-left: 45px; padding-right: 45px; padding-top: 45px; padding-bottom: 45px; margin-top: 37px;">
+                    <ui:Button name="EnglishButton" class="languageIcon" style="width: 100px; -unity-background-scale-mode: scale-to-fit;" />
+                    <ui:Button name="GermanButton" class="languageIcon active" style="width: 100px; -unity-background-scale-mode: scale-to-fit; background-image: url(&apos;project://database/Assets/Graphics/Icons/Languages/German.png?fileID=2800000&amp;guid=c920738a74c1c394193d0f38dce0cd96&amp;type=3#German&apos;);" />
+                    <ui:Button name="SwissGermanButton" class="languageIcon" style="width: 100px; -unity-background-scale-mode: scale-to-fit; background-image: url(&apos;project://database/Assets/Graphics/Icons/Languages/Swiss%20German.png?fileID=2800000&amp;guid=9966f6cac33442147b8d55f97b99d440&amp;type=3#Swiss German&apos;);" />
+                    <ui:Button name="FrenchButton" class="languageIcon" style="width: 100px; -unity-background-scale-mode: scale-to-fit; background-image: url(&apos;project://database/Assets/Graphics/Icons/Languages/French.png?fileID=2800000&amp;guid=1a16670e60ecb8a4ba9b7bf520894e5a&amp;type=3#French&apos;);" />
+                </ui:VisualElement>
+            </ui:ScrollView>
+            <ui:VisualElement name="Spacer" style="flex-grow: 1;" />
+            <ui:VisualElement name="SaveButtonContainer" style="align-items: center; margin-bottom: 63px; display: none;">
+                <ui:Button text="Save" display-tooltip-when-elided="true" name="SaveButton" class="button" style="background-image: url(&apos;project://database/Assets/Graphics/Icons/Button%20White.png?fileID=21300000&amp;guid=5c39269aa76ce9e49ac66ef9dd10d6f0&amp;type=3#Button White&apos;); -unity-background-image-tint-color: rgb(0, 210, 255);" />
+            </ui:VisualElement>
+        </SafeArea>
+    </ui:VisualElement>
+</ui:UXML>
