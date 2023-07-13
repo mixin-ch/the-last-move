@@ -50,6 +50,10 @@ namespace Mixin.TheLastMove
             HighscoreText = _body.Q<Label>("HighscoreText");
             KillText = _body.Q<Label>("KillText");
             CurrencyText = _body.Q<Label>("CurrencyText");
+
+            _respawnButton.clicked += () => OnRespawnButtonClicked?.Invoke();
+            _restartButton.clicked += () => OnRestartButtonClicked?.Invoke();
+            _quitButton.clicked += () => OnQuitButtonClicked?.Invoke();
         }
 
         public void Show(bool show)
@@ -57,14 +61,7 @@ namespace Mixin.TheLastMove
             _body.style.display = show ? DisplayStyle.Flex : DisplayStyle.None;
         }
 
-        private void OnEnable()
-        {
-            _respawnButton.clicked += () => OnRespawnButtonClicked?.Invoke();
-            _restartButton.clicked += () => OnRestartButtonClicked?.Invoke();
-            _quitButton.clicked += () => OnQuitButtonClicked?.Invoke();
-        }
-
-        private void OnDisable()
+        private void OnDestroy()
         {
             _respawnButton.clicked -= () => OnRespawnButtonClicked?.Invoke();
             _restartButton.clicked -= () => OnRestartButtonClicked?.Invoke();

@@ -203,12 +203,6 @@ namespace Mixin.TheLastMove.Environment
             _playerOperator.Tick(time);
         }
 
-        private void RewardedAd_OnUserRewarded()
-        {
-            // ContinueGame();
-            StartGame();
-        }
-
         private float GetRandomBiomeDuration()
         {
             return new System.Random().Range(_biomeDurationMinMax.x, _biomeDurationMinMax.y);

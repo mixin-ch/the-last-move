@@ -50,8 +50,6 @@ namespace Mixin.TheLastMove.Ads
 
             if (adUnitId.Equals(_adUnitId))
             {
-                // Configure the button to call the ShowAd() method when clicked:
-                _showAdButton.clickable.clicked += ShowAd;
                 // Enable the button for users to click:
                 _showAdButton.SetEnabled(true);
             }
@@ -64,6 +62,8 @@ namespace Mixin.TheLastMove.Ads
             _showAdButton.SetEnabled(false);
             // Then show the ad:
             Advertisement.Show(_adUnitId, this);
+
+            Debug.LogWarning("showing ad");
         }
 
         // Implement the Show Listener's OnUnityAdsShowComplete callback method to determine if the user gets a reward:
@@ -98,11 +98,5 @@ namespace Mixin.TheLastMove.Ads
 
         public void OnUnityAdsShowStart(string adUnitId) { }
         public void OnUnityAdsShowClick(string adUnitId) { }
-
-        void OnDestroy()
-        {
-            // Clean up the button listeners:
-            _showAdButton.clickable.clicked -= ShowAd;
-        }
     }
 }
