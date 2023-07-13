@@ -19,15 +19,10 @@ namespace Mixin.TheLastMove.Sound
 
         public MixinDictionary<SoundType, AudioTrackSetupSOList> SoundList { get => _soundList; }
 
-        protected override void Awake()
+        private void OnEnable()
         {
-            base.Awake();
-
             EnvironmentManager.OnGameStarted += EnvironmentManager_OnGameStarted;
-        }
 
-        private void Start()
-        {
             PlayerOperator.OnPlayerDeathEvent += PlayerOperator_OnPlayerDeathEvent;
             PlayerOperator.OnPlayerTakeDamageEvent += PlayerOperator_OnPlayerTakeDamageEvent;
             PlayerOperator.OnPlayerLanded += PlayerOperator_OnPlayerLanded;
