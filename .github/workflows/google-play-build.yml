@@ -1,0 +1,39 @@
+name: Build Unity Game
+
+on:
+  push:
+    # branches:
+    #   - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Unity
+        uses: game-ci/unity/setup@v1
+        with:
+          unityVersion: 2019.4.99f1
+
+      - name: Install Android SDK
+        uses: android-actions/setup-android@v2
+        with:
+          sdk-platform: '29'
+
+      - name: Build Unity game
+        run: |
+          unity-editor \
+            -batchmode \
+            -quit \
+            -projectPath ${{ github.workspace }} \
+            -executeMethod MyBuildScript.BuildAAB \
+            -logFile build.log
+
+      - name: Upload AAB artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: game-aab
+          path: ${{ github.workspace }}/game.aab
