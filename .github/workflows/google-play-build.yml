@@ -1,4 +1,4 @@
-name: Build Unity Game
+name: Build Android AAB
 
 on:
   push:
@@ -15,13 +15,9 @@ jobs:
 
       - name: Set up Unity
         uses: game-ci/unity/setup@v1
-        with:
-          unityVersion: 2019.4.99f1
 
       - name: Install Android SDK
         uses: android-actions/setup-android@v2
-        with:
-          sdk-platform: '29'
 
       - name: Build Unity game
         run: |
