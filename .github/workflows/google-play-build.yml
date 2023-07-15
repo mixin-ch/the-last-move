@@ -1,35 +1,35 @@
-name: Build Android AAB
+# name: Build Android AAB
 
-on:
-  push:
-    # branches:
-    #   - main
+# on:
+#   push:
+#     # branches:
+#     #   - main
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v2
 
-      - name: Set up Unity
-        uses: game-ci/unity/setup@v1
+#       - name: Set up Unity
+#         uses: game-ci/unity/setup@v1
 
-      - name: Install Android SDK
-        uses: android-actions/setup-android@v2
+#       - name: Install Android SDK
+#         uses: android-actions/setup-android@v2
 
-      - name: Build Unity game
-        run: |
-          unity-editor \
-            -batchmode \
-            -quit \
-            -projectPath ${{ github.workspace }} \
-            -executeMethod MyBuildScript.BuildAAB \
-            -logFile build.log
+#       - name: Build Unity game
+#         run: |
+#           unity-editor \
+#             -batchmode \
+#             -quit \
+#             -projectPath ${{ github.workspace }} \
+#             -executeMethod MyBuildScript.BuildAAB \
+#             -logFile build.log
 
-      - name: Upload AAB artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: game-aab
-          path: ${{ github.workspace }}/game.aab
+#       - name: Upload AAB artifact
+#         uses: actions/upload-artifact@v2
+#         with:
+#           name: game-aab
+#           path: ${{ github.workspace }}/game.aab

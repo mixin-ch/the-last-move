@@ -1,6 +1,9 @@
 name: Build project
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
 
 env:
   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
@@ -95,7 +98,7 @@ jobs:
           androidKeyaliasPass: ${{ secrets.KEYSTORE_PASSWORD }}
       - uses: actions/upload-artifact@v2
         with:
-          name: Build-${{ matrix.targetPlatform }}
+          name: Build-${{ matrix.targetPlatform }}-${{ steps.myBuildStep.outputs.buildVersion }}
           path: build/${{ matrix.targetPlatform }}
 
   deployPages:
