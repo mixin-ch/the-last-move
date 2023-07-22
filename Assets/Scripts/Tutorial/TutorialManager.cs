@@ -16,6 +16,7 @@ namespace Mixin.TheLastMove
         [SerializeField]
         private InputSpriteStruct[] _inputSprites;
         private InputControls _inputControls;
+        private bool _nextPage = false;
 
         private void Awake()
         {
@@ -72,10 +73,11 @@ namespace Mixin.TheLastMove
             _inputControls = new InputControls();
             foreach (InputDevice d in InputSystem.devices)
             {
-                if (d.lastUpdateTime >= time)
+                double t = d.lastUpdateTime;
+                if (t >= time)
                 {
                     last = GetInputDeviceType(d);
-                    time = d.lastUpdateTime;
+                    time = t;
                 }
             }
             foreach (InputSpriteStruct iss in _inputSprites)
@@ -109,7 +111,11 @@ namespace Mixin.TheLastMove
 
         // Update is called once per frame
         void Update() {
-        
+            if (_nextPage)
+            {
+                _nextPage = false;
+                ShowNextPage();
+            }
             if (Input.touches.Length > 0)
             {
                 for (int i = 0; i<Input.touches.Length; i++)
@@ -133,7 +139,6 @@ namespace Mixin.TheLastMove
                 }
             }
         }
-
 
         private void OnEnable()
         {
@@ -162,14 +167,14 @@ namespace Mixin.TheLastMove
         {
             if(_page == 0)
             {
-                ShowNextPage();
+                _nextPage = true;
             }
         }
         private void Attack()
         {
             if(_page == 1)
             {
-                ShowNextPage();
+                _nextPage = true;
             }
         }
 
