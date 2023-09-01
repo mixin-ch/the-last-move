@@ -6,5 +6,6 @@
         Ingame = 1,
         Settings = 2,
         About = 3,
+        Tutorial = 4,
     }
 }

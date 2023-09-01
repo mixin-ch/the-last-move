@@ -85,6 +85,8 @@ namespace Mixin.TheLastMove.Settings
 
         private void UpdateLanguage(Language language)
         {
+            $"Chaning language to {language}".Log();
+
             _data.Language = language;
             LanguageManager.Instance.SelectedLanguage = language;
 

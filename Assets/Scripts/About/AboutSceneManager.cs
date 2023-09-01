@@ -19,7 +19,12 @@ namespace Mixin.TheLastMove.About
         [SerializeField]
         private string _privacyURL;
 
-        private AboutUIB _uib => AboutUIB.Instance;
+        private AboutUIB _uib;
+
+        private void Awake()
+        {
+            _uib = AboutUIB.Instance;
+        }
 
         private void OnEnable()
         {
