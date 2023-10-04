@@ -1,3 +1,4 @@
+using Mixin.TheLastMove.Save;
 using Mixin.TheLastMove.Scene;
 using Mixin.Utils;
 using Mixin.Utils.Audio;
@@ -30,7 +31,13 @@ namespace Mixin.TheLastMove
             if (_isPlayButtonEnabled)
             {
                 _isPlayButtonEnabled = false;
-                ChangeScene(SceneName.Ingame, LoadSceneMode.Single);
+                if (SaveManager.Instance.IngameData.Data.Highscore==0) {
+                    ChangeScene(SceneName.Tutorial, LoadSceneMode.Single);
+                }
+                else
+                {
+                    ChangeScene(SceneName.Ingame, LoadSceneMode.Single);
+                }
             }
         }
 
